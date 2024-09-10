@@ -86,7 +86,6 @@ namespace uatmDCPS {
           evtolManSub,
           pilotManSub,
           skyportManagerSub,
-          ,
           LAST_INDEX
         };
       };

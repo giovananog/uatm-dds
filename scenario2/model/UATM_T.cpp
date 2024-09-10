@@ -163,7 +163,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__flightAssign] = "flightAssign";
   this->cfTopics_[Topics::UATM__uatmDCPS__flightAssign] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__flightAssign] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityFOP] = "resourceType == "skyport"";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityFOP] = "resourceType == 'skyport'";
 }
 
 inline
@@ -223,7 +223,6 @@ Elements::Data::loadMaps()
   this->subscriberParticipants_[ Subscribers::evtolManSub] = Participants::evtolManagerDP;
   this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
   this->subscriberParticipants_[ Subscribers::skyportManagerSub] = Participants::skyportManagerDP;
-  this->subscriberParticipants_[ Subscribers::] = Participants::skyportOperatorDP;
 
   this->types_[ Topics::UATM__uatmDCPS__AvailabilityInfo] = Types::availabilityInfo;
   this->types_[ Topics::UATM__uatmDCPS__flightRoutesInfo] = Types::flightRoutesInfo;
@@ -231,30 +230,16 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__flightAssign] = Types::flightAssign;
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityFOP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
-  this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::;
   this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::UATM__uatmDCPS__flightAssign;
-  this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::evtolAvailabilityDW_ev] = Topics::;
-  this->writerTopics_[ DataWriters::pilotAvailabilityDW_PLM] = Topics::;
   this->writerTopics_[ DataWriters::skyportAvailabilityDW_SKM] = Topics::UATM__uatmDCPS__AvailabilityInfo;
   this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::UATM__uatmDCPS__flightRoutesInfo;
-  this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::;
-  this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::;
   this->writerTopics_[ DataWriters::writer] = Topics::UATM__uatmDCPS__weatherInfo;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::;
   this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::UATM__uatmDCPS__availabilityFOP;
   this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::UATM__uatmDCPS__flightRoutesInfo;
   this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::UATM__uatmDCPS__weatherInfo;
-  this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::;
   this->readerTopics_[ DataReaders::flightAssignDR_EV] = Topics::UATM__uatmDCPS__flightAssign;
-  this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::;
-  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::;
   this->readerTopics_[ DataReaders::flighAssignDR_PLM] = Topics::UATM__uatmDCPS__flightAssign;
-  this->readerTopics_[ DataReaders::flightAssignDR_SKM] = Topics::;
-  this->readerTopics_[ DataReaders::availabilityDR_SKO] = Topics::;
-  this->readerTopics_[ DataReaders::flightCoordDR_SKO] = Topics::;
 
   this->publishers_[ DataWriters::uaspFlightRequestDW_FOP] = Publishers::fleetOperatorPub;
   this->publishers_[ DataWriters::assignFlightDW_FOP] = Publishers::fleetOperatorPub;
@@ -278,8 +263,6 @@ Elements::Data::loadMaps()
   this->subscribers_[ DataReaders::changeRecDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::flighAssignDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::flightAssignDR_SKM] = Subscribers::skyportManagerSub;
-  this->subscribers_[ DataReaders::availabilityDR_SKO] = Subscribers::;
-  this->subscribers_[ DataReaders::flightCoordDR_SKO] = Subscribers::;
 
 }
 
@@ -431,7 +414,6 @@ Elements::Data::buildSubscribersQos()
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
-  subscriber    = Subscribers::;
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 }
