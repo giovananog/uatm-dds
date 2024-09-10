@@ -1,0 +1,199 @@
+#ifndef UATM_IDL
+#define UATM_IDL
+
+module UATM {
+  struct acceptableRoute;
+  struct airspaceRestrictions;
+  struct availabilityInfo;
+  struct bookingFlightRequest;
+  struct flightAuthorization;
+  struct flightChanceRec;
+  struct flightCoordination;
+  struct flightRequestInfo;
+  struct flightRoutesInfo;
+  struct tolPadRequest;
+  struct trafficFlowsInfo;
+  struct flightAuthorizationRequest;
+  struct weatherInfo;
+  struct flightAssign;
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::acceptableRoute"
+#pragma DCPS_DATA_KEY  "UATM::acceptableRoute ac_route_id"
+  struct acceptableRoute {
+    long ac_route_id;
+    string<20> origin;
+    string<20> destination;
+    string<20> estimated_time;
+    string<20> approved_by;
+    string<20> timestamp;
+    boolean is_active;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::airspaceRestrictions"
+#pragma DCPS_DATA_KEY  "UATM::airspaceRestrictions restriction_id"
+  struct airspaceRestrictions {
+    long restriction_id;
+    string<20> area;
+    string<20> restriction_type;
+    string<20> start_time;
+    string<20> end_time;
+    string<20> authority;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::availabilityInfo"
+#pragma DCPS_DATA_KEY  "UATM::availabilityInfo resource_id"
+  struct availabilityInfo {
+    long resource_id;
+    string<20> resource_type;
+    boolean status;
+    string<20> location;
+    string<20> availability_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::bookingFlightRequest"
+#pragma DCPS_DATA_KEY  "UATM::bookingFlightRequest booking_id"
+  struct bookingFlightRequest {
+    long booking_id;
+    string<20> customer_id;
+    long flight_id;
+    string<20> departure_time;
+    string<20> arrival_time;
+    long route_id;
+    boolean request_status;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAuthorization"
+#pragma DCPS_DATA_KEY  "UATM::flightAuthorization authorization_id"
+  struct flightAuthorization {
+    long authorization_id;
+    long flight_id;
+    long approved_route_id;
+    string<20> authority;
+    string<20> authorization_time;
+    string<20> valid_until;
+  };
+};
+module UATM {
+  typedef string<10> ArrayString[2];
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightChanceRec"
+#pragma DCPS_DATA_KEY  "UATM::flightChanceRec recommendation_id"
+  struct flightChanceRec {
+    long recommendation_id;
+    long flight_id;
+    string<20> chance_type;
+    string<20> reason;
+    ArrayString recommended_by;
+    string<20> recommendation_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightCoordination"
+#pragma DCPS_DATA_KEY  "UATM::flightCoordination coordination_id"
+  struct flightCoordination {
+    long coordination_id;
+    long flight_id;
+    ArrayString involved_parties;
+    string<20> coordination_details;
+    string<20> recommendation_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightRequestInfo"
+#pragma DCPS_DATA_KEY  "UATM::flightRequestInfo request_id"
+  struct flightRequestInfo {
+    long request_id;
+    long flight_id;
+    long requestor_id;
+    long requested_route_id;
+    boolean request_status;
+    string<20> request_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightRoutesInfo"
+#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo flight_route_id"
+  struct flightRoutesInfo {
+    long flight_route_id;
+    long flight_id;
+    ArrayString waypoints;
+    string<20> estimated_time;
+    boolean status;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::tolPadRequest"
+#pragma DCPS_DATA_KEY  "UATM::tolPadRequest assign_id"
+  struct tolPadRequest {
+    long assign_id;
+    long flight_id;
+    long tol_pad_id;
+    string<20> assign_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::trafficFlowsInfo"
+#pragma DCPS_DATA_KEY  "UATM::trafficFlowsInfo flows_id"
+  struct trafficFlowsInfo {
+    long flows_id;
+    string<20> area;
+    string<20> congestion_level;
+    string<20> affected_routes;
+    string<20> timestamp;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAuthorizationRequest"
+#pragma DCPS_DATA_KEY  "UATM::flightAuthorizationRequest auth_request_id"
+  struct flightAuthorizationRequest {
+    long auth_request_id;
+    long uasp_id;
+    long flight_id;
+    boolean requested_status;
+    string<20> request_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::weatherInfo"
+#pragma DCPS_DATA_KEY  "UATM::weatherInfo weather_id"
+  struct weatherInfo {
+    long weather_id;
+    string<20> location;
+    float temperature;
+    float wind_speed;
+    string<20> weather_condition;
+    string<20> observation_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAssign"
+#pragma DCPS_DATA_KEY  "UATM::flightAssign flight_assign_id"
+  struct flightAssign {
+    long flight_assign_id;
+    string<20> assign_time;
+    string<20> operator_id;
+    string<20> assign_status;
+    ArrayString resources_id;
+  };
+};
+#endif 
