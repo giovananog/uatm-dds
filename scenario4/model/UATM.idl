@@ -1,0 +1,34 @@
+#ifndef UATM_IDL
+#define UATM_IDL
+
+module UATM {
+  struct availabilityInfo;
+  struct tolPadRequest;
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::availabilityInfo"
+#pragma DCPS_DATA_KEY  "UATM::availabilityInfo resource_id"
+  struct availabilityInfo {
+    long resource_id;
+    string<20> resource_type;
+    boolean status;
+    string<20> location;
+    string<20> availability_time;
+  };
+};
+module UATM {
+  typedef string<10> ArrayString[2];
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::tolPadRequest"
+#pragma DCPS_DATA_KEY  "UATM::tolPadRequest assign_id"
+  struct tolPadRequest {
+    long assign_id;
+    long flight_id;
+    long tol_pad_id;
+    string<20> assign_time;
+  };
+};
+#endif 
