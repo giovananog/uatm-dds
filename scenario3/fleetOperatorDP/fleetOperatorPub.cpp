@@ -17,18 +17,17 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::flightCoordDW_FOP);
+    DDS::DataWriter_var writer_coord = model.writer(Elements::DataWriters::flightCoordDW_FOP);
+    UATM::flightCoordinationDataWriter_var writer_coord_var = UATM::flightCoordinationDataWriter::_narrow(writer_coord.in());
 
-    UATM::flightCoordinationDataWriter_var writer_var = UATM::flightCoordinationDataWriter::_narrow(writer.in());
-
-    if (CORBA::is_nil(writer_var.in())) {
+    if (CORBA::is_nil(writer_coord_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
     }
 
-    OpenDDS::Model::WriterSync ws(writer);
+    OpenDDS::Model::WriterSync ws(writer_coord);
     {
       UATM::flightCoordination fc;
 
@@ -39,7 +38,37 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       fc.coordination_details = ["a", "a"];
       fc.recommendation_time = "343434";
 
-      DDS::ReturnCode_t error = writer_var->write(fc, DDS::HANDLE_NIL);
+      DDS::ReturnCode_t error = writer_coord_var->write(fc, DDS::HANDLE_NIL);
+
+      if (error != DDS::RETCODE_OK) {
+          ACE_ERROR((LM_ERROR,
+                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                     ACE_TEXT(" write returned %d!\n"), error));
+      }
+    
+    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
+    UATM::flightCoordinationDataWriter_var writer_assign_var = UATM::flightCoordinationDataWriter::_narrow(writer.in());
+
+    if (CORBA::is_nil(writer_assign_var.in())) {
+        ACE_ERROR_RETURN((LM_ERROR,
+                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                          ACE_TEXT(" _narrow failed!\n")),
+                         -1);
+      }
+    }
+
+    OpenDDS::Model::WriterSync ws(writer_assign);
+    {
+      UATM::flightAuthorizationRequest fr;
+
+      // Populate message and send
+      fr.auth_request_id = 23;
+      fr.uasp_id = 22;
+      fr.flight_id = 22;
+      fr.request_status = true;
+      fr.request_time = "343434";
+
+      DDS::ReturnCode_t error = writer_assign_var->write(fr, DDS::HANDLE_NIL);
 
       if (error != DDS::RETCODE_OK) {
           ACE_ERROR((LM_ERROR,
