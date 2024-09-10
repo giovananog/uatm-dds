@@ -130,6 +130,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerAvailability(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+    
 
     DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::flightRequestDR_FOPs);
 

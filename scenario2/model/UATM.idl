@@ -1,0 +1,62 @@
+#ifndef UATM_IDL
+#define UATM_IDL
+
+module UATM {
+  struct availabilityInfo;
+  struct weatherInfo;
+  struct flightRoutesInfo;
+  struct flightAssign;
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::availabilityInfo"
+#pragma DCPS_DATA_KEY  "UATM::availabilityInfo resource_id"
+  struct availabilityInfo {
+    long resource_id;
+    string<20> resource_type;
+    boolean status;
+    string<20> location;
+    string<20> availability_time;
+  };
+};
+module UATM {
+  typedef string<10> ArrayString[2];
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::weatherInfo"
+#pragma DCPS_DATA_KEY  "UATM::weatherInfo flight_route_id"
+  struct weatherInfo {
+    long flight_route_id;
+    ArrayString waypoints;
+    long flight_id;
+    string<20> estimated_time;
+    boolean status;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightRoutesInfo"
+#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo weather_id"
+  struct flightRoutesInfo {
+    long weather_id;
+    string<20> location;
+    float temperature;
+    float wind_speed;
+    string<20> weather_condition;
+    string<10> observation_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAssign"
+#pragma DCPS_DATA_KEY  "UATM::flightAssign flight_assign_id"
+  struct flightAssign {
+    long flight_assign_id;
+    string<20> assign_time;
+    long operator_id;
+    boolean assign_status;
+    ArrayString resources_id;
+  };
+};
+#endif 
