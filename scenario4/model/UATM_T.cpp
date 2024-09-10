@@ -121,7 +121,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = "availabiityInfo_UASP";
   this->cfTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP;
   this->multiTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = "resourceType == "tolPad"";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = "resourceType == 'tolPad'";
 }
 
 inline
@@ -179,17 +179,10 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__tolPadRequest] = Types::tolPadRequest;
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::;
   this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::UATM__uatmDCPS__tolPadRequest;
   this->writerTopics_[ DataWriters::tolPadAvailabilityDW_TP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_UASP] = Topics::;
   this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::UATM__uatmDCPS__availabiityInfo_UASP;
-  this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::;
   this->readerTopics_[ DataReaders::tolPadAssignDR_TP] = Topics::UATM__uatmDCPS__tolPadRequest;
 
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::uaspManagerPub;
