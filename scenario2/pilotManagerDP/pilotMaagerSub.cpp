@@ -70,7 +70,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataReader_var reader_assign = model.reader(Elements::DataReaders::flightAssignDR_EV);
+    DDS::DataReader_var reader_assign = model.reader(Elements::DataReaders::flighAssignDR_PLM);
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
     OpenDDS::Model::ReaderCondSync rcs(reader_assign, condition);
