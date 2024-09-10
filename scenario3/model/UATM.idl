@@ -1,0 +1,48 @@
+#ifndef UATM_IDL
+#define UATM_IDL
+
+module UATM {
+  struct flightCoordination;
+  struct flightAuthorizationRequest;
+  struct flightRequestInfo;
+};
+module UATM {
+  typedef string<10> ArrayString[2];
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightCoordination"
+#pragma DCPS_DATA_KEY  "UATM::flightCoordination coordination_id"
+  struct flightCoordination {
+    long coordination_id;
+    long flight_id;
+    ArrayString involved_parties;
+    ArrayString coordination_details;
+    string<20> recommendation_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAuthorizationRequest"
+#pragma DCPS_DATA_KEY  "UATM::flightAuthorizationRequest auth_request_id"
+  struct flightAuthorizationRequest {
+    long auth_request_id;
+    long uasp_id;
+    long flight_id;
+    boolean request_status;
+    string<20> request_time;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightRequestInfo"
+  struct flightRequestInfo {
+    long request_id;
+    long flight_id;
+    long requestor_id;
+    long requested_route_id;
+    boolean request_status;
+    string<20> request_time;
+  };
+};
+#endif 
