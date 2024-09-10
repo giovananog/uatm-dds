@@ -196,31 +196,12 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__flightRequestInfo] = Types::flightRequestInfo;
 
   this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
-  this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::;
   this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::UATM__uatmDCPS__flightCoordination;
-  this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::;
-  this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::;
-  this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::;
   this->writerTopics_[ DataWriters::flightRequestInfoDW_FAS] = Topics::UATM__uatmDCPS__flightRequestInfo;
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::availabilityDR_SKO] = Topics::;
   this->readerTopics_[ DataReaders::flightCoordDR_SKO] = Topics::UATM__uatmDCPS__flightCoordination;
   this->readerTopics_[ DataReaders::flightRequestDR_FAS] = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
   this->readerTopics_[ DataReaders::flightRequestDR_UASP] = Topics::UATM__uatmDCPS__flightRequestInfo;
-  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::;
 
   this->publishers_[ DataWriters::uaspFlightRequestDW_FOP] = Publishers::fleetOperatorPub;
   this->publishers_[ DataWriters::assignFlightDW_FOP] = Publishers::fleetOperatorPub;
