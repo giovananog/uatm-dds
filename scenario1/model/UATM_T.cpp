@@ -123,7 +123,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "AvailabilityInfo_FOP";
   this->cfTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP;
   this->multiTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "resourceType LIKE "pilot" or resourceType LIKE "evtol"";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "resourceType LIKE 'pilot' or resourceType LIKE 'evtol'";
 }
 
 inline
@@ -187,22 +187,11 @@ Elements::Data::loadMaps()
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
   this->writerTopics_[ DataWriters::bookingFlightRequestDW_BP] = Topics::UATM__uatmDCPS__BookingFlightRequest;
-  this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::;
   this->writerTopics_[ DataWriters::evtolAvailabilityDW_ev] = Topics::UATM__uatmDCPS__AvailabilityInfo;
   this->writerTopics_[ DataWriters::pilotAvailabilityDW_PLM] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
   this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::UATM__uatmDCPS__BookingFlightRequest;
   this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::UATM__uatmDCPS__AvailabilityInfo_FOP;
-  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::flightAssignDR_EV] = Topics::;
-  this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::;
-  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::;
-  this->readerTopics_[ DataReaders::flighAssignDR_PLM] = Topics::;
 
   this->publishers_[ DataWriters::bookingFlightRequestDW_BP] = Publishers::bookingPlatformPub;
   this->publishers_[ DataWriters::uaspFlightRequestDW_FOP] = Publishers::fleetOperatorPub;
