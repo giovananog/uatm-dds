@@ -215,24 +215,16 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__airspaceRestrictions] = Types::asirspaceRestrictions;
   this->types_[ Topics::UATM__uatmDCPS__acceptableRoute] = Types::acceptableRoute;
 
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::;
   this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__acceptableRoute;
-  this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::;
   this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__airspaceRestrictions;
-  this->writerTopics_[ DataWriters::writer] = Topics::UATM__uatmDCPS__weatherInfo;
+  this->writerTopics_[ DataWriters::weatherInfoDW_WTR] = Topics::UATM__uatmDCPS__weatherInfo;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::;
   this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::UATM__uatmDCPS__weatherInfo;
   this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::UATM__uatmDCPS__airspaceRestrictions;
-  this->readerTopics_[ DataReaders::availabilityDR_SKO] = Topics::;
-  this->readerTopics_[ DataReaders::flightCoordDR_SKO] = Topics::;
-  this->readerTopics_[ DataReaders::reader] = Topics::UATM__uatmDCPS__acceptableRoute;
-  this->readerTopics_[ DataReaders::reader] = Topics::UATM__uatmDCPS__acceptableRoute;
+  this->readerTopics_[ DataReaders::routeDataDR_ANSP] = Topics::UATM__uatmDCPS__acceptableRoute;
+  this->readerTopics_[ DataReaders::routeDataDR_USS] = Topics::UATM__uatmDCPS__acceptableRoute;
 
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::fleetOperatorPub;
   this->publishers_[ DataWriters::flightAuthDW_UASP] = Publishers::fleetOperatorPub;
@@ -241,7 +233,7 @@ Elements::Data::loadMaps()
   this->publishers_[ DataWriters::flightRoutesDW_SKO] = Publishers::skyportOperatorPub;
   this->publishers_[ DataWriters::trafficFlowsDW_SKO] = Publishers::skyportOperatorPub;
   this->publishers_[ DataWriters::airspaceRestDW_SKO] = Publishers::skyportOperatorPub;
-  this->publishers_[ DataWriters::writer] = Publishers::weatherPub;
+  this->publishers_[ DataWriters::weatherInfoDW_WTR] = Publishers::weatherPub;
 
   this->subscribers_[ DataReaders::flightRequestDR_UASP] = Subscribers::fleetOperatorSub;
   this->subscribers_[ DataReaders::tolPadAvailabilityDR_UASP] = Subscribers::fleetOperatorSub;
@@ -250,8 +242,8 @@ Elements::Data::loadMaps()
   this->subscribers_[ DataReaders::airspaceRestDR_UASP] = Subscribers::fleetOperatorSub;
   this->subscribers_[ DataReaders::availabilityDR_SKO] = Subscribers::skyportOperatorSub;
   this->subscribers_[ DataReaders::flightCoordDR_SKO] = Subscribers::skyportOperatorSub;
-  this->subscribers_[ DataReaders::reader] = Subscribers::anspSub;
-  this->subscribers_[ DataReaders::reader] = Subscribers::ussSub;
+  this->subscribers_[ DataReaders::routeDataDR_ANSP] = Subscribers::anspSub;
+  this->subscribers_[ DataReaders::routeDataDR_USS] = Subscribers::ussSub;
 
 }
 
@@ -425,7 +417,7 @@ Elements::Data::buildPublicationsQos()
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
 
-  writer    = DataWriters::writer;
+  writer    = DataWriters::weatherInfoDW_WTR;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
@@ -473,12 +465,12 @@ Elements::Data::buildSubscriptionsQos()
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = false;
 
-  reader    = DataReaders::reader;
+  reader    = DataReaders::routeDataDR_ANSP;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
-  reader    = DataReaders::reader;
+  reader    = DataReaders::routeDataDR_USS;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
@@ -514,7 +506,7 @@ Elements::Data::copyPublicationQos(
     case DataWriters::airspaceRestDW_SKO:
       break;
 
-    case DataWriters::writer:
+    case DataWriters::weatherInfoDW_WTR:
       break;
 
     default:
@@ -551,10 +543,10 @@ Elements::Data::copySubscriptionQos(
     case DataReaders::flightCoordDR_SKO:
       break;
 
-    case DataReaders::reader:
+    case DataReaders::routeDataDR_ANSP:
       break;
 
-    case DataReaders::reader:
+    case DataReaders::routeDataDR_USS:
       break;
 
     default:

@@ -93,7 +93,7 @@ namespace uatmDCPS {
           flightRoutesDW_SKO,
           trafficFlowsDW_SKO,
           airspaceRestDW_SKO,
-          writer,
+          weatherInfoDW_WTR,
           LAST_INDEX
         };
       };
@@ -107,7 +107,8 @@ namespace uatmDCPS {
           airspaceRestDR_UASP,
           availabilityDR_SKO,
           flightCoordDR_SKO,
-          reader,
+          routeDataDR_ANSP,
+          routeDataDR_USS,
           LAST_INDEX
         };
       };
