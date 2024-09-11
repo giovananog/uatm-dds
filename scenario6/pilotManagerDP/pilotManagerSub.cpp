@@ -121,14 +121,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataReader_var reader_rec = model.reader(Elements::DataReaders::recommendationDR_FOP);
+    DDS::DataReader_var reader_rec = model.reader(Elements::DataReaders::changeRecDR_PLM);
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
     OpenDDS::Model::ReaderCondSync rcs(reader_rec, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRec(rcs));
     reader_rec->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
     
-    DDS::DataReader_var reader_auth = model.reader(Elements::DataReaders::flightAuthDR_FOP);
+    DDS::DataReader_var reader_auth = model.reader(Elements::DataReaders::flightAuthDR_PLM);
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
     OpenDDS::Model::ReaderCondSync rcs(reader_auth, condition);
