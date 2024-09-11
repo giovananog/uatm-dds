@@ -1,9 +1,9 @@
 #ifdef ACE_AS_STATIC_LIBS
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
-#include <./model/Sync.h>
+#include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "./model/UATMTraits.h"
+#include "../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -14,7 +14,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::evtolAvailabilityDW_EV);
+    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::evtolAvailabilityDW_ev);
 
     UATM::availabilityInfoDataWriter_var writer_var = UATM::availabilityInfoDataWriter::_narrow(writer.in());
 
@@ -27,11 +27,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::bookingFlightRequest bfr;
+      UATM::availabilityInfo bfr;
 
       // Populate message and send
-      bfr.resource_id = "23";
-      bfr.resource_type = "resource_type";
+      bfr.resource_id = 3;
+      bfr.resource_type = "evtol";
       bfr.status = true;
       bfr.location = "location";
       bfr.availability_time = "323123-323";

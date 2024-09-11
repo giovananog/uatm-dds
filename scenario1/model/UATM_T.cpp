@@ -10,7 +10,7 @@
 #include "dds/DCPS/transport/multicast/MulticastInst.h"
 
 #include "dds/DCPS/Service_Participant.h"
-#include "./model/Utilities.h"
+#include "model/Utilities.h"
 
 namespace OpenDDS { namespace Model { 
 namespace UATM {
@@ -123,7 +123,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "AvailabilityInfo_FOP";
   this->cfTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP;
   this->multiTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo_FOP] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "resourceType LIKE 'pilot' or resourceType LIKE 'evtol'";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityInfo_FOP] = "resource_type  LIKE 'pilot' or resource_type  LIKE 'evtol'";
 }
 
 inline

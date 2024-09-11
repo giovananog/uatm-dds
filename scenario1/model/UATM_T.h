@@ -3,7 +3,7 @@
 
 #include "UATM_export.h"
 
-#include "./model/Exceptions.h"
+#include "model/Exceptions.h"
 
 #include "dds/DdsDcpsInfrastructureC.h" // For QoS Policy types.
 #include "dds/DCPS/transport/framework/TransportDefs.h"
@@ -529,7 +529,7 @@ OpenDDS::Model::UATM::uatmDCPS::Elements::Data::subscriber(DataReaders::Values w
 
 #include "UATMTypeSupportImpl.h"
 
-#include "./model/Service_T.h"
+#include "model/Service_T.h"
 
 #endif /* UATM_T_H */
 

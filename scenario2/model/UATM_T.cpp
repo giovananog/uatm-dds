@@ -163,7 +163,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__flightAssign] = "flightAssign";
   this->cfTopics_[Topics::UATM__uatmDCPS__flightAssign] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__flightAssign] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityFOP] = "resourceType == 'skyport'";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityFOP] = "resource_type == 'skyport'";
 }
 
 inline

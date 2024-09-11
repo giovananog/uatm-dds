@@ -1,7 +1,7 @@
 #ifndef UATM_TRAITS_H
 #define UATM_TRAITS_H
 #include "UATM_T.h"
-#include <./model/TransportDirectives.h>
+#include <model/TransportDirectives.h>
 
 namespace UATM {
 namespace uatmDCPS {

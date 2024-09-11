@@ -82,7 +82,7 @@ REALCLEAN : CLEAN
 	if not exist "Debug\UATM\$(NULL)" mkdir "Debug\UATM"
 	if not exist "$(INTDIR)\$(NULL)" mkdir "$(INTDIR)"
 CPP=cl.exe
-CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3 /Gm /EHsc /Zi /MDd /GR /Gy /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd"$(INTDIR)/" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D UATM_BUILD_DLL /D MPC_LIB_MODIFIER=\"d\" /c
+CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3   /EHsc /Zi /MDd /GR /Gy /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd"$(INTDIR)/" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D UATM_BUILD_DLL /D MPC_LIB_MODIFIER=\"d\" /c
 
 CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 
@@ -214,7 +214,7 @@ REALCLEAN : CLEAN
 	if not exist "Static_Debug\UATM\$(NULL)" mkdir "Static_Debug\UATM"
 	if not exist "$(INTDIR)\$(NULL)" mkdir "$(INTDIR)"
 CPP=cl.exe
-CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3 /Gm /EHsc /Zi /GR /Gy /MDd /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd".\UATMsd.pdb" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D ACE_AS_STATIC_LIBS /D TAO_AS_STATIC_LIBS /D MPC_LIB_MODIFIER=\"sd\" /c
+CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3   /EHsc /Zi /GR /Gy /MDd /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd".\UATMsd.pdb" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D ACE_AS_STATIC_LIBS /D TAO_AS_STATIC_LIBS /D MPC_LIB_MODIFIER=\"sd\" /c
 
 CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 

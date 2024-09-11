@@ -1,9 +1,9 @@
 #ifdef ACE_AS_STATIC_LIBS
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
-#include <./model/Sync.h>
+#include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "./model/UATMTraits.h"
+#include "../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -27,11 +27,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::bookingFlightRequest bfr;
+      UATM::availabilityInfo bfr;
 
       // Populate message and send
-      bfr.resource_id = "23";
-      bfr.resource_type = "resource_type";
+      bfr.resource_id = 23;
+      bfr.resource_type = "pilot";
       bfr.status = true;
       bfr.location = "location";
       bfr.availability_time = "323123-323";

@@ -1,9 +1,9 @@
 #ifdef ACE_AS_STATIC_LIBS
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
-#include <./model/Sync.h>
+#include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "./model/UATMTraits.h"
+#include "../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -14,7 +14,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::flightRequestDW);
+    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::bookingFlightRequestDW_BP);
 
     UATM::bookingFlightRequestDataWriter_var writer_var = UATM::bookingFlightRequestDataWriter::_narrow(writer.in());
 
@@ -28,17 +28,21 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     OpenDDS::Model::WriterSync ws(writer);
     {
       UATM::bookingFlightRequest bfr;
+      std::cout << "Before sending data" << std::endl;
+
 
       // Populate message and send
+      bfr.booking_id = 3;
+      bfr.flight_id = 2;
       bfr.customer_id = "2";
-      bfr.flight_id = "2-test";
       bfr.departure_time = "available";
       bfr.arrival_time = "13";
       bfr.route_id = 2;
       bfr.request_status = "39232939";
-      bfr.booking_id = 3;
 
       DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+      std::cout << "data sent" << std::endl;
 
       if (error != DDS::RETCODE_OK) {
           ACE_ERROR((LM_ERROR,

@@ -1,4 +1,4 @@
-#include "./model/UATMTraits.h"
+#include "../model/UATMTraits.h"
 
 #include "dds/DCPS/transport/framework/TransportRegistry.h"
 #include "dds/DCPS/transport/framework/TransportExceptions.h"
@@ -8,7 +8,7 @@
 #include "dds/DCPS/transport/multicast/MulticastInst_rch.h"
 #include "dds/DCPS/transport/udp/UdpInst.h"
 #include "dds/DCPS/transport/udp/UdpInst_rch.h"
-#include <./model/TransportDirectives.h>
+#include <model/TransportDirectives.h>
 
 #include <stdexcept>
 namespace UATM {

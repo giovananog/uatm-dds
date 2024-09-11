@@ -1,0 +1,180 @@
+2024-09-11 09:58:51.744@LM_INFO@(288|18864) INFO: set_DCPS_debug_level: set to 4
+2024-09-11 09:58:51.750@LM_INFO@(288|18864) INFO: ConfigStoreImpl::set_string: COMMON_DCPS_TRANSPORT_DEBUG_LEVEL=2
+2024-09-11 09:58:51.751@LM_INFO@(288|18864) INFO: ConfigStoreImpl::set_string: COMMON_DCPS_PENDING_TIMEOUT=3
+2024-09-11 09:58:51.752@LM_INFO@(288|18864) Service_Participant::get_domain_participant_factory: This is OpenDDS 3.29.1 using ACE 6.5.21
+2024-09-11 09:58:51.752@LM_INFO@(288|18864) Service_Participant::get_domain_participant_factory: log_level: debug DCPS_debug_level: 4
+2024-09-11 09:58:51.765@LM_INFO@(288|18864) Service_Participant::get_domain_participant_factory: machine: LAPTOP-NQKUMCC4, x64 6 platform: Win32, Windows NT 6.2, Build 9200 
+2024-09-11 09:58:51.765@LM_INFO@(288|18864) Service_Participant::get_domain_participant_factory: compiler: Visual C++ version 13.40.0
+2024-09-11 09:58:51.768@LM_NOTICE@(288|18864) NOTICE: Service_Participant::intializeScheduling() - no scheduling policy specified, not setting policy.
+2024-09-11 09:58:51.773@LM_DEBUG@(288|18864) Service_Participant::get_domain_participant_factory: Creating DefaultNetworkConfigMonitor
+2024-09-11 09:58:51.773@LM_DEBUG@(288|18864) Config::Config() - processing argument: model\.\publisher3.EXE.
+2024-09-11 09:58:51.773@LM_INFO@(288|18864) INFO: ConfigStoreImpl::set: REPOSITORY_DEFAULT_REPO=@DEFAULT_REPO
+2024-09-11 09:58:51.773@LM_DEBUG@(288|18864) Service_Participant::set_repo_ior: Repo[DEFAULT_REPO] == file://repo.ior
+2024-09-11 09:58:51.799@LM_DEBUG@TAO (288|18864) - Default_Resource_Factory - codeset manager=00000272987BAB90
+2024-09-11 09:58:51.799@LM_DEBUG@TAO (288|18864) - Loaded default protocol <IIOP_Factory>
+2024-09-11 09:58:51.803@LM_DEBUG@TAO (288|18864) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:61197> on [740]
+2024-09-11 09:58:51.805@LM_DEBUG@(288|18864) DomainParticipantImpl::enable: enabled participant 01030000.00007f26.00000005.000001c1(989fd996) in domain 0
+2024-09-11 09:58:51.816@LM_INFO@(288|18864) INFO: ConfigStoreImpl::set: TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO_DATALINK_RELEASE_DELAY=0
+2024-09-11 09:58:51.816@LM_INFO@(288|18864) INFO: ConfigStoreImpl::set: TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO_LOCAL_ADDRESS=:0
+2024-09-11 09:58:51.817@LM_INFO@(288|18864) InfoRepoDiscovery::bit_config - BIT tcp transport :0
+2024-09-11 09:58:51.819@LM_DEBUG@(288|18864) DDS::ParticipantBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow 9884ff40 with 20 chunks
+2024-09-11 09:58:51.819@LM_DEBUG@(288|18864) DataReaderImpl::enable Cached_Allocator_With_Overflow 9884fe70 with 20 chunks
+2024-09-11 09:58:51.830@LM_WARNING@(288|18864) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "LAPTOP-NQKUMCC4" as fully qualified hostname, please correct system configuration.
+2024-09-11 09:58:51.834@LM_DEBUG@(288|18864) TransportImpl::open()
+   transport_type:               tcp
+   name:                         _OPENDDS__BITTCPTransportInst_DEFAULT_REPO
+   config_prefix:                TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO
+   max_packet_size:              2147481599
+   max_samples_per_packet:       10
+   optimum_packet_size:          4096
+   thread_per_connection:        false
+   datalink_release_delay:       0
+   datalink_control_chunks:      32
+   fragment_reassembly_timeout:  5:00.000
+   receive_preallocated_message_blocks:0
+   receive_preallocated_data_blocks:0
+   local_address:                :0
+   pub_address:                  
+   enable_nagle_algorithm:       false
+   conn_retry_initial_delay:     500
+   conn_retry_backoff_multiplier:2
+   conn_retry_attempts:          3
+   passive_reconnect_duration:   2000
+   max_output_pause_period:      -1
+   active_conn_timeout_period:   5000
+2024-09-11 09:58:51.835@LM_DEBUG@(288|18864) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-11 09:58:51.868@LM_DEBUG@(288|17560) DataReaderImpl::add_association - bit 1 local 01030000.00007f26.00000005.000001c7(71fc7ca3) remote 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.868@LM_DEBUG@(288|18864) DataReaderImpl::enable: got GUID 01030000.00007f26.00000005.000001c7(71fc7ca3), subscribed to topic name "DCPSParticipant" type "PARTICIPANT_BUILT_IN_TOPIC_TYPE"
+2024-09-11 09:58:51.869@LM_DEBUG@(288|18864) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSParticipant) enabled
+2024-09-11 09:58:51.869@LM_DEBUG@(288|17560) TransportClient::associate added PendingAssoc between 01030000.00007f26.00000005.000001c7(71fc7ca3) and remote 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.869@LM_DEBUG@(288|18864) DDS::TopicBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow 9884e950 with 20 chunks
+2024-09-11 09:58:51.869@LM_DEBUG@(288|18864) DataReaderImpl::enable Cached_Allocator_With_Overflow 9884ea20 with 20 chunks
+2024-09-11 09:58:51.871@LM_DEBUG@(288|18864) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-11 09:58:51.871@LM_DEBUG@(288|17560) TcpTransport::accept_datalink create new link[000002729A885D30]
+2024-09-11 09:58:51.873@LM_DEBUG@(288|17560) TransportReceiveStrategy-mb Cached_Allocator_With_Overflow 000002729A888F50 with 1000 chunks
+2024-09-11 09:58:51.873@LM_DEBUG@(288|17560) TransportReceiveStrategy-db Cached_Allocator_With_Overflow 000002729A888FD8 with 100 chunks
+2024-09-11 09:58:51.873@LM_DEBUG@(288|17560) TransportReceiveStrategy-data Cached_Allocator_With_Overflow 000002729A889060 with 32 chunks
+2024-09-11 09:58:51.873@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A681C30) using datalink[000002729A885D30] from 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.873@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A681C30) about to add_link[000002729A885D30] to remote: 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.873@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 000002729A869260 is now scheduled
+2024-09-11 09:58:51.875@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 000002729A869260 is no longer scheduled
+2024-09-11 09:58:51.879@LM_DEBUG@(288|18864) DataReaderImpl::add_association - bit 1 local 01030000.00007f26.00000005.000002c7(5ad12f60) remote 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.879@LM_DEBUG@(288|18864) TransportClient::associate added PendingAssoc between 01030000.00007f26.00000005.000002c7(5ad12f60) and remote 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) TcpTransport::accept_datalink found datalink[000002729A885D30]
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) TransportClient::use_datalink_i TransportClient(000002729A87C4D0) using datalink[000002729A885D30] from 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) TransportClient::use_datalink_i TransportClient(000002729A87C4D0) about to add_link[000002729A885D30] to remote: 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.880@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 000002729A8A5AE0 is now scheduled
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) DataReaderImpl::enable: got GUID 01030000.00007f26.00000005.000002c7(5ad12f60), subscribed to topic name "DCPSTopic" type "TOPIC_BUILT_IN_TOPIC_TYPE"
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSTopic) enabled
+2024-09-11 09:58:51.880@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 000002729A8A5AE0 is no longer scheduled
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) DDS::PublicationBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow 9884fcd0 with 20 chunks
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) DataReaderImpl::enable Cached_Allocator_With_Overflow 9884e610 with 20 chunks
+2024-09-11 09:58:51.880@LM_DEBUG@(288|18864) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-11 09:58:51.887@LM_DEBUG@(288|17560) DataReaderImpl::add_association - bit 1 local 01030000.00007f26.00000005.000003c7(43ca1e21) remote 01030000.00007f26.00000001.000004c2(8961daa9)
+2024-09-11 09:58:51.887@LM_DEBUG@(288|18864) DataReaderImpl::enable: got GUID 01030000.00007f26.00000005.000003c7(43ca1e21), subscribed to topic name "DCPSPublication" type "PUBLICATION_BUILT_IN_TOPIC_TYPE"
+2024-09-11 09:58:51.887@LM_DEBUG@(288|18864) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSPublication) enabled
+2024-09-11 09:58:51.887@LM_DEBUG@(288|17560) TransportClient::associate added PendingAssoc between 01030000.00007f26.00000005.000003c7(43ca1e21) and remote 01030000.00007f26.00000001.000004c2(8961daa9)
+2024-09-11 09:58:51.887@LM_DEBUG@(288|18864) DDS::SubscriptionBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow 9884eaf0 with 20 chunks
+2024-09-11 09:58:51.887@LM_DEBUG@(288|18864) DataReaderImpl::enable Cached_Allocator_With_Overflow 9884e6e0 with 20 chunks
+2024-09-11 09:58:51.887@LM_DEBUG@(288|17560) TcpTransport::accept_datalink found datalink[000002729A885D30]
+2024-09-11 09:58:51.887@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A8A8C50) using datalink[000002729A885D30] from 01030000.00007f26.00000001.000004c2(8961daa9)
+2024-09-11 09:58:51.887@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A8A8C50) about to add_link[000002729A885D30] to remote: 01030000.00007f26.00000001.000004c2(8961daa9)
+2024-09-11 09:58:51.887@LM_DEBUG@(288|18864) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-11 09:58:51.887@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 000002729A8B4A20 is now scheduled
+2024-09-11 09:58:51.890@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 000002729A8B4A20 is no longer scheduled
+2024-09-11 09:58:51.901@LM_DEBUG@(288|17560) DataReaderImpl::add_association - bit 1 local 01030000.00007f26.00000005.000004c7(0c8b88e6) remote 01030000.00007f26.00000001.000003c2(c6204c6e)
+2024-09-11 09:58:51.901@LM_DEBUG@(288|18864) DataReaderImpl::enable: got GUID 01030000.00007f26.00000005.000004c7(0c8b88e6), subscribed to topic name "DCPSSubscription" type "SUBSCRIPTION_BUILT_IN_TOPIC_TYPE"
+2024-09-11 09:58:51.901@LM_DEBUG@(288|18864) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSSubscription) enabled
+2024-09-11 09:58:51.901@LM_DEBUG@(288|17560) TransportClient::associate added PendingAssoc between 01030000.00007f26.00000005.000004c7(0c8b88e6) and remote 01030000.00007f26.00000001.000003c2(c6204c6e)
+2024-09-11 09:58:51.903@LM_DEBUG@(288|17560) TcpTransport::accept_datalink found datalink[000002729A885D30]
+2024-09-11 09:58:51.903@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A8B8D70) using datalink[000002729A885D30] from 01030000.00007f26.00000001.000003c2(c6204c6e)
+2024-09-11 09:58:51.903@LM_DEBUG@(288|17560) TransportClient::use_datalink_i TransportClient(000002729A8B8D70) about to add_link[000002729A885D30] to remote: 01030000.00007f26.00000001.000003c2(c6204c6e)
+2024-09-11 09:58:51.903@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 000002729A8B4CD0 is now scheduled
+2024-09-11 09:58:51.907@LM_INFO@(288|19032) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 000002729A8B4CD0 is no longer scheduled
+2024-09-11 09:58:51.907@LM_DEBUG@(288|18864) WriteDataContainer sample_list_element_allocator 9a8e5cf0 with 20 chunks
+2024-09-11 09:58:51.907@LM_DEBUG@(288|18864) DataWriterImpl::enable-mb Cached_Allocator_With_Overflow 9884ef00 with 20 chunks
+2024-09-11 09:58:51.907@LM_DEBUG@(288|18864) DataWriterImpl::enable-db Cached_Allocator_With_Overflow 9884efd0 with 20 chunks
+2024-09-11 09:58:51.907@LM_DEBUG@(288|18864) DataWriterImpl::enable-header Cached_Allocator_With_Overflow 988670f0 with 20 chunks
+2024-09-11 09:58:51.918@LM_DEBUG@(288|18864) TransportImpl::open()
+   transport_type:               tcp
+   name:                         _OPENDDS_0500_TCP
+   config_prefix:                TRANSPORT_OPENDDS_0500_TCP
+   max_packet_size:              2147481599
+   max_samples_per_packet:       10
+   optimum_packet_size:          4096
+   thread_per_connection:        false
+   datalink_release_delay:       10000
+   datalink_control_chunks:      32
+   fragment_reassembly_timeout:  5:00.000
+   receive_preallocated_message_blocks:0
+   receive_preallocated_data_blocks:0
+   local_address:                
+   pub_address:                  
+   enable_nagle_algorithm:       false
+   conn_retry_initial_delay:     500
+   conn_retry_backoff_multiplier:2
+   conn_retry_attempts:          3
+   passive_reconnect_duration:   2000
+   max_output_pause_period:      -1
+   active_conn_timeout_period:   5000
+2024-09-11 09:58:51.918@LM_DEBUG@(288|18864) WriterImpl::setup_serialization: Setup successfully with Unaligned CDR data representation.
+2024-09-11 09:58:51.918@LM_DEBUG@(288|18864) DataWriterImpl::setup_serialization: using data allocator at 9a682840 with 20 80 byte chunks
+2024-09-11 09:58:51.925@LM_DEBUG@(288|17560) DataWriterImpl::add_association - bit 0 local 01030000.00007f26.00000005.00000102(9af24a9c) remote 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.925@LM_DEBUG@(288|18864) DataWriterImpl::enable: got GUID 01030000.00007f26.00000005.00000102(9af24a9c), publishing to topic name "AvailabilityInfo" type "UATM::availabilityInfo"
+2024-09-11 09:58:51.925@LM_DEBUG@(288|17560) TransportClient::associate added PendingAssoc between 01030000.00007f26.00000005.00000102(9af24a9c) and remote 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.925@LM_DEBUG@(288|17560) PendingAssoc::initiate_connect - between 01030000.00007f26.00000005.00000102(9af24a9c) and remote 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.925@LM_DEBUG@(288|17560) TransportClient::initiate_connect_i - attempt to connect_datalink between local 01030000.00007f26.00000005.00000102(9af24a9c) and remote 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.927@LM_DEBUG@(288|17560) TcpTransport::connect_datalink PriorityKey prio=0, addr=192.168.1.110:61248, is_loopback=0, is_active=1
+2024-09-11 09:58:51.927@LM_DEBUG@(288|17560) TcpTransport::connect_datalink create new link[000002729ABA5650]
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TcpConnection::on_active_connection_established: Sending public address <LAPTOP-NQKUMCC4:61254> to remote side
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TransportReceiveStrategy-mb Cached_Allocator_With_Overflow 000002729ABA8F60 with 1000 chunks
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TransportReceiveStrategy-db Cached_Allocator_With_Overflow 000002729ABA8FE8 with 100 chunks
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TransportReceiveStrategy-data Cached_Allocator_With_Overflow 000002729ABA9070 with 32 chunks
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TcpTransport::connect_datalink completed synchronously.
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) TransportClient::initiate_connect_i - connection between local 01030000.00007f26.00000005.00000102(9af24a9c) and remote 01030000.00007f26.00000002.00000507(3cd4a707) initiation successful
+2024-09-11 09:58:51.928@LM_DEBUG@(288|17560) PendingAssoc::intiate_connect - resulting link from initiate_connect_i (local: 01030000.00007f26.00000005.00000102(9af24a9c) to remote: 01030000.00007f26.00000002.00000507(3cd4a707)) was nil
+2024-09-11 09:58:51.936@LM_DEBUG@(288|13748) TransportClient::use_datalink_i TransportClient(000002729A8E9508) using datalink[000002729ABA5650] from 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.936@LM_DEBUG@(288|13748) TransportClient::use_datalink_i TransportClient(000002729A8E9508) about to add_link[000002729ABA5650] to remote: 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.936@LM_INFO@(288|13748) DataWriterImpl::transport_assoc_done: writer 01030000.00007f26.00000005.00000102(9af24a9c) succeeded in associating with reader 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.937@LM_DEBUG@(288|13748) DataWriterImpl::transport_assoc_done: writer 01030000.00007f26.00000005.00000102(9af24a9c) reader 01030000.00007f26.00000002.00000507(3cd4a707) calling association_complete_i
+2024-09-11 09:58:51.937@LM_DEBUG@(288|13748) DataWriterImpl::association_complete_i - bit 0 local 01030000.00007f26.00000005.00000102(9af24a9c) remote 01030000.00007f26.00000002.00000507(3cd4a707)
+2024-09-11 09:58:51.937@LM_INFO@(288|13748) Sending historic samples
+2024-09-11 09:58:51.937@LM_DEBUG@(288|13748) DataWriterImpl::create_control_message: from publication 01030000.00007f26.00000005.00000102(9af24a9c) sending control sample: END_HISTORIC_SAMPLES (0x0b), Length: 16, Byte order: Little Endian, Sequence: 0x00000000, Timestamp: 1726059531.937806000, Publication: 01030000.00007f26.00000005.00000102(9af24a9c) .
+2024-09-11 09:58:51.937@LM_DEBUG@(288|18864) DataWriterImpl::create_control_message: from publication 01030000.00007f26.00000005.00000102(9af24a9c) sending control sample: INSTANCE_REGISTRATION (0x02), Length: 4, Byte order: Little Endian, Key Fields Only, Sequence: 0x00000001, Timestamp: 1726059531.937806000, Publication: 01030000.00007f26.00000005.00000102(9af24a9c) .
+2024-09-11 09:58:51.937@LM_DEBUG@(288|18864) WriteDataContainer::data_delivered 000002729A8ECF30
+2024-09-11 09:58:51.937@LM_DEBUG@(288|18864) DataWriterImpl::create_sample_data_message: from publication 01030000.00007f26.00000005.00000102(9af24a9c) sending data sample: SAMPLE_DATA (0x00), Length: 43, Byte order: Little Endian, Content-Filtered, Sequence: 0x00000002, Timestamp: 1726059531.937806000, Publication: 01030000.00007f26.00000005.00000102(9af24a9c), Content-Filter Entries (0): [] .
+2024-09-11 09:58:51.937@LM_DEBUG@(288|18864) WriteDataContainer::data_delivered 000002729A8ECF30
+2024-09-11 09:58:51.940@LM_DEBUG@(288|18864) DataWriterImpl::create_control_message: from publication 01030000.00007f26.00000005.00000102(9af24a9c) sending control sample: DISPOSE_UNREGISTER_INSTANCE (0x0a), Length: 4, Byte order: Little Endian, Key Fields Only, Sequence: 0x00000003, Timestamp: 1726059531.940204000, Publication: 01030000.00007f26.00000005.00000102(9af24a9c) .
+2024-09-11 09:58:51.940@LM_DEBUG@(288|18864) WriteDataContainer::data_delivered 000002729A8ECF30
+2024-09-11 09:58:51.940@LM_DEBUG@(288|19032) DataWriterImpl::remove_associations: bit 0 local 01030000.00007f26.00000005.00000102(9af24a9c) remote 01030000.00007f26.00000002.00000507(3cd4a707) num remotes 1
+2024-09-11 09:58:51.940@LM_DEBUG@(288|13748) DataLink::handle_exception() - (delay) scheduling timer for future release
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations: bit 1 local 01030000.00007f26.00000005.000001c7(71fc7ca3) remote 01030000.00007f26.00000001.000001c2(f4162eec) num remotes 1
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations_i: bit 1 local 01030000.00007f26.00000005.000001c7(71fc7ca3) remote 01030000.00007f26.00000001.000001c2(f4162eec) num remotes 1
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.944@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.948@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000001c2(f4162eec)
+2024-09-11 09:58:51.951@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations: bit 1 local 01030000.00007f26.00000005.000003c7(43ca1e21) remote 01030000.00007f26.00000001.000004c2(8961daa9) num remotes 1
+2024-09-11 09:58:51.951@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations_i: bit 1 local 01030000.00007f26.00000005.000003c7(43ca1e21) remote 01030000.00007f26.00000001.000004c2(8961daa9) num remotes 1
+2024-09-11 09:58:51.951@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000004c2(8961daa9)
+2024-09-11 09:58:51.954@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations: bit 1 local 01030000.00007f26.00000005.000004c7(0c8b88e6) remote 01030000.00007f26.00000001.000003c2(c6204c6e) num remotes 1
+2024-09-11 09:58:51.954@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations_i: bit 1 local 01030000.00007f26.00000005.000004c7(0c8b88e6) remote 01030000.00007f26.00000001.000003c2(c6204c6e) num remotes 1
+2024-09-11 09:58:51.954@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000003c2(c6204c6e)
+2024-09-11 09:58:51.957@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations: bit 1 local 01030000.00007f26.00000005.000002c7(5ad12f60) remote 01030000.00007f26.00000001.000002c2(df3b7d2f) num remotes 1
+2024-09-11 09:58:51.957@LM_DEBUG@(288|18472) Peer has gracefully disconnected.
+2024-09-11 09:58:51.957@LM_DEBUG@(288|19032) DataReaderImpl::remove_associations_i: bit 1 local 01030000.00007f26.00000005.000002c7(5ad12f60) remote 01030000.00007f26.00000001.000002c2(df3b7d2f) num remotes 1
+2024-09-11 09:58:51.957@LM_DEBUG@(288|18472) TcpConnection::handle_close() called on transport: _OPENDDS__BITTCPTransportInst_DEFAULT_REPO to 192.168.1.110:61212 , reconnect_state = INIT_STATE.
+2024-09-11 09:58:51.957@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.957@LM_DEBUG@(288|18472) DataLink::notify: notify sub 01030000.00007f26.00000005.000002c7(5ad12f60) DISCONNECTED.
+2024-09-11 09:58:51.959@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.959@LM_DEBUG@(288|19032) InstanceState::unregister_was_received on 01030000.00007f26.00000001.000002c2(df3b7d2f)
+2024-09-11 09:58:51.960@LM_DEBUG@(288|18472) DataLink::handle_exception() - delay already elapsed so handle_timeout now
+2024-09-11 09:58:51.970@LM_DEBUG@(288|18864) Service_Participant::shutdown
+2024-09-11 09:58:51.976@LM_DEBUG@(288|18864) DomainParticipantFactoryImpl::~DomainParticipantFactoryImpl()
+2024-09-11 09:58:51.976@LM_DEBUG@TAO (288|18864) - Connection_Handler[740]::close_connection_eh, purging entry from cache
+2024-09-11 09:58:51.976@LM_DEBUG@TAO (288|18864) - Connection_Handler[740]::close_connection_eh, removing from the reactor
+2024-09-11 09:58:51.976@LM_DEBUG@TAO (288|18864) - Connection_Handler[740]::close_connection_eh, cancel all timers
+2024-09-11 09:58:51.982@LM_DEBUG@TAO (288|18864) - Connection_Handler[740]::close_connection_eh end
+2024-09-11 09:58:51.983@LM_DEBUG@(288|18864) Service_Participant::~Service_Participant
+2024-09-11 09:58:51.983@LM_DEBUG@(288|18864) Service_Participant::shutdown

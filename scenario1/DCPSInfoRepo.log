@@ -1,0 +1,31 @@
+TAO (14064|17704) - Default_Resource_Factory - codeset manager=00000204BD68A6C0
+TAO (14064|17704) - Loaded default protocol <IIOP_Factory>
+TAO (14064|17704) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:61207> on [692]
+(14064|17704) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "LAPTOP-NQKUMCC4" as fully qualified hostname, please correct system configuration.
+TAO (14064|17704) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:61216> on [964]
+TAO (14064|17704) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:61222> on [968]
+TAO (14064|17704) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:61226> on [972]
+TAO (14064|17704) - IIOP_Connection_Handler::process_listen_point_list, Listening port [61221] on [192.168.1.110]
+TAO (14064|17704) - IIOP_Connection_Handler::process_listen_point_list, Listening port [61206] on [192.168.1.110]
+TAO (14064|17704) - IIOP_Connection_Handler::process_listen_point_list, Listening port [61215] on [192.168.1.110]
+TAO (14064|17704) - IIOP_Connection_Handler::process_listen_point_list, Listening port [61225] on [192.168.1.110]
+TAO (14064|17704) - Transport[968]::handle_input, error parsing incoming message
+TAO (14064|17704) - Connection_Handler[968]::close_connection_eh, purging entry from cache
+TAO (14064|17704) - Connection_Handler[968]::close_connection_eh, removing from the reactor
+TAO (14064|17704) - Connection_Handler[968]::close_connection_eh, cancel all timers
+TAO (14064|17704) - Connection_Handler[968]::close_connection_eh end
+TAO (14064|17704) - Transport[972]::handle_input, error parsing incoming message
+TAO (14064|17704) - Connection_Handler[972]::close_connection_eh, purging entry from cache
+TAO (14064|17704) - Connection_Handler[972]::close_connection_eh, removing from the reactor
+TAO (14064|17704) - Connection_Handler[972]::close_connection_eh, cancel all timers
+TAO (14064|17704) - Connection_Handler[972]::close_connection_eh end
+TAO (14064|17704) - Transport[964]::handle_input, error parsing incoming message
+TAO (14064|17704) - Connection_Handler[964]::close_connection_eh, purging entry from cache
+TAO (14064|17704) - Connection_Handler[964]::close_connection_eh, removing from the reactor
+TAO (14064|17704) - Connection_Handler[964]::close_connection_eh, cancel all timers
+TAO (14064|17704) - Connection_Handler[964]::close_connection_eh end
+TAO (14064|17704) - Transport[692]::handle_input, error parsing incoming message
+TAO (14064|17704) - Connection_Handler[692]::close_connection_eh, purging entry from cache
+TAO (14064|17704) - Connection_Handler[692]::close_connection_eh, removing from the reactor
+TAO (14064|17704) - Connection_Handler[692]::close_connection_eh, cancel all timers
+TAO (14064|17704) - Connection_Handler[692]::close_connection_eh end
