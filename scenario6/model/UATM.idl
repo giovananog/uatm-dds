@@ -1,0 +1,38 @@
+#ifndef UATM_IDL
+#define UATM_IDL
+
+module UATM {
+  struct flightAuthorization;
+  struct flightChangeRec;
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightAuthorization"
+#pragma DCPS_DATA_KEY  "UATM::flightAuthorization authorization_id"
+  struct flightAuthorization {
+    long authorization_id;
+    long flight_id;
+    long approved_route_id;
+    string<20> authority;
+    string<20> authorization_time;
+    string<20> valid_until;
+  };
+};
+module UATM {
+
+#pragma DCPS_DATA_TYPE "UATM::flightChangeRec"
+#pragma DCPS_DATA_KEY  "UATM::flightChangeRec recommendation_id"
+  struct flightChangeRec {
+    long recommendation_id;
+    long flight_id;
+    string<20> change_type;
+    string<20> reason;
+    string<20> recommended_by;
+    string<20> recommendation_time;
+    boolean request_status;
+  };
+};
+module UATM {
+  typedef string<10> ArrayString[2];
+};
+#endif 
