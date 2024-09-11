@@ -174,29 +174,13 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__flightAuthorization] = Types::flightAuthorization;
   this->types_[ Topics::UATM__uatmDCPS__flightChanceRec] = Types::flightChangeRec;
 
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::;
   this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__flightChanceRec;
-  this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::;
-  this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::;
-  this->writerTopics_[ DataWriters::pilotAvailabilityDW_PLM] = Topics::;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::;
-  this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::;
-  this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::;
   this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__flightChanceRec;
   this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__flightChanceRec;
-  this->readerTopics_[ DataReaders::flighAssignDR_PLM] = Topics::;
 
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::uaspManagerPub;
   this->publishers_[ DataWriters::flightAuthDW_UASP] = Publishers::uaspManagerPub;
