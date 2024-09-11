@@ -10,7 +10,7 @@
 #include "dds/DCPS/transport/multicast/MulticastInst.h"
 
 #include "dds/DCPS/Service_Participant.h"
-#include "model/Utilities.h"
+#include "./model/Utilities.h"
 
 namespace OpenDDS { namespace Model { 
 namespace UATM {

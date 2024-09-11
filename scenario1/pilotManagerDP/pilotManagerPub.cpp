@@ -14,9 +14,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::flightRequestDW);
+    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::pilotAvailabilityDW_PLM);
 
-    UATM::bookingFlightRequestDataWriter_var writer_var = UATM::bookingFlightRequestDataWriter::_narrow(writer.in());
+    UATM::availabilityInfoDataWriter_var writer_var = UATM::availabilityInfoDataWriter::_narrow(writer.in());
 
     if (CORBA::is_nil(writer_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -30,13 +30,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       UATM::bookingFlightRequest bfr;
 
       // Populate message and send
-      bfr.customer_id = "2";
-      bfr.flight_id = "2-test";
-      bfr.departure_time = "available";
-      bfr.arrival_time = "13";
-      bfr.route_id = 2;
-      bfr.request_status = "39232939";
-      bfr.booking_id = 3;
+      bfr.resource_id = "23";
+      bfr.resource_type = "resource_type";
+      bfr.status = true;
+      bfr.location = "location";
+      bfr.availability_time = "323123-323";
 
       DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 

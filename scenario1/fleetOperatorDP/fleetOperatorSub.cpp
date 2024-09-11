@@ -2,12 +2,11 @@
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "UATMTraits.h"
-#include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/model/NullReaderListener.h>
+#include "./model/UATMTraits.h"
+#include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/./model/NullReaderListener.h>
 
-#include <model/Sync.h>
+#include <./model/Sync.h>
 #include <ace/Log_Msg.h>
-
 #include <dds/DCPS/WaitSet.h>
 
 
