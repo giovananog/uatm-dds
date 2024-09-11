@@ -3,8 +3,8 @@
 
 module UATM {
   struct availabilityInfo;
-  struct weatherInfo;
   struct flightRoutesInfo;
+  struct weatherInfo;
   struct flightAssign;
 };
 module UATM {
@@ -24,9 +24,9 @@ module UATM {
 };
 module UATM {
 
-#pragma DCPS_DATA_TYPE "UATM::weatherInfo"
-#pragma DCPS_DATA_KEY  "UATM::weatherInfo flight_route_id"
-  struct weatherInfo {
+#pragma DCPS_DATA_TYPE "UATM::flightRoutesInfo"
+#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo flight_route_id"
+  struct flightRoutesInfo {
     long flight_route_id;
     ArrayString waypoints;
     long flight_id;
@@ -36,9 +36,9 @@ module UATM {
 };
 module UATM {
 
-#pragma DCPS_DATA_TYPE "UATM::flightRoutesInfo"
-#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo weather_id"
-  struct flightRoutesInfo {
+#pragma DCPS_DATA_TYPE "UATM::weatherInfo"
+#pragma DCPS_DATA_KEY  "UATM::weatherInfo weather_id"
+  struct weatherInfo {
     long weather_id;
     string<20> location;
     float temperature;

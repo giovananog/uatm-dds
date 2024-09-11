@@ -31,7 +31,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       // Populate message and send
       bfr.resource_id = 3;
-      bfr.resource_type = "evtol";
+      bfr.resource_type = "not-evtol";
       bfr.status = true;
       bfr.location = "location";
       bfr.availability_time = "323123-323";

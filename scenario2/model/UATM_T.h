@@ -41,8 +41,8 @@ namespace uatmDCPS {
       class Types {
         public: enum Values {
           availabilityInfo,
-          weatherInfo,
           flightRoutesInfo,
+          weatherInfo,
           flightAssign,
           LAST_INDEX
         };
@@ -86,6 +86,7 @@ namespace uatmDCPS {
           evtolManSub,
           pilotManSub,
           skyportManagerSub,
+          ,
           LAST_INDEX
         };
       };
@@ -101,7 +102,7 @@ namespace uatmDCPS {
           flightRoutesDW_SKO,
           trafficFlowsDW_SKO,
           airspaceRestDW_SKO,
-          writer,
+          weatherInfoDW_WTR,
           LAST_INDEX
         };
       };

@@ -6,7 +6,7 @@ project(UATM) : dcps, UATM_paths {
   idlflags      += -Wb,export_macro=UATM_Export -Wb,export_include=UATM_export.h
   dynamicflags   = UATM_BUILD_DLL
   dcps_ts_flags += -Wb,export_macro=UATM_Export
-  prebuild      += perl $(DDS_ROOT)/bin/expfile.pl UATM
+  prebuild      += perl $(DDS_ROOT)/tools/scripts/expfile.pl UATM
 
 
   TypeSupport_Files {
