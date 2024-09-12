@@ -6,7 +6,7 @@ project(UATM) : dcps, UATM_paths {
   idlflags      += -Wb,export_macro=UATM_Export -Wb,export_include=UATM_export.h
   dynamicflags   = UATM_BUILD_DLL
   dcps_ts_flags += -Wb,export_macro=UATM_Export
-  prebuild      += perl $(DDS_ROOT)/bin/expfile.pl UATM
+  prebuild      += perl $(DDS_ROOT)/tools/scripts/expfile.pl UATM
 
 
   TypeSupport_Files {
@@ -28,5 +28,38 @@ project(UATM) : dcps, UATM_paths {
 
   Template_Files {
     UATM_T.cpp
+  }
+}
+
+project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../uaspManagerDP/uaspManagerPub.cpp
+  }
+}
+
+project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/fleetOperatorSub.cpp
+  }
+}
+
+project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../pilotManagerDP/pilotManagerSub.cpp
   }
 }

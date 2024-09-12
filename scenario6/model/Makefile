@@ -21,13 +21,19 @@ CFG=Win32 Debug
 CUSTOM_TARGETS=_EMPTY_TARGET_
 !ENDIF
 
-all: UATM
+all: UATM UATM_XmlPublisher1 UATM_XmlSubscriber1 UATM_XmlSubscriber2
 
-depend: UATM-depend
+depend: UATM-depend UATM_XmlPublisher1-depend UATM_XmlSubscriber1-depend UATM_XmlSubscriber2-depend
 
 clean generated realclean $(CUSTOM_TARGETS):
 	@echo Project: Makefile.UATM.mak
 	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM.mak CFG="$(CFG)" $(@)
+	@echo Project: Makefile.UATM_XmlPublisher1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlPublisher1.mak CFG="$(CFG)" $(@)
+	@echo Project: Makefile.UATM_XmlSubscriber1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber1.mak CFG="$(CFG)" $(@)
+	@echo Project: Makefile.UATM_XmlSubscriber2.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber2.mak CFG="$(CFG)" $(@)
 
 UATM:
 	@echo Project: Makefile.UATM.mak
@@ -37,5 +43,32 @@ UATM-depend:
 	@echo Project: Makefile.UATM.mak
 	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM.mak CFG="$(CFG)" depend
 
+UATM_XmlPublisher1: UATM
+	@echo Project: Makefile.UATM_XmlPublisher1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlPublisher1.mak CFG="$(CFG)" all
+
+UATM_XmlPublisher1-depend:
+	@echo Project: Makefile.UATM_XmlPublisher1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlPublisher1.mak CFG="$(CFG)" depend
+
+UATM_XmlSubscriber1: UATM
+	@echo Project: Makefile.UATM_XmlSubscriber1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber1.mak CFG="$(CFG)" all
+
+UATM_XmlSubscriber1-depend:
+	@echo Project: Makefile.UATM_XmlSubscriber1.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber1.mak CFG="$(CFG)" depend
+
+UATM_XmlSubscriber2: UATM
+	@echo Project: Makefile.UATM_XmlSubscriber2.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber2.mak CFG="$(CFG)" all
+
+UATM_XmlSubscriber2-depend:
+	@echo Project: Makefile.UATM_XmlSubscriber2.mak
+	$(MAKE) /$(MAKEFLAGS) /f Makefile.UATM_XmlSubscriber2.mak CFG="$(CFG)" depend
+
 project_name_list:
 	@echo UATM
+	@echo UATM_XmlPublisher1
+	@echo UATM_XmlSubscriber1
+	@echo UATM_XmlSubscriber2

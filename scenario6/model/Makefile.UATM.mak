@@ -38,12 +38,12 @@ DEPGEN=perl $(ACE_ROOT)/bin/depgen.pl -i -t nmake
 !ENDIF
 !ENDIF
 
-GENERATED_DIRTY = "UATMTypeSupportC.inl" "UATMTypeSupportS.cpp" "UATMTypeSupportC.cpp" "UATMTypeSupportS.h" "UATMTypeSupportC.h" "UATMC.inl" "UATMS.cpp" "UATMC.cpp" "UATMS.h" "UATMC.h" "UATMTypeSupport.idl" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h"
+GENERATED_DIRTY = "UATMTypeSupportC.inl" "UATMTypeSupportS.cpp" "UATMTypeSupportC.cpp" "UATMTypeSupportS.h" "UATMTypeSupportC.h" "UATMC.inl" "UATMS.cpp" "UATMC.cpp" "UATMS.h" "UATMC.h" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" "UATMTypeSupport.idl"
 
 !IF  "$(CFG)" == "Win32 Debug"
 
 OUTDIR=.
-INTDIR=Debug\UATM\X64
+INTDIR=Debug\UATM\x64
 
 ALL : "$(INTDIR)" "$(OUTDIR)" __prebuild__ DEPENDCHECK $(GENERATED_DIRTY) ".\UATMd.dll"
 
@@ -73,23 +73,23 @@ REALCLEAN : CLEAN
 	-@del /f/q "UATMC.cpp"
 	-@del /f/q "UATMS.h"
 	-@del /f/q "UATMC.h"
-	-@del /f/q "UATMTypeSupport.idl"
 	-@del /f/q "UATMTypeSupportImpl.cpp"
 	-@del /f/q "UATMTypeSupportImpl.h"
+	-@del /f/q "UATMTypeSupport.idl"
 
 "$(INTDIR)" :
 	if not exist "Debug\$(NULL)" mkdir "Debug"
 	if not exist "Debug\UATM\$(NULL)" mkdir "Debug\UATM"
 	if not exist "$(INTDIR)\$(NULL)" mkdir "$(INTDIR)"
 CPP=cl.exe
-CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3   /EHsc /Zi /MDd /GR /Gy /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd"$(INTDIR)/" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D UATM_BUILD_DLL /D MPC_LIB_MODIFIER=\"d\" /c
+CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3 /Gm /EHsc /Zi /MDd /GR /Gy /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd"$(INTDIR)/" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D UATM_BUILD_DLL /D MPC_LIB_MODIFIER=\"d\" /c
 
 CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 
 RSC=rc.exe
 
 LINK32=link.exe
-LINK32_FLAGS=advapi32.lib user32.lib /INCREMENTAL:NO ACEd.lib TAOd.lib TAO_AnyTypeCoded.lib TAO_PortableServerd.lib TAO_Valuetyped.lib TAO_CodecFactoryd.lib TAO_PId.lib TAO_BiDirGIOPd.lib OpenDDS_Dcpsd.lib iphlpapi.lib /libpath:"." /libpath:"$(ACE_ROOT)\lib" /libpath:"$(DDS_ROOT)\lib" /nologo /subsystem:windows /dll /debug /pdb:".\UATMd.pdb" /machine:X64 /out:".\UATMd.dll" /implib:"$(OUTDIR)\UATMd.lib"
+LINK32_FLAGS=advapi32.lib user32.lib /INCREMENTAL:NO ACEd.lib TAOd.lib TAO_AnyTypeCoded.lib TAO_PortableServerd.lib TAO_Valuetyped.lib TAO_CodecFactoryd.lib TAO_PId.lib TAO_BiDirGIOPd.lib OpenDDS_Dcpsd.lib iphlpapi.lib /libpath:"." /libpath:"$(ACE_ROOT)\lib" /libpath:"$(DDS_ROOT)\lib" /nologo /subsystem:windows /dll /debug /pdb:".\UATMd.pdb" /machine:x64 /out:".\UATMd.dll" /implib:"$(OUTDIR)\UATMd.lib"
 LINK32_OBJS= \
 	"$(INTDIR)\UATMC.obj" \
 	"$(INTDIR)\UATMS.obj" \
@@ -110,7 +110,7 @@ __prebuild__:
 !ELSEIF  "$(CFG)" == "Win32 Release"
 
 OUTDIR=.
-INTDIR=Release\UATM\X64
+INTDIR=Release\UATM\x64
 
 ALL : "$(INTDIR)" "$(OUTDIR)" __prebuild__ DEPENDCHECK $(GENERATED_DIRTY) ".\UATM.dll"
 
@@ -139,9 +139,9 @@ REALCLEAN : CLEAN
 	-@del /f/q "UATMC.cpp"
 	-@del /f/q "UATMS.h"
 	-@del /f/q "UATMC.h"
-	-@del /f/q "UATMTypeSupport.idl"
 	-@del /f/q "UATMTypeSupportImpl.cpp"
 	-@del /f/q "UATMTypeSupportImpl.h"
+	-@del /f/q "UATMTypeSupport.idl"
 
 "$(INTDIR)" :
 	if not exist "Release\$(NULL)" mkdir "Release"
@@ -155,7 +155,7 @@ CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 RSC=rc.exe
 
 LINK32=link.exe
-LINK32_FLAGS=advapi32.lib user32.lib /INCREMENTAL:NO ACE.lib TAO.lib TAO_AnyTypeCode.lib TAO_PortableServer.lib TAO_Valuetype.lib TAO_CodecFactory.lib TAO_PI.lib TAO_BiDirGIOP.lib OpenDDS_Dcps.lib iphlpapi.lib /libpath:"." /libpath:"$(ACE_ROOT)\lib" /libpath:"$(DDS_ROOT)\lib" /nologo /subsystem:windows /dll  /machine:X64 /out:".\UATM.dll" /implib:"$(OUTDIR)\UATM.lib"
+LINK32_FLAGS=advapi32.lib user32.lib /INCREMENTAL:NO ACE.lib TAO.lib TAO_AnyTypeCode.lib TAO_PortableServer.lib TAO_Valuetype.lib TAO_CodecFactory.lib TAO_PI.lib TAO_BiDirGIOP.lib OpenDDS_Dcps.lib iphlpapi.lib /libpath:"." /libpath:"$(ACE_ROOT)\lib" /libpath:"$(DDS_ROOT)\lib" /nologo /subsystem:windows /dll  /machine:x64 /out:".\UATM.dll" /implib:"$(OUTDIR)\UATM.lib"
 LINK32_OBJS= \
 	"$(INTDIR)\UATMC.obj" \
 	"$(INTDIR)\UATMS.obj" \
@@ -176,7 +176,7 @@ __prebuild__:
 !ELSEIF  "$(CFG)" == "Win32 Static Debug"
 
 OUTDIR=.
-INTDIR=Static_Debug\UATM\X64
+INTDIR=Static_Debug\UATM\x64
 
 ALL : "$(INTDIR)" "$(OUTDIR)" __prebuild__ DEPENDCHECK $(GENERATED_DIRTY) "$(OUTDIR)\UATMsd.lib"
 
@@ -205,22 +205,22 @@ REALCLEAN : CLEAN
 	-@del /f/q "UATMC.cpp"
 	-@del /f/q "UATMS.h"
 	-@del /f/q "UATMC.h"
-	-@del /f/q "UATMTypeSupport.idl"
 	-@del /f/q "UATMTypeSupportImpl.cpp"
 	-@del /f/q "UATMTypeSupportImpl.h"
+	-@del /f/q "UATMTypeSupport.idl"
 
 "$(INTDIR)" :
 	if not exist "Static_Debug\$(NULL)" mkdir "Static_Debug"
 	if not exist "Static_Debug\UATM\$(NULL)" mkdir "Static_Debug\UATM"
 	if not exist "$(INTDIR)\$(NULL)" mkdir "$(INTDIR)"
 CPP=cl.exe
-CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3   /EHsc /Zi /GR /Gy /MDd /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd".\UATMsd.pdb" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D ACE_AS_STATIC_LIBS /D TAO_AS_STATIC_LIBS /D MPC_LIB_MODIFIER=\"sd\" /c
+CPP_COMMON=/Zc:wchar_t /nologo /Ob0 /W3 /Gm /EHsc /Zi /GR /Gy /MDd /wd4355 /wd4503 /wd4355 /wd4250 /wd4290 /Fd".\UATMsd.pdb" /I "$(ACE_ROOT)" /I "$(TAO_ROOT)" /I "$(DDS_ROOT)" /I "C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\tools\rapidjson\include" /I "$(DDS_ROOT)\tools\modeling\codegen" /D _DEBUG /D WIN32 /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D _CRT_NONSTDC_NO_DEPRECATE /D _WINSOCK_DEPRECATED_NO_WARNINGS /D _SCL_SECURE_NO_WARNINGS /D OPENDDS_RAPIDJSON /D ACE_AS_STATIC_LIBS /D TAO_AS_STATIC_LIBS /D MPC_LIB_MODIFIER=\"sd\" /c
 
 CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 
 
 LINK32=link.exe -lib
-LINK32_FLAGS=/nologo /machine:X64 /out:".\UATMsd.lib"
+LINK32_FLAGS=/nologo /machine:x64 /out:".\UATMsd.lib"
 LINK32_OBJS= \
 	"$(INTDIR)\UATMC.obj" \
 	"$(INTDIR)\UATMS.obj" \
@@ -241,7 +241,7 @@ __prebuild__:
 !ELSEIF  "$(CFG)" == "Win32 Static Release"
 
 OUTDIR=.
-INTDIR=Static_Release\UATM\X64
+INTDIR=Static_Release\UATM\x64
 
 ALL : "$(INTDIR)" "$(OUTDIR)" __prebuild__ DEPENDCHECK $(GENERATED_DIRTY) "$(OUTDIR)\UATMs.lib"
 
@@ -269,9 +269,9 @@ REALCLEAN : CLEAN
 	-@del /f/q "UATMC.cpp"
 	-@del /f/q "UATMS.h"
 	-@del /f/q "UATMC.h"
-	-@del /f/q "UATMTypeSupport.idl"
 	-@del /f/q "UATMTypeSupportImpl.cpp"
 	-@del /f/q "UATMTypeSupportImpl.h"
+	-@del /f/q "UATMTypeSupport.idl"
 
 "$(INTDIR)" :
 	if not exist "Static_Release\$(NULL)" mkdir "Static_Release"
@@ -284,7 +284,7 @@ CPP_PROJ=$(CPP_COMMON) /Fo"$(INTDIR)\\"
 
 
 LINK32=link.exe -lib
-LINK32_FLAGS=/nologo /machine:X64 /out:".\UATMs.lib"
+LINK32_FLAGS=/nologo /machine:x64 /out:".\UATMs.lib"
 LINK32_OBJS= \
 	"$(INTDIR)\UATMC.obj" \
 	"$(INTDIR)\UATMS.obj" \
@@ -404,7 +404,7 @@ SOURCE="UATM.idl"
 
 InputPath=UATM.idl
 
-"UATMTypeSupport.idl" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
+"UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" "UATMTypeSupport.idl" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
 	<<tempfile-Win32-Debug-typesupport_files-UATM_idl.bat
 	@echo off
 	PATH=%PATH%;$(ACE_ROOT)\lib
@@ -438,7 +438,7 @@ SOURCE="UATM.idl"
 
 InputPath=UATM.idl
 
-"UATMTypeSupport.idl" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
+"UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" "UATMTypeSupport.idl" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
 	<<tempfile-Win32-Release-typesupport_files-UATM_idl.bat
 	@echo off
 	PATH=%PATH%;$(ACE_ROOT)\lib
@@ -472,7 +472,7 @@ SOURCE="UATM.idl"
 
 InputPath=UATM.idl
 
-"UATMTypeSupport.idl" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
+"UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" "UATMTypeSupport.idl" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
 	<<tempfile-Win32-Static_Debug-typesupport_files-UATM_idl.bat
 	@echo off
 	PATH=%PATH%;$(ACE_ROOT)\lib
@@ -506,7 +506,7 @@ SOURCE="UATM.idl"
 
 InputPath=UATM.idl
 
-"UATMTypeSupport.idl" "UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
+"UATMTypeSupportImpl.cpp" "UATMTypeSupportImpl.h" "UATMTypeSupport.idl" : $(SOURCE)  "$(DDS_ROOT)\bin\opendds_idl.exe" "$(DDS_ROOT)\dds\idl\IDLTemplate.txt"
 	<<tempfile-Win32-Static_Release-typesupport_files-UATM_idl.bat
 	@echo off
 	PATH=%PATH%;$(ACE_ROOT)\lib

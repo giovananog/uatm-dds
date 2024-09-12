@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -14,11 +12,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   {
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_auth = model.writer(Elements::DataWriters::airspaceRestDW_SKO);
-    UATM::flightAuthorizationDataWriter_var writer_auth_var = UATM::flightAuthorizationDataWriter::_narrow(writer.in());
+    DDS::DataWriter_var writer_auth = model.writer(Elements::DataWriters::flightAuthDW_UASP);
+    UATM::flightAuthorizationDataWriter_var writer_auth_var = UATM::flightAuthorizationDataWriter::_narrow(writer_auth.in());
 
     if (CORBA::is_nil(writer_auth_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -46,9 +45,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
-    
-    DDS::DataWriter_var writer_rec = model.writer(Elements::DataWriters::airspaceRestDW_SKO);
-    UATM::flightChangeRecDataWriter_var writer_rec_var = UATM::flightChangeRecDataWriter::_narrow(writer.in());
+    }
+
+    DDS::DataWriter_var writer_rec = model2.writer(Elements::DataWriters::changeRecDW_UASP);
+    UATM::flightChangeRecDataWriter_var writer_rec_var = UATM::flightChangeRecDataWriter::_narrow(writer_rec.in());
 
     if (CORBA::is_nil(writer_rec_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -56,9 +56,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
       }
-    }
 
-    OpenDDS::Model::WriterSync ws(writer_rec);
+    OpenDDS::Model::WriterSync ws2(writer_rec);
     {
       UATM::flightChangeRec fc;
 
