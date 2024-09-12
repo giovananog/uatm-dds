@@ -189,7 +189,7 @@ TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
 ::CORBA::Boolean operator<< (
     TAO_OutputCDR &strm,
-    const UATM::asirspaceRestrictions &_tao_aggregate)
+    const UATM::airspaceRestrictions &_tao_aggregate)
 {
   return
     (strm << _tao_aggregate.restriction_id) &&
@@ -202,7 +202,7 @@ TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
 ::CORBA::Boolean operator>> (
     TAO_InputCDR &strm,
-    UATM::asirspaceRestrictions &_tao_aggregate)
+    UATM::airspaceRestrictions &_tao_aggregate)
 {
   return
     (strm >> _tao_aggregate.restriction_id) &&

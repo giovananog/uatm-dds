@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_codegen.cpp:148
 
-#ifndef _TAO_IDL_UATMC_ZSICUV_H_
-#define _TAO_IDL_UATMC_ZSICUV_H_
+#ifndef _TAO_IDL_UATMC_DGTNSL_H_
+#define _TAO_IDL_UATMC_DGTNSL_H_
 
 #include /**/ "ace/pre.h"
 
@@ -114,19 +114,19 @@ namespace UATM
 
   
 
-  struct asirspaceRestrictions;
+  struct airspaceRestrictions;
 
   typedef
     ::TAO_Var_Var_T<
-        asirspaceRestrictions
+        airspaceRestrictions
       >
-    asirspaceRestrictions_var;
+    airspaceRestrictions_var;
 
   typedef
     ::TAO_Out_T<
-        asirspaceRestrictions
+        airspaceRestrictions
       >
-    asirspaceRestrictions_out;
+    airspaceRestrictions_out;
   // TAO_IDL - Generated from
   // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_type.cpp:258
 
@@ -295,14 +295,14 @@ namespace UATM
 
   
 
-  struct UATM_Export asirspaceRestrictions
+  struct UATM_Export airspaceRestrictions
   {
     // TAO_IDL - Generated from
     // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_type.cpp:302
 
     
-    typedef asirspaceRestrictions_var _var_type;
-    typedef asirspaceRestrictions_out _out_type;
+    typedef airspaceRestrictions_var _var_type;
+    typedef airspaceRestrictions_out _out_type;
     
     ::CORBA::Long restriction_id;
     ::TAO::String_Manager area;
@@ -535,10 +535,10 @@ namespace TAO
   
 
   template<>
-  class Arg_Traits< ::UATM::asirspaceRestrictions>
+  class Arg_Traits< ::UATM::airspaceRestrictions>
     : public
         Var_Size_Arg_Traits_T<
-            ::UATM::asirspaceRestrictions,
+            ::UATM::airspaceRestrictions,
             TAO::Any_Insert_Policy_Noop
           >
   {
@@ -813,8 +813,8 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
-UATM_Export ::CORBA::Boolean operator<< (TAO_OutputCDR &, const UATM::asirspaceRestrictions &);
-UATM_Export ::CORBA::Boolean operator>> (TAO_InputCDR &, UATM::asirspaceRestrictions &);
+UATM_Export ::CORBA::Boolean operator<< (TAO_OutputCDR &, const UATM::airspaceRestrictions &);
+UATM_Export ::CORBA::Boolean operator>> (TAO_InputCDR &, UATM::airspaceRestrictions &);
 
 TAO_END_VERSIONED_NAMESPACE_DECL
 

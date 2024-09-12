@@ -41,7 +41,7 @@ namespace uatmDCPS {
         public: enum Values {
           weatherInfo,
           trafficFlowsInfo,
-          asirspaceRestrictions,
+          airspaceRestrictions,
           acceptableRoute,
           LAST_INDEX
         };

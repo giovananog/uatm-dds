@@ -4,7 +4,7 @@
 module UATM {
   struct weatherInfo;
   struct trafficFlowsInfo;
-  struct asirspaceRestrictions;
+  struct airspaceRestrictions;
   struct acceptableRoute;
 };
 module UATM {
@@ -37,9 +37,9 @@ module UATM {
 };
 module UATM {
 
-#pragma DCPS_DATA_TYPE "UATM::asirspaceRestrictions"
-#pragma DCPS_DATA_KEY  "UATM::asirspaceRestrictions restriction_id"
-  struct asirspaceRestrictions {
+#pragma DCPS_DATA_TYPE "UATM::airspaceRestrictions"
+#pragma DCPS_DATA_KEY  "UATM::airspaceRestrictions restriction_id"
+  struct airspaceRestrictions {
     long restriction_id;
     string<20> area;
     string<20> restriction_type;

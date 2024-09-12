@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_codegen.cpp:454
 
-#ifndef _TAO_IDL_UATMS_ILATYL_H_
-#define _TAO_IDL_UATMS_ILATYL_H_
+#ifndef _TAO_IDL_UATMS_G1XGM1_H_
+#define _TAO_IDL_UATMS_G1XGM1_H_
 
 #include /**/ "ace/pre.h"
 
@@ -211,10 +211,10 @@ namespace TAO
   
 
   template<>
-  class SArg_Traits< ::UATM::asirspaceRestrictions>
+  class SArg_Traits< ::UATM::airspaceRestrictions>
     : public
         Var_Size_SArg_Traits_T<
-            ::UATM::asirspaceRestrictions,
+            ::UATM::airspaceRestrictions,
             TAO::Any_Insert_Policy_Noop
           >
   {

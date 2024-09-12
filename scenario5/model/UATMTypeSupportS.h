@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_codegen.cpp:454
 
-#ifndef _TAO_IDL_UATMTYPESUPPORTS_8LREJQ_H_
-#define _TAO_IDL_UATMTYPESUPPORTS_8LREJQ_H_
+#ifndef _TAO_IDL_UATMTYPESUPPORTS_2BTQDH_H_
+#define _TAO_IDL_UATMTYPESUPPORTS_2BTQDH_H_
 
 #include /**/ "ace/pre.h"
 

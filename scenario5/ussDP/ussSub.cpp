@@ -2,7 +2,7 @@
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "UATMTraits.h"
+#include "../model/UATMTraits.h"
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
@@ -14,14 +14,14 @@
 class ReaderListenerRequest : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    virtual void on_data_available_route(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerRequest::on_data_available_route(DDS::DataReader_ptr reader) 
+ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
@@ -30,7 +30,7 @@ ReaderListenerRequest::on_data_available_route(DDS::DataReader_ptr reader)
 
     if (CORBA::is_nil(reader_i.in())) {
     ACE_ERROR((LM_ERROR,
-               ACE_TEXT("ERROR: %N:%l: on_data_available_route() -")
+               ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                ACE_TEXT(" _narrow failed!\n")));
     ACE_OS::exit(-1);
   }
@@ -44,18 +44,26 @@ ReaderListenerRequest::on_data_available_route(DDS::DataReader_ptr reader)
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "time: " << msg.timestamp.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        acceptableRoute:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Route ID: " << msg.route_id << std::endl
+                    << "Origin: " << msg.origin.in() << std::endl
+                    << "Destination: " << msg.destination.in() << std::endl
+                    << "Estimated Time: " << msg.estimated_time.in() << std::endl
+                    << "Timestmap: " << msg.timestamp.in() << std::endl
+                    << "Approved by: " << msg.approved_by.in() << std::endl;
         } else {
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("ERROR: %N:%l: on_data_available_route() -")
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
+        rcs_.signal();
         break;
       }
     }
@@ -69,10 +77,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::routeDataDR_USS);
-
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
+    DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::routeDataDR_USS);
+
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);

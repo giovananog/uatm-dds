@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_codegen.cpp:148
 
-#ifndef _TAO_IDL_UATMTYPESUPPORTC_NDBCLD_H_
-#define _TAO_IDL_UATMTYPESUPPORTC_NDBCLD_H_
+#ifndef _TAO_IDL_UATMTYPESUPPORTC_YCX6GW_H_
+#define _TAO_IDL_UATMTYPESUPPORTC_YCX6GW_H_
 
 #include /**/ "ace/pre.h"
 
@@ -940,20 +940,20 @@ namespace UATM
 
   
 
-  typedef ::TAO::DCPS::ZeroCopyDataSeq< UATM::asirspaceRestrictions, DCPS_ZERO_COPY_SEQ_DEFAULT_SIZE> asirspaceRestrictionsSeq;
+  typedef ::TAO::DCPS::ZeroCopyDataSeq< UATM::airspaceRestrictions, DCPS_ZERO_COPY_SEQ_DEFAULT_SIZE> airspaceRestrictionsSeq;
   
   // TAO_IDL - Generated from
   // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_interface.cpp:747
 
   
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSTYPESUPPORT__VAR_OUT_CH_)
-#define _UATM_ASIRSPACERESTRICTIONSTYPESUPPORT__VAR_OUT_CH_
+#if !defined (_UATM_AIRSPACERESTRICTIONSTYPESUPPORT__VAR_OUT_CH_)
+#define _UATM_AIRSPACERESTRICTIONSTYPESUPPORT__VAR_OUT_CH_
 
-  class asirspaceRestrictionsTypeSupport;
-  typedef asirspaceRestrictionsTypeSupport *asirspaceRestrictionsTypeSupport_ptr;
-  typedef TAO_Objref_Var_T<asirspaceRestrictionsTypeSupport> asirspaceRestrictionsTypeSupport_var;
-  typedef TAO_Objref_Out_T<asirspaceRestrictionsTypeSupport> asirspaceRestrictionsTypeSupport_out;
+  class airspaceRestrictionsTypeSupport;
+  typedef airspaceRestrictionsTypeSupport *airspaceRestrictionsTypeSupport_ptr;
+  typedef TAO_Objref_Var_T<airspaceRestrictionsTypeSupport> airspaceRestrictionsTypeSupport_var;
+  typedef TAO_Objref_Out_T<airspaceRestrictionsTypeSupport> airspaceRestrictionsTypeSupport_out;
   
 
 #endif /* end #if !defined */
@@ -964,7 +964,7 @@ namespace UATM
 
   
 
-  class UATM_Export asirspaceRestrictionsTypeSupport
+  class UATM_Export airspaceRestrictionsTypeSupport
     : public virtual ::OpenDDS::DCPS::TypeSupport
   
   {
@@ -972,51 +972,51 @@ namespace UATM
     // TAO_IDL - Generated from
     // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_type.cpp:302
 
-    typedef asirspaceRestrictionsTypeSupport_ptr _ptr_type;
-    typedef asirspaceRestrictionsTypeSupport_var _var_type;
-    typedef asirspaceRestrictionsTypeSupport_out _out_type;
+    typedef airspaceRestrictionsTypeSupport_ptr _ptr_type;
+    typedef airspaceRestrictionsTypeSupport_var _var_type;
+    typedef airspaceRestrictionsTypeSupport_out _out_type;
 
     // The static operations.
-    static asirspaceRestrictionsTypeSupport_ptr _duplicate (asirspaceRestrictionsTypeSupport_ptr obj);
+    static airspaceRestrictionsTypeSupport_ptr _duplicate (airspaceRestrictionsTypeSupport_ptr obj);
 
-    static void _tao_release (asirspaceRestrictionsTypeSupport_ptr obj);
+    static void _tao_release (airspaceRestrictionsTypeSupport_ptr obj);
 
-    static asirspaceRestrictionsTypeSupport_ptr _narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsTypeSupport_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsTypeSupport_ptr _nil (void);
+    static airspaceRestrictionsTypeSupport_ptr _narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsTypeSupport_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsTypeSupport_ptr _nil (void);
 
     virtual ::DDS::ReturnCode_t create_sample_rc (
-      ::UATM::asirspaceRestrictions & dst,
+      ::UATM::airspaceRestrictions & dst,
       ::DDS::DynamicData_ptr src) = 0;
 
-    virtual ::UATM::asirspaceRestrictions * create_sample (
+    virtual ::UATM::airspaceRestrictions * create_sample (
       ::DDS::DynamicData_ptr src) = 0;
 
     virtual ::DDS::ReturnCode_t create_dynamic_sample_rc (
       ::DDS::DynamicData_ptr & dst,
-      const ::UATM::asirspaceRestrictions & src) = 0;
+      const ::UATM::airspaceRestrictions & src) = 0;
 
     virtual ::DDS::DynamicData_ptr create_dynamic_sample (
-      const ::UATM::asirspaceRestrictions & src) = 0;
+      const ::UATM::airspaceRestrictions & src) = 0;
 
     virtual ::DDS::ReturnCode_t encode_to_string (
-      const ::UATM::asirspaceRestrictions & sample,
+      const ::UATM::airspaceRestrictions & sample,
       ::CORBA::String_out encoded,
       ::OpenDDS::DCPS::RepresentationFormat_ptr format) = 0;
 
     virtual ::DDS::ReturnCode_t encode_to_bytes (
-      const ::UATM::asirspaceRestrictions & sample,
+      const ::UATM::airspaceRestrictions & sample,
       ::DDS::OctetSeq_out encoded,
       ::OpenDDS::DCPS::RepresentationFormat_ptr format) = 0;
 
     virtual ::DDS::ReturnCode_t decode_from_string (
       const char * encoded,
-      ::UATM::asirspaceRestrictions_out sample,
+      ::UATM::airspaceRestrictions_out sample,
       ::OpenDDS::DCPS::RepresentationFormat_ptr format) = 0;
 
     virtual ::DDS::ReturnCode_t decode_from_bytes (
       const ::DDS::OctetSeq & encoded,
-      ::UATM::asirspaceRestrictions_out sample,
+      ::UATM::airspaceRestrictions_out sample,
       ::OpenDDS::DCPS::RepresentationFormat_ptr format) = 0;
 
     
@@ -1031,21 +1031,21 @@ namespace UATM
   
   protected:
     // Abstract or local interface only.
-    asirspaceRestrictionsTypeSupport (void);
+    airspaceRestrictionsTypeSupport (void);
 
     
 
-    virtual ~asirspaceRestrictionsTypeSupport (void);
+    virtual ~airspaceRestrictionsTypeSupport (void);
   
   private:
     // Private and unimplemented for concrete interfaces.
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsTypeSupport (const asirspaceRestrictionsTypeSupport &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsTypeSupport (const airspaceRestrictionsTypeSupport &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsTypeSupport (asirspaceRestrictionsTypeSupport &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsTypeSupport (airspaceRestrictionsTypeSupport &&))
 #endif /* ACE_HAS_CPP11 */
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsTypeSupport &operator= (const asirspaceRestrictionsTypeSupport &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsTypeSupport &operator= (const airspaceRestrictionsTypeSupport &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsTypeSupport &operator= (asirspaceRestrictionsTypeSupport &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsTypeSupport &operator= (airspaceRestrictionsTypeSupport &&))
 #endif /* ACE_HAS_CPP11 */
   };
   // TAO_IDL - Generated from
@@ -1053,13 +1053,13 @@ namespace UATM
 
   
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSDATAWRITER__VAR_OUT_CH_)
-#define _UATM_ASIRSPACERESTRICTIONSDATAWRITER__VAR_OUT_CH_
+#if !defined (_UATM_AIRSPACERESTRICTIONSDATAWRITER__VAR_OUT_CH_)
+#define _UATM_AIRSPACERESTRICTIONSDATAWRITER__VAR_OUT_CH_
 
-  class asirspaceRestrictionsDataWriter;
-  typedef asirspaceRestrictionsDataWriter *asirspaceRestrictionsDataWriter_ptr;
-  typedef TAO_Objref_Var_T<asirspaceRestrictionsDataWriter> asirspaceRestrictionsDataWriter_var;
-  typedef TAO_Objref_Out_T<asirspaceRestrictionsDataWriter> asirspaceRestrictionsDataWriter_out;
+  class airspaceRestrictionsDataWriter;
+  typedef airspaceRestrictionsDataWriter *airspaceRestrictionsDataWriter_ptr;
+  typedef TAO_Objref_Var_T<airspaceRestrictionsDataWriter> airspaceRestrictionsDataWriter_var;
+  typedef TAO_Objref_Out_T<airspaceRestrictionsDataWriter> airspaceRestrictionsDataWriter_out;
   
 
 #endif /* end #if !defined */
@@ -1070,7 +1070,7 @@ namespace UATM
 
   
 
-  class UATM_Export asirspaceRestrictionsDataWriter
+  class UATM_Export airspaceRestrictionsDataWriter
     : public virtual ::DDS::DataWriter
   
   {
@@ -1078,59 +1078,59 @@ namespace UATM
     // TAO_IDL - Generated from
     // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_type.cpp:302
 
-    typedef asirspaceRestrictionsDataWriter_ptr _ptr_type;
-    typedef asirspaceRestrictionsDataWriter_var _var_type;
-    typedef asirspaceRestrictionsDataWriter_out _out_type;
+    typedef airspaceRestrictionsDataWriter_ptr _ptr_type;
+    typedef airspaceRestrictionsDataWriter_var _var_type;
+    typedef airspaceRestrictionsDataWriter_out _out_type;
 
     // The static operations.
-    static asirspaceRestrictionsDataWriter_ptr _duplicate (asirspaceRestrictionsDataWriter_ptr obj);
+    static airspaceRestrictionsDataWriter_ptr _duplicate (airspaceRestrictionsDataWriter_ptr obj);
 
-    static void _tao_release (asirspaceRestrictionsDataWriter_ptr obj);
+    static void _tao_release (airspaceRestrictionsDataWriter_ptr obj);
 
-    static asirspaceRestrictionsDataWriter_ptr _narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsDataWriter_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsDataWriter_ptr _nil (void);
+    static airspaceRestrictionsDataWriter_ptr _narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsDataWriter_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsDataWriter_ptr _nil (void);
 
     virtual ::DDS::InstanceHandle_t register_instance (
-      const ::UATM::asirspaceRestrictions & instance) = 0;
+      const ::UATM::airspaceRestrictions & instance) = 0;
 
     virtual ::DDS::InstanceHandle_t register_instance_w_timestamp (
-      const ::UATM::asirspaceRestrictions & instance,
+      const ::UATM::airspaceRestrictions & instance,
       const ::DDS::Time_t & timestamp) = 0;
 
     virtual ::DDS::ReturnCode_t unregister_instance (
-      const ::UATM::asirspaceRestrictions & instance,
+      const ::UATM::airspaceRestrictions & instance,
       ::DDS::InstanceHandle_t handle) = 0;
 
     virtual ::DDS::ReturnCode_t unregister_instance_w_timestamp (
-      const ::UATM::asirspaceRestrictions & instance,
+      const ::UATM::airspaceRestrictions & instance,
       ::DDS::InstanceHandle_t handle,
       const ::DDS::Time_t & timestamp) = 0;
 
     virtual ::DDS::ReturnCode_t write (
-      const ::UATM::asirspaceRestrictions & instance_data,
+      const ::UATM::airspaceRestrictions & instance_data,
       ::DDS::InstanceHandle_t handle) = 0;
 
     virtual ::DDS::ReturnCode_t write_w_timestamp (
-      const ::UATM::asirspaceRestrictions & instance_data,
+      const ::UATM::airspaceRestrictions & instance_data,
       ::DDS::InstanceHandle_t handle,
       const ::DDS::Time_t & source_timestamp) = 0;
 
     virtual ::DDS::ReturnCode_t dispose (
-      const ::UATM::asirspaceRestrictions & instance_data,
+      const ::UATM::airspaceRestrictions & instance_data,
       ::DDS::InstanceHandle_t instance_handle) = 0;
 
     virtual ::DDS::ReturnCode_t dispose_w_timestamp (
-      const ::UATM::asirspaceRestrictions & instance_data,
+      const ::UATM::airspaceRestrictions & instance_data,
       ::DDS::InstanceHandle_t instance_handle,
       const ::DDS::Time_t & source_timestamp) = 0;
 
     virtual ::DDS::ReturnCode_t get_key_value (
-      ::UATM::asirspaceRestrictions & key_holder,
+      ::UATM::airspaceRestrictions & key_holder,
       ::DDS::InstanceHandle_t handle) = 0;
 
     virtual ::DDS::InstanceHandle_t lookup_instance (
-      const ::UATM::asirspaceRestrictions & instance_data) = 0;
+      const ::UATM::airspaceRestrictions & instance_data) = 0;
 
     
     // TAO_IDL - Generated from
@@ -1144,21 +1144,21 @@ namespace UATM
   
   protected:
     // Abstract or local interface only.
-    asirspaceRestrictionsDataWriter (void);
+    airspaceRestrictionsDataWriter (void);
 
     
 
-    virtual ~asirspaceRestrictionsDataWriter (void);
+    virtual ~airspaceRestrictionsDataWriter (void);
   
   private:
     // Private and unimplemented for concrete interfaces.
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataWriter (const asirspaceRestrictionsDataWriter &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataWriter (const airspaceRestrictionsDataWriter &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataWriter (asirspaceRestrictionsDataWriter &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataWriter (airspaceRestrictionsDataWriter &&))
 #endif /* ACE_HAS_CPP11 */
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataWriter &operator= (const asirspaceRestrictionsDataWriter &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataWriter &operator= (const airspaceRestrictionsDataWriter &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataWriter &operator= (asirspaceRestrictionsDataWriter &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataWriter &operator= (airspaceRestrictionsDataWriter &&))
 #endif /* ACE_HAS_CPP11 */
   };
   // TAO_IDL - Generated from
@@ -1166,13 +1166,13 @@ namespace UATM
 
   
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSDATAREADER__VAR_OUT_CH_)
-#define _UATM_ASIRSPACERESTRICTIONSDATAREADER__VAR_OUT_CH_
+#if !defined (_UATM_AIRSPACERESTRICTIONSDATAREADER__VAR_OUT_CH_)
+#define _UATM_AIRSPACERESTRICTIONSDATAREADER__VAR_OUT_CH_
 
-  class asirspaceRestrictionsDataReader;
-  typedef asirspaceRestrictionsDataReader *asirspaceRestrictionsDataReader_ptr;
-  typedef TAO_Objref_Var_T<asirspaceRestrictionsDataReader> asirspaceRestrictionsDataReader_var;
-  typedef TAO_Objref_Out_T<asirspaceRestrictionsDataReader> asirspaceRestrictionsDataReader_out;
+  class airspaceRestrictionsDataReader;
+  typedef airspaceRestrictionsDataReader *airspaceRestrictionsDataReader_ptr;
+  typedef TAO_Objref_Var_T<airspaceRestrictionsDataReader> airspaceRestrictionsDataReader_var;
+  typedef TAO_Objref_Out_T<airspaceRestrictionsDataReader> airspaceRestrictionsDataReader_out;
   
 
 #endif /* end #if !defined */
@@ -1183,7 +1183,7 @@ namespace UATM
 
   
 
-  class UATM_Export asirspaceRestrictionsDataReader
+  class UATM_Export airspaceRestrictionsDataReader
     : public virtual ::OpenDDS::DCPS::DataReaderEx
   
   {
@@ -1191,21 +1191,21 @@ namespace UATM
     // TAO_IDL - Generated from
     // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_type.cpp:302
 
-    typedef asirspaceRestrictionsDataReader_ptr _ptr_type;
-    typedef asirspaceRestrictionsDataReader_var _var_type;
-    typedef asirspaceRestrictionsDataReader_out _out_type;
+    typedef airspaceRestrictionsDataReader_ptr _ptr_type;
+    typedef airspaceRestrictionsDataReader_var _var_type;
+    typedef airspaceRestrictionsDataReader_out _out_type;
 
     // The static operations.
-    static asirspaceRestrictionsDataReader_ptr _duplicate (asirspaceRestrictionsDataReader_ptr obj);
+    static airspaceRestrictionsDataReader_ptr _duplicate (airspaceRestrictionsDataReader_ptr obj);
 
-    static void _tao_release (asirspaceRestrictionsDataReader_ptr obj);
+    static void _tao_release (airspaceRestrictionsDataReader_ptr obj);
 
-    static asirspaceRestrictionsDataReader_ptr _narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsDataReader_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
-    static asirspaceRestrictionsDataReader_ptr _nil (void);
+    static airspaceRestrictionsDataReader_ptr _narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsDataReader_ptr _unchecked_narrow (::CORBA::Object_ptr obj);
+    static airspaceRestrictionsDataReader_ptr _nil (void);
 
     virtual ::DDS::ReturnCode_t read (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::SampleStateMask sample_states,
@@ -1213,7 +1213,7 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t take (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::SampleStateMask sample_states,
@@ -1221,27 +1221,27 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t read_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & data_values,
+      ::UATM::airspaceRestrictionsSeq & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t take_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & data_values,
+      ::UATM::airspaceRestrictionsSeq & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t read_next_sample (
-      ::UATM::asirspaceRestrictions & received_data,
+      ::UATM::airspaceRestrictions & received_data,
       ::DDS::SampleInfo & sample_info) = 0;
 
     virtual ::DDS::ReturnCode_t take_next_sample (
-      ::UATM::asirspaceRestrictions & received_data,
+      ::UATM::airspaceRestrictions & received_data,
       ::DDS::SampleInfo & sample_info) = 0;
 
     virtual ::DDS::ReturnCode_t read_instance (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
@@ -1250,7 +1250,7 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t take_instance (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
@@ -1259,21 +1259,21 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t read_instance_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t take_instance_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t read_next_instance (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
@@ -1282,7 +1282,7 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t take_next_instance (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t a_handle,
@@ -1291,29 +1291,29 @@ namespace UATM
       ::DDS::InstanceStateMask instance_states) = 0;
 
     virtual ::DDS::ReturnCode_t read_next_instance_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & data_values,
+      ::UATM::airspaceRestrictionsSeq & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t previous_handle,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t take_next_instance_w_condition (
-      ::UATM::asirspaceRestrictionsSeq & data_values,
+      ::UATM::airspaceRestrictionsSeq & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       ::CORBA::Long max_samples,
       ::DDS::InstanceHandle_t previous_handle,
       ::DDS::ReadCondition_ptr a_condition) = 0;
 
     virtual ::DDS::ReturnCode_t return_loan (
-      ::UATM::asirspaceRestrictionsSeq & received_data,
+      ::UATM::airspaceRestrictionsSeq & received_data,
       ::DDS::SampleInfoSeq & info_seq) = 0;
 
     virtual ::DDS::ReturnCode_t get_key_value (
-      ::UATM::asirspaceRestrictions & key_holder,
+      ::UATM::airspaceRestrictions & key_holder,
       ::DDS::InstanceHandle_t handle) = 0;
 
     virtual ::DDS::InstanceHandle_t lookup_instance (
-      const ::UATM::asirspaceRestrictions & instance_data) = 0;
+      const ::UATM::airspaceRestrictions & instance_data) = 0;
 
     
     // TAO_IDL - Generated from
@@ -1327,21 +1327,21 @@ namespace UATM
   
   protected:
     // Abstract or local interface only.
-    asirspaceRestrictionsDataReader (void);
+    airspaceRestrictionsDataReader (void);
 
     
 
-    virtual ~asirspaceRestrictionsDataReader (void);
+    virtual ~airspaceRestrictionsDataReader (void);
   
   private:
     // Private and unimplemented for concrete interfaces.
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataReader (const asirspaceRestrictionsDataReader &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataReader (const airspaceRestrictionsDataReader &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataReader (asirspaceRestrictionsDataReader &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataReader (airspaceRestrictionsDataReader &&))
 #endif /* ACE_HAS_CPP11 */
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataReader &operator= (const asirspaceRestrictionsDataReader &))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataReader &operator= (const airspaceRestrictionsDataReader &))
 #if defined (ACE_HAS_CPP11)
-    ACE_UNIMPLEMENTED_FUNC (asirspaceRestrictionsDataReader &operator= (asirspaceRestrictionsDataReader &&))
+    ACE_UNIMPLEMENTED_FUNC (airspaceRestrictionsDataReader &operator= (airspaceRestrictionsDataReader &&))
 #endif /* ACE_HAS_CPP11 */
   };
 
@@ -1909,55 +1909,55 @@ namespace TAO
 
 #endif /* end #if !defined */
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSTYPESUPPORT__TRAITS_)
-#define _UATM_ASIRSPACERESTRICTIONSTYPESUPPORT__TRAITS_
+#if !defined (_UATM_AIRSPACERESTRICTIONSTYPESUPPORT__TRAITS_)
+#define _UATM_AIRSPACERESTRICTIONSTYPESUPPORT__TRAITS_
 
   template<>
-  struct UATM_Export Objref_Traits< ::UATM::asirspaceRestrictionsTypeSupport>
+  struct UATM_Export Objref_Traits< ::UATM::airspaceRestrictionsTypeSupport>
   {
-    static ::UATM::asirspaceRestrictionsTypeSupport_ptr duplicate (
-        ::UATM::asirspaceRestrictionsTypeSupport_ptr p);
+    static ::UATM::airspaceRestrictionsTypeSupport_ptr duplicate (
+        ::UATM::airspaceRestrictionsTypeSupport_ptr p);
     static void release (
-        ::UATM::asirspaceRestrictionsTypeSupport_ptr p);
-    static ::UATM::asirspaceRestrictionsTypeSupport_ptr nil (void);
+        ::UATM::airspaceRestrictionsTypeSupport_ptr p);
+    static ::UATM::airspaceRestrictionsTypeSupport_ptr nil (void);
     static ::CORBA::Boolean marshal (
-        const ::UATM::asirspaceRestrictionsTypeSupport_ptr p,
+        const ::UATM::airspaceRestrictionsTypeSupport_ptr p,
         TAO_OutputCDR & cdr);
   };
 
 #endif /* end #if !defined */
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSDATAWRITER__TRAITS_)
-#define _UATM_ASIRSPACERESTRICTIONSDATAWRITER__TRAITS_
+#if !defined (_UATM_AIRSPACERESTRICTIONSDATAWRITER__TRAITS_)
+#define _UATM_AIRSPACERESTRICTIONSDATAWRITER__TRAITS_
 
   template<>
-  struct UATM_Export Objref_Traits< ::UATM::asirspaceRestrictionsDataWriter>
+  struct UATM_Export Objref_Traits< ::UATM::airspaceRestrictionsDataWriter>
   {
-    static ::UATM::asirspaceRestrictionsDataWriter_ptr duplicate (
-        ::UATM::asirspaceRestrictionsDataWriter_ptr p);
+    static ::UATM::airspaceRestrictionsDataWriter_ptr duplicate (
+        ::UATM::airspaceRestrictionsDataWriter_ptr p);
     static void release (
-        ::UATM::asirspaceRestrictionsDataWriter_ptr p);
-    static ::UATM::asirspaceRestrictionsDataWriter_ptr nil (void);
+        ::UATM::airspaceRestrictionsDataWriter_ptr p);
+    static ::UATM::airspaceRestrictionsDataWriter_ptr nil (void);
     static ::CORBA::Boolean marshal (
-        const ::UATM::asirspaceRestrictionsDataWriter_ptr p,
+        const ::UATM::airspaceRestrictionsDataWriter_ptr p,
         TAO_OutputCDR & cdr);
   };
 
 #endif /* end #if !defined */
 
-#if !defined (_UATM_ASIRSPACERESTRICTIONSDATAREADER__TRAITS_)
-#define _UATM_ASIRSPACERESTRICTIONSDATAREADER__TRAITS_
+#if !defined (_UATM_AIRSPACERESTRICTIONSDATAREADER__TRAITS_)
+#define _UATM_AIRSPACERESTRICTIONSDATAREADER__TRAITS_
 
   template<>
-  struct UATM_Export Objref_Traits< ::UATM::asirspaceRestrictionsDataReader>
+  struct UATM_Export Objref_Traits< ::UATM::airspaceRestrictionsDataReader>
   {
-    static ::UATM::asirspaceRestrictionsDataReader_ptr duplicate (
-        ::UATM::asirspaceRestrictionsDataReader_ptr p);
+    static ::UATM::airspaceRestrictionsDataReader_ptr duplicate (
+        ::UATM::airspaceRestrictionsDataReader_ptr p);
     static void release (
-        ::UATM::asirspaceRestrictionsDataReader_ptr p);
-    static ::UATM::asirspaceRestrictionsDataReader_ptr nil (void);
+        ::UATM::airspaceRestrictionsDataReader_ptr p);
+    static ::UATM::airspaceRestrictionsDataReader_ptr nil (void);
     static ::CORBA::Boolean marshal (
-        const ::UATM::asirspaceRestrictionsDataReader_ptr p,
+        const ::UATM::airspaceRestrictionsDataReader_ptr p,
         TAO_OutputCDR & cdr);
   };
 

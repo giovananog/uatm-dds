@@ -29,7 +29,7 @@
 #ifdef OPENDDS_IDL_FILE_SPECIFIC
 #  undef OPENDDS_IDL_FILE_SPECIFIC
 #endif
-#define OPENDDS_IDL_FILE_SPECIFIC(base, index) opendds_idl_generated_uatmtypesupportimpl_cpp_0gv2af##_##base##index
+#define OPENDDS_IDL_FILE_SPECIFIC(base, index) opendds_idl_generated_uatmtypesupportimpl_cpp_0igpg6##_##base##index
 
 
 
@@ -55,10 +55,10 @@
 /* End STRUCT-FWD: trafficFlowsInfo */
 
 
-/* Begin STRUCT-FWD: asirspaceRestrictions */
+/* Begin STRUCT-FWD: airspaceRestrictions */
 
 
-/* End STRUCT-FWD: asirspaceRestrictions */
+/* End STRUCT-FWD: airspaceRestrictions */
 
 
 /* Begin STRUCT-FWD: acceptableRoute */
@@ -2798,12 +2798,12 @@ OPENDDS_END_VERSIONED_NAMESPACE_DECL
 
 
 
-/* Begin STRUCT: asirspaceRestrictions */
+/* Begin STRUCT: airspaceRestrictions */
 
 OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS { namespace DCPS {
 
-template<> const XTypes::TypeIdentifier& getMinimalTypeIdentifier<UATM_asirspaceRestrictions_xtag>()
+template<> const XTypes::TypeIdentifier& getMinimalTypeIdentifier<UATM_airspaceRestrictions_xtag>()
 {
   static XTypes::TypeIdentifier ti;
   ACE_GUARD_RETURN(ACE_Thread_Mutex, guard, TheServiceParticipant->get_static_xtypes_lock(), ti);
@@ -2813,7 +2813,7 @@ template<> const XTypes::TypeIdentifier& getMinimalTypeIdentifier<UATM_asirspace
   return ti;
 }
 
-template<> const XTypes::TypeMap& getMinimalTypeMap<UATM_asirspaceRestrictions_xtag>()
+template<> const XTypes::TypeMap& getMinimalTypeMap<UATM_airspaceRestrictions_xtag>()
 {
   return OPENDDS_IDL_FILE_SPECIFIC(get_minimal_type_map, 0)();
 }
@@ -2824,7 +2824,7 @@ OPENDDS_END_VERSIONED_NAMESPACE_DECL
 OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS { namespace DCPS {
 
-bool vread(OpenDDS::DCPS::ValueReader& value_reader,  ::UATM::asirspaceRestrictions& value)
+bool vread(OpenDDS::DCPS::ValueReader& value_reader,  ::UATM::airspaceRestrictions& value)
 {
   ACE_UNUSED_ARG(value_reader);
   ACE_UNUSED_ARG(value);
@@ -2886,7 +2886,7 @@ bool vread(OpenDDS::DCPS::ValueReader& value_reader,  ::UATM::asirspaceRestricti
   return true;
 }
 
-bool vread(OpenDDS::DCPS::ValueReader& value_reader, const NestedKeyOnly< ::UATM::asirspaceRestrictions>& value)
+bool vread(OpenDDS::DCPS::ValueReader& value_reader, const NestedKeyOnly< ::UATM::airspaceRestrictions>& value)
 {
   ACE_UNUSED_ARG(value_reader);
   ACE_UNUSED_ARG(value);
@@ -2954,7 +2954,7 @@ OPENDDS_END_VERSIONED_NAMESPACE_DECL
 OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS { namespace DCPS {
 
-bool vwrite(OpenDDS::DCPS::ValueWriter& value_writer, const  ::UATM::asirspaceRestrictions& value)
+bool vwrite(OpenDDS::DCPS::ValueWriter& value_writer, const  ::UATM::airspaceRestrictions& value)
 {
   ACE_UNUSED_ARG(value_writer);
   ACE_UNUSED_ARG(value);
@@ -3060,7 +3060,7 @@ bool vwrite(OpenDDS::DCPS::ValueWriter& value_writer, const  ::UATM::asirspaceRe
   return value_writer.end_struct();
 }
 
-bool vwrite(OpenDDS::DCPS::ValueWriter& value_writer, const NestedKeyOnly<const  ::UATM::asirspaceRestrictions>& value)
+bool vwrite(OpenDDS::DCPS::ValueWriter& value_writer, const NestedKeyOnly<const  ::UATM::airspaceRestrictions>& value)
 {
   ACE_UNUSED_ARG(value_writer);
   ACE_UNUSED_ARG(value);
@@ -3172,7 +3172,7 @@ OPENDDS_END_VERSIONED_NAMESPACE_DECL
 OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS { namespace DCPS {
 
-template<> void set_default( ::UATM::asirspaceRestrictions& stru)
+template<> void set_default( ::UATM::airspaceRestrictions& stru)
 {
   ACE_UNUSED_ARG(stru);
   stru.restriction_id = 0;
@@ -3183,7 +3183,7 @@ template<> void set_default( ::UATM::asirspaceRestrictions& stru)
   stru.authority = "";
 }
 
-void serialized_size(const Encoding& encoding, size_t& size, const ::UATM::asirspaceRestrictions& stru)
+void serialized_size(const Encoding& encoding, size_t& size, const ::UATM::airspaceRestrictions& stru)
 {
   ACE_UNUSED_ARG(encoding);
   ACE_UNUSED_ARG(size);
@@ -3204,7 +3204,7 @@ void serialized_size(const Encoding& encoding, size_t& size, const ::UATM::asirs
   size += ACE_OS::strlen(stru.authority.in()) + 1;
 }
 
-bool operator<<(Serializer& strm, const ::UATM::asirspaceRestrictions& stru)
+bool operator<<(Serializer& strm, const ::UATM::airspaceRestrictions& stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
@@ -3225,7 +3225,7 @@ bool operator<<(Serializer& strm, const ::UATM::asirspaceRestrictions& stru)
     && (strm << ACE_OutputCDR::from_string(stru.authority.in(), 20));
 }
 
-bool operator>>(Serializer& strm,  ::UATM::asirspaceRestrictions& stru)
+bool operator>>(Serializer& strm,  ::UATM::airspaceRestrictions& stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
@@ -3295,7 +3295,7 @@ bool operator>>(Serializer& strm,  ::UATM::asirspaceRestrictions& stru)
   return true;
 }
 
-void serialized_size(const Encoding& encoding, size_t& size, const NestedKeyOnly<const ::UATM::asirspaceRestrictions>& stru)
+void serialized_size(const Encoding& encoding, size_t& size, const NestedKeyOnly<const ::UATM::airspaceRestrictions>& stru)
 {
   ACE_UNUSED_ARG(encoding);
   ACE_UNUSED_ARG(size);
@@ -3316,7 +3316,7 @@ void serialized_size(const Encoding& encoding, size_t& size, const NestedKeyOnly
   size += ACE_OS::strlen(stru.value.authority.in()) + 1;
 }
 
-bool operator<<(Serializer& strm, const NestedKeyOnly<const ::UATM::asirspaceRestrictions>& stru)
+bool operator<<(Serializer& strm, const NestedKeyOnly<const ::UATM::airspaceRestrictions>& stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
@@ -3337,7 +3337,7 @@ bool operator<<(Serializer& strm, const NestedKeyOnly<const ::UATM::asirspaceRes
     && (strm << ACE_OutputCDR::from_string(stru.value.authority.in(), 20));
 }
 
-bool operator>>(Serializer& strm, const NestedKeyOnly< ::UATM::asirspaceRestrictions>& stru)
+bool operator>>(Serializer& strm, const NestedKeyOnly< ::UATM::airspaceRestrictions>& stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
@@ -3407,7 +3407,7 @@ bool operator>>(Serializer& strm, const NestedKeyOnly< ::UATM::asirspaceRestrict
   return true;
 }
 
-void serialized_size(const Encoding& encoding, size_t& size, const KeyOnly<const  ::UATM::asirspaceRestrictions> stru)
+void serialized_size(const Encoding& encoding, size_t& size, const KeyOnly<const  ::UATM::airspaceRestrictions> stru)
 {
   ACE_UNUSED_ARG(encoding);
   ACE_UNUSED_ARG(size);
@@ -3431,14 +3431,14 @@ void serialized_size(const Encoding& encoding, size_t& size, const KeyOnly<const
   }
 }
 
-bool operator<<(Serializer& strm, KeyOnly<const  ::UATM::asirspaceRestrictions> stru)
+bool operator<<(Serializer& strm, KeyOnly<const  ::UATM::airspaceRestrictions> stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
   return (strm << stru.value.restriction_id);
 }
 
-bool operator>>(Serializer& strm, KeyOnly< ::UATM::asirspaceRestrictions> stru)
+bool operator>>(Serializer& strm, KeyOnly< ::UATM::airspaceRestrictions> stru)
 {
   ACE_UNUSED_ARG(strm);
   ACE_UNUSED_ARG(stru);
@@ -3451,7 +3451,7 @@ OPENDDS_END_VERSIONED_NAMESPACE_DECL
 OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS {
 namespace DCPS {
-bool DDSTraits< ::UATM::asirspaceRestrictions>::is_key(const char* field)
+bool DDSTraits< ::UATM::airspaceRestrictions>::is_key(const char* field)
 {
   ACE_UNUSED_ARG(field);
   if (!ACE_OS::strcmp(field, "restriction_id")) {
@@ -3464,18 +3464,18 @@ bool DDSTraits< ::UATM::asirspaceRestrictions>::is_key(const char* field)
 OPENDDS_END_VERSIONED_NAMESPACE_DECL
 
 namespace UATM {
-::DDS::DataWriter_ptr asirspaceRestrictionsTypeSupportImpl::create_datawriter()
+::DDS::DataWriter_ptr airspaceRestrictionsTypeSupportImpl::create_datawriter()
 {
-  typedef OpenDDS::DCPS::DataWriterImpl_T<asirspaceRestrictions> DataWriterImplType;
+  typedef OpenDDS::DCPS::DataWriterImpl_T<airspaceRestrictions> DataWriterImplType;
   ::DDS::DataWriter_ptr writer_impl = ::DDS::DataWriter::_nil();
   ACE_NEW_NORETURN(writer_impl,
                    DataWriterImplType());
   return writer_impl;
 }
 
-::DDS::DataReader_ptr asirspaceRestrictionsTypeSupportImpl::create_datareader()
+::DDS::DataReader_ptr airspaceRestrictionsTypeSupportImpl::create_datareader()
 {
-  typedef OpenDDS::DCPS::DataReaderImpl_T<asirspaceRestrictions> DataReaderImplType;
+  typedef OpenDDS::DCPS::DataReaderImpl_T<airspaceRestrictions> DataReaderImplType;
   ::DDS::DataReader_ptr reader_impl = ::DDS::DataReader::_nil();
   ACE_NEW_NORETURN(reader_impl,
                    DataReaderImplType());
@@ -3483,10 +3483,10 @@ namespace UATM {
 }
 
 #ifndef OPENDDS_NO_MULTI_TOPIC
-::DDS::DataReader_ptr asirspaceRestrictionsTypeSupportImpl::create_multitopic_datareader()
+::DDS::DataReader_ptr airspaceRestrictionsTypeSupportImpl::create_multitopic_datareader()
 {
-  typedef OpenDDS::DCPS::DataReaderImpl_T<asirspaceRestrictions> DataReaderImplType;
-  typedef OpenDDS::DCPS::MultiTopicDataReader_T<asirspaceRestrictions, DataReaderImplType> MultiTopicDataReaderImplType;
+  typedef OpenDDS::DCPS::DataReaderImpl_T<airspaceRestrictions> DataReaderImplType;
+  typedef OpenDDS::DCPS::MultiTopicDataReader_T<airspaceRestrictions, DataReaderImplType> MultiTopicDataReaderImplType;
   ::DDS::DataReader_ptr multitopic_reader_impl = ::DDS::DataReader::_nil();
   ACE_NEW_NORETURN(multitopic_reader_impl,
                    MultiTopicDataReaderImplType());
@@ -3495,12 +3495,12 @@ namespace UATM {
 #endif /* !OPENDDS_NO_MULTI_TOPIC */
 
 #ifndef OPENDDS_SAFETY_PROFILE
-asirspaceRestrictions* asirspaceRestrictionsTypeSupportImpl::create_sample(::DDS::DynamicData_ptr src)
+airspaceRestrictions* airspaceRestrictionsTypeSupportImpl::create_sample(::DDS::DynamicData_ptr src)
 {
-  asirspaceRestrictions* value = new asirspaceRestrictions;
-  const ::DDS::ReturnCode_t rc = OpenDDS::DCPS::TypeSupportImpl_T<asirspaceRestrictions>::create_sample_rc(*value, src);
+  airspaceRestrictions* value = new airspaceRestrictions;
+  const ::DDS::ReturnCode_t rc = OpenDDS::DCPS::TypeSupportImpl_T<airspaceRestrictions>::create_sample_rc(*value, src);
   if (rc != ::DDS::RETCODE_OK && OpenDDS::DCPS::log_level >= OpenDDS::DCPS::LogLevel::Warning) {
-    ACE_ERROR((LM_WARNING, "(%P|%t) WARNING: asirspaceRestrictionsTypeSupportImpl::create_sample: "
+    ACE_ERROR((LM_WARNING, "(%P|%t) WARNING: airspaceRestrictionsTypeSupportImpl::create_sample: "
       "create_sample_rc failed: %C\n", OpenDDS::DCPS::retcode_to_string(rc)));
   }
   return value;
@@ -3508,39 +3508,39 @@ asirspaceRestrictions* asirspaceRestrictionsTypeSupportImpl::create_sample(::DDS
 #endif
 
 #ifndef OPENDDS_NO_CONTENT_SUBSCRIPTION_PROFILE
-const OpenDDS::DCPS::MetaStruct& asirspaceRestrictionsTypeSupportImpl::getMetaStructForType() const
+const OpenDDS::DCPS::MetaStruct& airspaceRestrictionsTypeSupportImpl::getMetaStructForType() const
 {
-  return OpenDDS::DCPS::getMetaStruct<asirspaceRestrictions>();
+  return OpenDDS::DCPS::getMetaStruct<airspaceRestrictions>();
 }
 #endif /* !OPENDDS_NO_CONTENT_SUBSCRIPTION_PROFILE */
 
 namespace {
-  OpenDDS::DCPS::TypeSupportInitializer<asirspaceRestrictionsTypeSupportImpl> ts_init_UATM_asirspaceRestrictions;
+  OpenDDS::DCPS::TypeSupportInitializer<airspaceRestrictionsTypeSupportImpl> ts_init_UATM_airspaceRestrictions;
 }
 
-const OpenDDS::XTypes::TypeIdentifier& asirspaceRestrictionsTypeSupportImpl::getMinimalTypeIdentifier() const
+const OpenDDS::XTypes::TypeIdentifier& airspaceRestrictionsTypeSupportImpl::getMinimalTypeIdentifier() const
 {
-  return OpenDDS::DCPS::getMinimalTypeIdentifier<OpenDDS::DCPS::UATM_asirspaceRestrictions_xtag>();
+  return OpenDDS::DCPS::getMinimalTypeIdentifier<OpenDDS::DCPS::UATM_airspaceRestrictions_xtag>();
 }
 
-const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getMinimalTypeMap() const
+const OpenDDS::XTypes::TypeMap& airspaceRestrictionsTypeSupportImpl::getMinimalTypeMap() const
 {
-  return OpenDDS::DCPS::getMinimalTypeMap<OpenDDS::DCPS::UATM_asirspaceRestrictions_xtag>();
+  return OpenDDS::DCPS::getMinimalTypeMap<OpenDDS::DCPS::UATM_airspaceRestrictions_xtag>();
 }
 
-const OpenDDS::XTypes::TypeIdentifier& asirspaceRestrictionsTypeSupportImpl::getCompleteTypeIdentifier() const
+const OpenDDS::XTypes::TypeIdentifier& airspaceRestrictionsTypeSupportImpl::getCompleteTypeIdentifier() const
 {
   static OpenDDS::XTypes::TypeIdentifier ti;
   return ti;
 }
 
-const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getCompleteTypeMap() const
+const OpenDDS::XTypes::TypeMap& airspaceRestrictionsTypeSupportImpl::getCompleteTypeMap() const
 {
   static OpenDDS::XTypes::TypeMap tm;
   return tm;
 }
 
-::DDS::ReturnCode_t asirspaceRestrictionsTypeSupportImpl::encode_to_string(const asirspaceRestrictions& in, CORBA::String_out out, OpenDDS::DCPS::RepresentationFormat* format)
+::DDS::ReturnCode_t airspaceRestrictionsTypeSupportImpl::encode_to_string(const airspaceRestrictions& in, CORBA::String_out out, OpenDDS::DCPS::RepresentationFormat* format)
 {
 #if OPENDDS_HAS_JSON_VALUE_WRITER
   OpenDDS::DCPS::JsonRepresentationFormat_var jrf = OpenDDS::DCPS::JsonRepresentationFormat::_narrow(format);
@@ -3562,7 +3562,7 @@ const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getComplet
   return ::DDS::RETCODE_UNSUPPORTED;
 }
 
-::DDS::ReturnCode_t asirspaceRestrictionsTypeSupportImpl::encode_to_bytes(const asirspaceRestrictions& in, ::DDS::OctetSeq_out out, OpenDDS::DCPS::RepresentationFormat* format)
+::DDS::ReturnCode_t airspaceRestrictionsTypeSupportImpl::encode_to_bytes(const airspaceRestrictions& in, ::DDS::OctetSeq_out out, OpenDDS::DCPS::RepresentationFormat* format)
 {
 #if OPENDDS_HAS_JSON_VALUE_WRITER
   OpenDDS::DCPS::JsonRepresentationFormat_var jrf = OpenDDS::DCPS::JsonRepresentationFormat::_narrow(format);
@@ -3588,9 +3588,9 @@ const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getComplet
   return ::DDS::RETCODE_UNSUPPORTED;
 }
 
-::DDS::ReturnCode_t asirspaceRestrictionsTypeSupportImpl::decode_from_string(const char* in, asirspaceRestrictions_out out, OpenDDS::DCPS::RepresentationFormat* format)
+::DDS::ReturnCode_t airspaceRestrictionsTypeSupportImpl::decode_from_string(const char* in, airspaceRestrictions_out out, OpenDDS::DCPS::RepresentationFormat* format)
 {
-  out = new asirspaceRestrictions;
+  out = new airspaceRestrictions;
   OpenDDS::DCPS::set_default(*out);
 #if OPENDDS_HAS_JSON_VALUE_READER
   OpenDDS::DCPS::JsonRepresentationFormat_var jrf = OpenDDS::DCPS::JsonRepresentationFormat::_narrow(format);
@@ -3606,7 +3606,7 @@ const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getComplet
   return ::DDS::RETCODE_UNSUPPORTED;
 }
 
-::DDS::ReturnCode_t asirspaceRestrictionsTypeSupportImpl::decode_from_bytes(const ::DDS::OctetSeq& in, asirspaceRestrictions_out out, OpenDDS::DCPS::RepresentationFormat* format)
+::DDS::ReturnCode_t airspaceRestrictionsTypeSupportImpl::decode_from_bytes(const ::DDS::OctetSeq& in, airspaceRestrictions_out out, OpenDDS::DCPS::RepresentationFormat* format)
 {
 #if OPENDDS_HAS_JSON_VALUE_READER
   OpenDDS::DCPS::JsonRepresentationFormat_var jrf = OpenDDS::DCPS::JsonRepresentationFormat::_narrow(format);
@@ -3617,11 +3617,11 @@ const OpenDDS::XTypes::TypeMap& asirspaceRestrictionsTypeSupportImpl::getComplet
   ACE_UNUSED_ARG(in);
   ACE_UNUSED_ARG(format);
 #endif
-  out = new asirspaceRestrictions();
+  out = new airspaceRestrictions();
   return ::DDS::RETCODE_UNSUPPORTED;
 }
 
-asirspaceRestrictionsTypeSupport::_ptr_type asirspaceRestrictionsTypeSupportImpl::_narrow(CORBA::Object_ptr obj)
+airspaceRestrictionsTypeSupport::_ptr_type airspaceRestrictionsTypeSupportImpl::_narrow(CORBA::Object_ptr obj)
 {
   return TypeSupportType::_narrow(obj);
 }
@@ -3631,8 +3631,8 @@ OPENDDS_BEGIN_VERSIONED_NAMESPACE_DECL
 namespace OpenDDS { namespace DCPS {
 
 template<>
-struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
-  typedef  ::UATM::asirspaceRestrictions T;
+struct MetaStructImpl< ::UATM::airspaceRestrictions> : MetaStruct {
+  typedef  ::UATM::airspaceRestrictions T;
 
 #ifndef OPENDDS_NO_MULTI_TOPIC
   void* allocate() const { return new T; }
@@ -3645,7 +3645,7 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
 
   Value getValue(const void* stru, const char* field) const
   {
-    const ::UATM::asirspaceRestrictions& typed = *static_cast<const ::UATM::asirspaceRestrictions*>(stru);
+    const ::UATM::airspaceRestrictions& typed = *static_cast<const ::UATM::airspaceRestrictions*>(stru);
     ACE_UNUSED_ARG(typed);
     if (std::strcmp(field, "restriction_id") == 0) {
       return typed.restriction_id;
@@ -3665,7 +3665,7 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
     if (std::strcmp(field, "authority") == 0) {
       return typed.authority.in();
     }
-    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::asirspaceRestrictions)");
+    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::airspaceRestrictions)");
   }
 
   Value getValue(Serializer& strm, const char* field, TypeSupportImpl* = 0) const
@@ -3798,7 +3798,7 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
     if (std::strcmp(field, "authority") == 0) {
       return make_field_cmp(&T::authority, next);
     }
-    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::asirspaceRestrictions)");
+    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::airspaceRestrictions)");
   }
 
 #ifndef OPENDDS_NO_MULTI_TOPIC
@@ -3828,7 +3828,7 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
     if (std::strcmp(field, "authority") == 0) {
       return &static_cast<const T*>(stru)->authority;
     }
-    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::asirspaceRestrictions)");
+    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::airspaceRestrictions)");
   }
 
   void assign(void* lhs, const char* field, const void* rhs,
@@ -3863,7 +3863,7 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
       static_cast<T*>(lhs)->authority = *static_cast<const TAO::String_Manager*>(rhsMeta.getRawField(rhs, rhsFieldSpec));
       return;
     }
-    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::asirspaceRestrictions)");
+    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::airspaceRestrictions)");
   }
 
   bool compare(const void* lhs, const void* rhs, const char* field) const
@@ -3889,23 +3889,23 @@ struct MetaStructImpl< ::UATM::asirspaceRestrictions> : MetaStruct {
     if (std::strcmp(field, "authority") == 0) {
       return 0 == ACE_OS::strcmp(static_cast<const T*>(lhs)->authority.in(), static_cast<const T*>(rhs)->authority.in());
     }
-    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::asirspaceRestrictions)");
+    throw std::runtime_error("Field " + OPENDDS_STRING(field) + " not found or its type is not supported (in struct ::UATM::airspaceRestrictions)");
   }
 #endif /* OPENDDS_NO_MULTI_TOPIC */
 
 };
 
 template<>
-const MetaStruct& getMetaStruct< ::UATM::asirspaceRestrictions>()
+const MetaStruct& getMetaStruct< ::UATM::airspaceRestrictions>()
 {
-  static MetaStructImpl< ::UATM::asirspaceRestrictions> msi;
+  static MetaStructImpl< ::UATM::airspaceRestrictions> msi;
   return msi;
 }
 
-bool gen_skip_over(Serializer& ser,  ::UATM::asirspaceRestrictions*)
+bool gen_skip_over(Serializer& ser,  ::UATM::airspaceRestrictions*)
 {
   ACE_UNUSED_ARG(ser);
-  MetaStructImpl< ::UATM::asirspaceRestrictions>().getValue(ser, "");
+  MetaStructImpl< ::UATM::airspaceRestrictions>().getValue(ser, "");
   return true;
 }
 
@@ -3920,15 +3920,15 @@ namespace OpenDDS { namespace XTypes {
 #ifndef OPENDDS_SAFETY_PROFILE
 #if OPENDDS_HAS_DYNAMIC_DATA_ADAPTER
 template <>
-class DynamicDataAdapterImpl< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions > : public DynamicDataAdapter_T< ::UATM::asirspaceRestrictions> {
+class DynamicDataAdapterImpl< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions > : public DynamicDataAdapter_T< ::UATM::airspaceRestrictions> {
 public:
-  DynamicDataAdapterImpl(DDS::DynamicType_ptr type,  ::UATM::asirspaceRestrictions& value)
-    : DynamicDataAdapter_T< ::UATM::asirspaceRestrictions>(type, value)
+  DynamicDataAdapterImpl(DDS::DynamicType_ptr type,  ::UATM::airspaceRestrictions& value)
+    : DynamicDataAdapter_T< ::UATM::airspaceRestrictions>(type, value)
   {
   }
 
-  DynamicDataAdapterImpl(DDS::DynamicType_ptr type, const  ::UATM::asirspaceRestrictions& value)
-    : DynamicDataAdapter_T< ::UATM::asirspaceRestrictions>(type, value)
+  DynamicDataAdapterImpl(DDS::DynamicType_ptr type, const  ::UATM::airspaceRestrictions& value)
+    : DynamicDataAdapter_T< ::UATM::airspaceRestrictions>(type, value)
   {
   }
 
@@ -3952,7 +3952,7 @@ public:
     if (ext == Sample::Full) {
       DCPS::serialized_size(enc, size, value_);
     } else if (ext == Sample::NestedKeyOnly) {
-      const NestedKeyOnly<const  ::UATM::asirspaceRestrictions> nested_key_only(value_);
+      const NestedKeyOnly<const  ::UATM::airspaceRestrictions> nested_key_only(value_);
       DCPS::serialized_size(enc, size, nested_key_only);
     } else {
       return false; // Non-topic type
@@ -3966,7 +3966,7 @@ public:
     if (ext == Sample::Full) {
       return ser << value_;
     } else if (ext == Sample::NestedKeyOnly) {
-      NestedKeyOnly<const  ::UATM::asirspaceRestrictions> nested_key_only(value_);
+      NestedKeyOnly<const  ::UATM::airspaceRestrictions> nested_key_only(value_);
       return ser << nested_key_only;
     } else {
       return false; // Non-topic type
@@ -4046,11 +4046,11 @@ protected:
 #endif // if OPENDDS_HAS_DYNAMIC_DATA_ADAPTER
 
 template <>
-DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions>(DDS::DynamicType_ptr type, const  ::UATM::asirspaceRestrictions& value)
+DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions>(DDS::DynamicType_ptr type, const  ::UATM::airspaceRestrictions& value)
 {
 #  if OPENDDS_HAS_DYNAMIC_DATA_ADAPTER
   if (type) {
-    return new DynamicDataAdapterImpl< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions>(type, value);
+    return new DynamicDataAdapterImpl< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions>(type, value);
   }
 #  else
   ACE_UNUSED_ARG(type);
@@ -4060,11 +4060,11 @@ DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::asirspaceRestrictions,  :
 }
 
 template <>
-DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions>(DDS::DynamicType_ptr type,  ::UATM::asirspaceRestrictions& value)
+DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions>(DDS::DynamicType_ptr type,  ::UATM::airspaceRestrictions& value)
 {
 #  if OPENDDS_HAS_DYNAMIC_DATA_ADAPTER
   if (type) {
-    return new DynamicDataAdapterImpl< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions>(type, value);
+    return new DynamicDataAdapterImpl< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions>(type, value);
   }
 #  else
   ACE_UNUSED_ARG(type);
@@ -4074,11 +4074,11 @@ DDS::DynamicData_ptr get_dynamic_data_adapter< ::UATM::asirspaceRestrictions,  :
 }
 
 template <>
-const  ::UATM::asirspaceRestrictions* get_dynamic_data_adapter_value< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions>(DDS::DynamicData_ptr dd)
+const  ::UATM::airspaceRestrictions* get_dynamic_data_adapter_value< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions>(DDS::DynamicData_ptr dd)
 {
   ACE_UNUSED_ARG(dd);
 #  if OPENDDS_HAS_DYNAMIC_DATA_ADAPTER
-  typedef DynamicDataAdapterImpl< ::UATM::asirspaceRestrictions,  ::UATM::asirspaceRestrictions> Dda;
+  typedef DynamicDataAdapterImpl< ::UATM::airspaceRestrictions,  ::UATM::airspaceRestrictions> Dda;
   const Dda* const dda = dynamic_cast<Dda*>(dd);
   if (dda) {
     return &dda->wrapped();
@@ -4092,7 +4092,7 @@ const  ::UATM::asirspaceRestrictions* get_dynamic_data_adapter_value< ::UATM::as
 OPENDDS_END_VERSIONED_NAMESPACE_DECL
 
 
-/* End STRUCT: asirspaceRestrictions */
+/* End STRUCT: airspaceRestrictions */
 
 /* End MODULE: UATM */
 

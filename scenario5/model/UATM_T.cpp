@@ -89,9 +89,9 @@ Elements::Data::registerType(
       }
       break;
 
-    case Types::asirspaceRestrictions:
+    case Types::airspaceRestrictions:
       {
-        typedef ::UATM::asirspaceRestrictionsTypeSupportImpl TypeSupport;
+        typedef ::UATM::airspaceRestrictionsTypeSupportImpl TypeSupport;
 
         TypeSupport* typeSupport = new TypeSupport();
         if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
@@ -212,10 +212,10 @@ Elements::Data::loadMaps()
 
   this->types_[ Topics::UATM__uatmDCPS__trafficFlowsInfo] = Types::trafficFlowsInfo;
   this->types_[ Topics::UATM__uatmDCPS__weatherInfo] = Types::weatherInfo;
-  this->types_[ Topics::UATM__uatmDCPS__airspaceRestrictions] = Types::asirspaceRestrictions;
+  this->types_[ Topics::UATM__uatmDCPS__airspaceRestrictions] = Types::airspaceRestrictions;
   this->types_[ Topics::UATM__uatmDCPS__acceptableRoute] = Types::acceptableRoute;
 
-  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__acceptableRoute;
+  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::UATM__uatmDCPS__acceptableRoute;
   this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__airspaceRestrictions;
   this->writerTopics_[ DataWriters::weatherInfoDW_WTR] = Topics::UATM__uatmDCPS__weatherInfo;

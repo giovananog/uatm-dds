@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -17,35 +15,37 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_weather = model.writer(Elements::DataWriters::tolPadAvailabilityDW_TP);
-    UATM::weatherInfoDataWriter_var writer_weather_var = UATM::weatherInfoDataWriter::_narrow(writer_weather.in());
+    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::weatherInfoDW_WTR);
 
-    if (CORBA::is_nil(writer_weather_var.in())) {
+    UATM::weatherInfoDataWriter_var writer_var = UATM::weatherInfoDataWriter::_narrow(writer.in());
+
+    if (CORBA::is_nil(writer_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
     }
 
-    OpenDDS::Model::WriterSync ws(writer_weather);
+    OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::weatherInfo wi;
+      UATM::weatherInfo fr;
 
       // Populate message and send
-      wi.weather_id = 23;
-      wi.location = "22";
-      wi.temperature = 2.5;
-      wi.wind_speed = 1.1;
-      wi.weather_condition = "true";
-      wi.observation_time = "true";
+      fr.weather_id = 23;
+      fr.location = "location";
+      fr.temperature = 70.9;
+      fr.wind_speed = 7.9;
+      fr.weather_condition = "32323";
+      fr.observation_time = "true";
 
-      DDS::ReturnCode_t error = writer_weather_var->write(wi, DDS::HANDLE_NIL);
+      DDS::ReturnCode_t error = writer_var->write(fr, DDS::HANDLE_NIL);
 
       if (error != DDS::RETCODE_OK) {
           ACE_ERROR((LM_ERROR,
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
+                     ACE_TEXT(" wribte returned %d!\n"), error));
       }
+    }
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
     return -1;

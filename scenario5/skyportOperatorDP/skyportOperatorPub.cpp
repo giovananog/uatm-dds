@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
+#include "../model/UATMTraits.h"
 
 #include <model/Sync.h>
 
@@ -14,11 +14,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   {
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_rest = model.writer(Elements::DataWriters::airspaceRestDW_SKO);
-    UATM::trafficFlowsInfoDataWriter_var writer_rest_var = UATM::trafficFlowsInfoDataWriter::_narrow(writer.in());
+    DDS::DataWriter_var writer_flows = model.writer(Elements::DataWriters::trafficFlowsDW_SKO);
+    UATM::trafficFlowsInfoDataWriter_var writer_flows_var = UATM::trafficFlowsInfoDataWriter::_narrow(writer_flows.in());
 
     if (CORBA::is_nil(writer_flows_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -45,9 +46,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
+    }
     
-    DDS::DataWriter_var writer_rest = model.writer(Elements::DataWriters::airspaceRestDW_SKO);
-    UATM::asirspaceRestrictionsDataWriter_var writer_rest_var = UATM::asirspaceRestrictionsDataWriter::_narrow(writer.in());
+    DDS::DataWriter_var writer_rest = model2.writer(Elements::DataWriters::airspaceRestDW_SKO);
+    UATM::airspaceRestrictionsDataWriter_var writer_rest_var = UATM::airspaceRestrictionsDataWriter::_narrow(writer_rest.in());
 
     if (CORBA::is_nil(writer_rest_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -55,18 +57,17 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
       }
-    }
 
-    OpenDDS::Model::WriterSync ws(writer_rest);
+    OpenDDS::Model::WriterSync ws2(writer_rest);
     {
-      UATM::asirspaceRestrictions fr;
+      UATM::airspaceRestrictions fr;
 
-      fc.restriction_id = 23;
-      fc.area = "22";
-      fc.restriction_type = "343434";
-      fc.start_time = "343434";
-      fc.end_time = "343434";
-      fc.authority = "343434";
+      fr.restriction_id = 23;
+      fr.area = "22";
+      fr.restriction_type = "343434";
+      fr.start_time = "343434";
+      fr.end_time = "343434";
+      fr.authority = "343434";
 
       DDS::ReturnCode_t error = writer_rest_var->write(fr, DDS::HANDLE_NIL);
 

@@ -821,31 +821,31 @@ UATM::trafficFlowsInfoDataReader::marshal (TAO_OutputCDR & /* cdr */)
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
-// Traits specializations for UATM::asirspaceRestrictionsTypeSupport.
+// Traits specializations for UATM::airspaceRestrictionsTypeSupport.
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsTypeSupport>::duplicate (
-    UATM::asirspaceRestrictionsTypeSupport_ptr p)
+UATM::airspaceRestrictionsTypeSupport_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsTypeSupport>::duplicate (
+    UATM::airspaceRestrictionsTypeSupport_ptr p)
 {
-  return UATM::asirspaceRestrictionsTypeSupport::_duplicate (p);
+  return UATM::airspaceRestrictionsTypeSupport::_duplicate (p);
 }
 
 void
-TAO::Objref_Traits<UATM::asirspaceRestrictionsTypeSupport>::release (
-    UATM::asirspaceRestrictionsTypeSupport_ptr p)
+TAO::Objref_Traits<UATM::airspaceRestrictionsTypeSupport>::release (
+    UATM::airspaceRestrictionsTypeSupport_ptr p)
 {
   ::CORBA::release (p);
 }
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsTypeSupport>::nil (void)
+UATM::airspaceRestrictionsTypeSupport_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsTypeSupport>::nil (void)
 {
-  return UATM::asirspaceRestrictionsTypeSupport::_nil ();
+  return UATM::airspaceRestrictionsTypeSupport::_nil ();
 }
 
 ::CORBA::Boolean
-TAO::Objref_Traits<UATM::asirspaceRestrictionsTypeSupport>::marshal (
-    const UATM::asirspaceRestrictionsTypeSupport_ptr p,
+TAO::Objref_Traits<UATM::airspaceRestrictionsTypeSupport>::marshal (
+    const UATM::airspaceRestrictionsTypeSupport_ptr p,
     TAO_OutputCDR & cdr)
 {
   return ::CORBA::Object::marshal (p, cdr);
@@ -855,37 +855,37 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 
-UATM::asirspaceRestrictionsTypeSupport::asirspaceRestrictionsTypeSupport (void)
+UATM::airspaceRestrictionsTypeSupport::airspaceRestrictionsTypeSupport (void)
 {}
 
-UATM::asirspaceRestrictionsTypeSupport::~asirspaceRestrictionsTypeSupport (void)
+UATM::airspaceRestrictionsTypeSupport::~airspaceRestrictionsTypeSupport (void)
 {
 }
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-UATM::asirspaceRestrictionsTypeSupport::_narrow (
+UATM::airspaceRestrictionsTypeSupport_ptr
+UATM::airspaceRestrictionsTypeSupport::_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsTypeSupport::_duplicate (
-      dynamic_cast<asirspaceRestrictionsTypeSupport_ptr> (_tao_objref));
+  return airspaceRestrictionsTypeSupport::_duplicate (
+      dynamic_cast<airspaceRestrictionsTypeSupport_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-UATM::asirspaceRestrictionsTypeSupport::_unchecked_narrow (
+UATM::airspaceRestrictionsTypeSupport_ptr
+UATM::airspaceRestrictionsTypeSupport::_unchecked_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsTypeSupport::_duplicate (
-      dynamic_cast<asirspaceRestrictionsTypeSupport_ptr> (_tao_objref));
+  return airspaceRestrictionsTypeSupport::_duplicate (
+      dynamic_cast<airspaceRestrictionsTypeSupport_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-UATM::asirspaceRestrictionsTypeSupport::_nil (void)
+UATM::airspaceRestrictionsTypeSupport_ptr
+UATM::airspaceRestrictionsTypeSupport::_nil (void)
 {
   return 0;
 }
 
-UATM::asirspaceRestrictionsTypeSupport_ptr
-UATM::asirspaceRestrictionsTypeSupport::_duplicate (asirspaceRestrictionsTypeSupport_ptr obj)
+UATM::airspaceRestrictionsTypeSupport_ptr
+UATM::airspaceRestrictionsTypeSupport::_duplicate (airspaceRestrictionsTypeSupport_ptr obj)
 {
   if (! ::CORBA::is_nil (obj))
     {
@@ -895,13 +895,13 @@ UATM::asirspaceRestrictionsTypeSupport::_duplicate (asirspaceRestrictionsTypeSup
 }
 
 void
-UATM::asirspaceRestrictionsTypeSupport::_tao_release (asirspaceRestrictionsTypeSupport_ptr obj)
+UATM::airspaceRestrictionsTypeSupport::_tao_release (airspaceRestrictionsTypeSupport_ptr obj)
 {
   ::CORBA::release (obj);
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsTypeSupport::_is_a (const char *value)
+UATM::airspaceRestrictionsTypeSupport::_is_a (const char *value)
 {
   if (
       ACE_OS::strcmp (
@@ -914,7 +914,7 @@ UATM::asirspaceRestrictionsTypeSupport::_is_a (const char *value)
         ) == 0 ||
       ACE_OS::strcmp (
           value,
-          "IDL:UATM/asirspaceRestrictionsTypeSupport:1.0"
+          "IDL:UATM/airspaceRestrictionsTypeSupport:1.0"
         ) == 0 ||
       ACE_OS::strcmp (
           value,
@@ -934,13 +934,13 @@ UATM::asirspaceRestrictionsTypeSupport::_is_a (const char *value)
     }
 }
 
-const char* UATM::asirspaceRestrictionsTypeSupport::_interface_repository_id (void) const
+const char* UATM::airspaceRestrictionsTypeSupport::_interface_repository_id (void) const
 {
-  return "IDL:UATM/asirspaceRestrictionsTypeSupport:1.0";
+  return "IDL:UATM/airspaceRestrictionsTypeSupport:1.0";
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsTypeSupport::marshal (TAO_OutputCDR & /* cdr */)
+UATM::airspaceRestrictionsTypeSupport::marshal (TAO_OutputCDR & /* cdr */)
 {
   return false;
 }
@@ -950,31 +950,31 @@ UATM::asirspaceRestrictionsTypeSupport::marshal (TAO_OutputCDR & /* cdr */)
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
-// Traits specializations for UATM::asirspaceRestrictionsDataWriter.
+// Traits specializations for UATM::airspaceRestrictionsDataWriter.
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataWriter>::duplicate (
-    UATM::asirspaceRestrictionsDataWriter_ptr p)
+UATM::airspaceRestrictionsDataWriter_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataWriter>::duplicate (
+    UATM::airspaceRestrictionsDataWriter_ptr p)
 {
-  return UATM::asirspaceRestrictionsDataWriter::_duplicate (p);
+  return UATM::airspaceRestrictionsDataWriter::_duplicate (p);
 }
 
 void
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataWriter>::release (
-    UATM::asirspaceRestrictionsDataWriter_ptr p)
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataWriter>::release (
+    UATM::airspaceRestrictionsDataWriter_ptr p)
 {
   ::CORBA::release (p);
 }
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataWriter>::nil (void)
+UATM::airspaceRestrictionsDataWriter_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataWriter>::nil (void)
 {
-  return UATM::asirspaceRestrictionsDataWriter::_nil ();
+  return UATM::airspaceRestrictionsDataWriter::_nil ();
 }
 
 ::CORBA::Boolean
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataWriter>::marshal (
-    const UATM::asirspaceRestrictionsDataWriter_ptr p,
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataWriter>::marshal (
+    const UATM::airspaceRestrictionsDataWriter_ptr p,
     TAO_OutputCDR & cdr)
 {
   return ::CORBA::Object::marshal (p, cdr);
@@ -984,37 +984,37 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 
-UATM::asirspaceRestrictionsDataWriter::asirspaceRestrictionsDataWriter (void)
+UATM::airspaceRestrictionsDataWriter::airspaceRestrictionsDataWriter (void)
 {}
 
-UATM::asirspaceRestrictionsDataWriter::~asirspaceRestrictionsDataWriter (void)
+UATM::airspaceRestrictionsDataWriter::~airspaceRestrictionsDataWriter (void)
 {
 }
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-UATM::asirspaceRestrictionsDataWriter::_narrow (
+UATM::airspaceRestrictionsDataWriter_ptr
+UATM::airspaceRestrictionsDataWriter::_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsDataWriter::_duplicate (
-      dynamic_cast<asirspaceRestrictionsDataWriter_ptr> (_tao_objref));
+  return airspaceRestrictionsDataWriter::_duplicate (
+      dynamic_cast<airspaceRestrictionsDataWriter_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-UATM::asirspaceRestrictionsDataWriter::_unchecked_narrow (
+UATM::airspaceRestrictionsDataWriter_ptr
+UATM::airspaceRestrictionsDataWriter::_unchecked_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsDataWriter::_duplicate (
-      dynamic_cast<asirspaceRestrictionsDataWriter_ptr> (_tao_objref));
+  return airspaceRestrictionsDataWriter::_duplicate (
+      dynamic_cast<airspaceRestrictionsDataWriter_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-UATM::asirspaceRestrictionsDataWriter::_nil (void)
+UATM::airspaceRestrictionsDataWriter_ptr
+UATM::airspaceRestrictionsDataWriter::_nil (void)
 {
   return 0;
 }
 
-UATM::asirspaceRestrictionsDataWriter_ptr
-UATM::asirspaceRestrictionsDataWriter::_duplicate (asirspaceRestrictionsDataWriter_ptr obj)
+UATM::airspaceRestrictionsDataWriter_ptr
+UATM::airspaceRestrictionsDataWriter::_duplicate (airspaceRestrictionsDataWriter_ptr obj)
 {
   if (! ::CORBA::is_nil (obj))
     {
@@ -1024,13 +1024,13 @@ UATM::asirspaceRestrictionsDataWriter::_duplicate (asirspaceRestrictionsDataWrit
 }
 
 void
-UATM::asirspaceRestrictionsDataWriter::_tao_release (asirspaceRestrictionsDataWriter_ptr obj)
+UATM::airspaceRestrictionsDataWriter::_tao_release (airspaceRestrictionsDataWriter_ptr obj)
 {
   ::CORBA::release (obj);
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsDataWriter::_is_a (const char *value)
+UATM::airspaceRestrictionsDataWriter::_is_a (const char *value)
 {
   if (
       ACE_OS::strcmp (
@@ -1043,7 +1043,7 @@ UATM::asirspaceRestrictionsDataWriter::_is_a (const char *value)
         ) == 0 ||
       ACE_OS::strcmp (
           value,
-          "IDL:UATM/asirspaceRestrictionsDataWriter:1.0"
+          "IDL:UATM/airspaceRestrictionsDataWriter:1.0"
         ) == 0 ||
       ACE_OS::strcmp (
           value,
@@ -1063,13 +1063,13 @@ UATM::asirspaceRestrictionsDataWriter::_is_a (const char *value)
     }
 }
 
-const char* UATM::asirspaceRestrictionsDataWriter::_interface_repository_id (void) const
+const char* UATM::airspaceRestrictionsDataWriter::_interface_repository_id (void) const
 {
-  return "IDL:UATM/asirspaceRestrictionsDataWriter:1.0";
+  return "IDL:UATM/airspaceRestrictionsDataWriter:1.0";
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsDataWriter::marshal (TAO_OutputCDR & /* cdr */)
+UATM::airspaceRestrictionsDataWriter::marshal (TAO_OutputCDR & /* cdr */)
 {
   return false;
 }
@@ -1079,31 +1079,31 @@ UATM::asirspaceRestrictionsDataWriter::marshal (TAO_OutputCDR & /* cdr */)
 
 TAO_BEGIN_VERSIONED_NAMESPACE_DECL
 
-// Traits specializations for UATM::asirspaceRestrictionsDataReader.
+// Traits specializations for UATM::airspaceRestrictionsDataReader.
 
-UATM::asirspaceRestrictionsDataReader_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataReader>::duplicate (
-    UATM::asirspaceRestrictionsDataReader_ptr p)
+UATM::airspaceRestrictionsDataReader_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataReader>::duplicate (
+    UATM::airspaceRestrictionsDataReader_ptr p)
 {
-  return UATM::asirspaceRestrictionsDataReader::_duplicate (p);
+  return UATM::airspaceRestrictionsDataReader::_duplicate (p);
 }
 
 void
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataReader>::release (
-    UATM::asirspaceRestrictionsDataReader_ptr p)
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataReader>::release (
+    UATM::airspaceRestrictionsDataReader_ptr p)
 {
   ::CORBA::release (p);
 }
 
-UATM::asirspaceRestrictionsDataReader_ptr
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataReader>::nil (void)
+UATM::airspaceRestrictionsDataReader_ptr
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataReader>::nil (void)
 {
-  return UATM::asirspaceRestrictionsDataReader::_nil ();
+  return UATM::airspaceRestrictionsDataReader::_nil ();
 }
 
 ::CORBA::Boolean
-TAO::Objref_Traits<UATM::asirspaceRestrictionsDataReader>::marshal (
-    const UATM::asirspaceRestrictionsDataReader_ptr p,
+TAO::Objref_Traits<UATM::airspaceRestrictionsDataReader>::marshal (
+    const UATM::airspaceRestrictionsDataReader_ptr p,
     TAO_OutputCDR & cdr)
 {
   return ::CORBA::Object::marshal (p, cdr);
@@ -1113,37 +1113,37 @@ TAO_END_VERSIONED_NAMESPACE_DECL
 
 
 
-UATM::asirspaceRestrictionsDataReader::asirspaceRestrictionsDataReader (void)
+UATM::airspaceRestrictionsDataReader::airspaceRestrictionsDataReader (void)
 {}
 
-UATM::asirspaceRestrictionsDataReader::~asirspaceRestrictionsDataReader (void)
+UATM::airspaceRestrictionsDataReader::~airspaceRestrictionsDataReader (void)
 {
 }
 
-UATM::asirspaceRestrictionsDataReader_ptr
-UATM::asirspaceRestrictionsDataReader::_narrow (
+UATM::airspaceRestrictionsDataReader_ptr
+UATM::airspaceRestrictionsDataReader::_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsDataReader::_duplicate (
-      dynamic_cast<asirspaceRestrictionsDataReader_ptr> (_tao_objref));
+  return airspaceRestrictionsDataReader::_duplicate (
+      dynamic_cast<airspaceRestrictionsDataReader_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsDataReader_ptr
-UATM::asirspaceRestrictionsDataReader::_unchecked_narrow (
+UATM::airspaceRestrictionsDataReader_ptr
+UATM::airspaceRestrictionsDataReader::_unchecked_narrow (
     ::CORBA::Object_ptr _tao_objref)
 {
-  return asirspaceRestrictionsDataReader::_duplicate (
-      dynamic_cast<asirspaceRestrictionsDataReader_ptr> (_tao_objref));
+  return airspaceRestrictionsDataReader::_duplicate (
+      dynamic_cast<airspaceRestrictionsDataReader_ptr> (_tao_objref));
 }
 
-UATM::asirspaceRestrictionsDataReader_ptr
-UATM::asirspaceRestrictionsDataReader::_nil (void)
+UATM::airspaceRestrictionsDataReader_ptr
+UATM::airspaceRestrictionsDataReader::_nil (void)
 {
   return 0;
 }
 
-UATM::asirspaceRestrictionsDataReader_ptr
-UATM::asirspaceRestrictionsDataReader::_duplicate (asirspaceRestrictionsDataReader_ptr obj)
+UATM::airspaceRestrictionsDataReader_ptr
+UATM::airspaceRestrictionsDataReader::_duplicate (airspaceRestrictionsDataReader_ptr obj)
 {
   if (! ::CORBA::is_nil (obj))
     {
@@ -1153,13 +1153,13 @@ UATM::asirspaceRestrictionsDataReader::_duplicate (asirspaceRestrictionsDataRead
 }
 
 void
-UATM::asirspaceRestrictionsDataReader::_tao_release (asirspaceRestrictionsDataReader_ptr obj)
+UATM::airspaceRestrictionsDataReader::_tao_release (airspaceRestrictionsDataReader_ptr obj)
 {
   ::CORBA::release (obj);
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsDataReader::_is_a (const char *value)
+UATM::airspaceRestrictionsDataReader::_is_a (const char *value)
 {
   if (
       ACE_OS::strcmp (
@@ -1176,7 +1176,7 @@ UATM::asirspaceRestrictionsDataReader::_is_a (const char *value)
         ) == 0 ||
       ACE_OS::strcmp (
           value,
-          "IDL:UATM/asirspaceRestrictionsDataReader:1.0"
+          "IDL:UATM/airspaceRestrictionsDataReader:1.0"
         ) == 0 ||
       ACE_OS::strcmp (
           value,
@@ -1196,13 +1196,13 @@ UATM::asirspaceRestrictionsDataReader::_is_a (const char *value)
     }
 }
 
-const char* UATM::asirspaceRestrictionsDataReader::_interface_repository_id (void) const
+const char* UATM::airspaceRestrictionsDataReader::_interface_repository_id (void) const
 {
-  return "IDL:UATM/asirspaceRestrictionsDataReader:1.0";
+  return "IDL:UATM/airspaceRestrictionsDataReader:1.0";
 }
 
 ::CORBA::Boolean
-UATM::asirspaceRestrictionsDataReader::marshal (TAO_OutputCDR & /* cdr */)
+UATM::airspaceRestrictionsDataReader::marshal (TAO_OutputCDR & /* cdr */)
 {
   return false;
 }
