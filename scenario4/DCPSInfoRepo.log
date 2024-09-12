@@ -1,0 +1,32 @@
+TAO (18320|14972) - Default_Resource_Factory - codeset manager=000002290569CAD0
+TAO (18320|14972) - Loaded default protocol <IIOP_Factory>
+TAO (18320|14972) - IIOP_Connection_Handler::open, IIOP connection to peer <10.254.228.230:60181> on [672]
+(18320|14972) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "10.254.228.230" as fully qualified hostname, please correct system configuration.
+TAO (18320|14972) - IIOP_Connection_Handler::open, IIOP connection to peer <10.254.228.230:60190> on [964]
+TAO (18320|14972) - IIOP_Connection_Handler::open, IIOP connection to peer <10.254.228.230:60196> on [968]
+TAO (18320|14972) - IIOP_Connection_Handler::open, IIOP connection to peer <10.254.228.230:60200> on [824]
+TAO (18320|14972) - IIOP_Connection_Handler::process_listen_point_list, Listening port [60189] on [10.254.228.230]
+TAO (18320|14972) - IIOP_Connection_Handler::process_listen_point_list, Listening port [60180] on [10.254.228.230]
+TAO (18320|14972) - IIOP_Connection_Handler::process_listen_point_list, Listening port [60195] on [10.254.228.230]
+TAO (18320|14972) - IIOP_Connection_Handler::process_listen_point_list, Listening port [60199] on [10.254.228.230]
+(18320|18608) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(18320|18608) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 10.254.228.230:60211.
+TAO (18320|14972) - Transport[964]::handle_input, error parsing incoming message
+TAO (18320|14972) - Connection_Handler[964]::close_connection_eh, purging entry from cache
+TAO (18320|14972) - Connection_Handler[964]::close_connection_eh, removing from the reactor
+TAO (18320|14972) - Connection_Handler[964]::close_connection_eh, cancel all timers
+TAO (18320|14972) - Connection_Handler[964]::close_connection_eh end
+TAO (18320|14972) - Transport[824]::handle_input, error parsing incoming message
+TAO (18320|14972) - Connection_Handler[824]::close_connection_eh, purging entry from cache
+TAO (18320|14972) - Connection_Handler[824]::close_connection_eh, removing from the reactor
+TAO (18320|14972) - Connection_Handler[824]::close_connection_eh, cancel all timers
+TAO (18320|14972) - Connection_Handler[824]::close_connection_eh end
+(18320|18608) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(18320|18608) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 10.254.228.230:60210.
+TAO (18320|14972) - Transport[968]::handle_input, error parsing incoming message
+TAO (18320|14972) - Connection_Handler[968]::close_connection_eh, purging entry from cache
+TAO (18320|14972) - Connection_Handler[968]::close_connection_eh, removing from the reactor
+TAO (18320|14972) - Connection_Handler[968]::close_connection_eh, cancel all timers
+TAO (18320|14972) - Connection_Handler[968]::close_connection_eh end
+(18320|18608) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(18320|18608) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 10.254.228.230:60212.

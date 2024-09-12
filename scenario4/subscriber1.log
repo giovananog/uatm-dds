@@ -1,0 +1,119 @@
+2024-09-12 13:03:50.799@LM_INFO@(18972|768) INFO: set_DCPS_debug_level: set to 4
+2024-09-12 13:03:50.803@LM_INFO@(18972|768) INFO: ConfigStoreImpl::set_string: COMMON_DCPS_TRANSPORT_DEBUG_LEVEL=2
+2024-09-12 13:03:50.815@LM_INFO@(18972|768) Service_Participant::get_domain_participant_factory: This is OpenDDS 3.29.1 using ACE 6.5.21
+2024-09-12 13:03:50.815@LM_INFO@(18972|768) Service_Participant::get_domain_participant_factory: log_level: debug DCPS_debug_level: 4
+2024-09-12 13:03:50.844@LM_INFO@(18972|768) Service_Participant::get_domain_participant_factory: machine: LAPTOP-NQKUMCC4, x64 6 platform: Win32, Windows NT 6.2, Build 9200 
+2024-09-12 13:03:50.847@LM_INFO@(18972|768) Service_Participant::get_domain_participant_factory: compiler: Visual C++ version 13.40.0
+2024-09-12 13:03:50.847@LM_NOTICE@(18972|768) NOTICE: Service_Participant::intializeScheduling() - no scheduling policy specified, not setting policy.
+2024-09-12 13:03:50.865@LM_DEBUG@(18972|768) Service_Participant::get_domain_participant_factory: Creating DefaultNetworkConfigMonitor
+2024-09-12 13:03:50.865@LM_DEBUG@(18972|768) Config::Config() - processing argument: model\.\subscriber1.EXE.
+2024-09-12 13:03:50.865@LM_INFO@(18972|768) INFO: ConfigStoreImpl::set: REPOSITORY_DEFAULT_REPO=@DEFAULT_REPO
+2024-09-12 13:03:50.865@LM_DEBUG@(18972|768) Service_Participant::set_repo_ior: Repo[DEFAULT_REPO] == file://repo.ior
+2024-09-12 13:03:50.907@LM_DEBUG@TAO (18972|768) - Default_Resource_Factory - codeset manager=0000018AC76B9360
+2024-09-12 13:03:50.907@LM_DEBUG@TAO (18972|768) - Loaded default protocol <IIOP_Factory>
+2024-09-12 13:03:50.910@LM_DEBUG@TAO (18972|768) - IIOP_Connection_Handler::open, IIOP connection to peer <10.254.228.230:60171> on [720]
+2024-09-12 13:03:50.980@LM_DEBUG@(18972|768) DomainParticipantImpl::enable: enabled participant 01030000.00004242.00000002.000001c1(b63ddca6) in domain 0
+2024-09-12 13:03:50.981@LM_INFO@(18972|768) INFO: ConfigStoreImpl::set: TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO_DATALINK_RELEASE_DELAY=0
+2024-09-12 13:03:50.981@LM_INFO@(18972|768) INFO: ConfigStoreImpl::set: TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO_LOCAL_ADDRESS=:0
+2024-09-12 13:03:50.981@LM_INFO@(18972|768) InfoRepoDiscovery::bit_config - BIT tcp transport :0
+2024-09-12 13:03:50.989@LM_DEBUG@(18972|768) DDS::ParticipantBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow c77229f0 with 20 chunks
+2024-09-12 13:03:50.989@LM_DEBUG@(18972|768) DataReaderImpl::enable Cached_Allocator_With_Overflow c7722e00 with 20 chunks
+2024-09-12 13:03:50.998@LM_WARNING@(18972|768) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "10.254.228.230" as fully qualified hostname, please correct system configuration.
+2024-09-12 13:03:51.000@LM_DEBUG@(18972|768) TransportImpl::open()
+   transport_type:               tcp
+   name:                         _OPENDDS__BITTCPTransportInst_DEFAULT_REPO
+   config_prefix:                TRANSPORT_OPENDDS_BITTCP_TRANSPORT_INST_DEFAULT_REPO
+   max_packet_size:              2147481599
+   max_samples_per_packet:       10
+   optimum_packet_size:          4096
+   thread_per_connection:        false
+   datalink_release_delay:       0
+   datalink_control_chunks:      32
+   fragment_reassembly_timeout:  5:00.000
+   receive_preallocated_message_blocks:0
+   receive_preallocated_data_blocks:0
+   local_address:                :0
+   pub_address:                  
+   enable_nagle_algorithm:       false
+   conn_retry_initial_delay:     500
+   conn_retry_backoff_multiplier:2
+   conn_retry_attempts:          3
+   passive_reconnect_duration:   2000
+   max_output_pause_period:      -1
+   active_conn_timeout_period:   5000
+2024-09-12 13:03:51.000@LM_DEBUG@(18972|768) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-12 13:03:51.021@LM_DEBUG@(18972|16444) DataReaderImpl::add_association - bit 1 local 01030000.00004242.00000002.000001c7(5f5e7993) remote 01030000.00004242.00000001.000001c2(6894f7cc)
+2024-09-12 13:03:51.021@LM_DEBUG@(18972|768) DataReaderImpl::enable: got GUID 01030000.00004242.00000002.000001c7(5f5e7993), subscribed to topic name "DCPSParticipant" type "PARTICIPANT_BUILT_IN_TOPIC_TYPE"
+2024-09-12 13:03:51.021@LM_DEBUG@(18972|768) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSParticipant) enabled
+2024-09-12 13:03:51.021@LM_DEBUG@(18972|16444) TransportClient::associate added PendingAssoc between 01030000.00004242.00000002.000001c7(5f5e7993) and remote 01030000.00004242.00000001.000001c2(6894f7cc)
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|768) DDS::TopicBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow c92a4bf0 with 20 chunks
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|768) DataReaderImpl::enable Cached_Allocator_With_Overflow c92a4090 with 20 chunks
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TcpTransport::accept_datalink create new link[0000018AC98ED2A0]
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|768) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TransportReceiveStrategy-mb Cached_Allocator_With_Overflow 0000018AC98F6E80 with 1000 chunks
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TransportReceiveStrategy-db Cached_Allocator_With_Overflow 0000018AC98F6F08 with 100 chunks
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TransportReceiveStrategy-data Cached_Allocator_With_Overflow 0000018AC98F6F90 with 32 chunks
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC922DCF0) using datalink[0000018AC98ED2A0] from 01030000.00004242.00000001.000001c2(6894f7cc)
+2024-09-12 13:03:51.025@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC922DCF0) about to add_link[0000018AC98ED2A0] to remote: 01030000.00004242.00000001.000001c2(6894f7cc)
+2024-09-12 13:03:51.025@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 0000018AC98DA5A0 is now scheduled
+2024-09-12 13:03:51.030@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 0000018AC98DA5A0 is no longer scheduled
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|16444) DataReaderImpl::add_association - bit 1 local 01030000.00004242.00000002.000002c7(74732a50) remote 01030000.00004242.00000001.000002c2(43b9a40f)
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|768) DataReaderImpl::enable: got GUID 01030000.00004242.00000002.000002c7(74732a50), subscribed to topic name "DCPSTopic" type "TOPIC_BUILT_IN_TOPIC_TYPE"
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|768) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSTopic) enabled
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|16444) TransportClient::associate added PendingAssoc between 01030000.00004242.00000002.000002c7(74732a50) and remote 01030000.00004242.00000001.000002c2(43b9a40f)
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|16444) TcpTransport::accept_datalink found datalink[0000018AC98ED2A0]
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC98EE460) using datalink[0000018AC98ED2A0] from 01030000.00004242.00000001.000002c2(43b9a40f)
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|768) DDS::PublicationBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow c92a3fc0 with 20 chunks
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC98EE460) about to add_link[0000018AC98ED2A0] to remote: 01030000.00004242.00000001.000002c2(43b9a40f)
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|768) DataReaderImpl::enable Cached_Allocator_With_Overflow c92a4d90 with 20 chunks
+2024-09-12 13:03:51.038@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 0000018AC9912690 is now scheduled
+2024-09-12 13:03:51.038@LM_DEBUG@(18972|768) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-12 13:03:51.038@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 0000018AC9912690 is no longer scheduled
+2024-09-12 13:03:51.042@LM_DEBUG@(18972|16444) DataReaderImpl::add_association - bit 1 local 01030000.00004242.00000002.000003c7(6d681b11) remote 01030000.00004242.00000001.000004c2(15e30389)
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|16444) TransportClient::associate added PendingAssoc between 01030000.00004242.00000002.000003c7(6d681b11) and remote 01030000.00004242.00000001.000004c2(15e30389)
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|16444) TcpTransport::accept_datalink found datalink[0000018AC98ED2A0]
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC9910CB0) using datalink[0000018AC98ED2A0] from 01030000.00004242.00000001.000004c2(15e30389)
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC9910CB0) about to add_link[0000018AC98ED2A0] to remote: 01030000.00004242.00000001.000004c2(15e30389)
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|768) DataReaderImpl::enable: got GUID 01030000.00004242.00000002.000003c7(6d681b11), subscribed to topic name "DCPSPublication" type "PUBLICATION_BUILT_IN_TOPIC_TYPE"
+2024-09-12 13:03:51.046@LM_DEBUG@(18972|768) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSPublication) enabled
+2024-09-12 13:03:51.046@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 0000018AC99210D0 is now scheduled
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|768) DDS::SubscriptionBuiltinTopicDataDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow c92a37a0 with 20 chunks
+2024-09-12 13:03:51.047@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 0000018AC99210D0 is no longer scheduled
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|768) DataReaderImpl::enable Cached_Allocator_With_Overflow c92a3870 with 20 chunks
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|768) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|16444) DataReaderImpl::add_association - bit 1 local 01030000.00004242.00000002.000004c7(22298dd6) remote 01030000.00004242.00000001.000003c2(5aa2954e)
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|768) DataReaderImpl::enable: got GUID 01030000.00004242.00000002.000004c7(22298dd6), subscribed to topic name "DCPSSubscription" type "SUBSCRIPTION_BUILT_IN_TOPIC_TYPE"
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|768) SubscriberImpl::reader_enabled, datareader(topic_name=DCPSSubscription) enabled
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|16444) TransportClient::associate added PendingAssoc between 01030000.00004242.00000002.000004c7(22298dd6) and remote 01030000.00004242.00000001.000003c2(5aa2954e)
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|16444) TcpTransport::accept_datalink found datalink[0000018AC98ED2A0]
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC9922670) using datalink[0000018AC98ED2A0] from 01030000.00004242.00000001.000003c2(5aa2954e)
+2024-09-12 13:03:51.047@LM_DEBUG@(18972|16444) TransportClient::use_datalink_i TransportClient(0000018AC9922670) about to add_link[0000018AC98ED2A0] to remote: 01030000.00004242.00000001.000003c2(5aa2954e)
+2024-09-12 13:03:51.054@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::ScheduleCommand::execute() - sweeper 0000018AC99106D0 is now scheduled
+2024-09-12 13:03:51.054@LM_INFO@(18972|4076) EndHistoricSamplesMissedSweeper::CancelCommand::execute() - sweeper 0000018AC99106D0 is no longer scheduled
+2024-09-12 13:03:51.059@LM_DEBUG@(18972|768) UATM::tolPadRequestDataReaderImpl::enable_specific-data Cached_Allocator_With_Overflow c92a3d50 with 20 chunks
+2024-09-12 13:03:51.059@LM_DEBUG@(18972|768) DataReaderImpl::enable Cached_Allocator_With_Overflow c92a4f30 with 20 chunks
+2024-09-12 13:03:51.066@LM_DEBUG@(18972|768) TransportImpl::open()
+   transport_type:               tcp
+   name:                         _OPENDDS_0500_TCP
+   config_prefix:                TRANSPORT_OPENDDS_0500_TCP
+   max_packet_size:              2147481599
+   max_samples_per_packet:       10
+   optimum_packet_size:          4096
+   thread_per_connection:        false
+   datalink_release_delay:       10000
+   datalink_control_chunks:      32
+   fragment_reassembly_timeout:  5:00.000
+   receive_preallocated_message_blocks:0
+   receive_preallocated_data_blocks:0
+   local_address:                
+   pub_address:                  
+   enable_nagle_algorithm:       false
+   conn_retry_initial_delay:     500
+   conn_retry_backoff_multiplier:2
+   conn_retry_attempts:          3
+   passive_reconnect_duration:   2000
+   max_output_pause_period:      -1
+   active_conn_timeout_period:   5000
+2024-09-12 13:03:51.066@LM_DEBUG@(18972|768) DataReaderImpl::setup_deserialization: Setup successfully with the following data representations: CDR/XCDR1, XCDR2, Unaligned CDR
+2024-09-12 13:03:51.073@LM_DEBUG@(18972|768) DataReaderImpl::enable: got GUID 01030000.00004242.00000002.00000507(a0567e27), subscribed to topic name "tolPadRequest" type "UATM::tolPadRequest"
+2024-09-12 13:03:51.073@LM_DEBUG@(18972|768) SubscriberImpl::reader_enabled, datareader(topic_name=tolPadRequest) enabled
