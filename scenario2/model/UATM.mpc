@@ -30,3 +30,80 @@ project(UATM) : dcps, UATM_paths {
     UATM_T.cpp
   }
 }
+
+project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/fleetOperatorPub.cpp
+  }
+}
+
+project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../weatherDP/weatherPub.cpp
+  }
+}
+
+project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher3
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../skyportManagerDP/skyportManagerPub.cpp
+  }
+}
+
+project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher4
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../skyportOperatorDP/skyportOperatorPub.cpp
+  }
+}
+
+project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../evtolManagerDP/evtolManagerSub.cpp
+  }
+}
+
+project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/fleetOperatorSub.cpp
+  }
+}
+
+project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber3
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../pilotManagerDP/pilotManagerSub.cpp
+  }
+}

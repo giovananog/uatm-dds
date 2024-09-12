@@ -2,7 +2,7 @@
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "UATMTraits.h"
+#include "../model/UATMTraits.h"
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
@@ -14,15 +14,14 @@
 class ReaderListenerAvailability : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    // virtual void on_data_available_request(DDS::DataReader_ptr reader);
-    virtual void on_data_available_availability(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerAvailability::on_data_available_availability(DDS::DataReader_ptr reader) 
+ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
@@ -45,10 +44,17 @@ ReaderListenerAvailability::on_data_available_availability(DDS::DataReader_ptr r
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-
-          std::cout << "Resource Type: " << msg.resource_type.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        AvailabilityInfo:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Resource ID: " << msg.resource_id << std::endl
+                    << "Resource Type: " << msg.resource_type.in() << std::endl
+                    << "Status: " << msg.status << std::endl
+                    << "Location: " << msg.location.in() << std::endl
+                    << "Availability Time: " << msg.availability_time.in() << std::endl;
         } else {
             rcs_.signal();
+            // break;
             std::cout << "Received sample, but no valid data." << std::endl;
         }
         // break;
@@ -58,6 +64,7 @@ ReaderListenerAvailability::on_data_available_availability(DDS::DataReader_ptr r
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
+        rcs_.signal();
         break;
       }
     }
@@ -66,14 +73,14 @@ ReaderListenerAvailability::on_data_available_availability(DDS::DataReader_ptr r
 class ReaderListenerRoute : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRoute(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    virtual void on_data_available_route(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerRoute::on_data_available_route(DDS::DataReader_ptr reader) 
+ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
@@ -96,10 +103,17 @@ ReaderListenerRoute::on_data_available_route(DDS::DataReader_ptr reader)
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-
-          std::cout << "Location: " << msg.location.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        flightRoutesInfo:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Flight Route ID: " << msg.flight_route_id << std::endl
+                    << "Waypoints: " << msg.waypoints << std::endl
+                    << "Fligt ID: " << msg.flight_id << std::endl
+                    << "Estimated Time: " << msg.estimated_time.in() << std::endl
+                    << "Status: " << msg.status << std::endl;
         } else {
             rcs_.signal();
+            // break;
             std::cout << "Received sample, but no valid data." << std::endl;
         }
         // break;
@@ -117,14 +131,14 @@ ReaderListenerRoute::on_data_available_route(DDS::DataReader_ptr reader)
 class ReaderListenerWeather : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerWeather(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    virtual void on_data_available_weather(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerWeather::on_data_available_weather(DDS::DataReader_ptr reader) 
+ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
@@ -147,10 +161,18 @@ ReaderListenerWeather::on_data_available_weather(DDS::DataReader_ptr reader)
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-
-          std::cout << "Estimated Time: " << msg.estimated_time.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        weatherInfo:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Weather Info ID: " << msg.weather_id << std::endl
+                    << "Location: " << msg.location.in() << std::endl
+                    << "Temperature: " << msg.temperature << std::endl
+                    << "Wind Speed: " << msg.wind_speed << std::endl
+                    << "Weather Condition: " << msg.weather_condition.in() << std::endl
+                    << "Observation Time: " << msg.observation_time.in() << std::endl;
         } else {
             rcs_.signal();
+            // break;
             std::cout << "Received sample, but no valid data." << std::endl;
         }
         // break;
@@ -170,29 +192,28 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
   try {
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::availabilityDR_FOP);
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
+
+    DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::availabilityDR_FOP);
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerAvailability(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
     
-    DDS::DataReader_var reader_routes = model.reader(Elements::DataReaders::FlightRoutesDR_FOP);
-    ACE_SYNCH_MUTEX lock;
-    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
-    OpenDDS::Model::ReaderCondSync rcs(reader_routes, condition);
-    DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
-    reader_routes->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+    DDS::DataReader_var reader_routes = model2.reader(Elements::DataReaders::FlightRoutesDR_FOP);
+    OpenDDS::Model::ReaderCondSync rcs2(reader_routes, condition);
+    DDS::DataReaderListener_var listener2(new ReaderListenerRoute(rcs2));
+    reader_routes->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
 
-    DDS::DataReader_var reader_weather = model.reader(Elements::DataReaders::weatherDR_FOP);
-    ACE_SYNCH_MUTEX lock;
-    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
-    OpenDDS::Model::ReaderCondSync rcs(reader_weather, condition);
-    DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
-    reader_weather->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+    DDS::DataReader_var reader_weather = model3.reader(Elements::DataReaders::weatherDR_FOP);
+    OpenDDS::Model::ReaderCondSync rcs3(reader_weather, condition);
+    DDS::DataReaderListener_var listener3(new ReaderListenerWeather(rcs3));
+    reader_weather->set_listener(listener3, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
 
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");

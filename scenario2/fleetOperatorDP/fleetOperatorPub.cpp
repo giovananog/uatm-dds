@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -33,11 +31,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       UATM::flightAssign fa;
 
       // Populate message and send
-      fa.assign_id = 23;
+      fa.flight_assign_id = 23;
       fa.assign_time = "assign time";
-      fa.operator_id = "true";
+      fa.operator_id = 32;
       fa.assign_status = true;
-      fa.resources_id = ["abc", "def"];
+      UATM::ArrayString resources_id;
+
+      fa.resources_id[0] = "abc";
+      fa.resources_id[1] = "def";
 
       DDS::ReturnCode_t error = writer_var->write(fa, DDS::HANDLE_NIL);
 

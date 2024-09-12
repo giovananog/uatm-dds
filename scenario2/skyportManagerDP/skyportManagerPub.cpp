@@ -3,10 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
-
+#include "../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -34,7 +31,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       // Populate message and send
       fa.resource_id = 23;
-      fa.resource_type = "assign time";
+      fa.resource_type = "skyport";
       fa.status = true;
       fa.location = "location";
       fa.availability_time = "32323";

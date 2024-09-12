@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -34,7 +32,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       // Populate message and send
       fr.flight_route_id = 23;
-      fr.waypoints = ["a", "b"];
+      UATM::ArrayString waypoints;
+
+      fr.waypoints[0] = "abc";
+      fr.waypoints[1] = "def";
       fr.flight_id = 7;
       fr.estimated_time = "32323";
       fr.status = true;

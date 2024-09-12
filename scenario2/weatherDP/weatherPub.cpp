@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -13,11 +11,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   try
   {
     OpenDDS::Model::Application application(argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::weatherInfoDW_WTR);
+    DDS::DataWriter_var writer = model3.writer(Elements::DataWriters::weatherInfoDW_WTR);
 
     UATM::weatherInfoDataWriter_var writer_var = UATM::weatherInfoDataWriter::_narrow(writer.in());
 
