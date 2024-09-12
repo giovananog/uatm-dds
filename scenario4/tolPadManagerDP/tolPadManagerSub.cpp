@@ -55,13 +55,15 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;
         }
-        // break;
+        rcs_.signal();
+        break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
+        rcs_.signal();
         break;
       }
     }
@@ -74,11 +76,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
+    ACE_SYNCH_MUTEX lock;
+    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
 
     DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::tolPadAssignDR_TP);
 
-    ACE_SYNCH_MUTEX lock;
-    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
     OpenDDS::Model::ReaderCondSync rcs(reader_request, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_request->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);

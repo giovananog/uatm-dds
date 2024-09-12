@@ -118,10 +118,10 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__tolPadRequest] = "tolPadRequest";
   this->cfTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = "availabiityInfo_UASP";
-  this->cfTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP;
-  this->multiTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = "resource_type == 'tolPad'";
+  this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = "availabilityInfo_UASP";
+  this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP;
+  this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = MultiTopics::LAST_INDEX;
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP] = "resource_type LIKE 'tolPad'";
 }
 
 inline
@@ -177,12 +177,12 @@ Elements::Data::loadMaps()
 
   this->types_[ Topics::UATM__uatmDCPS__AvailabilityInfo] = Types::availabilityInfo;
   this->types_[ Topics::UATM__uatmDCPS__tolPadRequest] = Types::tolPadRequest;
-  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
+  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
   this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::UATM__uatmDCPS__tolPadRequest;
   this->writerTopics_[ DataWriters::tolPadAvailabilityDW_TP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
 
-  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::UATM__uatmDCPS__availabiityInfo_UASP;
+  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::UATM__uatmDCPS__availabilityInfo_UASP;
   this->readerTopics_[ DataReaders::tolPadAssignDR_TP] = Topics::UATM__uatmDCPS__tolPadRequest;
 
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::uaspManagerPub;
@@ -247,7 +247,7 @@ Elements::Data::buildTopicsQos()
   topicQos.deadline.period.nanosec = 50000000;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__availabiityInfo_UASP;
+  topic    = Topics::UATM__uatmDCPS__availabilityInfo_UASP;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   this->topicsQos_[ topic] = topicQos;
@@ -310,7 +310,7 @@ Elements::Data::buildPublicationsQos()
   writer    = DataWriters::tolPadReqDW_UASP;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = false;
+  this->writerCopyTopicQos_[writer] = true;
 
   writer    = DataWriters::tolPadAvailabilityDW_TP;
   writerQos = TheServiceParticipant->initial_DataWriterQos();

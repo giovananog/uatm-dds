@@ -38,7 +38,7 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
-    ../fleetOperatorDP/fleetOperatorPub.cpp
+    ../tolPadManagerDP/tolPadManagerPub.cpp
   }
 }
 
@@ -49,7 +49,7 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
-    ../flightAuthSysDP/flightAuthSysPub.cpp
+    ../uaspManagerDP/uaspManagerPub.cpp
   }
 }
 
@@ -60,7 +60,7 @@ project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
-    ../flightAuthSysDP/flightAuthSysSub.cpp
+    ../tolPadManagerDP/tolPadManagerSub.cpp
   }
 }
 
@@ -71,17 +71,7 @@ project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
-    ../skyportOperatorDP/skyportOperatorSub.cpp
-  }
-}
-
-project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
-  exename   = subscriber3
-  after    += UATM
-  libs     += UATM
-  libpaths += model
-
-  Source_Files {
     ../uaspManagerDP/uaspManagerSub.cpp
   }
 }
+

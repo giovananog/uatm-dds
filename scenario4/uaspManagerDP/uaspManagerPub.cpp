@@ -15,7 +15,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::changeRecDW_UASP);
+    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::tolPadReqDW_UASP);
     UATM::tolPadRequestDataWriter_var writer_assign_var = UATM::tolPadRequestDataWriter::_narrow(writer_assign.in());
 
     if (CORBA::is_nil(writer_assign_var.in())) {

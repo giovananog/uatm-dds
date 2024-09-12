@@ -56,13 +56,15 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;
         }
-        // break;
+        // rcs_.signal();
+        break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
+        rcs_.signal();
         break;
       }
     }

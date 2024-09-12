@@ -16,7 +16,7 @@ my $status = 0;
 my $rtps = 0;
 my $help = 0;
 
-my $dbg_opts = " -ORBDebugLevel 1  -DCPSPendingTimeout 50";
+my $dbg_opts = " -ORBDebugLevel 10 -DCPSPendingTimeout 3";
 my $common_opts = "$dbg_opts";
 
 my $help_message = "usage: run_test.pl [-h|--help] [--rtps]\n";

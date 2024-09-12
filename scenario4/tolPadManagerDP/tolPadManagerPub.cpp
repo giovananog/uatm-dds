@@ -31,7 +31,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       // Populate message and send
       ai.resource_id = 23;
-      ai.resource_type = "22";
+      ai.resource_type = "tolPad";
       ai.status = true;
       ai.location = "sa";
       ai.availability_time = "true";
