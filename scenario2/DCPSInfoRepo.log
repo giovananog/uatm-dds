@@ -1,52 +1,52 @@
-TAO (19720|17980) - Default_Resource_Factory - codeset manager=0000023AC7DF34B0
-TAO (19720|17980) - Loaded default protocol <IIOP_Factory>
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50574> on [660]
-(19720|17980) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "LAPTOP-NQKUMCC4" as fully qualified hostname, please correct system configuration.
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50573] on [192.168.1.110]
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50590> on [1008]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50589] on [192.168.1.110]
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50603> on [996]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50602] on [192.168.1.110]
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50616> on [1016]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50615] on [192.168.1.110]
-TAO (19720|17980) - Transport[1016]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[1016]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[1016]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[1016]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[1016]::close_connection_eh end
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50630> on [1028]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50629] on [192.168.1.110]
-TAO (19720|17980) - Transport[1028]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[1028]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[1028]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[1028]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[1028]::close_connection_eh end
-TAO (19720|17980) - Transport[660]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[660]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[660]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[660]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[660]::close_connection_eh end
-TAO (19720|17980) - Transport[996]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[996]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[996]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[996]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[996]::close_connection_eh end
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50645> on [1004]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50644] on [192.168.1.110]
-TAO (19720|17980) - Transport[1004]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[1004]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[1004]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[1004]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[1004]::close_connection_eh end
-TAO (19720|17980) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:50660> on [1056]
-TAO (19720|17980) - IIOP_Connection_Handler::process_listen_point_list, Listening port [50659] on [192.168.1.110]
-TAO (19720|17980) - Transport[1056]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[1056]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[1056]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[1056]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[1056]::close_connection_eh end
-TAO (19720|17980) - Transport[1008]::handle_input, error parsing incoming message
-TAO (19720|17980) - Connection_Handler[1008]::close_connection_eh, purging entry from cache
-TAO (19720|17980) - Connection_Handler[1008]::close_connection_eh, removing from the reactor
-TAO (19720|17980) - Connection_Handler[1008]::close_connection_eh, cancel all timers
-TAO (19720|17980) - Connection_Handler[1008]::close_connection_eh end
+TAO (19012|9212) - Default_Resource_Factory - codeset manager=0000028EF4C1D450
+TAO (19012|9212) - Loaded default protocol <IIOP_Factory>
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51469> on [656]
+(19012|9212) WARNING: get_fully_qualified_hostname: Could not find FQDN. Using "LAPTOP-NQKUMCC4" as fully qualified hostname, please correct system configuration.
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51478> on [952]
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51484> on [956]
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51499> on [964]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51477] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51468] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51483] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51508> on [992]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51497] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51515> on [1028]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51507] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51514] on [192.168.1.110]
+TAO (19012|9212) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:51551> on [1160]
+TAO (19012|9212) - Transport[992]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[992]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[992]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[992]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[992]::close_connection_eh end
+TAO (19012|9212) - Transport[1028]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[1028]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[1028]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[1028]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[1028]::close_connection_eh end
+TAO (19012|9212) - Transport[656]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[656]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[656]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[656]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[656]::close_connection_eh end
+TAO (19012|9212) - Transport[956]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[956]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[956]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[956]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[956]::close_connection_eh end
+TAO (19012|9212) - IIOP_Connection_Handler::process_listen_point_list, Listening port [51550] on [192.168.1.110]
+TAO (19012|9212) - Transport[964]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[964]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[964]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[964]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[964]::close_connection_eh end
+TAO (19012|9212) - Transport[1160]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[1160]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[1160]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[1160]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[1160]::close_connection_eh end
+TAO (19012|9212) - Transport[952]::handle_input, error parsing incoming message
+TAO (19012|9212) - Connection_Handler[952]::close_connection_eh, purging entry from cache
+TAO (19012|9212) - Connection_Handler[952]::close_connection_eh, removing from the reactor
+TAO (19012|9212) - Connection_Handler[952]::close_connection_eh, cancel all timers
+TAO (19012|9212) - Connection_Handler[952]::close_connection_eh end

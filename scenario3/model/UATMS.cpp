@@ -25,8 +25,8 @@
 // TAO_IDL - Generated from
 // C:\Users\ongio_1lak36v\Downloads\OpenDDS-3.29.1\ace_wrappers\tao\TAO_IDL\be\be_codegen.cpp:631
 
-#ifndef _TAO_IDL_UATMS_SC8SOP_CPP_
-#define _TAO_IDL_UATMS_SC8SOP_CPP_
+#ifndef _TAO_IDL_UATMS_VWOSFD_CPP_
+#define _TAO_IDL_UATMS_VWOSFD_CPP_
 
 
 #include "UATMS.h"

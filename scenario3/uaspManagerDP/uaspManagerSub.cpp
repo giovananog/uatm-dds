@@ -2,7 +2,7 @@
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "UATMTraits.h"
+#include "../model/UATMTraits.h"
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
@@ -14,14 +14,14 @@
 class ReaderListenerRequest : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    virtual void on_data_available_request(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerRequest::on_data_available_request(DDS::DataReader_ptr reader) 
+ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
@@ -30,7 +30,7 @@ ReaderListenerRequest::on_data_available_request(DDS::DataReader_ptr reader)
 
     if (CORBA::is_nil(reader_i.in())) {
     ACE_ERROR((LM_ERROR,
-               ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
+               ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                ACE_TEXT(" _narrow failed!\n")));
     ACE_OS::exit(-1);
   }
@@ -44,19 +44,29 @@ ReaderListenerRequest::on_data_available_request(DDS::DataReader_ptr reader)
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "time: " << msg.request_time.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        flightRequestInfo:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Req ID: " << msg.request_id << std::endl
+                    << "Flight Time: " << msg.flight_id << std::endl
+                    << "Requestor ID: " << msg.requestor_id << std::endl
+                    << "Route ID: " << msg.requested_route_id << std::endl
+                    << "Status: " << msg.request_status << std::endl
+                    << "Time: " << msg.request_time.in() << std::endl;
         } else {
             rcs_.signal();
+            // break;
             std::cout << "Received sample, but no valid data." << std::endl;
         }
         // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        break;
+        rcs_.signal();
+        // break;
       }
     }
   };

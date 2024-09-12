@@ -2,7 +2,7 @@
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "UATMTraits.h"
+#include "../model/UATMTraits.h"
 #include <C:/Users/ongio_1lak36v/Downloads/OpenDDS-3.29.1/tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
@@ -14,23 +14,23 @@
 class ReaderListenerRequest : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs) : rcs_(rcs) {}
-    virtual void on_data_available_request(DDS::DataReader_ptr reader);
+    virtual void on_data_available(DDS::DataReader_ptr reader);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;
 };
 
 void
-ReaderListenerRequest::on_data_available_request(DDS::DataReader_ptr reader) 
+ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader) 
   {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
 
-    UATM::flightAuthorizationRequestDataWriter_var reader_i =
-      UATM::flightAuthorizationRequestDataWriter::_narrow(reader);
+    UATM::flightAuthorizationRequestDataReader_var reader_i =
+      UATM::flightAuthorizationRequestDataReader::_narrow(reader);
 
     if (CORBA::is_nil(reader_i.in())) {
     ACE_ERROR((LM_ERROR,
-               ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
+               ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                ACE_TEXT(" _narrow failed!\n")));
     ACE_OS::exit(-1);
   }
@@ -44,19 +44,27 @@ ReaderListenerRequest::on_data_available_request(DDS::DataReader_ptr reader)
       if (error == DDS::RETCODE_OK) {
         std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "time: " << msg.request_time.in() << std::endl;
+          std::cout << "----------------------------------" << std::endl
+                    << "        flightAuthorizationRequest:" << std::endl
+                    << "        -----------------" << std::endl
+                    << "Auth Request ID: " << msg.auth_request_id << std::endl
+                    << "UASP ID: " << msg.uasp_id << std::endl
+                    << "Flight ID: " << msg.flight_id << std::endl
+                    << "Request Status: " << msg.request_status << std::endl
+                    << "Request Time: " << msg.request_time.in() << std::endl;
         } else {
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;
         }
-        // break;
+        break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        break;
+        rcs_.signal();
+        // break;
       }
     }
   };
@@ -76,6 +84,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     OpenDDS::Model::ReaderCondSync rcs(reader_request, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_request->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
     return -1;

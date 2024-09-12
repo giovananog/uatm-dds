@@ -3,9 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
+#include "../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -46,6 +44,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
+    }
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
     return -1;

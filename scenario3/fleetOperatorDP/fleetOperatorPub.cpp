@@ -3,10 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "UATMTraits.h"
-
-#include <model/Sync.h>
-
+#include "../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -14,6 +11,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   {
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
+    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
@@ -34,8 +32,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       // Populate message and send
       fc.coordination_id = 23;
       fc.flight_id = 22;
-      fc.involved_parties = ["a", "a"];
-      fc.coordination_details = ["a", "a"];
+      UATM::ArrayString involved_parties;
+
+      fc.involved_parties[0] = "abc";
+      fc.involved_parties[1] = "def";
+      UATM::ArrayString coordination_details;
+
+      fc.coordination_details[0] = "abc";
+      fc.coordination_details[1] = "def";
       fc.recommendation_time = "343434";
 
       DDS::ReturnCode_t error = writer_coord_var->write(fc, DDS::HANDLE_NIL);
@@ -45,9 +49,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
+    }
     
-    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
-    UATM::flightCoordinationDataWriter_var writer_assign_var = UATM::flightCoordinationDataWriter::_narrow(writer.in());
+    DDS::DataWriter_var writer_assign = model2.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
+    UATM::flightAuthorizationRequestDataWriter_var writer_assign_var = UATM::flightAuthorizationRequestDataWriter::_narrow(writer_assign.in());
 
     if (CORBA::is_nil(writer_assign_var.in())) {
         ACE_ERROR_RETURN((LM_ERROR,
@@ -55,9 +60,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
       }
-    }
 
-    OpenDDS::Model::WriterSync ws(writer_assign);
+    OpenDDS::Model::WriterSync ws2(writer_assign);
     {
       UATM::flightAuthorizationRequest fr;
 
