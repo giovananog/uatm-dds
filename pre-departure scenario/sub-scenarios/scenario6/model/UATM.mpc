@@ -1,0 +1,69 @@
+project(UATM) : dcps, UATM_paths {
+  libout = .
+  sharedname = UATM
+  includes += $(DDS_ROOT)/tools/modeling/codegen
+
+  idlflags      += -Wb,export_macro=UATM_Export -Wb,export_include=UATM_export.h
+  dynamicflags   = UATM_BUILD_DLL
+  dcps_ts_flags += -Wb,export_macro=UATM_Export
+  prebuild      += perl $(DDS_ROOT)/tools/scripts/expfile.pl UATM
+
+
+  TypeSupport_Files {
+    UATM.idl
+  }
+
+  IDL_Files {
+    UATM.idl
+  }
+
+  Header_Files {
+    UATM_T.h
+    UATMTraits.h
+  }
+
+  Source_Files {
+    UATMTraits.cpp
+  }
+
+  Template_Files {
+    UATM_T.cpp
+  }
+}
+
+project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../uaspManagerDP/Publisher/uaspManagerPub.cpp
+  }
+}
+
+project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/Subscriber/fleetOperatorSub.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerAuth.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRec.cpp
+  }
+}
+
+project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../pilotManagerDP/Subscriber/pilotManagerSub.cpp
+    ../pilotManagerDP/Subscriber/ReaderListenerAuth.cpp
+    ../pilotManagerDP/Subscriber/ReaderListenerRec.cpp
+  }
+}
