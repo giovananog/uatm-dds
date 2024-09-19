@@ -2,7 +2,7 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
@@ -24,17 +24,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
 
-    DDS::DataReader_var reader_request = model2.reader(Elements::DataReaders::flightRequestDR_FOP);    
-    OpenDDS::Model::ReaderCondSync rcs2(reader_request, condition);
-    DDS::DataReaderListener_var listener2(new ReaderListenerRequest(rcs2));
-    reader_request->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-    // listener2->on_data_available(reader_request);
 
     DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::availabilityDR_FOP);
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerAvailability(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-    // listener->on_data_available(reader_availability);
+    listener->on_data_available(reader_availability);
 
     // Block until Publisher completes
     DDS::StatusCondition_var condition2 = reader_availability->get_statuscondition();
@@ -67,6 +62,13 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     }
 
     ws->detach_condition(condition2);
+
+    
+    DDS::DataReader_var reader_request = model2.reader(Elements::DataReaders::flightRequestDR_FOP);    
+    OpenDDS::Model::ReaderCondSync rcs2(reader_request, condition);
+    DDS::DataReaderListener_var listener2(new ReaderListenerRequest(rcs2));
+    reader_request->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+    // listener2->on_data_available(reader_request);
 
     
   } catch (const CORBA::Exception& e) {

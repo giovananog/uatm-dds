@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include <dds/DCPS/WaitSet.h>
 
 
@@ -68,7 +68,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       UATM::availabilityInfo bfr;
 
       // Populate message and send
-      bfr.resource_id = 3;
+      bfr.resource_id = 1;
       bfr.resource_type = "evtol";
       bfr.status = true;
       bfr.location = "alfenas";
@@ -77,6 +77,23 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 
       if (error != DDS::RETCODE_OK) {
+          ACE_ERROR((LM_ERROR,
+                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                     ACE_TEXT(" write returned %d!\n"), error));
+      }
+
+      UATM::availabilityInfo bfr2;
+
+      // Populate message and send
+      bfr2.resource_id = 2;
+      bfr2.resource_type = "evtol";
+      bfr2.status = false;
+      bfr2.location = "alfenas";
+      bfr2.availability_time = "323123-323";
+
+      DDS::ReturnCode_t error2 = writer_var->write(bfr2, DDS::HANDLE_NIL);
+
+      if (error2 != DDS::RETCODE_OK) {
           ACE_ERROR((LM_ERROR,
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));

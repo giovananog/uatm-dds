@@ -1,11 +1,14 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include <tools/modeling/codegen/model/NullReaderListener.h>
 
+#include <vector>
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 #include "ReaderListenerAvailability.h"
 
+// ReaderListenerAvailability::storedAvailabilities;
+std::vector<UATM::availabilityInfo> ReaderListenerAvailability::storedAvailabilities;
 
 ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
@@ -41,6 +44,10 @@ ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
                     << "Status: " << msg.status << std::endl
                     << "Location: " << msg.location.in() << std::endl
                     << "Availability Time: " << msg.availability_time.in() << std::endl;
+
+                    if(msg.status) {
+                      storedAvailabilities.push_back(msg);
+                    }
         } else {
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;
