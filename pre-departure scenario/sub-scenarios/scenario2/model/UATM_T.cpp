@@ -223,6 +223,7 @@ Elements::Data::loadMaps()
   this->subscriberParticipants_[ Subscribers::evtolManSub] = Participants::evtolManagerDP;
   this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
   this->subscriberParticipants_[ Subscribers::skyportManagerSub] = Participants::skyportManagerDP;
+  this->subscriberParticipants_[ Subscribers::] = Participants::skyportOperatorDP;
 
   this->types_[ Topics::UATM__uatmDCPS__AvailabilityInfo] = Types::availabilityInfo;
   this->types_[ Topics::UATM__uatmDCPS__flightRoutesInfo] = Types::flightRoutesInfo;
@@ -263,6 +264,7 @@ Elements::Data::loadMaps()
   this->subscribers_[ DataReaders::changeRecDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::flighAssignDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::flightAssignDR_SKM] = Subscribers::skyportManagerSub;
+
 }
 
 inline
@@ -314,6 +316,8 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 100000000;
+  topicQos.history.depth = 10;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
   topic    = Topics::UATM__uatmDCPS__availabilityFOP;
@@ -331,6 +335,8 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 10;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
   topic    = Topics::UATM__uatmDCPS__weatherInfo;
@@ -343,18 +349,22 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 200000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
   topic    = Topics::UATM__uatmDCPS__flightAssign;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-  topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
   topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 }
 

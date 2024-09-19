@@ -245,6 +245,8 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 1;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
   topic    = Topics::UATM__uatmDCPS__flightChanceRec;
@@ -257,6 +259,8 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 }
 
