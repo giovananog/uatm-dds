@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {

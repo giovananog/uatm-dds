@@ -1,4 +1,4 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 #include "ReaderListenerWeather.h"
 #include <model/Sync.h>

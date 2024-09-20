@@ -1,8 +1,9 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include "ReaderListenerAvailability.h"
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
+
 
 // Construtor da classe
 ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs)

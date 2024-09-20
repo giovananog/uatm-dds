@@ -4,6 +4,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
+#include <vector>
 #include <tools/modeling/codegen/model/NullReaderListener.h>
 
 

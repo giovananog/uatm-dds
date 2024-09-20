@@ -223,7 +223,6 @@ Elements::Data::loadMaps()
   this->subscriberParticipants_[ Subscribers::evtolManSub] = Participants::evtolManagerDP;
   this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
   this->subscriberParticipants_[ Subscribers::skyportManagerSub] = Participants::skyportManagerDP;
-  this->subscriberParticipants_[ Subscribers::] = Participants::skyportOperatorDP;
 
   this->types_[ Topics::UATM__uatmDCPS__AvailabilityInfo] = Types::availabilityInfo;
   this->types_[ Topics::UATM__uatmDCPS__flightRoutesInfo] = Types::flightRoutesInfo;
