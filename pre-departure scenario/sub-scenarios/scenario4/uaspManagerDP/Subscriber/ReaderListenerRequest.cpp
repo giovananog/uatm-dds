@@ -1,9 +1,20 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include < tools/modeling/codegen/model/NullReaderListener.h>
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 #include "ReaderListenerRequest.h"
+
+void write_tolpad_id(const std::string& tol_pad_id) {
+    std::ofstream file("tolpad_id.txt", std::ios::out | std::ios::trunc);
+    if (file.is_open()) {
+        file << tol_pad_id << "\n";
+        file.close();
+        std::cout << "tol_pad_id writed on: tolpad_id.txt" << std::endl;
+    } else {
+        ACE_ERROR((LM_ERROR, ACE_TEXT("ERROR - file not open\n")));
+    }
+}
 
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
@@ -40,6 +51,8 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                     << "Status: " << msg.status << std::endl
                     << "Location: " << msg.location.in() << std::endl
                     << "Availability Yime: " << msg.availability_time.in() << std::endl;
+
+                    write_tolpad_id(std::to_string(msg.resource_id));
         } else {
             rcs_.signal();
             std::cout << "Received sample, but no valid data." << std::endl;

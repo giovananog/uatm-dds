@@ -45,13 +45,13 @@ namespace uatmDCPS {
         public: enum Values {
           UATM__uatmDCPS__AvailabilityInfo,
           UATM__uatmDCPS__tolPadRequest,
-          UATM__uatmDCPS__availabilityInfo_UASP,
+          UATM__uatmDCPS__availabiityInfo_UASP,
           LAST_INDEX
         };
       };
       class ContentFilteredTopics {
         public: enum Values {
-          UATM__uatmDCPS__availabilityInfo_UASP,
+          UATM__uatmDCPS__availabiityInfo_UASP,
           LAST_INDEX
         };
       };

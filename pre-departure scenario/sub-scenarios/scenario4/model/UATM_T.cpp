@@ -121,7 +121,7 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = "availabiityInfo_UASP";
   this->cfTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP;
   this->multiTopics_[Topics::UATM__uatmDCPS__availabiityInfo_UASP] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = "resource_type == "tolPad"";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabiityInfo_UASP] = "resource_type LIKE 'tolPad'";
 }
 
 inline
@@ -314,7 +314,7 @@ Elements::Data::buildPublicationsQos()
   writer    = DataWriters::tolPadReqDW_UASP;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = false;
+  this->writerCopyTopicQos_[writer] = true;
 
   writer    = DataWriters::tolPadAvailabilityDW_TP;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
