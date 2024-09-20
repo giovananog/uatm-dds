@@ -4,6 +4,16 @@
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 
+void write_skyport_id(const std::string& tol_pad_id) {
+    std::ofstream file("skyport_id.txt", std::ios::out | std::ios::trunc);
+    if (file.is_open()) {
+        file << tol_pad_id << "\n";
+        file.close();
+        std::cout << "skyport_id writed on: skyport_id.txt" << std::endl;
+    } else {
+        ACE_ERROR((LM_ERROR, ACE_TEXT("ERROR - file not open\n")));
+    }
+}
 
 // Construtor da classe
 ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs)
@@ -41,6 +51,8 @@ ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
                     << "Status: " << msg.status << std::endl
                     << "Location: " << msg.location.in() << std::endl
                     << "Availability Time: " << msg.availability_time.in() << std::endl;
+
+                    write_skyport_id(std::to_string(msg.resource_id));
         } else {
             rcs_.signal();
             // break;

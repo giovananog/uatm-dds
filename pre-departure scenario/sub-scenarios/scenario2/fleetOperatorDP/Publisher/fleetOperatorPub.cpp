@@ -5,6 +5,18 @@
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
 
+std::string read_skyport_id() {
+    std::ifstream file("skyport_id.txt");
+    std::string tol_pad_id;
+    if (file.is_open()) {
+        std::getline(file, tol_pad_id);
+        file.close();
+    } else {
+        ACE_ERROR((LM_ERROR, ACE_TEXT("ERROR - file not open\n")));
+    }
+    return tol_pad_id;
+}
+
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
@@ -27,12 +39,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     OpenDDS::Model::WriterSync ws(writer);
     {
+      std::string skyport_id = read_skyport_id();
+      if (!skyport_id.empty()) {
       UATM::flightAssign fa;
 
       // Populate message and send
       fa.flight_assign_id = 3232;
       fa.assign_time = "1245-32";
-      fa.operator_id =  888;
+      fa.operator_id =  std::stoi(skyport_id);
       fa.assign_status = true;
       UATM::ArrayString resources_id;
 
@@ -46,6 +60,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
+    }
     }
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
