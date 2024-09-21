@@ -8,7 +8,6 @@
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 
-// Declaração da classe
 class ReaderListenerRequest : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs);
