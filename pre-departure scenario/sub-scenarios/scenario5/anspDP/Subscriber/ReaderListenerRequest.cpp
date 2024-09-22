@@ -1,5 +1,5 @@
-#include "../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include "../../model/UATMTraits.h"
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
@@ -28,7 +28,6 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     UATM::acceptableRoute msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
@@ -45,9 +44,8 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                     << "Approved by: " << msg.approved_by.in() << std::endl;
         } else {
             rcs_.signal();
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,

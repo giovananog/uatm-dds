@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 #include <model/Sync.h>
 
@@ -32,7 +32,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::trafficFlowsInfo fc;
 
-      // Populate message and send
       fc.flows_id = 23;
       fc.area = "test-area";
       fc.congestion_level = "low";
