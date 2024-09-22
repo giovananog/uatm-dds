@@ -1,6 +1,6 @@
 
-#include "../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include "../../model/UATMTraits.h"
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
