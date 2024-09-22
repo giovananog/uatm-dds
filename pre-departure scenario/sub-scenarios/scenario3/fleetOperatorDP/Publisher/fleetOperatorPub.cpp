@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -29,15 +29,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightCoordination fc;
 
-      // Populate message and send
       fc.coordination_id = 23;
       fc.flight_id = 22;
       UATM::ArrayString involved_parties;
-
       fc.involved_parties[0] = "abc";
       fc.involved_parties[1] = "def";
       UATM::ArrayString coordination_details;
-
       fc.coordination_details[0] = "abc";
       fc.coordination_details[1] = "def";
       fc.recommendation_time = "343434";
@@ -65,7 +62,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightAuthorizationRequest fr;
 
-      // Populate message and send
+       
       fr.auth_request_id = 23;
       fr.uasp_id = 22;
       fr.flight_id = 22;

@@ -2,8 +2,8 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include "../../model/UATMTraits.h"
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
@@ -19,10 +19,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::flightRequestDR_FAS);
-
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
+
+    DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::flightRequestDR_FAS);
     OpenDDS::Model::ReaderCondSync rcs(reader_request, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_request->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);

@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -29,7 +29,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightRequestInfo fri;
 
-      // Populate message and send
       fri.request_id = 23;
       fri.flight_id = 22;
       fri.requestor_id = 2;
