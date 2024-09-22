@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -30,7 +30,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightAuthorization fa;
 
-      // Populate message and send
+       
       fa.authorization_id = 23;
       fa.flight_id = 2;
       fa.approved_route_id = 2;

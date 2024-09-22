@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -29,7 +29,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::availabilityInfo ai;
 
-      // Populate message and send
       ai.resource_id = 23;
       ai.resource_type = "tolPad";
       ai.status = true;

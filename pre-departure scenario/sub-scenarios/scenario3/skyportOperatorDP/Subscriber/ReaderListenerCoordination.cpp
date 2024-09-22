@@ -1,6 +1,6 @@
   
-#include "../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include "../../model/UATMTraits.h"
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
@@ -29,7 +29,6 @@ ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
     UATM::flightCoordination msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
@@ -44,11 +43,9 @@ ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
                     << "Coord Details: " << msg.coordination_details << std::endl
                     << "Rec time: " << msg.recommendation_time.in() << std::endl;
         } else {
-            std::cout << "Received sample, but no valid data." << std::endl;
             rcs_.signal();
-            // break;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
@@ -56,7 +53,7 @@ ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
         rcs_.signal();
-        // break;
+        break;
       }
     }
   };

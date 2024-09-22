@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 #include <model/Sync.h>
 
@@ -32,7 +32,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::acceptableRoute ar;
 
-      // Populate message and send
+       
       ar.route_id = 23;
       ar.origin = "origin";
       ar.destination = "destination";

@@ -1,10 +1,9 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include "ReaderListenerAvailability.h"
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 
-// Construtor da classe
 ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
 
@@ -26,7 +25,6 @@ ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
     UATM::availabilityInfo msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
@@ -42,10 +40,8 @@ ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
                     << "Availability Time: " << msg.availability_time.in() << std::endl;
         } else {
             rcs_.signal();
-            // break;
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,

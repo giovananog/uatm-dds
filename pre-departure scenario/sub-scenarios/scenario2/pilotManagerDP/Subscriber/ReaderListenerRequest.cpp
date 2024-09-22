@@ -1,11 +1,10 @@
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include <tools/modeling/codegen/model/NullReaderListener.h>
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 #include "ReaderListenerRequest.h"
 
-// Construtor da classe
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
 
@@ -30,7 +29,7 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
-        std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
+        // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
           std::cout << "----------------------------------" << std::endl
                     << "        flightAssign:" << std::endl
@@ -42,9 +41,8 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                     << "Resources ID: " << msg.resources_id << std::endl;
         } else {
             rcs_.signal();
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,

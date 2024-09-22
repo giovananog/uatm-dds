@@ -3,8 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
-
+#include "../../model/UATMTraits.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -18,39 +17,43 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::tolPadReqDW_UASP);
     UATM::tolPadRequestDataWriter_var writer_assign_var = UATM::tolPadRequestDataWriter::_narrow(writer_assign.in());
 
-    if (CORBA::is_nil(writer_assign_var.in())) {
-        ACE_ERROR_RETURN((LM_ERROR,
-                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                          ACE_TEXT(" _narrow failed!\n")),
-                         -1);
+    if (CORBA::is_nil(writer_assign_var.in()))
+    {
+      ACE_ERROR_RETURN((LM_ERROR,
+                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                            ACE_TEXT(" _narrow failed!\n")),
+                       -1);
     }
 
     OpenDDS::Model::WriterSync ws(writer_assign);
     {
       UATM::tolPadRequest tr;
 
-      // Populate message and send
       tr.assign_id = 23;
-      tr.flight_id = 22;
-      tr.tol_pad_id = 1;
+      tr.flight_id = 99;
+      tr.tol_pad_id = 121;
       tr.assign_time = "1245-54";
 
       DDS::ReturnCode_t error = writer_assign_var->write(tr, DDS::HANDLE_NIL);
-
-      if (error != DDS::RETCODE_OK) {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
+      if (error != DDS::RETCODE_OK)
+      {
+        ACE_ERROR((LM_ERROR,
+                   ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                       ACE_TEXT(" write returned %d!\n"),
+                   error));
       }
     }
-  } catch (const CORBA::Exception& e) {
+  }
+  catch (const CORBA::Exception &e)
+  {
     e._tao_print_exception("Exception caught in main():");
     return -1;
-
-  } catch( const std::exception& ex) {
+  }
+  catch (const std::exception &ex)
+  {
     ACE_ERROR_RETURN((LM_ERROR,
                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                      ACE_TEXT(" Exception caught: %C\n"),
+                          ACE_TEXT(" Exception caught: %C\n"),
                       ex.what()),
                      -1);
   }

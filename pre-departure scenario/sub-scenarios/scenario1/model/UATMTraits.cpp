@@ -1,4 +1,4 @@
-#include "../model/UATMTraits.h"
+#include "UATMTraits.h"
 
 #include "dds/DCPS/transport/framework/TransportRegistry.h"
 #include "dds/DCPS/transport/framework/TransportExceptions.h"

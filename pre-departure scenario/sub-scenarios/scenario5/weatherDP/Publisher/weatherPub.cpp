@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -29,8 +29,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     OpenDDS::Model::WriterSync ws(writer);
     {
       UATM::weatherInfo fr;
-
-      // Populate message and send
+       
       fr.weather_id = 23;
       fr.location = "location";
       fr.temperature = 70.9;

@@ -45,7 +45,7 @@ namespace uatmDCPS {
       class Topics {
         public: enum Values {
           UATM__uatmDCPS__flightAuthorization,
-          UATM__uatmDCPS__flightChanceRec,
+          UATM__uatmDCPS__flightChangeRec,
           LAST_INDEX
         };
       };

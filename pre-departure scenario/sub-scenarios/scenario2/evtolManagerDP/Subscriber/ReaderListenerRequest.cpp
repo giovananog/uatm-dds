@@ -1,16 +1,12 @@
-// ReaderListenerRequest.cpp
-
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include "ReaderListenerRequest.h"
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 
-// Construtor da classe
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
 
-// Implementação do método on_data_available
 void
 ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader) {
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
@@ -43,7 +39,7 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader) {
                   << "Resources ID: " << msg.resources_id << std::endl;
       } else {
         rcs_.signal();
-        std::cout << "Received sample, but no valid data." << std::endl;
+        break;
       }
     } else {
       if (error != DDS::RETCODE_NO_DATA) {

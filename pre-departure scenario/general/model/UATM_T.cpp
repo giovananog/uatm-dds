@@ -62,6 +62,54 @@ Elements::Data::registerType(
   DomainParticipant* participant)
 {
   switch(type) {
+    case Types::flightCoordination:
+      {
+        typedef ::UATM::flightCoordinationTypeSupportImpl TypeSupport;
+
+        TypeSupport* typeSupport = new TypeSupport();
+        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
+          throw BadRegisterException();
+        }
+
+        if( this->typeNames_[ type]) {
+          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
+        }
+        this->typeNames_[ type] = typeSupport->get_type_name();
+      }
+      break;
+
+    case Types::flightAuthorizationRequest:
+      {
+        typedef ::UATM::flightAuthorizationRequestTypeSupportImpl TypeSupport;
+
+        TypeSupport* typeSupport = new TypeSupport();
+        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
+          throw BadRegisterException();
+        }
+
+        if( this->typeNames_[ type]) {
+          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
+        }
+        this->typeNames_[ type] = typeSupport->get_type_name();
+      }
+      break;
+
+    case Types::flightRequestInfo:
+      {
+        typedef ::UATM::flightRequestInfoTypeSupportImpl TypeSupport;
+
+        TypeSupport* typeSupport = new TypeSupport();
+        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
+          throw BadRegisterException();
+        }
+
+        if( this->typeNames_[ type]) {
+          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
+        }
+        this->typeNames_[ type] = typeSupport->get_type_name();
+      }
+      break;
+
     case Types::acceptableRoute:
       {
         typedef ::UATM::acceptableRouteTypeSupportImpl TypeSupport;
@@ -126,6 +174,22 @@ Elements::Data::registerType(
       }
       break;
 
+    case Types::flightAssign:
+      {
+        typedef ::UATM::flightAssignTypeSupportImpl TypeSupport;
+
+        TypeSupport* typeSupport = new TypeSupport();
+        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
+          throw BadRegisterException();
+        }
+
+        if( this->typeNames_[ type]) {
+          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
+        }
+        this->typeNames_[ type] = typeSupport->get_type_name();
+      }
+      break;
+
     case Types::flightAuthorization:
       {
         typedef ::UATM::flightAuthorizationTypeSupportImpl TypeSupport;
@@ -142,41 +206,9 @@ Elements::Data::registerType(
       }
       break;
 
-    case Types::flightChanceRec:
+    case Types::flightChangeRec:
       {
-        typedef ::UATM::flightChanceRecTypeSupportImpl TypeSupport;
-
-        TypeSupport* typeSupport = new TypeSupport();
-        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
-          throw BadRegisterException();
-        }
-
-        if( this->typeNames_[ type]) {
-          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
-        }
-        this->typeNames_[ type] = typeSupport->get_type_name();
-      }
-      break;
-
-    case Types::flightCoordination:
-      {
-        typedef ::UATM::flightCoordinationTypeSupportImpl TypeSupport;
-
-        TypeSupport* typeSupport = new TypeSupport();
-        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
-          throw BadRegisterException();
-        }
-
-        if( this->typeNames_[ type]) {
-          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
-        }
-        this->typeNames_[ type] = typeSupport->get_type_name();
-      }
-      break;
-
-    case Types::flightRequestInfo:
-      {
-        typedef ::UATM::flightRequestInfoTypeSupportImpl TypeSupport;
+        typedef ::UATM::flightChangeRecTypeSupportImpl TypeSupport;
 
         TypeSupport* typeSupport = new TypeSupport();
         if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
@@ -238,41 +270,9 @@ Elements::Data::registerType(
       }
       break;
 
-    case Types::flightAuthorizationRequest:
-      {
-        typedef ::UATM::flightAuthorizationRequestTypeSupportImpl TypeSupport;
-
-        TypeSupport* typeSupport = new TypeSupport();
-        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
-          throw BadRegisterException();
-        }
-
-        if( this->typeNames_[ type]) {
-          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
-        }
-        this->typeNames_[ type] = typeSupport->get_type_name();
-      }
-      break;
-
     case Types::weatherInfo:
       {
         typedef ::UATM::weatherInfoTypeSupportImpl TypeSupport;
-
-        TypeSupport* typeSupport = new TypeSupport();
-        if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
-          throw BadRegisterException();
-        }
-
-        if( this->typeNames_[ type]) {
-          CORBA::string_free( this->typeNames_[ type]); // Was created by CORBA::string_dup()
-        }
-        this->typeNames_[ type] = typeSupport->get_type_name();
-      }
-      break;
-
-    case Types::flightAssign:
-      {
-        typedef ::UATM::flightAssignTypeSupportImpl TypeSupport;
 
         TypeSupport* typeSupport = new TypeSupport();
         if( RETCODE_OK != typeSupport->register_type( participant, 0)) {
@@ -296,17 +296,17 @@ inline
 void
 Elements::Data::loadDomains()
 {
-  this->domains_[ Participants::bookingPlatformDP] = 0;
   this->domains_[ Participants::fleetOperatorDP] = 0;
-  this->domains_[ Participants::evtolManagerDP] = 0;
-  this->domains_[ Participants::pilotManagerDP] = 0;
-  this->domains_[ Participants::weatherSystemDP] = 0;
   this->domains_[ Participants::skyportOperatorDP] = 0;
-  this->domains_[ Participants::skyportsManDP] = 0;
+  this->domains_[ Participants::flightAuthSysDP] = 0;
   this->domains_[ Participants::uaspManagerDP] = 0;
-  this->domains_[ Participants::FlighAuthSysDP] = 0;
   this->domains_[ Participants::anspDP] = 0;
   this->domains_[ Participants::ussDP] = 0;
+  this->domains_[ Participants::weatherDP] = 0;
+  this->domains_[ Participants::bookingPlatformDP] = 0;
+  this->domains_[ Participants::evtolManagerDP] = 0;
+  this->domains_[ Participants::pilotManagerDP] = 0;
+  this->domains_[ Participants::skyportManDP] = 0;
   this->domains_[ Participants::tolPadManagerDP] = 0;
 }
 
@@ -314,56 +314,60 @@ inline
 void
 Elements::Data::loadTopics()
 {
-  this->topicNames_[Topics::UATM__uatmDCPS__BookingFlightRequest] = "BookingFlightRequest";
-  this->cfTopics_[Topics::UATM__uatmDCPS__BookingFlightRequest] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__BookingFlightRequest] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__AvailabilityInfo] = "AvailabilityInfo";
-  this->cfTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__AvailabilityInfo] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightCoordination] = "flightCoordination";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightCoordination] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightCoordination] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightAuthorizationRequest] = "flightAuthorizationRequest";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightAuthorizationRequest] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightAuthorizationRequest] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightRequestInfo] = "flightRequestInfo";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightRequestInfo] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightRequestInfo] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__tolPadRequest] = "tolPadRequest";
+  this->cfTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightRouteInfo] = "flightRouteInfo";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightRouteInfo] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightRouteInfo] = MultiTopics::LAST_INDEX;
   this->topicNames_[Topics::UATM__uatmDCPS__weatherInfo] = "weatherInfo";
   this->cfTopics_[Topics::UATM__uatmDCPS__weatherInfo] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__weatherInfo] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightRoutesInfo] = "FlightRoutesInfo";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightRoutesInfo] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightRoutesInfo] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightAssign] = "FlightAssign";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightAssign] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightAssign] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightCoordination] = "FlightCoordination";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightCoordination] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightCoordination] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightAuthorizationRequest] = "FlightAuthorizationRequest";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightAuthorizationRequest] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightAuthorizationRequest] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__TolPadRequest] = "TolPadRequest";
-  this->cfTopics_[Topics::UATM__uatmDCPS__TolPadRequest] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__TolPadRequest] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__TrafficFlowsInfo] = "TrafficFlowsInfo";
-  this->cfTopics_[Topics::UATM__uatmDCPS__TrafficFlowsInfo] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__TrafficFlowsInfo] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__AirspaceRestrictions] = "AirspaceRestrictions";
-  this->cfTopics_[Topics::UATM__uatmDCPS__AirspaceRestrictions] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__AirspaceRestrictions] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__acceptableRoute] = "acceptableRoute";
-  this->cfTopics_[Topics::UATM__uatmDCPS__acceptableRoute] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__acceptableRoute] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightAuthorization] = "FlightAuthorization";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightAuthorization] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightAuthorization] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightChangeRec] = "FlightChangeRec";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightChangeRec] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightChangeRec] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__FlightRequestInfo] = "FlightRequestInfo";
-  this->cfTopics_[Topics::UATM__uatmDCPS__FlightRequestInfo] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__FlightRequestInfo] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__AvailabilityFOP] = "AvailabilityFOP";
-  this->cfTopics_[Topics::UATM__uatmDCPS__AvailabilityFOP] = ContentFilteredTopics::UATM__uatmDCPS__AvailabilityFOP;
-  this->multiTopics_[Topics::UATM__uatmDCPS__AvailabilityFOP] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__AvailabilitySKO] = "AvailabilitySKO";
-  this->cfTopics_[Topics::UATM__uatmDCPS__AvailabilitySKO] = ContentFilteredTopics::UATM__uatmDCPS__AvailabilitySKO;
-  this->multiTopics_[Topics::UATM__uatmDCPS__AvailabilitySKO] = MultiTopics::LAST_INDEX;
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityFOP] = "";
-  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilitySKO] = "";
+  this->topicNames_[Topics::UATM__uatmDCPS__trafficFlowsInfo] = "trafficFlowsInfo";
+  this->cfTopics_[Topics::UATM__uatmDCPS__trafficFlowsInfo] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__trafficFlowsInfo] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightChangeRec] = "flightChangeRec";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightChangeRec] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightChangeRec] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightAuthorization] = "flightAuthorization";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightAuthorization] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightAuthorization] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightAssign] = "flightAssign";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightAssign] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightAssign] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__bookingFlightRequest] = "bookingFlightRequest";
+  this->cfTopics_[Topics::UATM__uatmDCPS__bookingFlightRequest] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__bookingFlightRequest] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo] = "availabilityInfo";
+  this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__airspaceRestrictions] = "airspaceRestrictions";
+  this->cfTopics_[Topics::UATM__uatmDCPS__airspaceRestrictions] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__airspaceRestrictions] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__accceptableRoute] = "accceptableRoute";
+  this->cfTopics_[Topics::UATM__uatmDCPS__accceptableRoute] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__accceptableRoute] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = "availabilityInfo_FOP";
+  this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_FOP;
+  this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = "availabilityInfo_UASP";
+  this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP;
+  this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo_UASP] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo_SKO] = "availabilityInfo_SKO";
+  this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo_SKO] = ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_SKO;
+  this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo_SKO] = MultiTopics::LAST_INDEX;
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_FOP] = "resource_type LIKE 'pilot' or resource_type LIKE 'evtol' or resource_type LIKE 'skyport'  ";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP] = "resource_type LIKE 'tolPad'";
+  this->filterExpressions_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_SKO] = "resource_type LIKE 'skyport'";
 }
 
 inline
@@ -405,110 +409,107 @@ inline
 void
 Elements::Data::loadTransportConfigNames()
 {
-  participantTxCfgNames_[Participants::bookingPlatformDP] = "";
-  writerTxCfgNames_[DataWriters::bookingFlightRequestDW_BP] = "";
 }
 
 inline
 void
 Elements::Data::loadMaps()
 {
-  this->publisherParticipants_[ Publishers::bookingPlatformPub] = Participants::bookingPlatformDP;
   this->publisherParticipants_[ Publishers::fleetOperatorPub] = Participants::fleetOperatorDP;
+  this->publisherParticipants_[ Publishers::skyportOperatorPub] = Participants::skyportOperatorDP;
+  this->publisherParticipants_[ Publishers::flightAuthSysPub] = Participants::flightAuthSysDP;
+  this->publisherParticipants_[ Publishers::uaspManPub] = Participants::uaspManagerDP;
+  this->publisherParticipants_[ Publishers::weatherPub] = Participants::weatherDP;
+  this->publisherParticipants_[ Publishers::bookingPlatformPub] = Participants::bookingPlatformDP;
   this->publisherParticipants_[ Publishers::evtolManPub] = Participants::evtolManagerDP;
   this->publisherParticipants_[ Publishers::pilotManPub] = Participants::pilotManagerDP;
-  this->publisherParticipants_[ Publishers::weatherSysPub] = Participants::weatherSystemDP;
-  this->publisherParticipants_[ Publishers::skyportOperatorPub] = Participants::skyportOperatorDP;
-  this->publisherParticipants_[ Publishers::skyportsManPub] = Participants::skyportsManDP;
-  this->publisherParticipants_[ Publishers::uaspManPub] = Participants::uaspManagerDP;
-  this->publisherParticipants_[ Publishers::FlightAuthSysPub] = Participants::FlighAuthSysDP;
+  this->publisherParticipants_[ Publishers::SkyportManPub] = Participants::skyportManDP;
   this->publisherParticipants_[ Publishers::tolPadManPub] = Participants::tolPadManagerDP;
 
   this->subscriberParticipants_[ Subscribers::fleetOperatorSub] = Participants::fleetOperatorDP;
-  this->subscriberParticipants_[ Subscribers::evtolManSub] = Participants::evtolManagerDP;
-  this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
   this->subscriberParticipants_[ Subscribers::skyportOperatorSub] = Participants::skyportOperatorDP;
-  this->subscriberParticipants_[ Subscribers::skyportsManSub] = Participants::skyportsManDP;
+  this->subscriberParticipants_[ Subscribers::flightAuthSysSub] = Participants::flightAuthSysDP;
   this->subscriberParticipants_[ Subscribers::uaspManSub] = Participants::uaspManagerDP;
-  this->subscriberParticipants_[ Subscribers::FlightAuthSysSub] = Participants::FlighAuthSysDP;
   this->subscriberParticipants_[ Subscribers::anspSub] = Participants::anspDP;
   this->subscriberParticipants_[ Subscribers::ussSub] = Participants::ussDP;
+  this->subscriberParticipants_[ Subscribers::evtolManSub] = Participants::evtolManagerDP;
+  this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
   this->subscriberParticipants_[ Subscribers::tolPadManSub] = Participants::tolPadManagerDP;
 
-  this->types_[ Topics::UATM__uatmDCPS__BookingFlightRequest] = Types::bookingFlightRequest;
-  this->types_[ Topics::UATM__uatmDCPS__AvailabilityInfo] = Types::availabilityInfo;
+  this->types_[ Topics::UATM__uatmDCPS__flightCoordination] = Types::flightCoordination;
+  this->types_[ Topics::UATM__uatmDCPS__flightAuthorizationRequest] = Types::flightAuthorizationRequest;
+  this->types_[ Topics::UATM__uatmDCPS__flightRequestInfo] = Types::flightRequestInfo;
+  this->types_[ Topics::UATM__uatmDCPS__tolPadRequest] = Types::tolPadRequest;
+  this->types_[ Topics::UATM__uatmDCPS__flightRouteInfo] = Types::flightRoutesInfo;
   this->types_[ Topics::UATM__uatmDCPS__weatherInfo] = Types::weatherInfo;
-  this->types_[ Topics::UATM__uatmDCPS__FlightRoutesInfo] = Types::flightRoutesInfo;
-  this->types_[ Topics::UATM__uatmDCPS__FlightAssign] = Types::flightAssign;
-  this->types_[ Topics::UATM__uatmDCPS__FlightCoordination] = Types::flightCoordination;
-  this->types_[ Topics::UATM__uatmDCPS__FlightAuthorizationRequest] = Types::flightAuthorizationRequest;
-  this->types_[ Topics::UATM__uatmDCPS__TolPadRequest] = Types::tolPadRequest;
-  this->types_[ Topics::UATM__uatmDCPS__TrafficFlowsInfo] = Types::trafficFlowsInfo;
-  this->types_[ Topics::UATM__uatmDCPS__AirspaceRestrictions] = Types::airspaceRestrictions;
-  this->types_[ Topics::UATM__uatmDCPS__acceptableRoute] = Types::acceptableRoute;
-  this->types_[ Topics::UATM__uatmDCPS__FlightAuthorization] = Types::flightAuthorization;
-  this->types_[ Topics::UATM__uatmDCPS__FlightChangeRec] = Types::flightChanceRec;
-  this->types_[ Topics::UATM__uatmDCPS__FlightRequestInfo] = Types::flightRequestInfo;
-  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilityFOP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
-  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__AvailabilitySKO] = Topics::UATM__uatmDCPS__AvailabilityInfo;
+  this->types_[ Topics::UATM__uatmDCPS__trafficFlowsInfo] = Types::trafficFlowsInfo;
+  this->types_[ Topics::UATM__uatmDCPS__flightChangeRec] = Types::flightChangeRec;
+  this->types_[ Topics::UATM__uatmDCPS__flightAuthorization] = Types::flightAuthorization;
+  this->types_[ Topics::UATM__uatmDCPS__flightAssign] = Types::flightAssign;
+  this->types_[ Topics::UATM__uatmDCPS__bookingFlightRequest] = Types::bookingFlightRequest;
+  this->types_[ Topics::UATM__uatmDCPS__availabilityInfo] = Types::availabilityInfo;
+  this->types_[ Topics::UATM__uatmDCPS__airspaceRestrictions] = Types::airspaceRestrictions;
+  this->types_[ Topics::UATM__uatmDCPS__accceptableRoute] = Types::acceptableRoute;
+  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_FOP] = Topics::UATM__uatmDCPS__availabilityInfo;
+  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP] = Topics::UATM__uatmDCPS__availabilityInfo;
+  this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_SKO] = Topics::UATM__uatmDCPS__availabilityInfo;
 
-  this->writerTopics_[ DataWriters::bookingFlightRequestDW_BP] = Topics::UATM__uatmDCPS__BookingFlightRequest;
-  this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::UATM__uatmDCPS__FlightAuthorizationRequest;
-  this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::UATM__uatmDCPS__FlightAssign;
-  this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::UATM__uatmDCPS__FlightCoordination;
-  this->writerTopics_[ DataWriters::evtolAvailabilityDW_ev] = Topics::UATM__uatmDCPS__AvailabilityInfo;
-  this->writerTopics_[ DataWriters::pilotAvailabilityDW_PLM] = Topics::UATM__uatmDCPS__AvailabilityInfo;
+  this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
+  this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::UATM__uatmDCPS__flightAssign;
+  this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::UATM__uatmDCPS__flightCoordination;
+  this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::UATM__uatmDCPS__flightRouteInfo;
+  this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
+  this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__airspaceRestrictions;
+  this->writerTopics_[ DataWriters::flightRequestInfoDW_FAS] = Topics::UATM__uatmDCPS__flightRequestInfo;
+  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::UATM__uatmDCPS__accceptableRoute;
+  this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::UATM__uatmDCPS__flightAuthorization;
+  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__flightChangeRec;
+  this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::UATM__uatmDCPS__tolPadRequest;
   this->writerTopics_[ DataWriters::weatherInfoDW_WTR] = Topics::UATM__uatmDCPS__weatherInfo;
-  this->writerTopics_[ DataWriters::FlightRoutesDW_SKO] = Topics::UATM__uatmDCPS__FlightRoutesInfo;
-  this->writerTopics_[ DataWriters::TrafficFlowDW_SKO] = Topics::UATM__uatmDCPS__TrafficFlowsInfo;
-  this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__AirspaceRestrictions;
-  this->writerTopics_[ DataWriters::SkyportAvailabilityDW_SKM] = Topics::UATM__uatmDCPS__AvailabilityInfo;
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::UATM__uatmDCPS__acceptableRoute;
-  this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::UATM__uatmDCPS__FlightAuthorization;
-  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__FlightChangeRec;
-  this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::UATM__uatmDCPS__TolPadRequest;
-  this->writerTopics_[ DataWriters::FlightRequestInfoDW_FAS] = Topics::UATM__uatmDCPS__FlightRequestInfo;
-  this->writerTopics_[ DataWriters::tolPadAvailabilityDW_TP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
+  this->writerTopics_[ DataWriters::bookingFlightRequestDW_BP] = Topics::UATM__uatmDCPS__bookingFlightRequest;
+  this->writerTopics_[ DataWriters::evtolAvailabilityDW_EV] = Topics::UATM__uatmDCPS__availabilityInfo;
+  this->writerTopics_[ DataWriters::pilotAvailabilityDW_PLM] = Topics::UATM__uatmDCPS__availabilityInfo;
+  this->writerTopics_[ DataWriters::skyportAvailabilityDW_SKM] = Topics::UATM__uatmDCPS__availabilityInfo;
+  this->writerTopics_[ DataWriters::tolPadAvailabilityDW_TP] = Topics::UATM__uatmDCPS__availabilityInfo;
 
-  this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::UATM__uatmDCPS__BookingFlightRequest;
-  this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::UATM__uatmDCPS__AvailabilityFOP;
-  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::UATM__uatmDCPS__FlightRoutesInfo;
+  this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::UATM__uatmDCPS__bookingFlightRequest;
+  this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::UATM__uatmDCPS__availabilityInfo_FOP;
+  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::UATM__uatmDCPS__flightRouteInfo;
   this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::UATM__uatmDCPS__weatherInfo;
-  this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::UATM__uatmDCPS__FlightAuthorization;
-  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__FlightChangeRec;
-  this->readerTopics_[ DataReaders::flightAssignDR_EV] = Topics::UATM__uatmDCPS__FlightAssign;
-  this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::UATM__uatmDCPS__FlightAuthorization;
-  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__FlightChangeRec;
-  this->readerTopics_[ DataReaders::flighAssignDR_PLM] = Topics::UATM__uatmDCPS__FlightAssign;
-  this->readerTopics_[ DataReaders::availabilityDR_SKO] = Topics::UATM__uatmDCPS__AvailabilitySKO;
-  this->readerTopics_[ DataReaders::flightCoordDR_SKO] = Topics::UATM__uatmDCPS__FlightCoordination;
-  this->readerTopics_[ DataReaders::assignFlightDR_SKM] = Topics::UATM__uatmDCPS__FlightAssign;
-  this->readerTopics_[ DataReaders::FlightRequestDR_UASP] = Topics::UATM__uatmDCPS__FlightRequestInfo;
-  this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::UATM__uatmDCPS__TrafficFlowsInfo;
+  this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::UATM__uatmDCPS__flightAuthorization;
+  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__flightChangeRec;
+  this->readerTopics_[ DataReaders::availabilityDR_SKO] = Topics::UATM__uatmDCPS__availabilityInfo_SKO;
+  this->readerTopics_[ DataReaders::flightCoordDR_SKO] = Topics::UATM__uatmDCPS__flightCoordination;
+  this->readerTopics_[ DataReaders::flightRequestDR_FAS] = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
+  this->readerTopics_[ DataReaders::flightRequestDR_UASP] = Topics::UATM__uatmDCPS__flightRequestInfo;
+  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::UATM__uatmDCPS__availabilityInfo_UASP;
+  this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::UATM__uatmDCPS__weatherInfo;
-  this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::UATM__uatmDCPS__AirspaceRestrictions;
-  this->readerTopics_[ DataReaders::tolPadAvailabilityDR_UASP] = Topics::UATM__uatmDCPS__AvailabilityInfo;
-  this->readerTopics_[ DataReaders::flightRequestDR_FAS] = Topics::UATM__uatmDCPS__FlightAuthorizationRequest;
-  this->readerTopics_[ DataReaders::routeDataDR_ANSP] = Topics::UATM__uatmDCPS__acceptableRoute;
-  this->readerTopics_[ DataReaders::routeDataDR_USS] = Topics::UATM__uatmDCPS__acceptableRoute;
-  this->readerTopics_[ DataReaders::tolPadAssignDR_TP] = Topics::UATM__uatmDCPS__TolPadRequest;
+  this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::UATM__uatmDCPS__airspaceRestrictions;
+  this->readerTopics_[ DataReaders::routeDataDR_ANSP] = Topics::UATM__uatmDCPS__accceptableRoute;
+  this->readerTopics_[ DataReaders::routeDataDR_USS] = Topics::UATM__uatmDCPS__accceptableRoute;
+  this->readerTopics_[ DataReaders::flightAssignDR_EV] = Topics::UATM__uatmDCPS__flightAssign;
+  this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::UATM__uatmDCPS__flightAuthorization;
+  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__flightChangeRec;
+  this->readerTopics_[ DataReaders::flightAssignDR_PLM] = Topics::UATM__uatmDCPS__flightAssign;
+  this->readerTopics_[ DataReaders::tolPadAssignDR_TP] = Topics::UATM__uatmDCPS__tolPadRequest;
 
-  this->publishers_[ DataWriters::bookingFlightRequestDW_BP] = Publishers::bookingPlatformPub;
   this->publishers_[ DataWriters::uaspFlightRequestDW_FOP] = Publishers::fleetOperatorPub;
   this->publishers_[ DataWriters::assignFlightDW_FOP] = Publishers::fleetOperatorPub;
   this->publishers_[ DataWriters::flightCoordDW_FOP] = Publishers::fleetOperatorPub;
-  this->publishers_[ DataWriters::evtolAvailabilityDW_ev] = Publishers::evtolManPub;
-  this->publishers_[ DataWriters::pilotAvailabilityDW_PLM] = Publishers::pilotManPub;
-  this->publishers_[ DataWriters::weatherInfoDW_WTR] = Publishers::weatherSysPub;
-  this->publishers_[ DataWriters::FlightRoutesDW_SKO] = Publishers::skyportOperatorPub;
-  this->publishers_[ DataWriters::TrafficFlowDW_SKO] = Publishers::skyportOperatorPub;
+  this->publishers_[ DataWriters::flightRoutesDW_SKO] = Publishers::skyportOperatorPub;
+  this->publishers_[ DataWriters::trafficFlowsDW_SKO] = Publishers::skyportOperatorPub;
   this->publishers_[ DataWriters::airspaceRestDW_SKO] = Publishers::skyportOperatorPub;
-  this->publishers_[ DataWriters::SkyportAvailabilityDW_SKM] = Publishers::skyportsManPub;
+  this->publishers_[ DataWriters::flightRequestInfoDW_FAS] = Publishers::flightAuthSysPub;
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::uaspManPub;
   this->publishers_[ DataWriters::flightAuthDW_UASP] = Publishers::uaspManPub;
   this->publishers_[ DataWriters::changeRecDW_UASP] = Publishers::uaspManPub;
   this->publishers_[ DataWriters::tolPadReqDW_UASP] = Publishers::uaspManPub;
-  this->publishers_[ DataWriters::FlightRequestInfoDW_FAS] = Publishers::FlightAuthSysPub;
+  this->publishers_[ DataWriters::weatherInfoDW_WTR] = Publishers::weatherPub;
+  this->publishers_[ DataWriters::bookingFlightRequestDW_BP] = Publishers::bookingPlatformPub;
+  this->publishers_[ DataWriters::evtolAvailabilityDW_EV] = Publishers::evtolManPub;
+  this->publishers_[ DataWriters::pilotAvailabilityDW_PLM] = Publishers::pilotManPub;
+  this->publishers_[ DataWriters::skyportAvailabilityDW_SKM] = Publishers::SkyportManPub;
   this->publishers_[ DataWriters::tolPadAvailabilityDW_TP] = Publishers::tolPadManPub;
 
   this->subscribers_[ DataReaders::flightRequestDR_FOP] = Subscribers::fleetOperatorSub;
@@ -517,21 +518,20 @@ Elements::Data::loadMaps()
   this->subscribers_[ DataReaders::weatherDR_FOP] = Subscribers::fleetOperatorSub;
   this->subscribers_[ DataReaders::flightAuthDR_FOP] = Subscribers::fleetOperatorSub;
   this->subscribers_[ DataReaders::recommendationDR_FOP] = Subscribers::fleetOperatorSub;
-  this->subscribers_[ DataReaders::flightAssignDR_EV] = Subscribers::evtolManSub;
-  this->subscribers_[ DataReaders::flightAuthDR_PLM] = Subscribers::pilotManSub;
-  this->subscribers_[ DataReaders::changeRecDR_PLM] = Subscribers::pilotManSub;
-  this->subscribers_[ DataReaders::flighAssignDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::availabilityDR_SKO] = Subscribers::skyportOperatorSub;
   this->subscribers_[ DataReaders::flightCoordDR_SKO] = Subscribers::skyportOperatorSub;
-  this->subscribers_[ DataReaders::assignFlightDR_SKM] = Subscribers::skyportsManSub;
-  this->subscribers_[ DataReaders::FlightRequestDR_UASP] = Subscribers::uaspManSub;
+  this->subscribers_[ DataReaders::flightRequestDR_FAS] = Subscribers::flightAuthSysSub;
+  this->subscribers_[ DataReaders::flightRequestDR_UASP] = Subscribers::uaspManSub;
+  this->subscribers_[ DataReaders::tolPadAvailabilityDR_UASP] = Subscribers::uaspManSub;
   this->subscribers_[ DataReaders::trafficFlowsDR_UASP] = Subscribers::uaspManSub;
   this->subscribers_[ DataReaders::weatherInfoDR_UASP] = Subscribers::uaspManSub;
   this->subscribers_[ DataReaders::airspaceRestDR_UASP] = Subscribers::uaspManSub;
-  this->subscribers_[ DataReaders::tolPadAvailabilityDR_UASP] = Subscribers::uaspManSub;
-  this->subscribers_[ DataReaders::flightRequestDR_FAS] = Subscribers::FlightAuthSysSub;
   this->subscribers_[ DataReaders::routeDataDR_ANSP] = Subscribers::anspSub;
   this->subscribers_[ DataReaders::routeDataDR_USS] = Subscribers::ussSub;
+  this->subscribers_[ DataReaders::flightAssignDR_EV] = Subscribers::evtolManSub;
+  this->subscribers_[ DataReaders::flightAuthDR_PLM] = Subscribers::pilotManSub;
+  this->subscribers_[ DataReaders::changeRecDR_PLM] = Subscribers::pilotManSub;
+  this->subscribers_[ DataReaders::flightAssignDR_PLM] = Subscribers::pilotManSub;
   this->subscribers_[ DataReaders::tolPadAssignDR_TP] = Subscribers::tolPadManSub;
 
 }
@@ -543,11 +543,35 @@ Elements::Data::buildParticipantsQos()
   DomainParticipantQos participantQos;
   Participants::Values participant;
     
-  participant = Participants::bookingPlatformDP;
+  participant = Participants::fleetOperatorDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
   this->participantsQos_[ participant] = participantQos;
 
-  participant = Participants::fleetOperatorDP;
+  participant = Participants::skyportOperatorDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::flightAuthSysDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::uaspManagerDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::anspDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::ussDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::weatherDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  this->participantsQos_[ participant] = participantQos;
+
+  participant = Participants::bookingPlatformDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
   this->participantsQos_[ participant] = participantQos;
 
@@ -559,31 +583,7 @@ Elements::Data::buildParticipantsQos()
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
   this->participantsQos_[ participant] = participantQos;
 
-  participant = Participants::weatherSystemDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::skyportOperatorDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::skyportsManDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::uaspManagerDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::FlighAuthSysDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::anspDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
-
-  participant = Participants::ussDP;
+  participant = Participants::skyportManDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
   this->participantsQos_[ participant] = participantQos;
 
@@ -599,7 +599,49 @@ Elements::Data::buildTopicsQos()
   TopicQos       topicQos;
   Topics::Values topic;
     
-  topic    = Topics::UATM__uatmDCPS__BookingFlightRequest;
+  topic    = Topics::UATM__uatmDCPS__flightCoordination;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__flightRequestInfo;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 10;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__tolPadRequest;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
@@ -609,18 +651,22 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__AvailabilityInfo;
+  topic    = Topics::UATM__uatmDCPS__flightRouteInfo;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
-  topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-  topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
-  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS;
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 100000000;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
   topic    = Topics::UATM__uatmDCPS__weatherInfo;
@@ -628,26 +674,16 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //mudar aq BEST_EFFORT_RELIABILITY_QOS
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 200000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__FlightRoutesInfo;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__FlightAssign;
+  topic    = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
@@ -657,9 +693,11 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__FlightCoordination;
+  topic    = Topics::UATM__uatmDCPS__flightChangeRec;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
@@ -669,69 +707,11 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 10;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__FlightAuthorizationRequest;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__TolPadRequest;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__TrafficFlowsInfo;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 100000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__AirspaceRestrictions;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
-  topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__acceptableRoute;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__FlightAuthorization;
+  topic    = Topics::UATM__uatmDCPS__flightAuthorization;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = PERSISTENT_DURABILITY_QOS;
@@ -741,21 +721,11 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 1;
+  topicQos.history.kind = KEEP_ALL_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__FlightChangeRec;
-  topicQos = TheServiceParticipant->initial_TopicQos();
-    
-  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
-  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
-  topicQos.reliability.max_blocking_time.sec = 2147483647;
-  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
-  topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
-  this->topicsQos_[ topic] = topicQos;
-
-  topic    = Topics::UATM__uatmDCPS__FlightRequestInfo;
+  topic    = Topics::UATM__uatmDCPS__flightAssign;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
@@ -765,14 +735,77 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
   topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__AvailabilityFOP;
+  topic    = Topics::UATM__uatmDCPS__bookingFlightRequest;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__availabilityInfo;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
+  topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //mudar aq tbm
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 100000000;
+  topicQos.history.depth = 10;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__airspaceRestrictions;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__accceptableRoute;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
+  topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;
+  topicQos.reliability.max_blocking_time.sec = 2147483647;
+  topicQos.reliability.max_blocking_time.nanosec = 2147483647;
+  topicQos.deadline.period.sec = 0;
+  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.history.depth = 5;
+  topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__availabilityInfo_FOP;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__AvailabilitySKO;
+  topic    = Topics::UATM__uatmDCPS__availabilityInfo_UASP;
+  topicQos = TheServiceParticipant->initial_TopicQos();
+    
+  this->topicsQos_[ topic] = topicQos;
+
+  topic    = Topics::UATM__uatmDCPS__availabilityInfo_SKO;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   this->topicsQos_[ topic] = topicQos;
@@ -785,11 +818,27 @@ Elements::Data::buildPublishersQos()
   PublisherQos       publisherQos;
   Publishers::Values publisher;
 
-  publisher    = Publishers::bookingPlatformPub;
+  publisher    = Publishers::fleetOperatorPub;
   publisherQos = TheServiceParticipant->initial_PublisherQos();
   this->publishersQos_[ publisher] = publisherQos;
 
-  publisher    = Publishers::fleetOperatorPub;
+  publisher    = Publishers::skyportOperatorPub;
+  publisherQos = TheServiceParticipant->initial_PublisherQos();
+  this->publishersQos_[ publisher] = publisherQos;
+
+  publisher    = Publishers::flightAuthSysPub;
+  publisherQos = TheServiceParticipant->initial_PublisherQos();
+  this->publishersQos_[ publisher] = publisherQos;
+
+  publisher    = Publishers::uaspManPub;
+  publisherQos = TheServiceParticipant->initial_PublisherQos();
+  this->publishersQos_[ publisher] = publisherQos;
+
+  publisher    = Publishers::weatherPub;
+  publisherQos = TheServiceParticipant->initial_PublisherQos();
+  this->publishersQos_[ publisher] = publisherQos;
+
+  publisher    = Publishers::bookingPlatformPub;
   publisherQos = TheServiceParticipant->initial_PublisherQos();
   this->publishersQos_[ publisher] = publisherQos;
 
@@ -801,23 +850,7 @@ Elements::Data::buildPublishersQos()
   publisherQos = TheServiceParticipant->initial_PublisherQos();
   this->publishersQos_[ publisher] = publisherQos;
 
-  publisher    = Publishers::weatherSysPub;
-  publisherQos = TheServiceParticipant->initial_PublisherQos();
-  this->publishersQos_[ publisher] = publisherQos;
-
-  publisher    = Publishers::skyportOperatorPub;
-  publisherQos = TheServiceParticipant->initial_PublisherQos();
-  this->publishersQos_[ publisher] = publisherQos;
-
-  publisher    = Publishers::skyportsManPub;
-  publisherQos = TheServiceParticipant->initial_PublisherQos();
-  this->publishersQos_[ publisher] = publisherQos;
-
-  publisher    = Publishers::uaspManPub;
-  publisherQos = TheServiceParticipant->initial_PublisherQos();
-  this->publishersQos_[ publisher] = publisherQos;
-
-  publisher    = Publishers::FlightAuthSysPub;
+  publisher    = Publishers::SkyportManPub;
   publisherQos = TheServiceParticipant->initial_PublisherQos();
   this->publishersQos_[ publisher] = publisherQos;
 
@@ -837,27 +870,15 @@ Elements::Data::buildSubscribersQos()
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
-  subscriber    = Subscribers::evtolManSub;
-  subscriberQos = TheServiceParticipant->initial_SubscriberQos();
-  this->subscribersQos_[ subscriber] = subscriberQos;
-
-  subscriber    = Subscribers::pilotManSub;
-  subscriberQos = TheServiceParticipant->initial_SubscriberQos();
-  this->subscribersQos_[ subscriber] = subscriberQos;
-
   subscriber    = Subscribers::skyportOperatorSub;
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
-  subscriber    = Subscribers::skyportsManSub;
+  subscriber    = Subscribers::flightAuthSysSub;
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
   subscriber    = Subscribers::uaspManSub;
-  subscriberQos = TheServiceParticipant->initial_SubscriberQos();
-  this->subscribersQos_[ subscriber] = subscriberQos;
-
-  subscriber    = Subscribers::FlightAuthSysSub;
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
@@ -866,6 +887,14 @@ Elements::Data::buildSubscribersQos()
   this->subscribersQos_[ subscriber] = subscriberQos;
 
   subscriber    = Subscribers::ussSub;
+  subscriberQos = TheServiceParticipant->initial_SubscriberQos();
+  this->subscribersQos_[ subscriber] = subscriberQos;
+
+  subscriber    = Subscribers::evtolManSub;
+  subscriberQos = TheServiceParticipant->initial_SubscriberQos();
+  this->subscribersQos_[ subscriber] = subscriberQos;
+
+  subscriber    = Subscribers::pilotManSub;
   subscriberQos = TheServiceParticipant->initial_SubscriberQos();
   this->subscribersQos_[ subscriber] = subscriberQos;
 
@@ -880,11 +909,6 @@ Elements::Data::buildPublicationsQos()
 {
   DataWriters::Values  writer;
   DataWriterQos        writerQos;
-
-  writer    = DataWriters::bookingFlightRequestDW_BP;
-  writerQos = TheServiceParticipant->initial_DataWriterQos();
-  this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = true;
 
   writer    = DataWriters::uaspFlightRequestDW_FOP;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
@@ -901,27 +925,12 @@ Elements::Data::buildPublicationsQos()
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
 
-  writer    = DataWriters::evtolAvailabilityDW_ev;
+  writer    = DataWriters::flightRoutesDW_SKO;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
 
-  writer    = DataWriters::pilotAvailabilityDW_PLM;
-  writerQos = TheServiceParticipant->initial_DataWriterQos();
-  this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = true;
-
-  writer    = DataWriters::weatherInfoDW_WTR;
-  writerQos = TheServiceParticipant->initial_DataWriterQos();
-  this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = true;
-
-  writer    = DataWriters::FlightRoutesDW_SKO;
-  writerQos = TheServiceParticipant->initial_DataWriterQos();
-  this->writersQos_[ writer] = writerQos;
-  this->writerCopyTopicQos_[writer] = true;
-
-  writer    = DataWriters::TrafficFlowDW_SKO;
+  writer    = DataWriters::trafficFlowsDW_SKO;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
@@ -931,7 +940,7 @@ Elements::Data::buildPublicationsQos()
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
 
-  writer    = DataWriters::SkyportAvailabilityDW_SKM;
+  writer    = DataWriters::flightRequestInfoDW_FAS;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
@@ -956,7 +965,27 @@ Elements::Data::buildPublicationsQos()
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
 
-  writer    = DataWriters::FlightRequestInfoDW_FAS;
+  writer    = DataWriters::weatherInfoDW_WTR;
+  writerQos = TheServiceParticipant->initial_DataWriterQos();
+  this->writersQos_[ writer] = writerQos;
+  this->writerCopyTopicQos_[writer] = true;
+
+  writer    = DataWriters::bookingFlightRequestDW_BP;
+  writerQos = TheServiceParticipant->initial_DataWriterQos();
+  this->writersQos_[ writer] = writerQos;
+  this->writerCopyTopicQos_[writer] = true;
+
+  writer    = DataWriters::evtolAvailabilityDW_EV;
+  writerQos = TheServiceParticipant->initial_DataWriterQos();
+  this->writersQos_[ writer] = writerQos;
+  this->writerCopyTopicQos_[writer] = true;
+
+  writer    = DataWriters::pilotAvailabilityDW_PLM;
+  writerQos = TheServiceParticipant->initial_DataWriterQos();
+  this->writersQos_[ writer] = writerQos;
+  this->writerCopyTopicQos_[writer] = true;
+
+  writer    = DataWriters::skyportAvailabilityDW_SKM;
   writerQos = TheServiceParticipant->initial_DataWriterQos();
   this->writersQos_[ writer] = writerQos;
   this->writerCopyTopicQos_[writer] = true;
@@ -1004,26 +1033,6 @@ Elements::Data::buildSubscriptionsQos()
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
-  reader    = DataReaders::flightAssignDR_EV;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
-  reader    = DataReaders::flightAuthDR_PLM;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
-  reader    = DataReaders::changeRecDR_PLM;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
-  reader    = DataReaders::flighAssignDR_PLM;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
   reader    = DataReaders::availabilityDR_SKO;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
@@ -1034,12 +1043,17 @@ Elements::Data::buildSubscriptionsQos()
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
-  reader    = DataReaders::assignFlightDR_SKM;
+  reader    = DataReaders::flightRequestDR_FAS;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
-  reader    = DataReaders::FlightRequestDR_UASP;
+  reader    = DataReaders::flightRequestDR_UASP;
+  readerQos = TheServiceParticipant->initial_DataReaderQos();
+  this->readersQos_[ reader] = readerQos;
+  this->readerCopyTopicQos_[reader] = true;
+
+  reader    = DataReaders::tolPadAvailabilityDR_UASP;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
@@ -1059,22 +1073,32 @@ Elements::Data::buildSubscriptionsQos()
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
-  reader    = DataReaders::tolPadAvailabilityDR_UASP;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
-  reader    = DataReaders::flightRequestDR_FAS;
-  readerQos = TheServiceParticipant->initial_DataReaderQos();
-  this->readersQos_[ reader] = readerQos;
-  this->readerCopyTopicQos_[reader] = true;
-
   reader    = DataReaders::routeDataDR_ANSP;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
 
   reader    = DataReaders::routeDataDR_USS;
+  readerQos = TheServiceParticipant->initial_DataReaderQos();
+  this->readersQos_[ reader] = readerQos;
+  this->readerCopyTopicQos_[reader] = true;
+
+  reader    = DataReaders::flightAssignDR_EV;
+  readerQos = TheServiceParticipant->initial_DataReaderQos();
+  this->readersQos_[ reader] = readerQos;
+  this->readerCopyTopicQos_[reader] = true;
+
+  reader    = DataReaders::flightAuthDR_PLM;
+  readerQos = TheServiceParticipant->initial_DataReaderQos();
+  this->readersQos_[ reader] = readerQos;
+  this->readerCopyTopicQos_[reader] = true;
+
+  reader    = DataReaders::changeRecDR_PLM;
+  readerQos = TheServiceParticipant->initial_DataReaderQos();
+  this->readersQos_[ reader] = readerQos;
+  this->readerCopyTopicQos_[reader] = true;
+
+  reader    = DataReaders::flightAssignDR_PLM;
   readerQos = TheServiceParticipant->initial_DataReaderQos();
   this->readersQos_[ reader] = readerQos;
   this->readerCopyTopicQos_[reader] = true;
@@ -1094,9 +1118,6 @@ Elements::Data::copyPublicationQos(
 )
 {
   switch(which) {
-    case DataWriters::bookingFlightRequestDW_BP:
-      break;
-
     case DataWriters::uaspFlightRequestDW_FOP:
       break;
 
@@ -1106,25 +1127,16 @@ Elements::Data::copyPublicationQos(
     case DataWriters::flightCoordDW_FOP:
       break;
 
-    case DataWriters::evtolAvailabilityDW_ev:
+    case DataWriters::flightRoutesDW_SKO:
       break;
 
-    case DataWriters::pilotAvailabilityDW_PLM:
-      break;
-
-    case DataWriters::weatherInfoDW_WTR:
-      break;
-
-    case DataWriters::FlightRoutesDW_SKO:
-      break;
-
-    case DataWriters::TrafficFlowDW_SKO:
+    case DataWriters::trafficFlowsDW_SKO:
       break;
 
     case DataWriters::airspaceRestDW_SKO:
       break;
 
-    case DataWriters::SkyportAvailabilityDW_SKM:
+    case DataWriters::flightRequestInfoDW_FAS:
       break;
 
     case DataWriters::routeDataDW_UASP:
@@ -1139,7 +1151,19 @@ Elements::Data::copyPublicationQos(
     case DataWriters::tolPadReqDW_UASP:
       break;
 
-    case DataWriters::FlightRequestInfoDW_FAS:
+    case DataWriters::weatherInfoDW_WTR:
+      break;
+
+    case DataWriters::bookingFlightRequestDW_BP:
+      break;
+
+    case DataWriters::evtolAvailabilityDW_EV:
+      break;
+
+    case DataWriters::pilotAvailabilityDW_PLM:
+      break;
+
+    case DataWriters::skyportAvailabilityDW_SKM:
       break;
 
     case DataWriters::tolPadAvailabilityDW_TP:
@@ -1176,28 +1200,19 @@ Elements::Data::copySubscriptionQos(
     case DataReaders::recommendationDR_FOP:
       break;
 
-    case DataReaders::flightAssignDR_EV:
-      break;
-
-    case DataReaders::flightAuthDR_PLM:
-      break;
-
-    case DataReaders::changeRecDR_PLM:
-      break;
-
-    case DataReaders::flighAssignDR_PLM:
-      break;
-
     case DataReaders::availabilityDR_SKO:
       break;
 
     case DataReaders::flightCoordDR_SKO:
       break;
 
-    case DataReaders::assignFlightDR_SKM:
+    case DataReaders::flightRequestDR_FAS:
       break;
 
-    case DataReaders::FlightRequestDR_UASP:
+    case DataReaders::flightRequestDR_UASP:
+      break;
+
+    case DataReaders::tolPadAvailabilityDR_UASP:
       break;
 
     case DataReaders::trafficFlowsDR_UASP:
@@ -1209,16 +1224,22 @@ Elements::Data::copySubscriptionQos(
     case DataReaders::airspaceRestDR_UASP:
       break;
 
-    case DataReaders::tolPadAvailabilityDR_UASP:
-      break;
-
-    case DataReaders::flightRequestDR_FAS:
-      break;
-
     case DataReaders::routeDataDR_ANSP:
       break;
 
     case DataReaders::routeDataDR_USS:
+      break;
+
+    case DataReaders::flightAssignDR_EV:
+      break;
+
+    case DataReaders::flightAuthDR_PLM:
+      break;
+
+    case DataReaders::changeRecDR_PLM:
+      break;
+
+    case DataReaders::flightAssignDR_PLM:
       break;
 
     case DataReaders::tolPadAssignDR_TP:

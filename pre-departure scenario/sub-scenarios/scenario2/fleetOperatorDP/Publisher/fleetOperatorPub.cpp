@@ -3,7 +3,7 @@
 #endif
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -24,16 +24,15 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                           ACE_TEXT(" _narrow failed!\n")),
                          -1);
-    }
+    } 
 
     OpenDDS::Model::WriterSync ws(writer);
     {
       UATM::flightAssign fa;
 
-      // Populate message and send
-      fa.flight_assign_id = 23;
+      fa.flight_assign_id = 3232;
       fa.assign_time = "1245-32";
-      fa.operator_id = 32;
+      fa.operator_id =  323;
       fa.assign_status = true;
       UATM::ArrayString resources_id;
 

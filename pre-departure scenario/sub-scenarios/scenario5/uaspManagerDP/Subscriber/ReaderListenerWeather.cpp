@@ -1,6 +1,6 @@
 
-#include "../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include "../../model/UATMTraits.h"
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
@@ -29,7 +29,6 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
     UATM::weatherInfo msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
@@ -46,15 +45,15 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
                     << "Observation Time: " << msg.observation_time.in() << std::endl;
         } else {
             rcs_.signal();
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
+        rcs_.signal();
         break;
       }
     }

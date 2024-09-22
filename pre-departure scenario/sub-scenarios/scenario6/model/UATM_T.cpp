@@ -111,9 +111,9 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__flightAuthorization] = "flightAuthorization";
   this->cfTopics_[Topics::UATM__uatmDCPS__flightAuthorization] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__flightAuthorization] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__flightChanceRec] = "flightChanceRec";
-  this->cfTopics_[Topics::UATM__uatmDCPS__flightChanceRec] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__flightChanceRec] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightChangeRec] = "flightChangeRec";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightChangeRec] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightChangeRec] = MultiTopics::LAST_INDEX;
 }
 
 inline
@@ -172,15 +172,15 @@ Elements::Data::loadMaps()
   this->subscriberParticipants_[ Subscribers::pilotManSub] = Participants::pilotManagerDP;
 
   this->types_[ Topics::UATM__uatmDCPS__flightAuthorization] = Types::flightAuthorization;
-  this->types_[ Topics::UATM__uatmDCPS__flightChanceRec] = Types::flightChangeRec;
+  this->types_[ Topics::UATM__uatmDCPS__flightChangeRec] = Types::flightChangeRec;
 
   this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::UATM__uatmDCPS__flightAuthorization;
-  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__flightChanceRec;
+  this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__flightChangeRec;
 
   this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::UATM__uatmDCPS__flightAuthorization;
-  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__flightChanceRec;
+  this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__flightChangeRec;
   this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::UATM__uatmDCPS__flightAuthorization;
-  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__flightChanceRec;
+  this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__flightChangeRec;
 
   this->publishers_[ DataWriters::routeDataDW_UASP] = Publishers::uaspManagerPub;
   this->publishers_[ DataWriters::flightAuthDW_UASP] = Publishers::uaspManagerPub;
@@ -249,7 +249,7 @@ Elements::Data::buildTopicsQos()
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__flightChanceRec;
+  topic    = Topics::UATM__uatmDCPS__flightChangeRec;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;

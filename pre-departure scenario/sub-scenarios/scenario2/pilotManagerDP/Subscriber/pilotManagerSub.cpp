@@ -2,7 +2,7 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #endif
   
-#include "../model/UATMTraits.h"
+#include "../../model/UATMTraits.h"
 #include <tools/modeling/codegen/model/NullReaderListener.h>
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>

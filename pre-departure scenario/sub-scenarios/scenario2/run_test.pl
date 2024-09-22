@@ -55,21 +55,21 @@ my $sub_opts = "$common_opts";
 
 $test->setup_discovery("-ORBDebugLevel 1 -ORBLogFile DCPSInfoRepo.log") unless $rtps;
 
-$test->process("publisher1", "model/publisher1", $pub_opts);
-$test->process("publisher2", "model/publisher2", $pub_opts);
-$test->process("publisher3", "model/publisher3", $pub_opts);
-$test->process("publisher4", "model/publisher4", $pub_opts);
-$test->process("subscriber1", "model/subscriber1", $sub_opts);
-$test->process("subscriber2", "model/subscriber2", $sub_opts);
-$test->process("subscriber3", "model/subscriber3", $sub_opts);
+$test->process("publisher1", "./model/publisher1", $pub_opts);
+$test->process("publisher2", "./model/publisher2", $pub_opts);
+$test->process("publisher3", "./model/publisher3", $pub_opts);
+$test->process("publisher4", "./model/publisher4", $pub_opts);
+$test->process("subscriber1", "./model/subscriber1", $sub_opts);
+$test->process("subscriber2", "./model/subscriber2", $sub_opts);
+$test->process("subscriber3", "./model/subscriber3", $sub_opts);
 
 
+$test->start_process("subscriber3");
 $test->start_process("subscriber1");
 $test->start_process("subscriber2");
-$test->start_process("subscriber3");
+$test->start_process("publisher4");
+$test->start_process("publisher3");
 $test->start_process("publisher2");
 $test->start_process("publisher1");
-$test->start_process("publisher3");
-$test->start_process("publisher4");
 
 exit $test->finish(120);
