@@ -30,10 +30,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightRoutesInfo fr;
 
-      // Populate message and send
       fr.flight_route_id = 23;
       UATM::ArrayString waypoints;
-
       fr.waypoints[0] = "wayp1";
       fr.waypoints[1] = "wayp2";
       fr.flight_id = 7;

@@ -5,8 +5,6 @@
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
 
-
-// Construtor da classe
 ReaderListenerRoute::ReaderListenerRoute(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
 
@@ -28,7 +26,6 @@ ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
     UATM::flightRoutesInfo msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
@@ -44,10 +41,8 @@ ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
                     << "Status: " << msg.status << std::endl;
         } else {
             rcs_.signal();
-            // break;
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,

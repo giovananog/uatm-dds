@@ -29,7 +29,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::availabilityInfo fa;
 
-      // Populate message and send
       fa.resource_id = 23;
       fa.resource_type = "skyport";
       fa.status = true;

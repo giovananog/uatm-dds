@@ -5,18 +5,6 @@
 #include <dds/DCPS/WaitSet.h>
 #include "ReaderListenerRequest.h"
 
-#include <chrono>
-#include <ctime>
-
-std::string currentDateTime() {
-    auto now = std::chrono::system_clock::now();
-    auto now_c = std::chrono::system_clock::to_time_t(now);
-    std::string time_str = std::ctime(&now_c);
-    time_str.erase(time_str.length() - 1); // Remove a nova linha
-    return time_str;
-}
-
-// Construtor da classe
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs)
   : rcs_(rcs) {}
 
@@ -42,7 +30,6 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
         // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
-        std::cout << "[" << currentDateTime() << "] SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
           std::cout << "----------------------------------" << std::endl
                     << "        flightAssign:" << std::endl
@@ -54,9 +41,8 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                     << "Resources ID: " << msg.resources_id << std::endl;
         } else {
             rcs_.signal();
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
