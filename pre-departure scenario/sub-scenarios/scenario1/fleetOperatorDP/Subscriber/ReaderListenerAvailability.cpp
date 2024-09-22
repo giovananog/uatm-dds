@@ -5,9 +5,9 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
+#include <vector>
 #include "ReaderListenerAvailability.h"
 
-// ReaderListenerAvailability::storedAvailabilities;
 std::vector<UATM::availabilityInfo> ReaderListenerAvailability::storedAvailabilities;
 
 ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs)
@@ -50,9 +50,8 @@ ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
                     }
         } else {
             rcs_.signal();
-            std::cout << "Received sample, but no valid data." << std::endl;
+            break;
         }
-        // break;
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
