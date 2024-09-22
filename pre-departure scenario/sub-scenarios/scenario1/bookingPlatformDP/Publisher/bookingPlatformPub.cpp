@@ -30,8 +30,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       UATM::bookingFlightRequest bfr;
       std::cout << "Before sending data" << std::endl;
 
-
-      // Populate message and send
       bfr.booking_id = 3;
       bfr.flight_id = 2;
       bfr.customer_id = "2";
