@@ -6,7 +6,7 @@ project(UATM) : dcps, UATM_paths {
   idlflags      += -Wb,export_macro=UATM_Export -Wb,export_include=UATM_export.h
   dynamicflags   = UATM_BUILD_DLL
   dcps_ts_flags += -Wb,export_macro=UATM_Export
-  prebuild      += perl $(DDS_ROOT)/bin/expfile.pl UATM
+  prebuild      += perl $(DDS_ROOT)/tools/scripts/expfile.pl UATM
 
 
   TypeSupport_Files {
@@ -28,5 +28,235 @@ project(UATM) : dcps, UATM_paths {
 
   Template_Files {
     UATM_T.cpp
+  }
+}
+
+project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../bookingPlatformDP/Publisher/bookingPlatformPub.cpp
+  }
+}
+
+project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../evtolManagerDP/Publisher/evtolManPub.cpp
+  }
+}
+
+project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher3
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/Publisher/fleetOperatorPub.cpp
+  }
+}
+
+project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher4
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../flightAuthSysDP/Publisher/flightAuthSysPub.cpp
+  }
+}
+
+project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher5
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../pilotManagerDP/Publisher/pilotManagerPub.cpp
+  }
+}
+
+project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher6
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../skyportManagerDP/Publisher/skyportManagerPub.cpp
+  }
+}
+
+project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher7
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../skyportOperatorDP/Publisher/skyportOperatorPub.cpp
+  }
+}
+
+project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher8
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../tolPadManagerDP/Publisher/tolPadManagerPub.cpp
+  }
+}
+
+project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher9
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../uaspManagerDP/Publisher/uaspManPub.cpp
+  }
+}
+
+project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = publisher10
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../weatherDP/Publisher/weatherPub.cpp
+  }
+}
+
+project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber1
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../anspDP/Subscriber/ReaderListenerRequest.cpp
+    ../anspDP/Subscriber/anspSub.cpp
+  }
+}
+
+project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber2
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../evtolManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../evtolManagerDP/Subscriber/evtolManagerSub.cpp
+  }
+}
+
+project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber3
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../fleetOperatorDP/Subscriber/ReaderListenerAuth.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerAvailability.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRec.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRequest.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRoute.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerWeather.cpp
+    ../fleetOperatorDP/Subscriber/fleetOperatorSub.cpp
+  }
+}
+
+project(*xmlSubscriber4) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber4
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../flightAuthSysDP/Subscriber/ReaderListenerRequest.cpp
+    ../flightAuthSysDP/Subscriber/flightAuthSysSub.cpp
+  }
+}
+
+project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber5
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../pilotManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../pilotManagerDP/Subscriber/ReaderListenerRec.cpp
+    ../pilotManagerDP/Subscriber/ReaderListenerAuth.cpp
+    ../pilotManagerDP/Subscriber/pilotManagerSub.cpp
+  }
+}
+
+project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber6
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../skyportOperatorDP/Subscriber/ReaderListenerCoordination.cpp
+    ../skyportOperatorDP/Subscriber/ReaderListenerAvailability.cpp
+    ../skyportOperatorDP/Subscriber/skyportOperatorSub.cpp
+  }
+}
+
+project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber7
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../tolPadManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../tolPadManagerDP/Subscriber/tolPadManagerSub.cpp
+  }
+}
+
+project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber8
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../uaspManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../uaspManagerDP/Subscriber/ReaderListenerAvailability.cpp
+    ../uaspManagerDP/Subscriber/ReaderListenerFlows.cpp
+    ../uaspManagerDP/Subscriber/ReaderListenerRest.cpp
+    ../uaspManagerDP/Subscriber/ReaderListenerWeather.cpp
+    ../uaspManagerDP/Subscriber/uaspManagerSub.cpp
+  }
+}
+
+project(*xmlSubscriber9) : dcpsexe, all_dcps_transports, dds_model {
+  exename   = subscriber9
+  after    += UATM
+  libs     += UATM
+  libpaths += model
+
+  Source_Files {
+    ../ussDP/Subscriber/ReaderListenerRequest.cpp
+    ../ussDP/Subscriber/ussSub.cpp
   }
 }

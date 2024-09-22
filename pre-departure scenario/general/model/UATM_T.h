@@ -28,17 +28,17 @@ namespace uatmDCPS {
     public:
       class Participants {
         public: enum Values {
-          bookingPlatformDP,
           fleetOperatorDP,
-          evtolManagerDP,
-          pilotManagerDP,
-          weatherSystemDP,
           skyportOperatorDP,
-          skyportsManDP,
+          flightAuthSysDP,
           uaspManagerDP,
-          FlighAuthSysDP,
           anspDP,
           ussDP,
+          weatherDP,
+          bookingPlatformDP,
+          evtolManagerDP,
+          pilotManagerDP,
+          skyportManDP,
           tolPadManagerDP,
           LAST_INDEX
         };
@@ -46,48 +46,50 @@ namespace uatmDCPS {
 
       class Types {
         public: enum Values {
+          flightCoordination,
+          flightAuthorizationRequest,
+          flightRequestInfo,
           acceptableRoute,
           airspaceRestrictions,
           availabilityInfo,
           bookingFlightRequest,
+          flightAssign,
           flightAuthorization,
-          flightChanceRec,
-          flightCoordination,
-          flightRequestInfo,
+          flightChangeRec,
           flightRoutesInfo,
           tolPadRequest,
           trafficFlowsInfo,
-          flightAuthorizationRequest,
           weatherInfo,
-          flightAssign,
           LAST_INDEX
         };
       };
       class Topics {
         public: enum Values {
-          UATM__uatmDCPS__BookingFlightRequest,
-          UATM__uatmDCPS__AvailabilityInfo,
+          UATM__uatmDCPS__flightCoordination,
+          UATM__uatmDCPS__flightAuthorizationRequest,
+          UATM__uatmDCPS__flightRequestInfo,
+          UATM__uatmDCPS__tolPadRequest,
+          UATM__uatmDCPS__flightRouteInfo,
           UATM__uatmDCPS__weatherInfo,
-          UATM__uatmDCPS__FlightRoutesInfo,
-          UATM__uatmDCPS__FlightAssign,
-          UATM__uatmDCPS__FlightCoordination,
-          UATM__uatmDCPS__FlightAuthorizationRequest,
-          UATM__uatmDCPS__TolPadRequest,
-          UATM__uatmDCPS__TrafficFlowsInfo,
-          UATM__uatmDCPS__AirspaceRestrictions,
-          UATM__uatmDCPS__acceptableRoute,
-          UATM__uatmDCPS__FlightAuthorization,
-          UATM__uatmDCPS__FlightChangeRec,
-          UATM__uatmDCPS__FlightRequestInfo,
-          UATM__uatmDCPS__AvailabilityFOP,
-          UATM__uatmDCPS__AvailabilitySKO,
+          UATM__uatmDCPS__trafficFlowsInfo,
+          UATM__uatmDCPS__flightChangeRec,
+          UATM__uatmDCPS__flightAuthorization,
+          UATM__uatmDCPS__flightAssign,
+          UATM__uatmDCPS__bookingFlightRequest,
+          UATM__uatmDCPS__availabilityInfo,
+          UATM__uatmDCPS__airspaceRestrictions,
+          UATM__uatmDCPS__accceptableRoute,
+          UATM__uatmDCPS__availabilityInfo_FOP,
+          UATM__uatmDCPS__availabilityInfo_UASP,
+          UATM__uatmDCPS__availabilityInfo_SKO,
           LAST_INDEX
         };
       };
       class ContentFilteredTopics {
         public: enum Values {
-          UATM__uatmDCPS__AvailabilityFOP,
-          UATM__uatmDCPS__AvailabilitySKO,
+          UATM__uatmDCPS__availabilityInfo_FOP,
+          UATM__uatmDCPS__availabilityInfo_UASP,
+          UATM__uatmDCPS__availabilityInfo_SKO,
           LAST_INDEX
         };
       };
@@ -98,15 +100,15 @@ namespace uatmDCPS {
       };
       class Publishers {
         public: enum Values {
-          bookingPlatformPub,
           fleetOperatorPub,
+          skyportOperatorPub,
+          flightAuthSysPub,
+          uaspManPub,
+          weatherPub,
+          bookingPlatformPub,
           evtolManPub,
           pilotManPub,
-          weatherSysPub,
-          skyportOperatorPub,
-          skyportsManPub,
-          uaspManPub,
-          FlightAuthSysPub,
+          SkyportManPub,
           tolPadManPub,
           LAST_INDEX
         };
@@ -115,14 +117,13 @@ namespace uatmDCPS {
       class Subscribers {
         public: enum Values {
           fleetOperatorSub,
-          evtolManSub,
-          pilotManSub,
           skyportOperatorSub,
-          skyportsManSub,
+          flightAuthSysSub,
           uaspManSub,
-          FlightAuthSysSub,
           anspSub,
           ussSub,
+          evtolManSub,
+          pilotManSub,
           tolPadManSub,
           LAST_INDEX
         };
@@ -130,22 +131,22 @@ namespace uatmDCPS {
 
       class DataWriters {
         public: enum Values {
-          bookingFlightRequestDW_BP,
           uaspFlightRequestDW_FOP,
           assignFlightDW_FOP,
           flightCoordDW_FOP,
-          evtolAvailabilityDW_ev,
-          pilotAvailabilityDW_PLM,
-          weatherInfoDW_WTR,
-          FlightRoutesDW_SKO,
-          TrafficFlowDW_SKO,
+          flightRoutesDW_SKO,
+          trafficFlowsDW_SKO,
           airspaceRestDW_SKO,
-          SkyportAvailabilityDW_SKM,
+          flightRequestInfoDW_FAS,
           routeDataDW_UASP,
           flightAuthDW_UASP,
           changeRecDW_UASP,
           tolPadReqDW_UASP,
-          FlightRequestInfoDW_FAS,
+          weatherInfoDW_WTR,
+          bookingFlightRequestDW_BP,
+          evtolAvailabilityDW_EV,
+          pilotAvailabilityDW_PLM,
+          skyportAvailabilityDW_SKM,
           tolPadAvailabilityDW_TP,
           LAST_INDEX
         };
@@ -159,21 +160,20 @@ namespace uatmDCPS {
           weatherDR_FOP,
           flightAuthDR_FOP,
           recommendationDR_FOP,
-          flightAssignDR_EV,
-          flightAuthDR_PLM,
-          changeRecDR_PLM,
-          flighAssignDR_PLM,
           availabilityDR_SKO,
           flightCoordDR_SKO,
-          assignFlightDR_SKM,
-          FlightRequestDR_UASP,
+          flightRequestDR_FAS,
+          flightRequestDR_UASP,
+          tolPadAvailabilityDR_UASP,
           trafficFlowsDR_UASP,
           weatherInfoDR_UASP,
           airspaceRestDR_UASP,
-          tolPadAvailabilityDR_UASP,
-          flightRequestDR_FAS,
           routeDataDR_ANSP,
           routeDataDR_USS,
+          flightAssignDR_EV,
+          flightAuthDR_PLM,
+          changeRecDR_PLM,
+          flightAssignDR_PLM,
           tolPadAssignDR_TP,
           LAST_INDEX
         };
