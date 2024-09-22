@@ -1,7 +1,7 @@
 #ifndef READER_LISTENER_REQUEST_H
 #define READER_LISTENER_REQUEST_H
 
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>

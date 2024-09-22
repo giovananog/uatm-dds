@@ -3,13 +3,13 @@
 #endif
   
 #include "../../model/UATMTraits.h"
-#include < tools/modeling/codegen/model/NullReaderListener.h>
+#include <tools/modeling/codegen/model/NullReaderListener.h>
 
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 
 #include <dds/DCPS/WaitSet.h>
-#include "ReaderListenerRequest.h"
+#include "ReaderListenerAvailability.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
@@ -24,7 +24,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
-    DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
+    DDS::DataReaderListener_var listener(new ReaderListenerAvailability(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
