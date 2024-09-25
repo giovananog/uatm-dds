@@ -674,7 +674,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //mudar aq BEST_EFFORT_RELIABILITY_QOS
+  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS;
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
@@ -758,7 +758,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //mudar aq tbm
+  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS; 
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
