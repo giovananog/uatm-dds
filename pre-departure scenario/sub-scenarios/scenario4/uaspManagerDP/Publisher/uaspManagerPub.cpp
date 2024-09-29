@@ -4,6 +4,12 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
+#include "../utils/functions.h"
+
+#include <unordered_set> 
+#include <sstream>       
+#include <fstream>
+#include <thread>
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -14,33 +20,44 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::tolPadReqDW_UASP);
-    UATM::tolPadRequestDataWriter_var writer_assign_var = UATM::tolPadRequestDataWriter::_narrow(writer_assign.in());
-
-    if (CORBA::is_nil(writer_assign_var.in()))
     {
-      ACE_ERROR_RETURN((LM_ERROR,
-                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                            ACE_TEXT(" _narrow failed!\n")),
-                       -1);
-    }
-
-    OpenDDS::Model::WriterSync ws(writer_assign);
-    {
-      UATM::tolPadRequest tr;
-
-      tr.assign_id = 23;
-      tr.flight_id = 99;
-      tr.tol_pad_id = 121;
-      tr.assign_time = "1245-54";
-
-      DDS::ReturnCode_t error = writer_assign_var->write(tr, DDS::HANDLE_NIL);
-      if (error != DDS::RETCODE_OK)
+      while (true)
       {
-        ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                       ACE_TEXT(" write returned %d!\n"),
-                   error));
+        DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::tolPadReqDW_UASP);
+        UATM::tolPadRequestDataWriter_var writer_assign_var = UATM::tolPadRequestDataWriter::_narrow(writer_assign.in());
+
+        if (CORBA::is_nil(writer_assign_var.in()))
+        {
+          ACE_ERROR_RETURN((LM_ERROR,
+                            ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                                ACE_TEXT(" _narrow failed!\n")),
+                           -1);
+        }
+
+        std::string tolPadID;
+        std::string resourceFile = "uaspManagerDP/data/tolpads.txt";
+
+        if (checkAvailability(resourceFile, tolPadID))
+        { 
+          OpenDDS::Model::WriterSync ws2(writer_assign);
+          {
+            UATM::tolPadRequest tr;
+            tr.assign_id = 1;
+            tr.flight_id = 2;
+            tr.tol_pad_id = tolPadID.c_str();
+            tr.assign_time = "13212";
+
+            DDS::ReturnCode_t error = writer_assign_var->write(tr, DDS::HANDLE_NIL);
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+          }
+        }
+        std::this_thread::sleep_for(std::chrono::seconds(4));
       }
     }
   }

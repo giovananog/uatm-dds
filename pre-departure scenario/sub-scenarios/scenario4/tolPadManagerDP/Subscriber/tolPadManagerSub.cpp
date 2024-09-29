@@ -18,14 +18,15 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
+    
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
 
     DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::tolPadAssignDR_TP);
-
     OpenDDS::Model::ReaderCondSync rcs(reader_request, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_request->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
     return -1;
