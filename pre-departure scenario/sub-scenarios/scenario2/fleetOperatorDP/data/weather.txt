@@ -1,45 +1,20 @@
-Weather ID: 2, Location: "Location-X", Temperature: 22.1°C, Wind Speed: 5.8 km/h, Weather Condition: Partly Cloudy, Observation Time: time
-Weather ID: 5, Location: "Location-X", Temperature: 20.2°C, Wind Speed: 9.4 km/h, Weather Condition: Overcast, Observation Time: time
-Weather ID: 1, Location: "Location-X", Temperature: 25.3°C, Wind Speed: 10.2 km/h, Weather Condition: Clear Sky, Observation Time: time
-Weather ID: 1, Location: "Location-X", Temperature: 25.3°C, Wind Speed: 10.2 km/h, Weather Condition: Clear Sky, Observation Time: time
-Weather ID: 4, Location: "Location-X", Temperature: 27.5°C, Wind Speed: 8.6 km/h, Weather Condition: Sunny, Observation Time: time
-Weather ID: 3, Location: "Location-X", Temperature: 18.7°C, Wind Speed: 12.3 km/h, Weather Condition: Rain, Observation Time: time
-Weather ID: 3, Location: "Location-X", Temperature: 18.7°C, Wind Speed: 12.3 km/h, Weather Condition: Rain, Observation Time: time
-Weather ID: 2, Location: "Location-X", Temperature: 22.1°C, Wind Speed: 5.8 km/h, Weather Condition: Partly Cloudy, Observation Time: time
-Weather ID: 2, Location: "Location-X", Temperature: 22.1°C, Wind Speed: 5.8 km/h, Weather Condition: Partly Cloudy, Observation Time: time
-Weather ID: 3, Location: "Location-X", Temperature: 18.7°C, Wind Speed: 12.3 km/h, Weather Condition: Rain, Observation Time: time
-Weather ID: 5, Location: "Location-X", Temperature: 20.2°C, Wind Speed: 9.4 km/h, Weather Condition: Overcast, Observation Time: time
-Weather ID: 3, Location: "Location-X", Temperature: 18.7°C, Wind Speed: 12.3 km/h, Weather Condition: Rain, Observation Time: time
-Weather ID: 6, Location: "Location-X", Temperature: 15.3°C, Wind Speed: 14.7 km/h, Weather Condition: Storm, Observation Time: time
-Weather ID: 1, Location: "Location-X", Temperature: 25.3°C, Wind Speed: 10.2 km/h, Weather Condition: Clear Sky, Observation Time: time
-Weather ID: 4, Location: "Location-X", Temperature: 27.5°C, Wind Speed: 8.6 km/h, Weather Condition: Sunny, Observation Time: time
-Weather ID: 5, Location: "Location-X", Temperature: 20.2°C, Wind Speed: 9.4 km/h, Weather Condition: Overcast, Observation Time: time
-Weather ID: 2, Location: "Location-X", Temperature: 22.1°C, Wind Speed: 5.8 km/h, Weather Condition: Partly Cloudy, Observation Time: time
-Weather ID: 6, Location: "Location-X", Temperature: 15.3°C, Wind Speed: 14.7 km/h, Weather Condition: Storm, Observation Time: time
-Weather ID: 6, Location: "Location-X", Temperature: 15.3°C, Wind Speed: 14.7 km/h, Weather Condition: Storm, Observation Time: time
-Weather ID: 3, Location: "Location-X", Temperature: 18.7°C, Wind Speed: 12.3 km/h, Weather Condition: Rain, Observation Time: time
-Weather ID: 1, Location: "Location-X", Temperature: 25.3°C, Wind Speed: 10.2 km/h, Weather Condition: Clear Sky, Observation Time: time
-Weather ID: 5, Location: "Location-X", Temperature: 20.2°C, Wind Speed: 9.4 km/h, Weather Condition: Overcast, Observation Time: time
-Weather ID: 2, Location: "Location-X", Temperature: 22.1°C, Wind Speed: 5.8 km/h, Weather Condition: Partly Cloudy, Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 1,Location: "Location-X",Temperature: 25.3,Wind Speed: 10.2,Weather Condition: Clear Sky,Observation Time: time
-Weather ID: 2,Location: "Location-X",Temperature: 22.1,Wind Speed: 5.8,Weather Condition: Partly Cloudy,Observation Time: time
+weather_id:1,location:Skyport-1,temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:1,location:"Location-X",temperature:25.3,wind_speed:10.2,weather_condition:Clear Sky,observation_time:time
+weather_id:2,location:"Location-X",temperature:22.1,wind_speed:5.8,weather_condition:Partly Cloudy,observation_time:time

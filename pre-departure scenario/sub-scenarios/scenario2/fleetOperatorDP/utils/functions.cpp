@@ -106,7 +106,7 @@ bool checkAvailability(const std::string &resourceFile, std::string &evtolID, st
     return false;
 }
 
-bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID)
+bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &weatherID, std::string &routeID)
 {
     std::ifstream infile(flightFile);
     if (!infile.is_open()) {
@@ -145,6 +145,8 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
         if (pilot_id.empty() && evtol_id.empty() && !assigned) {
             pilot_id = pilotID;
             evtol_id = evtolID;
+            weather_id = weatherID;
+            route_id = routeID;
             flightID = flight_id;
             assigned = true;
         }
@@ -172,7 +174,7 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
 }
 
 void updateAvailabilityFile(const UATM::availabilityInfo& msg) {
-    std::string filename = "fleetOperatorDP/availabilities.txt"; 
+    std::string filename = "fleetOperatorDP/data/availabilities.txt"; 
     std::ifstream file(filename);
     std::string line;
     std::vector<std::string> lines;
@@ -207,3 +209,75 @@ void updateAvailabilityFile(const UATM::availabilityInfo& msg) {
     }
     out_file.close();
 }
+
+bool checkWeatherConditions(const std::string& weatherFile, const std::string& location, std::string &weatherID) {
+    std::ifstream infile(weatherFile);
+    if (!infile.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo de clima: " << weatherFile << std::endl;
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        std::string token;
+        std::string weather_id, location_name, temperature, wind_speed, weather_condition, observation_time;
+
+        std::getline(iss, token, ',');
+        weather_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        location_name = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        temperature = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        wind_speed = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        weather_condition = token.substr(token.find(':') + 1);
+        std::getline(iss, token);
+        observation_time = token.substr(token.find(':') + 1);
+        
+        std::string location_name_str = CORBA::string_dup(location_name.c_str());
+        std::string weather_condition_str = CORBA::string_dup(weather_condition.c_str());
+
+        if (CORBA::string_dup(location_name.c_str()) == location && (weather_condition_str== "Clear Sky" || weather_condition_str == "Partly Cloudy")) {
+            weatherID = weather_id;
+            return true; 
+        }
+    }
+
+    return false; 
+}
+
+bool checkRouteAvailability(const std::string& routeFile, const std::string& origin, const std::string& destination, std::string &routeID) {
+    std::ifstream infile(routeFile);
+    if (!infile.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo de rotas: " << routeFile << std::endl;
+        return false;
+    }
+
+    std::string line;
+    while (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        std::string token;
+        std::string route_id, origin_skyport, destination_skyport, available, traffic_density;
+
+        std::getline(iss, token, ',');
+        route_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        origin_skyport = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        destination_skyport = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        available = token.substr(token.find(':') + 1);
+        std::getline(iss, token);
+        traffic_density = token.substr(token.find(':') + 1);
+
+        if (CORBA::string_dup(origin_skyport.c_str()) == origin && CORBA::string_dup(destination_skyport.c_str()) == destination && available == "1") {
+            routeID = route_id;
+            return true; 
+        }
+    }
+
+    return false; 
+}
+

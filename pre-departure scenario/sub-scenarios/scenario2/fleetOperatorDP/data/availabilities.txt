@@ -1,2 +1,4 @@
 resource_id=Skyport-1,resource_type=skyport,available=1,skyport_id=Skyport-1,availability_time=time
 resource_id=Skyport-2,resource_type=skyport,available=1,skyport_id=Skyport-2,availability_time=time
+resource_id=Pilot-3,resource_type=pilot,available=1,skyport_id=Skyport-2,availability_time=323123
+resource_id=eVTOL-3,resource_type=evtol,available=1,skyport_id=Skyport-2,availability_time=323123

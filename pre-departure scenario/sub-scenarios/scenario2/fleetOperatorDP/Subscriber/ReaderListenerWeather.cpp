@@ -44,12 +44,12 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
           std::ofstream outfile;
                 outfile.open("fleetOperatorDP/data/weather.txt", std::ios_base::app);
                 
-                outfile << "Weather ID: " << msg.weather_id << ","
-                        << "Location: " << msg.location.in() << ","
-                        << "Temperature: " << msg.temperature << ","
-                        << "Wind Speed: " << msg.wind_speed << ","
-                        << "Weather Condition: " << msg.weather_condition.in() << ","
-                        << "Observation Time: " << msg.observation_time.in() << std::endl;
+                outfile << "weather_id:" << msg.weather_id << ","
+                        << "location:" << msg.location.in() << ","
+                        << "temperature:" << msg.temperature << ","
+                        << "wind_speed:" << msg.wind_speed << ","
+                        << "weather_condition:" << msg.weather_condition.in() << ","
+                        << "observation_time:" << msg.observation_time.in() << std::endl;
                 
                 outfile.close();
         } else {

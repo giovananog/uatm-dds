@@ -44,7 +44,7 @@ ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
                 std::ofstream outfile;
                 outfile.open("fleetOperatorDP/data/routes.txt", std::ios_base::app);
                 
-                outfile << "Route ID:" << msg.route_id << ","
+                outfile << "route_id:" << msg.route_id << ","
                         << "origin_skyport_id:" << msg.origin_skyport_id.in() << ","
                         << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
                         << "available_capacity:" << msg.available_capacity << ","
