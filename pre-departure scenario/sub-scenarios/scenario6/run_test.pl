@@ -16,7 +16,7 @@ my $status = 0;
 my $rtps = 0;
 my $help = 0;
 
-my $dbg_opts = " -ORBDebugLevel 1  -DCPSPendingTimeout 50";
+my $dbg_opts = " -ORBDebugLevel 1  -DCPSPendingTimeout 100";
 my $common_opts = "$dbg_opts";
 
 my $help_message = "usage: run_test.pl [-h|--help] [--rtps]\n";
@@ -53,7 +53,7 @@ $test->{add_transport_config} = 0;
 my $pub_opts = "$common_opts";
 my $sub_opts = "$common_opts";
 
-$test->setup_discovery("-ORBDebugLevel 1 -ORBLogFile DCPSInfoRepo.log") unless $rtps;
+$test->setup_discovery("-ORBDebugLevel 1 -DCPSPendingTimeout 50 -ORBLogFile DCPSInfoRepo.log") unless $rtps;
 
 $test->process("publisher1", "model/publisher1", $pub_opts);
 $test->process("subscriber1", "model/subscriber1", $sub_opts);

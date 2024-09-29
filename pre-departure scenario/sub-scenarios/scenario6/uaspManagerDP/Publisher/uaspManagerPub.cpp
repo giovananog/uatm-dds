@@ -30,13 +30,16 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightAuthorization fa;
 
-       
-      fa.authorization_id = 23;
-      fa.flight_id = 2;
-      fa.approved_route_id = 2;
-      fa.authority = "authority";
+      fa.authorization_id = "23";
+      fa.flight_id = "2";
+      fa.approved_route_id = "2";
+      fa.authorization_status = 1;
       fa.authorization_time = "343434-20";
-      fa.valid_until = "343434-32";
+      fa.approved_departure_time = "343434-20";
+      fa.approved_arrival_time = "343434-20";
+      fa.tolpad_id = "343434-32";
+      fa.pilot_id = "343434-32";
+      fa.evtol_id = "343434-32";
 
       DDS::ReturnCode_t error = writer_auth_var->write(fa, DDS::HANDLE_NIL);
 

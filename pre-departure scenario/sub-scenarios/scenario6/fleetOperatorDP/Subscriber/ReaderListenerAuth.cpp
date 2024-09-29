@@ -37,12 +37,16 @@ ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
           std::cout << "----------------------------------" << std::endl
                     << "        flightAuthorization:" << std::endl
                     << "        -----------------" << std::endl
-                    << "Auth ID: " << msg.authorization_id << std::endl
-                    << "Flight ID: " << msg.flight_id << std::endl
-                    << "Ap Route ID: " << msg.approved_route_id << std::endl
-                    << "Authority: " << msg.authority.in() << std::endl
+                    << "Auth ID: " << msg.authorization_id.in() << std::endl
+                    << "Flight ID: " << msg.flight_id.in() << std::endl
+                    << "Ap Route ID: " << msg.approved_route_id.in() << std::endl
+                    << "authorization_status: " << msg.authorization_status << std::endl
                     << "Auth Time: " << msg.authorization_time.in() << std::endl
-                    << "Valid Until: " << msg.valid_until.in() << std::endl;
+                    << "approved_departure_time: " << msg.approved_departure_time.in() << std::endl
+                    << "approved_arrival_time: " << msg.approved_arrival_time.in() << std::endl
+                    << "tolpad_id: " << msg.tolpad_id.in() << std::endl
+                    << "pilot_id: " << msg.pilot_id.in() << std::endl
+                    << "evtol_id: " << msg.evtol_id.in() << std::endl;
         } else {
             rcs_.signal();
             break;
@@ -53,7 +57,7 @@ ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        // rcs_.signal();
         break;
       }
     }
