@@ -11,8 +11,6 @@ class ReaderListenerAvailability : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync& rcs);
     virtual void on_data_available(DDS::DataReader_ptr reader);
-
-    void ReaderListenerAvailability::updateAvailabilityFile(const UATM::availabilityInfo& msg);
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;

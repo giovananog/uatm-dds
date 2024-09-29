@@ -1,3 +1,0 @@
-costumer_id=Costumer-1,skyport_id=Skyport-1,booking_id=Booking-1
-costumer_id=Costumer-2,skyport_id=Skyport-1,booking_id=Booking-2
-costumer_id=Costumer-3,skyport_id=Skyport-2,booking_id=Booking-3

@@ -44,7 +44,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                   << "Flight ID: " << msg.flight_id.in() << std::endl
                   << "Skyport ID: " << msg.skyport_id.in() << std::endl;
 
-        std::ofstream outfile("C:/Users/ongio_1lak36v/Downloads/github/uatm-dds/pre-departure scenario/sub-scenarios/scenario1/fleetOperatorDP/requests.txt", std::ios_base::app); // Abre o arquivo em modo de append
+        std::ofstream outfile("fleetOperatorDP/data/requests.txt", std::ios_base::app); 
         if (outfile.is_open())
         {
           outfile << "booking_id:" << msg.booking_id.in() << ","

@@ -2,80 +2,13 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "../utils/functions.h"
 #include <vector>
 #include <thread>
 #include <chrono>
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
-
-struct FlightRequest
-{
-  std::string costumer_id;
-  std::string skyport_id;
-  std::string booking_id;
-};
-
-std::vector<FlightRequest> readRequestsFromFile(const std::string &filename) {
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
-        return {}; 
-    }
-
-    std::string line;
-    std::vector<FlightRequest> requests;
-
-    while (std::getline(file, line)) {
-        if (!line.empty()) {
-            FlightRequest fr;
-            std::istringstream ss(line);
-            std::string pair;
-
-            while (std::getline(ss, pair, ',')) {
-                std::string key, value;
-
-                std::istringstream pairStream(pair);
-                std::getline(pairStream, key, '=');
-                std::getline(pairStream, value, '=');
-
-                if (key == "costumer_id") {
-                    fr.costumer_id = value;
-                } else if (key == "skyport_id") {
-                    fr.skyport_id = value;
-                } else if (key == "booking_id") {
-                    fr.booking_id = value;
-                }
-            }
-
-            requests.push_back(fr);
-        }
-    }
-
-    return requests;
-}
-
-void removeRequestFromFile(const std::string &filename, const std::string &costumer_id)
-{
-  std::ifstream file(filename);
-  std::string line;
-  std::vector<std::string> lines;
-
-  while (std::getline(file, line))
-  {
-    if (line.find(costumer_id) == std::string::npos)
-    {
-      lines.push_back(line);
-    }
-  }
-  file.close();
-
-  std::ofstream outFile(filename);
-  for (const auto &l : lines)
-  {
-    outFile << l << "\n";
-  }
-}
 
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -103,7 +36,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       while (true)
       {
 
-    std::string filename = "bookingPlatformDP/costumers.txt";
+    std::string filename = "bookingPlatformDP/data/costumers.txt";
     std::vector<FlightRequest> requests = readRequestsFromFile(filename);
         if (requests.empty())
         {
