@@ -1,0 +1,52 @@
+TAO (16416|19332) - Default_Resource_Factory - codeset manager=0000026D34A3D290
+TAO (16416|19332) - Loaded default protocol <IIOP_Factory>
+TAO (16416|19332) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:52920> on [656]
+TAO (16416|19332) - IIOP_Connection_Handler::process_listen_point_list, Listening port [52919] on [192.168.1.110]
+TAO (16416|19332) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:52937> on [1008]
+TAO (16416|19332) - IIOP_Connection_Handler::process_listen_point_list, Listening port [52936] on [192.168.1.110]
+TAO (16416|19332) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:52952> on [960]
+TAO (16416|19332) - IIOP_Connection_Handler::process_listen_point_list, Listening port [52951] on [192.168.1.110]
+TAO (16416|19332) - IIOP_Connection_Handler::open, IIOP connection to peer <192.168.1.110:52969> on [992]
+TAO (16416|19332) - IIOP_Connection_Handler::process_listen_point_list, Listening port [52968] on [192.168.1.110]
+InfoRepo_Shutdown: shutting down on signal 2
+(16416|1328) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(16416|19332) send_bytes: iov[0].iov_len = 28 .iov_base =370C7650
+(16416|19332) send_bytes: iov[1].iov_len = 40 .iov_base =37155A80
+(16416|19332) send_bytes: iov[2].iov_len = 16 .iov_base =37096300
+(16416|19332) send_bytes: iov[0].iov_len = 28 .iov_base =37118970
+(16416|19332) send_bytes: iov[1].iov_len = 40 .iov_base =37155A80
+(16416|19332) send_bytes: iov[2].iov_len = 16 .iov_base =37096300
+(16416|1328) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 172.22.128.1:52940.
+(16416|19332) send_bytes: iov[0].iov_len = 28 .iov_base =371457F0
+(16416|19332) send_bytes: iov[1].iov_len = 40 .iov_base =37155900
+(16416|19332) send_bytes: iov[2].iov_len = 16 .iov_base =370983D0
+(16416|1328) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(16416|1328) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 172.22.128.1:52955.
+(16416|19332) send_bytes: iov[0].iov_len = 28 .iov_base =36E56810
+(16416|19332) send_bytes: iov[1].iov_len = 40 .iov_base =37155000
+(16416|19332) send_bytes: iov[2].iov_len = 16 .iov_base =36DD36B0
+(16416|1328) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(16416|1328) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 172.22.128.1:52972.
+(16416|1328) WARNING: Problem with data link detected: receive_bytes: connection reset.
+(16416|1328) we did not try to re-establish connection on transport: _OPENDDS_InfoRepoBITTCPTransportInst to 172.22.128.1:52927.
+TAO (16416|23980) - Transport[656]::send_asynchronous_message_i, fatal error in send_message_block_chain_i - connection reset
+TAO (16416|23980) - Connection_Handler[656]::close_connection_eh, purging entry from cache
+TAO (16416|23980) - Connection_Handler[656]::close_connection_eh end
+TAO (16416|23980) - IIOP_Transport[656]::send_message, write failure - connection reset
+TAO (16416|23980) - Transport[1008]::send_asynchronous_message_i, fatal error in send_message_block_chain_i - connection reset
+TAO (16416|23980) - Connection_Handler[1008]::close_connection_eh, purging entry from cache
+TAO (16416|23980) - Connection_Handler[1008]::close_connection_eh end
+TAO (16416|23980) - IIOP_Transport[1008]::send_message, write failure - connection reset
+TAO (16416|23980) - Transport[960]::send_asynchronous_message_i, fatal error in send_message_block_chain_i - connection reset
+TAO (16416|23980) - Connection_Handler[960]::close_connection_eh, purging entry from cache
+TAO (16416|23980) - Connection_Handler[960]::close_connection_eh end
+TAO (16416|23980) - IIOP_Transport[960]::send_message, write failure - connection reset
+TAO (16416|23980) - Transport[992]::send_asynchronous_message_i, fatal error in send_message_block_chain_i - connection reset
+TAO (16416|23980) - Connection_Handler[992]::close_connection_eh, purging entry from cache
+TAO (16416|23980) - Connection_Handler[992]::close_connection_eh end
+TAO (16416|23980) - IIOP_Transport[992]::send_message, write failure - connection reset
+(16416|23980) DCPS_IR_Domain::remove_dead_participants: Removing dead participant 0x36e61160 id 01030000.00003341.00000003.000001c1(ab5b2775)
+(16416|23980) DCPS_IR_Domain::remove_dead_participants: Removing dead participant 0x36e31490 id 01030000.00003341.00000002.000001c1(963b0ec5)
+(16416|23980) DCPS_IR_Domain::remove_dead_participants: Removing dead participant 0x36e75350 id 01030000.00003341.00000004.000001c1(197bfb65)
+(16416|23980) DCPS_IR_Domain::remove_dead_participants: Removing dead participant 0x36e7e580 id 01030000.00003341.00000005.000001c1(241bd2d5)
+(16416|23980) DCPS_IR_Domain::remove_dead_participants: Removing dead participant 0x37118a20 id 01030000.00003341.00000006.000001c1(63bba805)
