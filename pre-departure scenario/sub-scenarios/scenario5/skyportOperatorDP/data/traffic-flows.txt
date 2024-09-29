@@ -1,0 +1,10 @@
+flows_id=2001,area=Downtown,congestion_level=High,timestamp=2024-09-25 09:00:00
+flows_id=2002,area=Midtown,congestion_level=Medium,timestamp=2024-09-25 09:15:00
+flows_id=2003,area=Uptown,congestion_level=Low,timestamp=2024-09-25 09:30:00
+flows_id=2004,area=East Side,congestion_level=High,timestamp=2024-09-25 09:45:00
+flows_id=2005,area=West Side,congestion_level=Medium,timestamp=2024-09-25 10:00:00
+flows_id=2006,area=Suburbs,congestion_level=Low,timestamp=2024-09-25 10:15:00
+flows_id=2007,area=Airport,congestion_level=High,timestamp=2024-09-25 10:30:00
+flows_id=2008,area=Highway,congestion_level=Medium,timestamp=2024-09-25 10:45:00
+flows_id=2009,area=City Center,congestion_level=Low,timestamp=2024-09-25 11:00:00
+flows_id=2010,area=Industrial Area,congestion_level=High,timestamp=2024-09-25 11:15:00

@@ -41,22 +41,19 @@ module UATM {
 #pragma DCPS_DATA_KEY  "UATM::airspaceRestrictions restriction_id"
   struct airspaceRestrictions {
     long restriction_id;
-    string<20> area;
+    string<20> restriction_area;
     string<20> restriction_type;
-    string<20> start_time;
-    string<20> end_time;
-    string<20> authority;
+    string<20> restriction_time;
+    string<20> restriction_authority;
   };
 };
 module UATM {
 
 #pragma DCPS_DATA_TYPE "UATM::acceptableRoute"
   struct acceptableRoute {
-    long route_id;
-    string<20> origin;
-    string<20> destination;
-    string<20> estimated_time;
+    string<20> acceptable_route_id;
     string<20> approved_by;
+    string<20> estimated_time;
     string<20> timestamp;
   };
 };

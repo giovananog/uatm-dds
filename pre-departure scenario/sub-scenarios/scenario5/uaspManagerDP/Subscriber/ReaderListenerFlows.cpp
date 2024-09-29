@@ -51,7 +51,6 @@ ReaderListenerFlows::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
         break;
       }
     }

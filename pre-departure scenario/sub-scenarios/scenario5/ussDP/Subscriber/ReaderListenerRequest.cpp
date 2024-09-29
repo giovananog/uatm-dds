@@ -37,12 +37,10 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
           std::cout << "----------------------------------" << std::endl
                     << "        acceptableRoute:" << std::endl
                     << "        -----------------" << std::endl
-                    << "Route ID: " << msg.route_id << std::endl
-                    << "Origin: " << msg.origin.in() << std::endl
-                    << "Destination: " << msg.destination.in() << std::endl
+                    << "Route ID: " << msg.acceptable_route_id.in() << std::endl
+                    << "approved by: " << msg.approved_by.in() << std::endl
                     << "Estimated Time: " << msg.estimated_time.in() << std::endl
-                    << "Timestmap: " << msg.timestamp.in() << std::endl
-                    << "Approved by: " << msg.approved_by.in() << std::endl;
+                    << "Timestmap: " << msg.timestamp.in() << std::endl;
         } else {
             rcs_.signal();
             break;
@@ -53,7 +51,7 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        // rcs_.signal();
         break;
       }
     }
