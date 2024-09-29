@@ -7,6 +7,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
+#include "../utils/functions.h"
 #include "ReaderListenerRequest.h"
 
 

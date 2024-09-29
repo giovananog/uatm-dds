@@ -1,0 +1,38 @@
+Route ID: 9, Waypoints: 0000007FA28F56D8, origin_skyport_id: Skyport-2, destination_skyport_id: Skyport-1, available_capacity: 10, traffic_density: Low
+Route ID: 9, Waypoints: 00000047413F5968, origin_skyport_id: Skyport-2, destination_skyport_id: Skyport-1, available_capacity: 10, traffic_density: Low
+Route ID: 8, Waypoints: 00000047413F72B8, origin_skyport_id: Skyport-1, destination_skyport_id: Skyport-2, available_capacity: 5, traffic_density: Medium
+Route ID: 8, Waypoints: 00000047413F72B8, origin_skyport_id: Skyport-1, destination_skyport_id: Skyport-2, available_capacity: 5, traffic_density: Medium
+Route ID: 7, Waypoints: 00000061FF0F5548, origin_skyport_id: Skyport-1, destination_skyport_id: Skyport-2, available_capacity: 7, traffic_density: HighRoute ID: 1, Waypoints: 000000527BBF59A8, origin_skyport_id: Skyport-1, destination_skyport_id: Skyport-2, available_capacity: 10, traffic_density: Low
+Route ID: 6,Waypoints: 0000001B11AF55D8,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 9,Waypoints: 0000001B11AF6F28,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 7,Waypoints: 0000006D2CAF5858,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 7,traffic_density: High
+Route ID: 8,Waypoints: 00000062B5EF55D8,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 5,traffic_density: Medium
+Route ID: 7,Waypoints: 000000055AEF59C8,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 7,traffic_density: High
+Route ID: 2,Waypoints: 0000007152BF5848,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 8,traffic_density: Medium
+Route ID: 9,Waypoints: 0000004451FF5388,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 5,Waypoints: 000000EB398F59D8,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 9,traffic_density: Medium
+Route ID: 1,Waypoints: 000000B075AF5A88,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 10,traffic_density: Low
+Route ID: 7,Waypoints: 00000043B2FF5728,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 7,traffic_density: High
+Route ID: 3,Waypoints: 00000043B2FF7078,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 12,traffic_density: High
+Route ID: 7,Waypoints: 00000043B2FF7078,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 7,traffic_density: High
+Route ID: 9,Waypoints: 00000099675F5778,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 3,Waypoints: 00000099675F70C8,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 12,traffic_density: High
+Route ID: 2,Waypoints: 00000032045F5528,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 8,traffic_density: Medium
+Route ID: 10,Waypoints: 00000032045F6E78,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 12,traffic_density: Low
+Route ID: 6,Waypoints: 0000006E7A0F57D8,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 5,Waypoints: 0000006E7A0F7128,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 9,traffic_density: Medium
+Route ID: 7,Waypoints: 000000D078AF5848,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 7,traffic_density: High
+Route ID: 6,Waypoints: 000000D078AF7198,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 10,traffic_density: Low
+Route ID: 3,Waypoints: 000000D078AF7198,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 12,traffic_density: High
+Route ID: 2,Waypoints: 000000D078AF7198,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 8,traffic_density: Medium
+Route ID: 2,Waypoints: 00000079317F5AA8,origin_skyport_id: Skyport-2,destination_skyport_id: Skyport-1,available_capacity: 8,traffic_density: Medium
+Route ID: 8,Waypoints: 00000079317F73F8,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 5,traffic_density: Medium
+Route ID: 8,Waypoints: 00000079317F73F8,origin_skyport_id: Skyport-1,destination_skyport_id: Skyport-2,available_capacity: 5,traffic_density: Medium
+Route ID:1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:10,available:1,traffic_density:Low
+Route ID:3,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:1,available:1,traffic_density:High
+Route ID:4,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:15,available:1,traffic_density:Low
+Route ID:7,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:7,available:1,traffic_density:High
+Route ID:7,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:7,available:1,traffic_density:High
+Route ID:8,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:5,available:1,traffic_density:Medium
+Route ID:3,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:1,available:1,traffic_density:High
+Route ID:10,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:1,available:1,traffic_density:Low
