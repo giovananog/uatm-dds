@@ -21,7 +21,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
-
+    
     DDS::DataReader_var reader_request = model.reader(Elements::DataReaders::flightRequestDR_FAS);
     OpenDDS::Model::ReaderCondSync rcs(reader_request, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));

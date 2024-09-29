@@ -29,15 +29,13 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     {
       UATM::flightCoordination fc;
 
-      fc.coordination_id = 23;
-      fc.flight_id = 22;
-      UATM::ArrayString involved_parties;
-      fc.involved_parties[0] = "abc";
-      fc.involved_parties[1] = "def";
-      UATM::ArrayString coordination_details;
-      fc.coordination_details[0] = "abc";
-      fc.coordination_details[1] = "def";
-      fc.recommendation_time = "343434";
+      fc.coordination_id = "23";
+      fc.flight_id = "22";
+      fc.skyport_id = "343434";
+      fc.evtol_id = "343434";
+      fc.pilot_id = "343434";
+      fc.route_id = "343434";
+      fc.weather_id = "343434";
 
       DDS::ReturnCode_t error = writer_coord_var->write(fc, DDS::HANDLE_NIL);
 
@@ -61,13 +59,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     OpenDDS::Model::WriterSync ws2(writer_assign);
     {
       UATM::flightAuthorizationRequest fr;
-
        
-      fr.auth_request_id = 23;
-      fr.uasp_id = 22;
-      fr.flight_id = 22;
-      fr.request_status = true;
-      fr.request_time = "34343-24";
+      fr.auth_request_id = "23";
+      fr.flight_id = "22";
+      fr.departure_skyport_id = "22";
+      fr.destination_skyport_id = "true";
+      fr.departure_time = "34343-24";
+      fr.pilot_id = "34343-24";
+      fr.evtol_id = "34343-24";
 
       DDS::ReturnCode_t error = writer_assign_var->write(fr, DDS::HANDLE_NIL);
 
