@@ -1,11 +1,90 @@
-#ifdef ACE_AS_STATIC_LIBS
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <thread>
+#include <chrono>
 #include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
-#include <dds/DCPS/WaitSet.h>
+#include <model/Sync.h>
 
+struct EVTOL
+{
+  std::string evtol_id;
+  std::string skyport_id;
+  int available;
+  int sent;
+};
+
+std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)
+{
+  std::ifstream file(filename);
+  std::string line;
+  std::vector<EVTOL> evtols;
+
+  while (std::getline(file, line))
+  {
+    if (!line.empty())
+    {
+      EVTOL evtol;
+      std::istringstream ss(line);
+
+      std::string temp;
+
+      std::getline(ss, temp, '='); 
+      std::getline(ss, evtol.evtol_id, ','); 
+
+      std::getline(ss, temp, '='); 
+      std::getline(ss, evtol.skyport_id, ','); 
+
+      std::getline(ss, temp, '='); 
+      ss >> evtol.available; 
+      ss.ignore(1); 
+
+      std::getline(ss, temp, '='); 
+      ss >> evtol.sent; 
+
+      if (evtol.sent == 0)
+      {
+        evtols.push_back(evtol);
+      }
+    }
+  }
+  return evtols;
+}
+
+void updateEVTOLInFile(const std::string &filename, const std::string &evtol_id)
+{
+  std::ifstream file(filename);
+  std::string line;
+  std::vector<std::string> lines;
+
+  while (std::getline(file, line))
+  {
+    if (line.find(evtol_id) != std::string::npos)
+    {
+      std::string updated_line = line;
+      size_t pos = line.find("sent=0");
+      if (pos != std::string::npos)
+      {
+        updated_line.replace(pos, 6, "sent=1");
+      }
+      lines.push_back(updated_line);
+    }
+    else
+    {
+      lines.push_back(line);
+    }
+  }
+  file.close();
+
+  std::ofstream outFile(filename);
+  for (const auto &l : lines)
+  {
+    outFile << l << "\n";
+  }
+}
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -20,57 +99,66 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     UATM::availabilityInfoDataWriter_var writer_var = UATM::availabilityInfoDataWriter::_narrow(writer.in());
 
-    if (CORBA::is_nil(writer_var.in())) {
-        ACE_ERROR_RETURN((LM_ERROR,
-                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                          ACE_TEXT(" _narrow failed!\n")),
-                         -1);
+    if (CORBA::is_nil(writer_var.in()))
+    {
+      ACE_ERROR_RETURN((LM_ERROR,
+                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                            ACE_TEXT(" _narrow failed!\n")),
+                       -1);
     }
 
     OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::availabilityInfo bfr;
+      std::string filename = "evtolManagerDP/evtols.txt";
 
-      bfr.resource_id = 1;
-      bfr.resource_type = "evtol";
-      bfr.status = true;
-      bfr.location = "alfenas";
-      bfr.availability_time = "323123-323";
+      while (true)
+      {
+        std::vector<EVTOL> evtols = readEVTOLsFromFile(filename);
 
-      DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+        if (evtols.empty())
+        {
+          std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
+          break;
+        }
 
-      if (error != DDS::RETCODE_OK) {
+        EVTOL current_evtol = evtols.front();
+
+        UATM::availabilityInfo bfr;
+
+        bfr.resource_id = CORBA::string_dup(current_evtol.evtol_id.c_str());
+        bfr.resource_type = "evtol";
+        bfr.available = current_evtol.available;
+        bfr.skyport_id = CORBA::string_dup(current_evtol.skyport_id.c_str());
+        bfr.availability_time = "323123";
+
+        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+        if (error != DDS::RETCODE_OK)
+        {
           ACE_ERROR((LM_ERROR,
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
-      }
+                         ACE_TEXT(" write returned %d!\n"),
+                     error));
+        }
 
-      UATM::availabilityInfo bfr2;
+        updateEVTOLInFile(filename, current_evtol.evtol_id);
 
-      bfr2.resource_id = 2;
-      bfr2.resource_type = "evtol";
-      bfr2.status = false;
-      bfr2.location = "alfenas";
-      bfr2.availability_time = "323123-323";
-
-      DDS::ReturnCode_t error2 = writer_var->write(bfr2, DDS::HANDLE_NIL);
-
-      if (error2 != DDS::RETCODE_OK) {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
+        std::this_thread::sleep_for(std::chrono::seconds(8));
       }
     }
-  } catch (const CORBA::Exception& e) {
-    e._tao_print_exception("Exception caught in main():");
-    return -1;
-
-  } catch( const std::exception& ex) {
-    ACE_ERROR_RETURN((LM_ERROR,
-                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                      ACE_TEXT(" Exception caught: %C\n"),
-                      ex.what()),
-                     -1);
   }
-  return 0;
-}
+    catch (const CORBA::Exception &e)
+    {
+      e._tao_print_exception("Exception caught in main():");
+      return -1;
+    }
+    catch (const std::exception &ex)
+    {
+      ACE_ERROR_RETURN((LM_ERROR,
+                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                            ACE_TEXT(" Exception caught: %C\n"),
+                        ex.what()),
+                       -1);
+    }
+    return 0;
+  }
