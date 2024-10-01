@@ -1,9 +1,15 @@
-#ifdef ACE_AS_STATIC_LIBS
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <thread>
+#include <chrono>
 #include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
+#include "../utils/functions.h"
+#include <model/Sync.h>
+
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -14,10 +20,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer_availability = model.writer(Elements::DataWriters::tolPadAvailabilityDW_TP);
-    UATM::availabilityInfoDataWriter_var writer_availability_var = UATM::availabilityInfoDataWriter::_narrow(writer_availability.in());
+    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::tolPadAvailabilityDW_TP);
 
-    if (CORBA::is_nil(writer_availability_var.in()))
+    UATM::availabilityInfoDataWriter_var writer_var = UATM::availabilityInfoDataWriter::_narrow(writer.in());
+
+    if (CORBA::is_nil(writer_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
@@ -25,24 +32,42 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    OpenDDS::Model::WriterSync ws(writer_availability);
+    OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::availabilityInfo ai;
-
-      ai.resource_id = 1;
-      ai.resource_type = "tolPad";
-      ai.status = true;
-      ai.location = "location";
-      ai.availability_time = "availability_time";
-
-      DDS::ReturnCode_t error = writer_availability_var->write(ai, DDS::HANDLE_NIL);
-
-      if (error != DDS::RETCODE_OK)
+      while (true)
       {
-        ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                       ACE_TEXT(" write returned %d!\n"),
-                   error));
+        std::string filename = "tolPadManagerDP/data/tolpads.txt";
+        std::vector<TolPad> tolPads = readTolPadsFromFile(filename);
+
+        if (tolPads.empty())
+        {
+          std::cout << "Todos os TolPads foram enviados!" << std::endl;
+          break;
+        }
+
+        TolPad current_tolPad = tolPads.front();
+        
+        UATM::availabilityInfo bfr;
+
+        bfr.resource_id = CORBA::string_dup(current_tolPad.resource_id.c_str());
+        bfr.resource_type = "tolPad";
+        bfr.available = current_tolPad.available;
+        bfr.skyport_id = CORBA::string_dup(current_tolPad.skyport_id.c_str());
+        bfr.availability_time = "323123"; 
+
+        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+        if (error != DDS::RETCODE_OK)
+        {
+          ACE_ERROR((LM_ERROR,
+                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                         ACE_TEXT(" write returned %d!\n"),
+                     error));
+        }
+
+        updateTolPadInFile(filename, current_tolPad.resource_id);
+
+        std::this_thread::sleep_for(std::chrono::seconds(3));
       }
     }
   }
