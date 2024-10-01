@@ -3,40 +3,29 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <random>
+#include <string>
+#include <chrono>
 
-std::vector<WeatherInfo> readWeatherFromFile(const std::string &filename) {
-    std::ifstream file(filename);
-    std::string line;
-    std::vector<WeatherInfo> weather_data;
 
-    while (std::getline(file, line)) {
-        if (!line.empty()) {
-            WeatherInfo weather;
-            std::istringstream ss(line);
-            std::string token;
-
-            while (std::getline(ss, token, ',')) {
-                std::istringstream field_stream(token);
-                std::string field_name;
-                std::string field_value;
-
-                std::getline(field_stream, field_name, '=');
-                std::getline(field_stream, field_value);
-
-                if (field_name == "weather_id") {
-                    weather.weather_id = std::stoi(field_value);
-                } else if (field_name == "location") {
-                    weather.location = field_value;
-                } else if (field_name == "temperature") {
-                    weather.temperature = std::stod(field_value);
-                } else if (field_name == "wind_speed") {
-                    weather.wind_speed = std::stod(field_value);
-                } else if (field_name == "weather_condition") {
-                    weather.weather_condition = field_value;
-                }
-            }
-            weather_data.push_back(weather);
-        }
-    }
-    return weather_data;
+std::string getRandomLocation(std::mt19937& gen) {
+    std::uniform_int_distribution<> dis(1, 2);
+    return "Skyport-" + std::to_string(dis(gen));
 }
+
+double getRandomTemperature(std::mt19937& gen) {
+    std::uniform_real_distribution<> dis(15.0, 35.0); 
+    return dis(gen);
+}
+
+double getRandomWindSpeed(std::mt19937& gen) {
+    std::uniform_real_distribution<> dis(0.0, 20.0); 
+    return dis(gen);
+}
+
+std::string getRandomWeatherCondition(std::mt19937& gen) {
+    std::vector<std::string> conditions = {"Clear Sky", "Partly Cloudy", "Rainy", "Stormy"};
+    std::uniform_int_distribution<> dis(0, conditions.size() - 1);
+    return conditions[dis(gen)];
+}
+
