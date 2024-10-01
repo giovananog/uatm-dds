@@ -1,58 +1,84 @@
-#ifdef ACE_AS_STATIC_LIBS
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include "../utils/functions.h"
+#include <vector>
+#include <thread>
+#include <chrono>
 #include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
+#include <model/Sync.h>
+
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
+    using OpenDDS::Model::UATM::uatmDCPS::Elements;
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
-
-    using OpenDDS::Model::UATM::uatmDCPS::Elements;
-
     DDS::DataWriter_var writer = model.writer(Elements::DataWriters::bookingFlightRequestDW_BP);
 
     UATM::bookingFlightRequestDataWriter_var writer_var = UATM::bookingFlightRequestDataWriter::_narrow(writer.in());
 
-    if (CORBA::is_nil(writer_var.in())) {
-        ACE_ERROR_RETURN((LM_ERROR,
-                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                          ACE_TEXT(" _narrow failed!\n")),
-                         -1);
-    }
-
     OpenDDS::Model::WriterSync ws(writer);
     {
-      UATM::bookingFlightRequest bfr;
 
-      bfr.booking_id = 1;
-      bfr.flight_id = 2;
-      bfr.customer_id = "3";
-      bfr.departure_time = "departure_time";
-      bfr.arrival_time = "arrival_time";
-      bfr.route_id = 4;
-      bfr.request_status = "request_status";
+      if (CORBA::is_nil(writer_var.in()))
+      {
+        ACE_ERROR_RETURN((LM_ERROR,
+                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                              ACE_TEXT(" _narrow failed!\n")),
+                         -1);
+      }
 
-      DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+      while (true)
+      {
 
-      if (error != DDS::RETCODE_OK) {
+    std::string filename = "bookingPlatformDP/data/costumers.txt";
+    std::vector<FlightRequest> requests = readRequestsFromFile(filename);
+        if (requests.empty())
+        {
+          std::cout << "Todos os costumers foram processados!" << std::endl;
+          break;
+        }
+
+        FlightRequest current_request = requests.front();
+
+        UATM::bookingFlightRequest bfr;
+
+        bfr.booking_id = CORBA::string_dup(current_request.booking_id.c_str());
+        bfr.flight_id = CORBA::string_dup(current_request.flight_id.c_str());
+        bfr.costumer_id = CORBA::string_dup(current_request.costumer_id.c_str());
+        bfr.skyport_id = CORBA::string_dup(current_request.skyport_id.c_str());
+
+        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+        if (error != DDS::RETCODE_OK)
+        {
           ACE_ERROR((LM_ERROR,
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
+                         ACE_TEXT(" write returned %d!\n"),
+                     error));
+        }
+
+        removeRequestFromFile(filename, current_request.costumer_id);
+
+        std::this_thread::sleep_for(std::chrono::seconds(3));
       }
     }
-  } catch (const CORBA::Exception& e) {
+  }
+  catch (const CORBA::Exception &e)
+  {
     e._tao_print_exception("Exception caught in main():");
     return -1;
-
-  } catch( const std::exception& ex) {
+  }
+  catch (const std::exception &ex)
+  {
     ACE_ERROR_RETURN((LM_ERROR,
                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                      ACE_TEXT(" Exception caught: %C\n"),
+                          ACE_TEXT(" Exception caught: %C\n"),
                       ex.what()),
                      -1);
   }
