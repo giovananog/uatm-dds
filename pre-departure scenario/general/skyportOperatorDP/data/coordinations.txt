@@ -1,0 +1,3 @@
+coordination_id:Booking-1,flight_id:Flight-1,skyport_id:Skyport-1,evtol_id:eVTOL-1,pilot_id:Pilot-1,route_id:10,weather_id:1
+coordination_id:Booking-2,flight_id:Flight-2,skyport_id:Skyport-1,evtol_id:eVTOL-2,pilot_id:Pilot-2,route_id:10,weather_id:1
+coordination_id:Booking-3,flight_id:Flight-3,skyport_id:Skyport-2,evtol_id:eVTOL-3,pilot_id:Pilot-3,route_id:10,weather_id:1

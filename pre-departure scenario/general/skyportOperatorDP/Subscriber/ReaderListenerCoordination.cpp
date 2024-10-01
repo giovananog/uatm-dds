@@ -31,39 +31,49 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
 
   while (true)
   {
-    std::cout << "\n\n"
-              << std::endl;
     DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
     if (error == DDS::RETCODE_OK)
     {
-      // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
       if (info.valid_data)
       {
-        std::cout << "----------------------------------" << std::endl
-                  << "        flightCoordination:" << std::endl
-                  << "        -----------------" << std::endl
-                  << "Coord ID: " << msg.coordination_id << std::endl
-                  << "Flight ID: " << msg.flight_id << std::endl
-                  << "Involved parties: " << msg.involved_parties << std::endl
-                  << "Coord Details: " << msg.coordination_details << std::endl
-                  << "Rec time: " << msg.recommendation_time.in() << std::endl;
+        std::cout << "| flightCoordination: " 
+                  << "coordination_id:" << msg.coordination_id.in() 
+                  << ",flight_id:" << msg.flight_id.in() 
+                  << ",skyport_id:" << msg.skyport_id.in() 
+                  << ",evtol_id:" << msg.evtol_id.in() 
+                  << ",pilot_id:" << msg.pilot_id.in() 
+                  << ",route_id:" << msg.route_id.in() 
+                  << ",weather_id:" << msg.weather_id.in() << std::endl;
+
+
+        std::ofstream outfile;
+                outfile.open("skyportOperatorDP/data/coordinations.txt", std::ios_base::app);
+                
+                outfile << "coordination_id:" << msg.coordination_id .in()<< ","
+                        << "flight_id:" << msg.flight_id.in() << ","
+                        << "skyport_id:" << msg.skyport_id.in() << ","
+                        << "evtol_id:" << msg.evtol_id.in() << ","
+                        << "pilot_id:" << msg.pilot_id.in() << ","
+                        << "route_id:" << msg.route_id.in() << ","
+                        << "weather_id:" << msg.weather_id.in() << std::endl;
+                
+                outfile.close();
+      }
+        else
+        {
+          rcs_.signal();
+          break;
+        }
       }
       else
       {
-        rcs_.signal();
+        if (error != DDS::RETCODE_NO_DATA)
+        {
+          ACE_ERROR((LM_ERROR,
+                     ACE_TEXT("ERROR: %N:%l: on_data_available() -")
+                         ACE_TEXT(" take_next_sample failed!\n")));
+        }
         break;
       }
     }
-    else
-    {
-      if (error != DDS::RETCODE_NO_DATA)
-      {
-        ACE_ERROR((LM_ERROR,
-                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                       ACE_TEXT(" take_next_sample failed!\n")));
-      }
-      rcs_.signal();
-      break;
-    }
-  }
-};
+  };
