@@ -1,0 +1,2 @@
+weather_id=1,location=Skyport-1,temperature=25.3,wind_speed=10.2,weather_condition=Clear Sky
+weather_id=2,location=Skyport-1,temperature=22.1,wind_speed=5.8,weather_condition=Partly Cloudy
