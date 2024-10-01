@@ -4,6 +4,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
+
 #include "ReaderListenerRequest.h"
 
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs)
@@ -28,30 +29,42 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     DDS::SampleInfo info;
 
     while (true) {
-      std::cout << "\n\n" << std::endl;                                              
+                                                   
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
-        // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "----------------------------------" << std::endl
-                    << "        flightAuthorizationRequest:" << std::endl
-                    << "        -----------------" << std::endl
-                    << "Auth Request ID: " << msg.auth_request_id << std::endl
-                    << "UASP ID: " << msg.uasp_id << std::endl
-                    << "Flight ID: " << msg.flight_id << std::endl
-                    << "Request Status: " << msg.request_status << std::endl
-                    << "Request Time: " << msg.request_time.in() << std::endl;
+          std::cout << "| flightAuthorizationRequest: " 
+                    << "auth_request_id:" << msg.auth_request_id.in() 
+                    << ",flight_id:" << msg.flight_id.in() 
+                    << ",departure_skyport_id:" << msg.departure_skyport_id.in() 
+                    << ",destination_skyport_id:" << msg.destination_skyport_id.in() 
+                    << ",departure_time:" << msg.departure_time.in() 
+                    << ",pilot_id:" << msg.pilot_id.in() 
+                    << ",evtol_id:" << msg.evtol_id.in() << std::endl;
+
+          std::ofstream request_file("flightAuthSysDP/data/requests.txt", std::ios::app);  
+                if (request_file.is_open()) {
+                    request_file << "auth_request_id:" << msg.auth_request_id.in() << ","
+                                 << "flight_id:" << msg.flight_id.in() << ","
+                                 << "departure_skyport_id:" << msg.departure_skyport_id.in() << ","
+                                 << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
+                                 << "departure_time:" << msg.departure_time.in() << ","
+                                 << "pilot_id:" << msg.pilot_id.in() << ","
+                                 << "evtol_id:" << msg.evtol_id.in() << ","
+                                 << "sent_req:" << 0 << "\n";
+                }
+                    request_file.close();  
         } else {
             rcs_.signal();
-       break;                                                      
-       }
+            break;                                                      
+          }
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        break;
       }
     }
   };
