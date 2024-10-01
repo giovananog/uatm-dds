@@ -27,22 +27,31 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
     DDS::SampleInfo info;
 
     while (true) {
-      std::cout << "\n\n" << std::endl;                                              
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
-        // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "--------------------fleetOperatorDP--------------" << std::endl
-                    << "        weatherInfo:" << std::endl
-                    << "        -----------------" << std::endl
-                    << "Weather Info ID: " << msg.weather_id << std::endl
-                    << "Location: " << msg.location.in() << std::endl
-                    << "Temperature: " << msg.temperature << std::endl
-                    << "Wind Speed: " << msg.wind_speed << std::endl
-                    << "Weather Condition: " << msg.weather_condition.in() << std::endl
-                    << "Observation Time: " << msg.observation_time.in() << std::endl;
+          std::cout << "| weatherInfo: " 
+                    << "weather_id:" << msg.weather_id 
+                    << ",location:" << msg.location.in() 
+                    << ",temperature:" << msg.temperature 
+                    << ",wind_speed:" << msg.wind_speed 
+                    << ",weather_condition:" << msg.weather_condition.in() 
+                    << ",observation_time:" << msg.observation_time.in() << std::endl;
+
+          std::ofstream outfile;
+                outfile.open("fleetOperatorDP/data/weather.txt", std::ios_base::app);
+                
+                outfile << "weather_id:" << msg.weather_id << ","
+                        << "location:" << msg.location.in() << ","
+                        << "temperature:" << msg.temperature << ","
+                        << "wind_speed:" << msg.wind_speed << ","
+                        << "weather_condition:" << msg.weather_condition.in() << ","
+                        << "observation_time:" << msg.observation_time.in() << std::endl;
+                
+                outfile.close();
         } else {
             rcs_.signal();
+            break;
         }
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
@@ -50,7 +59,6 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
         break;
       }
     }

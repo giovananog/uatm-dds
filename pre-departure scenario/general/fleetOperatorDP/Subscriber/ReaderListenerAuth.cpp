@@ -29,33 +29,31 @@ ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
     UATM::flightAuthorization msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
-      std::cout << "\n\n" << std::endl;                                              
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
-        // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "------------------------------fleetOperatorDP----" << std::endl
-                    << "        flightAuthorization:" << std::endl
-                    << "        -----------------" << std::endl
-                    << "Auth ID: " << msg.authorization_id << std::endl
-                    << "Flight ID: " << msg.flight_id << std::endl
-                    << "Ap Route ID: " << msg.approved_route_id << std::endl
-                    << "Authority: " << msg.authority.in() << std::endl
-                    << "Auth Time: " << msg.authorization_time.in() << std::endl
-                    << "Valid Until: " << msg.valid_until.in() << std::endl;
+          std::cout << "| flightAuthorization: "  
+                    << ",authorization_id" << msg.authorization_id 
+                    << ",flight_id:" << msg.flight_id 
+                    << ",authorization_status:" << msg.authorization_status 
+                    << ",authorization_time:" << msg.authorization_time.in() 
+                    << ",approved_departure_time:" << msg.approved_departure_time.in() 
+                    << ",approved_arrival_time:" << msg.approved_arrival_time.in() 
+                    << ",tolpad_id:" << msg.tolpad_id.in() 
+                    << ",pilot_id:" << msg.pilot_id.in() 
+                    << ",evtol_id:" << msg.evtol_id.in() << std::endl;
         } else {
             rcs_.signal();
-       break;                                                      
-       }
+            break;
+        }
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        // rcs_.signal();
         break;
       }
     }
