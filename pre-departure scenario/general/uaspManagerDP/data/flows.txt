@@ -1,0 +1,153 @@
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Midtown,congestion_level:Medium,timestamp:2024-09-25 09:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Downtown,congestion_level:High,timestamp:2024-09-25 09:00:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Highway,congestion_level:Medium,timestamp:2024-09-25 10:45:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Airport,congestion_level:High,timestamp:2024-09-25 10:30:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Uptown,congestion_level:Low,timestamp:2024-09-25 09:30:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:Suburbs,congestion_level:Low,timestamp:2024-09-25 10:15:00,affected_routes:
+flows_id:121,area:West Side,congestion_level:Medium,timestamp:2024-09-25 10:00:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
+flows_id:121,area:East Side,congestion_level:High,timestamp:2024-09-25 09:45:00,affected_routes:
