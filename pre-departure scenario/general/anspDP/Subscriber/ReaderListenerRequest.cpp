@@ -28,34 +28,26 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     UATM::acceptableRoute msg;
     DDS::SampleInfo info;
 
-    // Read until no more messages
     while (true) {
-      std::cout << "\n\n" << std::endl;                                              
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
-        // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
         if (info.valid_data) {
-          std::cout << "----------------------------------" << std::endl
-                    << "        acceptableRoute:" << std::endl
-                    << "        -----------------" << std::endl
-                    << "Route ID: " << msg.route_id << std::endl
-                    << "Origin: " << msg.origin.in() << std::endl
-                    << "Destination: " << msg.destination.in() << std::endl
-                    << "Estimated Time: " << msg.estimated_time.in() << std::endl
-                    // << "Timestmap: " << msg.timestamp.in() << std::endl
-                    << "Approved by: " << msg.approved_by.in() << std::endl;
+          std::cout << "| acceptableRoute: " 
+                    << "acceptable_route_id:" << msg.acceptable_route_id.in() 
+                    << ",approved_by:" << msg.approved_by.in() 
+                    << ",estimated_time:" << msg.estimated_time.in() 
+                    << ",timestamp:" << msg.timestamp.in() << std::endl;
         } else {
             rcs_.signal();
-       break;                                                      
-       }
-        // break;
+            break;
+        }
       } else {
         if (error != DDS::RETCODE_NO_DATA) {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        // rcs_.signal();
         break;
       }
     }
