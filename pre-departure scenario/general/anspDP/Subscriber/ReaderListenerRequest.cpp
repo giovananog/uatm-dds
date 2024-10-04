@@ -32,11 +32,16 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
         if (info.valid_data) {
-          std::cout << "| acceptableRoute: " 
-                    << "acceptable_route_id:" << msg.acceptable_route_id.in() 
+          if (msg.acceptable_route_id == 0) {
+            break;
+          }else {
+          std::cout << "| ansp acceptableRoute: " 
+                    << "acceptable_route_id:" << msg.acceptable_route_id
                     << ",approved_by:" << msg.approved_by.in() 
                     << ",estimated_time:" << msg.estimated_time.in() 
+                    << ",flight_id:" << msg.flight_id.in() 
                     << ",timestamp:" << msg.timestamp.in() << std::endl;
+          }
         } else {
             rcs_.signal();
             break;
@@ -47,7 +52,6 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        // rcs_.signal();
         break;
       }
     }
