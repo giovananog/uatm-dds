@@ -35,14 +35,18 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
         DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
         if (error == DDS::RETCODE_OK) {
             if (info.valid_data) {
-                std::cout << "flightAssign: " 
+               if (msg.flight_assign_id == 0) {
+                    break;
+                }else {
+                std::cout << "| flightAssign: " 
                           << "flight_assign_id:" << msg.flight_assign_id 
                           << ",assign_time:" << msg.assign_time.in() 
                           << ",flight_id:" << msg.flight_id.in() 
                           << ",pilot_id:" << msg.pilot_id.in() 
                           << ",evtol_id:" << msg.evtol_id.in() << std::endl;
 
-                updatePilotStatus(msg.pilot_id.in(), 0, 0); 
+                updatePilotStatus(msg.pilot_id.in(), 0, 1); 
+                }
             } else {
                 rcs_.signal();
                 break;                                                      

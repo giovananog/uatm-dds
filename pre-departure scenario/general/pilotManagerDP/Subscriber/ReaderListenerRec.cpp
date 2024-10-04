@@ -33,13 +33,18 @@ ReaderListenerRec::on_data_available(DDS::DataReader_ptr reader)
       DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
       if (error == DDS::RETCODE_OK) {
         if (info.valid_data) {
-          std::cout << "flightChangeRec: " 
+
+          if(msg.recommendation_id == 0) {
+            break;
+          }else {
+          std::cout << "\n\n\n| plm flightChangeRec: " 
                     << "recommendation_id:" << msg.recommendation_id 
                     << ",flight_id:" << msg.flight_id 
                     << ",change_type:" << msg.change_type.in() 
                     << ",reason:" << msg.reason.in() 
                     << ",recommended_by:" << msg.recommended_by.in() 
                     << ",recommendation_time:" << msg.recommendation_time.in() << std::endl;        
+          }
         } else {
             rcs_.signal();
             break;
