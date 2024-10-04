@@ -4,36 +4,14 @@
 #include <string>
 #include <vector>
 
-struct FlightRoute
-{
-    int route_id;
-    std::string origin_skyport_id;
-    std::string destination_skyport_id;
-    int available_capacity;
-    bool available;
-    std::string traffic_density;
-};
+extern std::vector<std::string> areas;
+extern std::vector<std::string> congestion_levels;
+extern std::vector<std::string> restriction_areas;
+extern std::vector<std::string> restriction_types;
+extern std::vector<std::string> authorities;
+extern std::vector<std::string> skyports;
+extern std::vector<std::string> traffic_density_levels;
 
-struct TrafficFlow
-{
-  std::string flows_id;
-  std::string area;
-  std::string congestion_level;
-  std::string affected_routes;
-  std::string timestamp;
-};
-
-struct Restriction
-{
-  std::string restriction_id;
-  std::string restriction_area;
-  std::string restriction_type;
-  std::string restriction_time;
-  std::string restriction_authority;
-};
-
-std::vector<TrafficFlow> readTrafficFlows(const std::string &filename);
-std::vector<Restriction> readRestrictions(const std::string &filename);
-std::vector<FlightRoute> readFlightRoutes(const std::string &filename);
+std::string getRandomValue(const std::vector<std::string> &values);
 
 #endif // FUNCTIONS_H

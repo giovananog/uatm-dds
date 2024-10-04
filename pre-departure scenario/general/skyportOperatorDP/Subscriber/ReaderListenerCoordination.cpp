@@ -36,6 +36,10 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
     {
       if (info.valid_data)
       {
+        if (strcmp(CORBA::string_dup(msg.coordination_id.in()), "0") == 0)
+        {
+          break;
+        }else {
         std::cout << "| flightCoordination: " 
                   << "coordination_id:" << msg.coordination_id.in() 
                   << ",flight_id:" << msg.flight_id.in() 
@@ -58,6 +62,7 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
                         << "weather_id:" << msg.weather_id.in() << std::endl;
                 
                 outfile.close();
+        }
       }
         else
         {

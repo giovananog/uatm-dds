@@ -4,113 +4,16 @@
 #include <vector>
 #include <sstream>
 
-std::vector<FlightRoute> readFlightRoutes(const std::string &filename)
+std::string getRandomValue(const std::vector<std::string> &values)
 {
-    std::ifstream file(filename);
-    std::vector<FlightRoute> routes;
-    std::string line;
-
-    while (std::getline(file, line))
-    {
-        if (!line.empty())
-        {
-            FlightRoute route;
-            std::stringstream ss(line);
-            std::string temp;
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, temp, ',');
-            route.route_id = std::stoi(temp);
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, route.origin_skyport_id, ',');
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, route.destination_skyport_id, ',');
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, temp, ',');
-            route.available_capacity = std::stoi(temp);
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, temp, ',');
-            route.available = std::stoi(temp);
-
-            std::getline(ss, temp, '=');
-            std::getline(ss, route.traffic_density, ',');
-
-            routes.push_back(route);
-        }
-    }
-
-    return routes;
+  int randomIndex = std::rand() % values.size();
+  return values[randomIndex];
 }
 
-
-std::vector<TrafficFlow> readTrafficFlows(const std::string &filename)
-{
-  std::ifstream file(filename);
-  std::vector<TrafficFlow> flows;
-  std::string line;
-
-  while (std::getline(file, line))
-  {
-    if (!line.empty())
-    {
-      TrafficFlow flow;
-      std::stringstream ss(line);
-      std::string temp;
-
-      std::getline(ss, temp, '=');
-      std::getline(ss, temp, ',');
-      flow.flows_id = temp;
-
-      std::getline(ss, temp, '=');
-      std::getline(ss, flow.area, ',');
-
-      std::getline(ss, temp, '=');
-      std::getline(ss, flow.congestion_level, ',');
-
-      std::getline(ss, temp, '=');
-      std::getline(ss, flow.timestamp, ',');
-
-      flows.push_back(flow);
-    }
-  }
-
-  return flows;
-}
-
-std::vector<Restriction> readRestrictions(const std::string &filename)
-{
-  std::ifstream file(filename);
-  std::vector<Restriction> restrictions;
-  std::string line;
-
-  while (std::getline(file, line))
-  {
-    Restriction restriction;
-    std::stringstream ss(line);
-    std::string temp;
-
-    std::getline(ss, temp, '=');
-    std::getline(ss, temp, ',');
-    restriction.restriction_id = temp;
-
-    std::getline(ss, temp, '=');
-    std::getline(ss, restriction.restriction_area, ',');
-
-    std::getline(ss, temp, '=');
-    std::getline(ss, restriction.restriction_type, ',');
-
-    std::getline(ss, temp, '=');
-    std::getline(ss, restriction.restriction_time, ',');
-
-    std::getline(ss, temp, '=');
-    std::getline(ss, restriction.restriction_authority, ',');
-
-    restrictions.push_back(restriction);
-  }
-
-  return restrictions;
-}
+std::vector<std::string> areas = {"Downtown", "Midtown", "Uptown", "East Side", "West Side", "Suburbs", "Airport", "Highway", "City Center", "Industrial Area"};
+std::vector<std::string> congestion_levels = {"Low", "Medium", "High"};
+std::vector<std::string> restriction_areas = {"South Zone", "North Zone", "East Zone", "West Zone", "Central Zone"};
+std::vector<std::string> restriction_types = {"No-Fly Zone", "Altitude Restriction", "Temporary Flight Restriction", "Drone Ban", "Emergency"};
+std::vector<std::string> authorities = {"FAA", "ANAC", "CAA"};
+std::vector<std::string> skyports = {"Skyport-1", "Skyport-2"};
+std::vector<std::string> traffic_density_levels = {"Low", "Medium", "High"};
