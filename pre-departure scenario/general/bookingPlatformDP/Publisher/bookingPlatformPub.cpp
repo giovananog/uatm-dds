@@ -10,7 +10,6 @@
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 
-
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
@@ -22,8 +21,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     UATM::bookingFlightRequestDataWriter_var writer_var = UATM::bookingFlightRequestDataWriter::_narrow(writer.in());
 
-    OpenDDS::Model::WriterSync ws(writer);
-    {
 
       if (CORBA::is_nil(writer_var.in()))
       {
@@ -33,11 +30,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          -1);
       }
 
+    OpenDDS::Model::WriterSync ws(writer);
+    {
       while (true)
       {
-
-    std::string filename = "bookingPlatformDP/data/costumers.txt";
-    std::vector<FlightRequest> requests = readRequestsFromFile(filename);
+        std::vector<FlightRequest> requests = readRequestsFromFile("bookingPlatformDP/data/costumers.txt");
         if (requests.empty())
         {
           std::cout << "Todos os costumers foram processados!" << std::endl;
@@ -63,7 +60,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      error));
         }
 
-        removeRequestFromFile(filename, current_request.costumer_id);
+        removeRequestFromFile("bookingPlatformDP/data/costumers.txt", current_request.costumer_id);
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
       }
