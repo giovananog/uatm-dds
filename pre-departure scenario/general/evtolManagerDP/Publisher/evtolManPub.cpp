@@ -71,18 +71,18 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       }
     }
   }
-    catch (const CORBA::Exception &e)
-    {
-      e._tao_print_exception("Exception caught in main():");
-      return -1;
-    }
-    catch (const std::exception &ex)
-    {
-      ACE_ERROR_RETURN((LM_ERROR,
-                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                            ACE_TEXT(" Exception caught: %C\n"),
-                        ex.what()),
-                       -1);
-    }
-    return 0;
+  catch (const CORBA::Exception &e)
+  {
+    e._tao_print_exception("Exception caught in main():");
+    return -1;
   }
+  catch (const std::exception &ex)
+  {
+    ACE_ERROR_RETURN((LM_ERROR,
+                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                          ACE_TEXT(" Exception caught: %C\n"),
+                      ex.what()),
+                     -1);
+  }
+  return 0;
+}

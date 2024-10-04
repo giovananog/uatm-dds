@@ -38,6 +38,9 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
         {
             if (info.valid_data)
             {
+                if (msg.flight_assign_id == 0) {
+                    break;
+                }else {
                 std::cout << "| flightAssign: " 
                           << "flight_assign_id:" << msg.flight_assign_id 
                           << ",assign_time:" << msg.assign_time.in() 
@@ -45,7 +48,8 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",pilot_id:" << msg.pilot_id.in() 
                           << ",evtol_id:" << msg.evtol_id.in() << std::endl;
 
-                updateEvtolStatus(msg.evtol_id.in(), 0, 0); 
+                updateEvtolStatus(msg.evtol_id.in(), 0, 1); 
+                }
             }
             else
             {
