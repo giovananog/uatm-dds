@@ -50,6 +50,7 @@ ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
                 
                 outfile.close();
         } else {
+            // std::cout << "\n\n| weatherInfo: signal\n\n";
             rcs_.signal();
             break;
         }

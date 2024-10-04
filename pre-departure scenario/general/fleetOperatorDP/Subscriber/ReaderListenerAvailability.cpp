@@ -34,6 +34,11 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader) {
         DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
         if (error == DDS::RETCODE_OK) {
             if (info.valid_data) {
+                 if (strcmp(CORBA::string_dup(msg.resource_id.in()), "0") == 0)
+        {
+          break;
+        }else {
+
                 std::cout << "| AvailabilityInfo: " 
                           << "resource_id:" << msg.resource_id.in() 
                           << ",resource_type:" << msg.resource_type.in() 
@@ -42,7 +47,9 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader) {
                           << ",availability_time:" << msg.availability_time.in() << std::endl;
 
                 updateAvailabilityFile(msg);
+        }
             } else {
+                // std::cout << "\n\n| AvailabilityInfo: signal\n\n";
                 rcs_.signal();
                 break;
             }

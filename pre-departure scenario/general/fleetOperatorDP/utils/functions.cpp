@@ -144,90 +144,6 @@ bool checkAvailability(const std::string &resourceFile, std::string &evtolID, st
     return false;
 }
 
-bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &weatherID, std::string &routeID, bool &status_send)
-{
-    std::ifstream infile(flightFile);
-    if (!infile.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo: " << flightFile << std::endl;
-        return false;
-    }
-
-    std::string line;
-    std::stringstream newFileContent;
-    bool assigned = false;
-
-    while (std::getline(infile, line)) {
-        std::istringstream iss(line);
-        std::string booking_id, costumer_id, flight_id, skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status, sent_coord, sent_auth;
-        std::string token;
-
-        std::getline(iss, token, ',');
-        booking_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        costumer_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        flight_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        skyport_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        pilot_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        evtol_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        weather_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        route_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        tolpad_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        status = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        sent_coord = token.substr(token.find(':') + 1);
-        std::getline(iss, token);
-        sent_auth = token.substr(token.find(':') + 1);
-
-        std::string status_str = CORBA::string_dup(status.c_str());
-        
-        if (pilot_id.empty() && evtol_id.empty() && !assigned && status_str == "1") {
-
-            pilot_id = pilotID;
-            evtol_id = evtolID;
-            weather_id = weatherID;
-            route_id = routeID;
-            flightID = flight_id;
-            assigned = true;
-
-            if (status_send) {
-                status = "1";
-            }else {
-                status = "0";
-            }
-        } 
-
-        newFileContent << "booking_id:" << booking_id << ",costumer_id:" << costumer_id
-                       << ",flight_id:" << flight_id << ",skyport_id:" << skyport_id
-                       << ",pilot_id:" << pilot_id << ",evtol_id:" << evtol_id
-                       << ",weather_id:" << weather_id << ",route_id:" << route_id
-                       << ",tolpad_id:" << tolpad_id << ",status:" << status 
-                       << ",sent_coord:" << sent_coord << ",sent_auth:" << sent_auth << "\n";
-    }
-
-    infile.close();
-
-    if (assigned) {
-        std::ofstream outfile(flightFile);
-        if (!outfile.is_open()) {
-            std::cerr << "Erro ao abrir o arquivo para escrita: " << flightFile << std::endl;
-            return false;
-        }
-
-        outfile << newFileContent.str();
-        outfile.close();
-    }
-
-    return assigned;
-}
-
 bool checkWeatherConditions(const std::string& weatherFile, const std::string& location, std::string& weatherID) {
     std::ifstream infile(weatherFile);
     if (!infile.is_open()) {
@@ -290,7 +206,7 @@ bool checkRouteAvailability(const std::string& routeFile, const std::string& ori
     while (std::getline(infile, line)) {
         std::istringstream iss(line);
         std::string token;
-        std::string route_id, origin_skyport, destination_skyport, available, traffic_density;
+        std::string route_id, origin_skyport, destination_skyport, available_capacity, available, traffic_density;
 
         std::getline(iss, token, ',');
         route_id = token.substr(token.find(':') + 1);
@@ -298,6 +214,8 @@ bool checkRouteAvailability(const std::string& routeFile, const std::string& ori
         origin_skyport = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
         destination_skyport = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        available_capacity = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
         available = token.substr(token.find(':') + 1);
         std::getline(iss, token);
@@ -317,6 +235,106 @@ bool checkRouteAvailability(const std::string& routeFile, const std::string& ori
     }
 
     return false;  
+}
+
+bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID)
+{
+    std::ifstream infile(flightFile);
+    if (!infile.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo: " << flightFile << std::endl;
+        return false;
+    }
+
+    std::string line;
+    std::stringstream newFileContent;
+    bool assigned = false;
+
+    while (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        std::string booking_id, costumer_id, flight_id, skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status, sent_coord, sent_auth;
+        std::string token;
+
+        std::getline(iss, token, ',');
+        booking_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        costumer_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        flight_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        skyport_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        pilot_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        evtol_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        weather_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        route_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        tolpad_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        status = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        sent_coord = token.substr(token.find(':') + 1);
+        std::getline(iss, token);
+        sent_auth = token.substr(token.find(':') + 1);
+
+        std::string status_str = CORBA::string_dup(status.c_str());
+        
+        if (pilot_id.empty() && evtol_id.empty() && !assigned && status_str == "1") {
+            
+            std::string weatherFile = "fleetOperatorDP/data/weather.txt";
+            std::string routeFile = "fleetOperatorDP/data/routes.txt";
+            std::string weatherID, routeID;
+            bool weatherOk = checkWeatherConditions(weatherFile, skyport_id, weatherID);
+            bool routeOk = checkRouteAvailability(routeFile, skyport_id, "Skyport-2", routeID);
+            bool status_send = weatherOk && routeOk;
+
+            pilot_id = pilotID;
+            evtol_id = evtolID;
+
+            if (weatherID != "") {
+                weather_id = weatherID;
+            } else {
+                weather_id = "1";
+            }
+            if (routeID != "") {
+                route_id = routeID;
+            } else {
+                route_id = "1";
+            }
+            flightID = flight_id;
+            assigned = true;
+            
+            if (status_send) {
+                status = "1";
+            }else {
+                status = "0";
+            }
+        } 
+
+        newFileContent << "booking_id:" << booking_id << ",costumer_id:" << costumer_id
+                       << ",flight_id:" << flight_id << ",skyport_id:" << skyport_id
+                       << ",pilot_id:" << pilot_id << ",evtol_id:" << evtol_id
+                       << ",weather_id:" << weather_id << ",route_id:" << route_id
+                       << ",tolpad_id:" << tolpad_id << ",status:" << status 
+                       << ",sent_coord:" << sent_coord << ",sent_auth:" << sent_auth << "\n";
+    }
+
+    infile.close();
+
+    if (assigned) {
+        std::ofstream outfile(flightFile);
+        if (!outfile.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo para escrita: " << flightFile << std::endl;
+            return false;
+        }
+
+        outfile << newFileContent.str();
+        outfile.close();
+    }
+
+    return assigned;
 }
 
 std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
@@ -357,8 +375,8 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
 }
 
 bool canSendCoordination(const BookingData &booking) {
-    return booking.status == 1 &&
-           booking.sent_coord == 0 &&
+    return booking.sent_coord == 0 &&
+        //    booking.status == 1 &&
            !booking.flight_id.empty() &&
            !booking.skyport_id.empty() &&
            !booking.pilot_id.empty() &&
@@ -368,9 +386,9 @@ bool canSendCoordination(const BookingData &booking) {
 }
 
 bool canSendAuthorization(const BookingData &booking) {
-    return booking.status == 1 &&
-           booking.sent_auth == 0 &&
-           booking.sent_coord == 1 &&
+    return booking.sent_auth == 0 &&
+        //    booking.sent_coord == 1 &&
+        //    booking.status == 1 &&
            !booking.flight_id.empty() &&
            !booking.skyport_id.empty() &&
            !booking.pilot_id.empty() &&

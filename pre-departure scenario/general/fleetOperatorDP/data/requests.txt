@@ -1,3 +1,3 @@
-booking_id:Booking-1,costumer_id:Costumer-1,flight_id:Flight-1,skyport_id:Skyport-1,pilot_id:Pilot-1,evtol_id:eVTOL-1,weather_id:1,route_id:10,tolpad_id:,status:1,sent_coord:1,sent_auth:1
-booking_id:Booking-2,costumer_id:Costumer-2,flight_id:Flight-2,skyport_id:Skyport-1,pilot_id:Pilot-2,evtol_id:eVTOL-2,weather_id:1,route_id:10,tolpad_id:,status:1,sent_coord:1,sent_auth:1
-booking_id:Booking-3,costumer_id:Costumer-3,flight_id:Flight-3,skyport_id:Skyport-2,pilot_id:Pilot-3,evtol_id:eVTOL-3,weather_id:1,route_id:10,tolpad_id:,status:1,sent_coord:1,sent_auth:1
+booking_id:Booking-1,costumer_id:Costumer-1,flight_id:Flight-1,skyport_id:Skyport-1,pilot_id:Pilot-1,evtol_id:eVTOL-1,weather_id:1,route_id:1,tolpad_id:,status:0,sent_coord:1,sent_auth:1
+booking_id:Booking-2,costumer_id:Costumer-2,flight_id:Flight-2,skyport_id:Skyport-1,pilot_id:Pilot-2,evtol_id:eVTOL-2,weather_id:1,route_id:1,tolpad_id:,status:0,sent_coord:1,sent_auth:1
+booking_id:Booking-3,costumer_id:Costumer-3,flight_id:Flight-3,skyport_id:Skyport-2,pilot_id:Pilot-3,evtol_id:eVTOL-3,weather_id:1,route_id:1,tolpad_id:,status:1,sent_coord:1,sent_auth:1

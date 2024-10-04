@@ -25,10 +25,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::assignFlightDW_FOP);
-    UATM::flightAssignDataWriter_var writer_var = UATM::flightAssignDataWriter::_narrow(writer.in());
+    DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::assignFlightDW_FOP);
+    UATM::flightAssignDataWriter_var writer_assign_var = UATM::flightAssignDataWriter::_narrow(writer_assign.in());
 
-    if (CORBA::is_nil(writer_var.in()))
+    if (CORBA::is_nil(writer_assign_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
@@ -47,10 +47,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    DDS::DataWriter_var writer_assign = model2.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
-    UATM::flightAuthorizationRequestDataWriter_var writer_assign_var = UATM::flightAuthorizationRequestDataWriter::_narrow(writer_assign.in());
+    DDS::DataWriter_var writer_request = model2.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
+    UATM::flightAuthorizationRequestDataWriter_var writer_request_var = UATM::flightAuthorizationRequestDataWriter::_narrow(writer_request.in());
 
-    if (CORBA::is_nil(writer_assign_var.in()))
+    if (CORBA::is_nil(writer_request_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
@@ -58,13 +58,19 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    int flight_assign_id = 1;
+    int i = 0;
+
     while (true)
     {
+
+      std::cout << "\n\nflight assign id: " << flight_assign_id << "\n\n";
+      if (i == 3) {
+        break;
+      }
       std::string evtolID;
       std::string pilotID;
       std::string flightID;
-      std::string weatherID;
-      std::string routeID;
       std::string resourceFile = "fleetOperatorDP/data/availabilities.txt";
       std::string weatherFile = "fleetOperatorDP/data/weather.txt";
       std::string routeFile = "fleetOperatorDP/data/routes.txt";
@@ -72,20 +78,15 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       std::string flightFile = "fleetOperatorDP/data/requests.txt";
 
 
-      OpenDDS::Model::WriterSync ws3(writer_coord);
+      OpenDDS::Model::WriterSync ws(writer_assign);
       {
       if (checkAvailability(resourceFile, evtolID, pilotID))
       {
-        bool weatherOk = checkWeatherConditions(weatherFile, "Skyport-1", weatherID);
-        bool routeOk = checkRouteAvailability(routeFile, "Skyport-1", "Skyport-2", routeID);
-        bool status = weatherOk && routeOk;
-        
-
-        if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID, weatherID, routeID, status))
+        if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID))
         {
           UATM::flightAssign fa;
 
-          fa.flight_assign_id = 3232;
+          fa.flight_assign_id = flight_assign_id++;
           fa.assign_time = "1245-32";
           fa.flight_id = CORBA::string_dup(flightID.c_str());
           fa.evtol_id = CORBA::string_dup(evtolID.c_str());
@@ -93,7 +94,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
           removeAssignedResources(resourceFile, evtolID, pilotID);
 
-          DDS::ReturnCode_t error = writer_var->write(fa, DDS::HANDLE_NIL);
+          DDS::ReturnCode_t error = writer_assign_var->write(fa, DDS::HANDLE_NIL);
 
           if (error != DDS::RETCODE_OK)
           {
@@ -102,29 +103,53 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                            ACE_TEXT(" write returned %d!\n"),
                        error));
           }
+          i++;
         }
         else
         {
+          UATM::flightAssign fa;
+          fa.flight_assign_id = 0;
+
+          DDS::ReturnCode_t error = writer_assign_var->write(fa, DDS::HANDLE_NIL);
+          if (error != DDS::RETCODE_OK)
+          {
+            ACE_ERROR((LM_ERROR,
+                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                           ACE_TEXT(" write returned %d!\n"),
+                       error));
+          }
           std::cout << "Nenhum voo disponível para atribuir evtol e piloto." << std::endl;
         }
       }
       else
       {
+        UATM::flightAssign fa;
+          fa.flight_assign_id = 0;
+
+          DDS::ReturnCode_t error = writer_assign_var->write(fa, DDS::HANDLE_NIL);
+          if (error != DDS::RETCODE_OK)
+          {
+            ACE_ERROR((LM_ERROR,
+                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                           ACE_TEXT(" write returned %d!\n"),
+                       error));
+          }
         std::cout << "Nenhum evtol ou piloto disponível." << std::endl;
       }
       }
+
       std::this_thread::sleep_for(std::chrono::seconds(13));
 
-      OpenDDS::Model::WriterSync ws(writer_coord);
+      OpenDDS::Model::WriterSync ws2(writer_coord);
       {
-        UATM::flightCoordination fc;
-
+        bool sent = false;
         std::vector<BookingData> bookings = readBookingsFromFile(filename);
 
         for (const auto &booking : bookings)
         {
           if (canSendCoordination(booking))
           {
+            UATM::flightCoordination fc;
             fc.coordination_id = CORBA::string_dup(booking.booking_id.c_str());
             fc.flight_id = CORBA::string_dup(booking.flight_id.c_str());
             fc.skyport_id = CORBA::string_dup(booking.skyport_id.c_str());
@@ -143,30 +168,45 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
+            sent = true;
             std::string flight_id_str = CORBA::string_dup(booking.flight_id.c_str());
             updateSentCoord(filename, flight_id_str);
 
             break;
-          }
+          } 
+        }
+
+        if(!sent) {
+            UATM::flightCoordination fco;
+            fco.coordination_id = "0";
+            DDS::ReturnCode_t error = writer_coord_var->write(fco, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
         }
       }
 
       std::this_thread::sleep_for(std::chrono::seconds(13));
 
-      OpenDDS::Model::WriterSync ws2(writer_assign);
+      OpenDDS::Model::WriterSync ws3(writer_request);
       {
-
+        
+        bool sent = false;
         std::vector<BookingData> bookings = readBookingsFromFile(filename);
 
-        UATM::flightAuthorizationRequest fr;
 
         for (const auto &booking : bookings)
         {
           if (canSendAuthorization(booking))
           {
-
             std::vector<Route> routes = readRoutesFromFile(routeFile);
 
+            UATM::flightAuthorizationRequest fr;
             Route *route = findRouteById(routes, booking.route_id);
 
             fr.auth_request_id = "a";
@@ -177,7 +217,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             fr.pilot_id = CORBA::string_dup(booking.pilot_id.c_str());
             fr.evtol_id = CORBA::string_dup(booking.evtol_id.c_str());
 
-            DDS::ReturnCode_t error = writer_assign_var->write(fr, DDS::HANDLE_NIL);
+            DDS::ReturnCode_t error = writer_request_var->write(fr, DDS::HANDLE_NIL);
 
             if (error != DDS::RETCODE_OK)
             {
@@ -187,10 +227,25 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
+            sent = true;
             std::string flight_id_str = CORBA::string_dup(booking.flight_id.c_str());
             updateSentAuth(filename, flight_id_str);
             break;
           }
+        }
+
+        if(!sent) {
+            UATM::flightAuthorizationRequest fr;
+            fr.auth_request_id = "0";
+            DDS::ReturnCode_t error = writer_request_var->write(fr, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+           }
         }
       }
 

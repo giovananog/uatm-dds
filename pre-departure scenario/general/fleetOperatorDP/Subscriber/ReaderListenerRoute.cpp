@@ -51,6 +51,7 @@ ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
                 
                 outfile.close();
             } else {
+                // std::cout << "\n\n| flightRoutesInfo: signal\n\n";
                 rcs_.signal();
                 break;
             }

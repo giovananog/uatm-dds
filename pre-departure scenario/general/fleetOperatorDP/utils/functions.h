@@ -33,7 +33,7 @@ struct Route {
 void updateAvailabilityFile(const UATM::availabilityInfo& msg);
 bool removeAssignedResources(const std::string &availabilityFile, const std::string &evtolID, const std::string &pilotID);
 bool checkAvailability(const std::string &resourceFile, std::string &evtolID, std::string &pilotID);
-bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &weatherID, std::string &routeID, bool &status_send);
+bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID);
 bool checkWeatherConditions(const std::string& weatherFile, const std::string& location, std::string &weatherID);
 bool checkRouteAvailability(const std::string& routeFile, const std::string& origin, const std::string& destination, std::string &routeID);
 std::vector<BookingData> readBookingsFromFile(const std::string &filename);

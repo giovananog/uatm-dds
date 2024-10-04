@@ -1,0 +1,1 @@
+authorization_id:a,flight_id:Flight-1,authorization_status:0,authorization_time:,approved_departure_time:a,approved_arrival_time:a,tolpad_id:,pilot_id:Pilot-1,evtol_id:eVTOL-1
