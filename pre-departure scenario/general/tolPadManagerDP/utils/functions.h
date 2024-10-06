@@ -15,5 +15,6 @@ struct TolPad
 std::vector<TolPad> readTolPadsFromFile(const std::string &filename);
 void updateTolPadInFile(const std::string &filename, const std::string &resource_id);
 void updateTolPadStatus(const std::string &resource_id, int new_available, int new_sent);
+std::string getCurrentTime();
 
 #endif // FUNCTIONS_H

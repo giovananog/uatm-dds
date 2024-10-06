@@ -11,11 +11,13 @@
 #include <vector>
 
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs)
-    : rcs_(rcs) {}
+    : rcs_(rcs) {} 
 
 void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+
+    static bool signal_sent = false;
 
     UATM::tolPadRequestDataReader_var reader_i =
         UATM::tolPadRequestDataReader::_narrow(reader);
@@ -24,7 +26,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     {
         ACE_ERROR((LM_ERROR,
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                   ACE_TEXT(" _narrow failed!\n")));
+                       ACE_TEXT(" _narrow failed!\n")));
         ACE_OS::exit(-1);
     }
 
@@ -43,12 +45,15 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",flight_id:" << msg.flight_id
                           << ",tol_pad_id:" << msg.tol_pad_id.in()
                           << ",assign_time:" << msg.assign_time.in() << std::endl;
-
-                updateTolPadStatus(msg.tol_pad_id.in(), 0, 0); 
+                break;
             }
             else
             {
-                rcs_.signal();
+                if (!signal_sent)
+                {
+                    rcs_.signal();
+                    signal_sent = true;
+                }
                 break;
             }
         }
@@ -58,7 +63,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
             {
                 ACE_ERROR((LM_ERROR,
                            ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                           ACE_TEXT(" take_next_sample failed!\n")));
+                               ACE_TEXT(" take_next_sample failed!\n")));
             }
             break;
         }

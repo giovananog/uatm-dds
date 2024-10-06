@@ -1,3 +1,3 @@
-resource_id=TolPad-1,skyport_id=Skyport-1,available=0,sent=0
-resource_id=TolPad-2,skyport_id=Skyport-1,available=1,sent=1
-resource_id=TolPad-3,skyport_id=Skyport-2,available=1,sent=1
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,sent=0
+resource_id=TolPad-2,skyport_id=Skyport-1,available=1,sent=0
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,sent=0
