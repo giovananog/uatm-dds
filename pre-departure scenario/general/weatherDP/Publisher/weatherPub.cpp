@@ -11,8 +11,10 @@
 #include "../../model/UATMTraits.h"
 #include "../utils/functions.h"
 
-int ACE_TMAIN(int argc, ACE_TCHAR **argv) {
-    try {
+int ACE_TMAIN(int argc, ACE_TCHAR **argv)
+{
+    try
+    {
         OpenDDS::Model::Application application(argc, argv);
         UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
@@ -21,51 +23,58 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv) {
         DDS::DataWriter_var writer = model3.writer(Elements::DataWriters::weatherInfoDW_WTR);
         UATM::weatherInfoDataWriter_var writer_var = UATM::weatherInfoDataWriter::_narrow(writer.in());
 
-        if (CORBA::is_nil(writer_var.in())) {
+        if (CORBA::is_nil(writer_var.in()))
+        {
             ACE_ERROR_RETURN((LM_ERROR,
                               ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                                   ACE_TEXT(" _narrow failed!\n")),
                              -1);
         }
 
-        std::random_device rd; 
-        std::mt19937 gen(rd()); 
+        std::random_device rd;
+        std::mt19937 gen(rd());
 
-        int weather_id = 1;  
+        int weather_id = 1;
 
         OpenDDS::Model::WriterSync ws(writer);
-        
-        while (true) {
-            std::string location = getRandomLocation(gen);
-            double temperature = getRandomTemperature(gen);
-            double wind_speed = getRandomWindSpeed(gen);
-            std::string weather_condition = getRandomWeatherCondition(gen);
+        {
 
-            UATM::weatherInfo fr;
-            fr.weather_id = weather_id++;  
-            fr.location = CORBA::string_dup(location.c_str());
-            fr.temperature = temperature;
-            fr.wind_speed = wind_speed;
-            fr.weather_condition = CORBA::string_dup(weather_condition.c_str());
-            fr.observation_time = "time"; 
+            while (weather_id != 2)
+            {
+                std::string location = getRandomLocation(gen);
+                double temperature = getRandomTemperature(gen);
+                double wind_speed = getRandomWindSpeed(gen);
+                std::string weather_condition = getRandomWeatherCondition(gen);
 
-            DDS::ReturnCode_t error = writer_var->write(fr, DDS::HANDLE_NIL);
+                UATM::weatherInfo fr;
+                fr.weather_id = weather_id++;
+                fr.location = CORBA::string_dup(location.c_str());
+                fr.temperature = temperature;
+                fr.wind_speed = wind_speed;
+                fr.weather_condition = CORBA::string_dup(weather_condition.c_str());
+                fr.observation_time = CORBA::string_dup(getCurrentTime().c_str());
 
-            if (error != DDS::RETCODE_OK) {
-                ACE_ERROR((LM_ERROR,
-                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                               ACE_TEXT(" write returned %d!\n"),
-                           error));
+                DDS::ReturnCode_t error = writer_var->write(fr, DDS::HANDLE_NIL);
+
+                if (error != DDS::RETCODE_OK)
+                {
+                    ACE_ERROR((LM_ERROR,
+                               ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                                   ACE_TEXT(" write returned %d!\n"),
+                               error));
+                }
+
+                std::this_thread::sleep_for(std::chrono::seconds(19));
             }
-
-            std::this_thread::sleep_for(std::chrono::seconds(19)); 
         }
     }
-    catch (const CORBA::Exception &e) {
+    catch (const CORBA::Exception &e)
+    {
         e._tao_print_exception("Exception caught in main():");
         return -1;
     }
-    catch (const std::exception &ex) {
+    catch (const std::exception &ex)
+    {
         ACE_ERROR_RETURN((LM_ERROR,
                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                               ACE_TEXT(" Exception caught: %C\n"),
