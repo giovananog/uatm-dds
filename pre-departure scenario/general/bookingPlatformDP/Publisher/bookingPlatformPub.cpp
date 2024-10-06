@@ -37,7 +37,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         std::vector<FlightRequest> requests = readRequestsFromFile("bookingPlatformDP/data/costumers.txt");
         if (requests.empty())
         {
-          std::cout << "Todos os costumers foram processados!" << std::endl;
+          // std::cout << "Todos os costumers foram processados!" << std::endl;
           break;
         }
 
