@@ -3,6 +3,9 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <ctime>
+#include <chrono>
+#include <iomanip>
 
 std::vector<Pilot> readPilotsFromFile(const std::string &filename)
 {
@@ -109,4 +112,17 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, int new_s
         out_file << l << "\n";
     }
     out_file.close();
+}
+
+std::string getCurrentTime() {
+    std::time_t now = std::time(nullptr);
+    
+    std::tm* local_time = std::localtime(&now);
+    
+    std::ostringstream oss;
+    oss << std::setw(2) << std::setfill('0') << local_time->tm_hour << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_min << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_sec;
+
+    return oss.str();
 }

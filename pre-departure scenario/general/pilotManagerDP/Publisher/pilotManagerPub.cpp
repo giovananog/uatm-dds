@@ -42,7 +42,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
           if (pilots.empty())
           {
-            std::cout << "Todos os pilotos foram enviados!" << std::endl;
+            // std::cout << "Todos os pilotos foram enviados!" << std::endl;
             break;
           }
 
@@ -54,7 +54,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
           bfr.resource_type = "pilot";
           bfr.available = current_pilot.available;
           bfr.skyport_id = CORBA::string_dup(current_pilot.skyport_id.c_str());
-          bfr.availability_time = "323123";
+          bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
 
           DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 

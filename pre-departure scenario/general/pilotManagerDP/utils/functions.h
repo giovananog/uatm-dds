@@ -15,5 +15,6 @@ struct Pilot
 std::vector<Pilot> readPilotsFromFile(const std::string &filename);
 void updatePilotInFile(const std::string &filename, const std::string &pilot_id);
 void updatePilotStatus(const std::string &pilot_id, int new_available, int new_sent);
+std::string getCurrentTime();
 
 #endif // FUNCTIONS_H

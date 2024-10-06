@@ -36,25 +36,16 @@ void ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
     {
       if (info.valid_data)
       {
-
-        if (strcmp(CORBA::string_dup(msg.authorization_id.in()), "0") == 0)
-        {
-
-          break;
-        }
-        else
-        {
-          std::cout << "| plm flightAuthorization: "
-                    << ",authorization_id" << msg.authorization_id.in()
-                    << ",flight_id:" << msg.flight_id.in()
-                    << ",authorization_status:" << msg.authorization_status
-                    << ",authorization_time:" << msg.authorization_time.in()
-                    << ",approved_departure_time:" << msg.approved_departure_time.in()
-                    << ",approved_arrival_time:" << msg.approved_arrival_time.in()
-                    << ",tolpad_id:" << msg.tolpad_id.in()
-                    << ",pilot_id:" << msg.pilot_id.in()
-                    << ",evtol_id:" << msg.evtol_id.in() << std::endl;
-        }
+        std::cout << "| plm flightAuthorization: "
+                  << ",authorization_id" << msg.authorization_id.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",authorization_status:" << msg.authorization_status
+                  << ",authorization_time:" << msg.authorization_time.in()
+                  << ",approved_departure_time:" << msg.approved_departure_time.in()
+                  << ",approved_arrival_time:" << msg.approved_arrival_time.in()
+                  << ",tolpad_id:" << msg.tolpad_id.in()
+                  << ",pilot_id:" << msg.pilot_id.in()
+                  << ",evtol_id:" << msg.evtol_id.in() << std::endl;
       }
       else
       {
