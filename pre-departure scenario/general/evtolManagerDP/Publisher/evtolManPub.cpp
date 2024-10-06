@@ -41,7 +41,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         if (evtols.empty())
         {
-          std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
+          // std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
           break;
         }
 
@@ -53,7 +53,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         bfr.resource_type = "evtol";
         bfr.available = current_evtol.available;
         bfr.skyport_id = CORBA::string_dup(current_evtol.skyport_id.c_str());
-        bfr.availability_time = "323123";
+        bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
 
         DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 
@@ -67,7 +67,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         updateEVTOLInFile(filename, current_evtol.evtol_id);
 
-        std::this_thread::sleep_for(std::chrono::seconds(8));
+        std::this_thread::sleep_for(std::chrono::seconds(3));
       }
     }
   }
