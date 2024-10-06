@@ -55,55 +55,104 @@ bool checkAvailability(const std::string &resourceFile, std::string &tolPadID)
     if (!tolPads.empty())
     {
         tolPadID = *tolPads.begin();
+        return true;
     }
-
-    return true;
-
 return false;
 }
 
-std::vector<UATM::flightAuthorization> read_requests_from_file(const std::string &filename)
+std::vector<TolPad> read_tolpads(const std::string &resourceFile)
 {
-    std::ifstream file(filename);
-    std::vector<UATM::flightAuthorization> authorizations;
+    std::ifstream file(resourceFile);
+    std::vector<TolPad> tolPads;
 
     if (!file.is_open())
     {
         std::cout << "Failed to open file for reading!" << std::endl;
-        return authorizations;
+        return tolPads;
     }
 
     std::string line;
     while (std::getline(file, line))
+  {
+    if (!line.empty())
     {
-        UATM::flightAuthorization fa;
-        std::stringstream ss(line);
+      TolPad tp;
+      std::istringstream ss(line);
+      std::string temp;
 
-        std::string request_id, flight_id_str, departure_skyport_id, destination_skyport_id;
-        std::string departure_time, approved_departure_time, approved_arrival_time, tolpad_id, pilot_id, evtol_id;
+      std::getline(ss, temp, '=');
+      std::getline(ss, temp, ',');
+      tp.resource_id = temp.c_str();
 
-        std::getline(ss, request_id, ',');
-        std::getline(ss, flight_id_str, ',');
-        std::getline(ss, departure_skyport_id, ',');
-        std::getline(ss, destination_skyport_id, ',');
-        std::getline(ss, departure_time, ',');
-        std::getline(ss, tolpad_id, ',');
-        std::getline(ss, pilot_id, ',');
-        std::getline(ss, evtol_id, ',');
+      std::getline(ss, temp, '=');
+      std::getline(ss, temp, ',');
+      tp.skyport_id = temp.c_str();
 
-        fa.authorization_id = request_id.c_str();
-        fa.flight_id = flight_id_str.c_str();
-        fa.approved_route_id = departure_skyport_id.c_str();
-        fa.authorization_status = destination_skyport_id.c_str();
-        fa.tolpad_id = tolpad_id.c_str();
-        fa.pilot_id = pilot_id.c_str();
-        fa.evtol_id = evtol_id.c_str();
+      std::getline(ss, temp, '=');
+      std::getline(ss, temp, ',');
+      tp.available = temp.c_str();
 
-        authorizations.push_back(fa);
+      std::getline(ss, temp, '=');
+      std::getline(ss, temp, ',');
+      tp.availability_time = temp.c_str();
+
+      tolPads.push_back(tp);
+    }
+  }    
+    file.close();
+    return tolPads;
+}
+
+std::vector<requestInfo> read_requests_from_file(const std::string &filename)
+{
+    std::ifstream file(filename);
+    std::vector<requestInfo> requests;
+
+    if (!file.is_open())
+    {
+        std::cout << "Failed to open file for reading!" << std::endl;
+        return requests;
     }
 
+    std::string line;
+    while (std::getline(file, line))
+  {
+    if (!line.empty())
+    {
+      requestInfo fa;
+      std::istringstream ss(line);
+      std::string temp;
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.request_id, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.flight_id, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.departure_skyport_id, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.destination_skyport_id, ',');
+      
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.departure_time, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.tolpad_id, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.pilot_id, ',');
+
+      std::getline(ss, temp, ':');
+      std::getline(ss, fa.evtol_id, ',');
+      
+      requests.push_back(fa);
+    }
+  }
+
     file.close();
-    return authorizations;
+    return requests;
 }
 
 std::string getAndUpdateFlightIDWithEmptyTolPad(const std::string &filename, const std::string &tolPadID)
@@ -261,7 +310,7 @@ bool checkFlowConditions(const std::string &flowsFile, const std::string &area, 
         std::getline(iss, token);
         timestamp = token.substr(token.find(':') + 1);
 
-        if (area_name == area && std::stoi(congestion_level) < 3)
+        if (area_name == area )
         {
             latestFlowsID = flows_id;
             foundArea = true;
@@ -323,4 +372,61 @@ bool checkRestrictionConditions(const std::string &restrictionsFile, const std::
     }
 
     return false;
+}
+
+bool removeAssignedTolPads(const std::string &tolPadsFile, const std::string &tolpadID) {
+    std::ifstream infile(tolPadsFile);
+    if (!infile.is_open()) {
+        std::cerr << "Erro ao abrir o arquivo de tolpads: " << tolPadsFile << std::endl;
+        return false;
+    }
+
+    std::string line;
+    std::stringstream newFileContent;
+    bool tolpadRemoved = false;
+
+    while (std::getline(infile, line)) {
+        std::istringstream iss(line);
+        std::string token;
+        std::string resource_id, resource_type;
+
+        std::getline(iss, token, ',');
+        resource_id = token.substr(token.find('=') + 1);
+
+        if (resource_id == tolpadID) {
+            tolpadRemoved = true;
+            continue;  
+        }
+
+        newFileContent << line << "\n";
+    }
+
+    infile.close();
+
+    if (tolpadRemoved) {
+        std::ofstream outfile(tolPadsFile);
+        if (!outfile.is_open()) {
+            std::cerr << "Erro ao abrir o arquivo para escrita: " << tolPadsFile << std::endl;
+            return false;
+        }
+        outfile << newFileContent.str();
+        outfile.close();
+        return true;
+    } else {
+        std::cerr << "Erro: tol pad not removed." << std::endl;
+        return false;
+    }
+}
+
+std::string getCurrentTime() {
+    std::time_t now = std::time(nullptr);
+    
+    std::tm* local_time = std::localtime(&now);
+    
+    std::ostringstream oss;
+    oss << std::setw(2) << std::setfill('0') << local_time->tm_hour << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_min << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_sec;
+
+    return oss.str();
 }

@@ -44,8 +44,8 @@ ReaderListenerFlows::on_data_available(DDS::DataReader_ptr reader)
                 
                 outfile << "flows_id:" << msg.flows_id << ","
                         << "area:" << msg.area.in() << ","
-                        << "congestion_level:" << msg.congestion_level << ","
-                        << "timestamp:" << msg.timestamp << ","
+                        << "congestion_level:" << msg.congestion_level.in() << ","
+                        << "timestamp:" << msg.timestamp.in() << ","
                         << "affected_routes:" << msg.affected_routes.in() << std::endl;
                 
                 outfile.close();

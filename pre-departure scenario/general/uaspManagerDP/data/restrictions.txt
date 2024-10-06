@@ -1,136 +1,53 @@
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:East Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:West Zone,restriction_type:Drone Ban,restriction_time:a,restriction_authority:CAA
-restriction_id:212,restriction_area:South Zone,restriction_type:No-Fly Zone,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:Central Zone,restriction_type:Emergency,restriction_time:a,restriction_authority:FAA
-restriction_id:212,restriction_area:North Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
-restriction_id:212,restriction_area:South Zone,restriction_type:Altitude Restriction,restriction_time:a,restriction_authority:ANAC
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:2,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:2,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:2,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:FAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:time,restriction_authority:ANAC
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:time,restriction_authority:CAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:19:47:42,restriction_authority:ANAC
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:19:54:42,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:19:56:32,restriction_authority:ANAC
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:20:00:07,restriction_authority:ANAC
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:20:02:25,restriction_authority:CAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:20:10:45,restriction_authority:ANAC
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:20:15:23,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:20:28:58,restriction_authority:FAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:20:34:18,restriction_authority:FAA
+restriction_id:1,restriction_area:North Zone,restriction_type:type,restriction_time:20:43:26,restriction_authority:CAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:20:46:33,restriction_authority:CAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:21:50:19,restriction_authority:CAA
+restriction_id:1,restriction_area:South Zone,restriction_type:type,restriction_time:21:53:24,restriction_authority:ANAC
+restriction_id:1,restriction_area:West Zone,restriction_type:type,restriction_time:21:55:29,restriction_authority:CAA
+restriction_id:1,restriction_area:Central Zone,restriction_type:type,restriction_time:21:58:07,restriction_authority:FAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:22:03:27,restriction_authority:CAA
+restriction_id:1,restriction_area:East Zone,restriction_type:type,restriction_time:22:05:36,restriction_authority:CAA

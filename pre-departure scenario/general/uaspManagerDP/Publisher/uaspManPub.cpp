@@ -26,11 +26,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    DDS::DataWriter_var writer = model.writer(Elements::DataWriters::routeDataDW_UASP);
+    DDS::DataWriter_var writer_route = model.writer(Elements::DataWriters::routeDataDW_UASP);
 
-    UATM::acceptableRouteDataWriter_var writer_var = UATM::acceptableRouteDataWriter::_narrow(writer.in());
+    UATM::acceptableRouteDataWriter_var writer_route_var = UATM::acceptableRouteDataWriter::_narrow(writer_route.in());
 
-    if (CORBA::is_nil(writer_var.in()))
+    if (CORBA::is_nil(writer_route_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
@@ -71,27 +71,33 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    int assign_id = 1;
+    int acceptable_route_id = 1;
+    int recommendation_id = 1;
+    int i = 0;
+    std::unordered_set<std::string> sent_flight_ids;
+    std::unordered_set<std::string> sent_tolpads;
+
     while (true)
     {
-      std::string tolPadID;
-      std::string resourceFile = "uaspManagerDP/data/tolpads.txt";
+      std::vector<requestInfo> requests = read_requests_from_file("uaspManagerDP/data/requests.txt");
+      std::vector<TolPad> tolpads = read_tolpads("uaspManagerDP/data/tolpads.txt");
 
-      OpenDDS::Model::WriterSync ws(writer);
+      OpenDDS::Model::WriterSync ws(writer_assign);
       {
-        if (checkAvailability(resourceFile, tolPadID))
+        bool sent = false;
+        for (const auto &tolpad : tolpads)
         {
-          OpenDDS::Model::WriterSync ws2(writer_assign);
+          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end())
           {
-            std::string flight_id = getAndUpdateFlightIDWithEmptyTolPad("uaspManagerDP/data/requests.txt", tolPadID.c_str());
-
+            std::string flight_id = getAndUpdateFlightIDWithEmptyTolPad("uaspManagerDP/data/requests.txt", std::string(tolpad.resource_id));
             if (flight_id != "")
             {
-
               UATM::tolPadRequest tr;
-              tr.assign_id = 1;
-              tr.flight_id = flight_id.c_str();
-              tr.tol_pad_id = tolPadID.c_str();
-              tr.assign_time = "13212";
+              tr.assign_id = assign_id++;
+              tr.flight_id = std::string(flight_id).c_str();
+              tr.tol_pad_id = tolpad.resource_id.c_str();
+              tr.assign_time = CORBA::string_dup(getCurrentTime().c_str());
 
               DDS::ReturnCode_t error = writer_assign_var->write(tr, DDS::HANDLE_NIL);
               if (error != DDS::RETCODE_OK)
@@ -101,74 +107,113 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                                ACE_TEXT(" write returned %d!\n"),
                            error));
               }
-            }
-            else
-            {
-              std::cout << "all flight_id processed" << std::endl;
+
+              sent_tolpads.insert(std::string(tolpad.resource_id));
+              sent = true;
+              break;
             }
           }
         }
-        else
-        {
-          std::cout << "no tolpad available" << std::endl;
-        }
       }
 
-      std::this_thread::sleep_for(std::chrono::seconds(4));
+      std::this_thread::sleep_for(std::chrono::seconds(5));
 
-      OpenDDS::Model::WriterSync ws2(writer);
+      OpenDDS::Model::WriterSync ws2(writer_route);
       {
-        UATM::acceptableRoute ar;
+        bool sent = false;
 
-        ar.acceptable_route_id = "23";
-        ar.approved_by = "UASP";
-        ar.estimated_time = "12254-53";
-        ar.timestamp = "2112-74";
-
-        DDS::ReturnCode_t error = writer_var->write(ar, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
+        for (const auto &auth : requests)
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
-        }
-      }
-
-      std::this_thread::sleep_for(std::chrono::seconds(4));
-
-      std::vector<UATM::flightAuthorization> authorizations = read_requests_from_file("uaspManagerDP/data/requests.txt");
-
-      OpenDDS::Model::WriterSync ws3(writer);
-      {
-        UATM::flightAuthorization fa;
-
-        for (const auto &auth : authorizations)
-        {
-          if (auth.authorization_status)
+          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end())
           {
 
+            UATM::acceptableRoute ar;
+            ar.acceptable_route_id = acceptable_route_id++;
+            ar.approved_by = "UASP";
+            ar.estimated_time = "12";
+            ar.timestamp = CORBA::string_dup(getCurrentTime().c_str());
+            ar.flight_id = auth.flight_id.c_str();
+
+            DDS::ReturnCode_t error = writer_route_var->write(ar, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+            sent = true;
+            break;
+          }
+        }
+      }
+
+      std::this_thread::sleep_for(std::chrono::seconds(5));
+
+      OpenDDS::Model::WriterSync ws4(writer_rec);
+      {
+        bool sent = false;
+
+        for (const auto &auth : requests)
+        {
+          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end())
+          {
+
+            UATM::flightChangeRec fc;
+
+            fc.recommendation_id = recommendation_id++;
+            fc.flight_id = 1;
+            fc.change_type = "change_type";
+            fc.reason = "reason";
+            fc.recommended_by = "recommended_by";
+            fc.recommendation_time = CORBA::string_dup(getCurrentTime().c_str());
+
+            DDS::ReturnCode_t error = writer_rec_var->write(fc, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+            sent = true;
+            break;
+          }
+        }
+      }
+
+      std::this_thread::sleep_for(std::chrono::seconds(5));
+
+      OpenDDS::Model::WriterSync ws3(writer_auth);
+      {
+        bool sent = false;
+        for (const auto &auth : requests)
+        {
+          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end() && auth.tolpad_id != "")
+          {
             std::string flowsID, restrictionID, weatherID;
 
-            bool flowOk = checkFlowConditions("uaspManagerDP/data/flows.txt", "Skyport-1", flowsID);
-            bool restrictionOk = checkRestrictionConditions("uaspManagerDP/data/restrictions.txt", "Skyport-1", restrictionID);
-            bool weatherOk = checkWeatherConditions("uaspManagerDP/data/weather.txt", "Skyport-1", weatherID);
+            bool flowOk = checkFlowConditions("uaspManagerDP/data/flows.txt", auth.departure_skyport_id, flowsID);
+            bool restrictionOk = checkRestrictionConditions("uaspManagerDP/data/restrictions.txt", auth.departure_skyport_id, restrictionID);
+            bool weatherOk = checkWeatherConditions("uaspManagerDP/data/weather.txt", auth.departure_skyport_id, weatherID);
 
+            UATM::flightAuthorization fa;
             if (flowOk && restrictionOk && weatherOk)
               fa.authorization_status = 1;
             else
               fa.authorization_status = 0;
 
-            fa.authorization_id = auth.authorization_id;
-            fa.flight_id = auth.flight_id;
+            fa.authorization_id = auth.request_id.c_str();
+            fa.flight_id = auth.flight_id.c_str();
             fa.approved_route_id = "a";
-            fa.authorization_time = "";
-            fa.approved_departure_time = "a";
-            fa.approved_arrival_time = "a";
-            fa.tolpad_id = auth.tolpad_id;
-            fa.pilot_id = auth.pilot_id;
-            fa.evtol_id = auth.evtol_id;
+            fa.authorization_time = CORBA::string_dup(getCurrentTime().c_str());
+            fa.approved_departure_time = CORBA::string_dup(getCurrentTime().c_str());
+            fa.approved_arrival_time = CORBA::string_dup(getCurrentTime().c_str());
+            fa.tolpad_id = auth.tolpad_id.c_str();
+            fa.pilot_id = auth.pilot_id.c_str();
+            fa.evtol_id = auth.evtol_id.c_str();
 
             DDS::ReturnCode_t error = writer_auth_var->write(fa, DDS::HANDLE_NIL);
 
@@ -180,36 +225,20 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
+            i++;
+            sent = true;
+            sent_flight_ids.insert(auth.flight_id);
             break;
           }
         }
       }
 
-      std::this_thread::sleep_for(std::chrono::seconds(4));
+      std::this_thread::sleep_for(std::chrono::seconds(5));
 
-      OpenDDS::Model::WriterSync ws4(writer);
+      if (i == 3)
       {
-        UATM::flightChangeRec fc;
-
-        fc.recommendation_id = 23;
-        fc.flight_id = 22;
-        fc.change_type = "change_type";
-        fc.reason = "reason";
-        fc.recommended_by = "recommended_by";
-        fc.recommendation_time = "34343-21";
-
-        DDS::ReturnCode_t error = writer_rec_var->write(fc, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
-        {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
-        }
+        break;
       }
-
-      std::this_thread::sleep_for(std::chrono::seconds(4));
     }
   }
   catch (const CORBA::Exception &e)
