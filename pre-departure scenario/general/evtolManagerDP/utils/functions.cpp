@@ -6,6 +6,8 @@
 #include <ctime>
 #include <chrono>
 #include <iomanip>
+#include <string>
+#include <string.h>
 
 std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)
 {
@@ -29,13 +31,10 @@ std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)
       std::getline(ss, evtol.skyport_id, ','); 
 
       std::getline(ss, temp, '='); 
-      ss >> evtol.available; 
-      ss.ignore(1); 
+      std::getline(ss, temp);
+      evtol.available = std::stoi(temp);
 
-      std::getline(ss, temp, '='); 
-      ss >> evtol.sent; 
-
-      if (evtol.sent == 0)
+      if (evtol.available == 1) 
       {
         evtols.push_back(evtol);
       }
@@ -44,39 +43,7 @@ std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)
   return evtols;
 }
 
-void updateEVTOLInFile(const std::string &filename, const std::string &evtol_id)
-{
-  std::ifstream file(filename);
-  std::string line;
-  std::vector<std::string> lines;
-
-  while (std::getline(file, line))
-  {
-    if (line.find(evtol_id) != std::string::npos)
-    {
-      std::string updated_line = line;
-      size_t pos = line.find("sent=0");
-      if (pos != std::string::npos)
-      {
-        updated_line.replace(pos, 6, "sent=1");
-      }
-      lines.push_back(updated_line);
-    }
-    else
-    {
-      lines.push_back(line);
-    }
-  }
-  file.close();
-
-  std::ofstream outFile(filename);
-  for (const auto &l : lines)
-  {
-    outFile << l << "\n";
-  }
-}
-
-void updateEvtolStatus(const std::string &evtol_id, int new_available, int new_sent) {
+void updateEvtolStatus(const std::string &evtol_id, int new_available) {
     std::string filename = "evtolManagerDP/data/evtols.txt"; 
     std::ifstream file(filename);
     std::string line;
@@ -92,9 +59,6 @@ void updateEvtolStatus(const std::string &evtol_id, int new_available, int new_s
                 while (std::getline(ss, token, ',')) {
                     if (token.find("available=") != std::string::npos) {
                         token = "available=" + std::to_string(new_available);
-                    }
-                    if (token.find("sent=") != std::string::npos) {
-                        token = "sent=" + std::to_string(new_sent);
                     }
                     updated_line += token + ",";
                 }

@@ -45,7 +45,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",pilot_id:" << msg.pilot_id.in()
                           << ",evtol_id:" << msg.evtol_id.in() << std::endl;
 
-                updateEvtolStatus(msg.evtol_id.in(), 0, 1);
+                updateEvtolStatus(msg.evtol_id.in(), 0);
             }
             else
             {

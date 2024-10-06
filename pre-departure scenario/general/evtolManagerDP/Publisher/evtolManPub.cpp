@@ -8,6 +8,7 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
+#include <unordered_set>
 #include "../utils/functions.h"
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
@@ -31,44 +32,49 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    OpenDDS::Model::WriterSync ws(writer);
+    std::string filename = "evtolManagerDP/data/evtols.txt";
+    std::unordered_set<std::string> sent_evtols;
+
+    while (true)
     {
-      std::string filename = "evtolManagerDP/data/evtols.txt";
-
-      while (true)
+      std::vector<EVTOL> evtols = readEVTOLsFromFile(filename);
+      OpenDDS::Model::WriterSync ws(writer);
       {
-        std::vector<EVTOL> evtols = readEVTOLsFromFile(filename);
-
         if (evtols.empty())
         {
           // std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
           break;
         }
 
-        EVTOL current_evtol = evtols.front();
-
-        UATM::availabilityInfo bfr;
-
-        bfr.resource_id = CORBA::string_dup(current_evtol.evtol_id.c_str());
-        bfr.resource_type = "evtol";
-        bfr.available = current_evtol.available;
-        bfr.skyport_id = CORBA::string_dup(current_evtol.skyport_id.c_str());
-        bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
-
-        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
+        for (const auto &evtol : evtols)
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
+          if (sent_evtols.find(std::string(evtol.evtol_id)) == sent_evtols.end())
+          {
+
+            UATM::availabilityInfo bfr;
+
+            bfr.resource_id = CORBA::string_dup(evtol.evtol_id.c_str());
+            bfr.resource_type = "evtol";
+            bfr.available = evtol.available;
+            bfr.skyport_id = CORBA::string_dup(evtol.skyport_id.c_str());
+            bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
+
+            DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+
+            sent_evtols.insert(std::string(evtol.evtol_id));
+            break;
+          }
         }
-
-        updateEVTOLInFile(filename, current_evtol.evtol_id);
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
       }
+      std::this_thread::sleep_for(std::chrono::seconds(3));
     }
   }
   catch (const CORBA::Exception &e)
