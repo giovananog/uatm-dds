@@ -34,41 +34,34 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     {
       if (info.valid_data)
       {
-          std::cout << "| bookingFlightRequest: "
-                    << ",booking_id:" << msg.booking_id.in()
-                    << ",costumer_id:" << msg.costumer_id.in()
-                    << ",flight_id:" << msg.flight_id.in()
-                    << ",skyport_id:" << msg.skyport_id.in() << std::endl;
+        std::cout << "| bookingFlightRequest: "
+                  << ",booking_id:" << msg.booking_id.in()
+                  << ",costumer_id:" << msg.costumer_id.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",skyport_id:" << msg.skyport_id.in() << std::endl;
 
-          std::ofstream outfile("fleetOperatorDP/data/requests.txt", std::ios_base::app);
-          if (outfile.is_open())
-          {
-            outfile << "booking_id:" << msg.booking_id.in() << ","
-                    << "costumer_id:" << msg.costumer_id.in() << ","
-                    << "flight_id:" << msg.flight_id.in() << ","
-                    << "skyport_id:" << msg.skyport_id.in() << ","
-                    << "pilot_id:" << "" << ","
-                    << "evtol_id:" << "" << ","
-                    << "weather_id:" << "" << ","
-                    << "route_id:" << "" << ","
-                    << "tolpad_id:" << "" << ","
-                    << "status:" << 1 << ","
-                    << "sent_coord:" << 0 << ","
-                    << "sent_auth:" << 0 << "\n";
-            outfile.close();
-          }
-        else
+        std::ofstream outfile("fleetOperatorDP/data/requests.txt", std::ios_base::app);
+        if (outfile.is_open())
         {
-          std::cerr << "Erro ao abrir o arquivo requests.txt!" << std::endl;
+          outfile << "booking_id:" << msg.booking_id.in() << ","
+                  << "costumer_id:" << msg.costumer_id.in() << ","
+                  << "flight_id:" << msg.flight_id.in() << ","
+                  << "skyport_id:" << msg.skyport_id.in() << ","
+                  << "pilot_id:" << "" << ","
+                  << "evtol_id:" << "" << ","
+                  << "weather_id:" << "" << ","
+                  << "route_id:" << "" << ","
+                  << "tolpad_id:" << "" << ","
+                  << "status:" << 1 << "\n";
+          outfile.close();
         }
-        }
+      }
       else
       {
-        // std::cout << "\n\n| bookingFlightRequest: signal\n\n";
         rcs_.signal();
         break;
       }
-  }
+    }
     else
     {
       if (error != DDS::RETCODE_NO_DATA)
@@ -79,5 +72,5 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       }
       break;
     }
-    }
-  };
+  }
+};

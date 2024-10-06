@@ -5,7 +5,9 @@
 #include <sstream>
 #include "../../model/UATMTraits.h"
 #include <unordered_set>
-
+#include <ctime>
+#include <chrono>
+#include <iomanip>
 
 void updateAvailabilityFile(const UATM::availabilityInfo& msg) {
     std::string filename = "fleetOperatorDP/data/availabilities.txt"; 
@@ -251,7 +253,7 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
 
     while (std::getline(infile, line)) {
         std::istringstream iss(line);
-        std::string booking_id, costumer_id, flight_id, skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status, sent_coord, sent_auth;
+        std::string booking_id, costumer_id, flight_id, skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status;
         std::string token;
 
         std::getline(iss, token, ',');
@@ -272,12 +274,8 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
         route_id = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
         tolpad_id = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        status = token.substr(token.find(':') + 1);
-        std::getline(iss, token, ',');
-        sent_coord = token.substr(token.find(':') + 1);
         std::getline(iss, token);
-        sent_auth = token.substr(token.find(':') + 1);
+        status = token.substr(token.find(':') + 1);
 
         std::string status_str = CORBA::string_dup(status.c_str());
         
@@ -317,8 +315,7 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
                        << ",flight_id:" << flight_id << ",skyport_id:" << skyport_id
                        << ",pilot_id:" << pilot_id << ",evtol_id:" << evtol_id
                        << ",weather_id:" << weather_id << ",route_id:" << route_id
-                       << ",tolpad_id:" << tolpad_id << ",status:" << status 
-                       << ",sent_coord:" << sent_coord << ",sent_auth:" << sent_auth << "\n";
+                       << ",tolpad_id:" << tolpad_id << ",status:" << status << "\n";
     }
 
     infile.close();
@@ -365,36 +362,11 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
         booking.route_id = keyValuePairs["route_id"];
         booking.tolpad_id = keyValuePairs["tolpad_id"];
         booking.status = std::stoi(keyValuePairs["status"]);
-        booking.sent_coord = std::stoi(keyValuePairs["sent_coord"]);
-        booking.sent_auth = std::stoi(keyValuePairs["sent_auth"]);
 
         bookings.push_back(booking);
     }
 
     return bookings;
-}
-
-bool canSendCoordination(const BookingData &booking) {
-    return booking.sent_coord == 0 &&
-        //    booking.status == 1 &&
-           !booking.flight_id.empty() &&
-           !booking.skyport_id.empty() &&
-           !booking.pilot_id.empty() &&
-           !booking.evtol_id.empty() &&
-           !booking.weather_id.empty() &&
-           !booking.route_id.empty();
-}
-
-bool canSendAuthorization(const BookingData &booking) {
-    return booking.sent_auth == 0 &&
-        //    booking.sent_coord == 1 &&
-        //    booking.status == 1 &&
-           !booking.flight_id.empty() &&
-           !booking.skyport_id.empty() &&
-           !booking.pilot_id.empty() &&
-           !booking.evtol_id.empty() &&
-           !booking.weather_id.empty() &&
-           !booking.route_id.empty();
 }
 
 Route* findRouteById(std::vector<Route>& routes, const std::string& route_id) {
@@ -448,56 +420,15 @@ std::vector<Route> readRoutesFromFile(const std::string& filename) {
     return routes;
 }
 
-void updateSentCoord(const std::string &filename, std::string &flight_id) {
-    std::ifstream file(filename);
-    std::string line;
-    std::vector<std::string> lines;
+std::string getCurrentTime() {
+    std::time_t now = std::time(nullptr);
+    
+    std::tm* local_time = std::localtime(&now);
+    
+    std::ostringstream oss;
+    oss << std::setw(2) << std::setfill('0') << local_time->tm_hour << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_min << ":"
+        << std::setw(2) << std::setfill('0') << local_time->tm_sec;
 
-    if (!file.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo para atualizar bookings." << std::endl;
-        return;
-    }
-
-    while (std::getline(file, line)) {
-        if (line.find(flight_id) != std::string::npos) {
-            size_t pos = line.find("sent_coord:0");
-            if (pos != std::string::npos) {
-                line.replace(pos, 12, "sent_coord:1"); 
-            }
-        }
-        lines.push_back(line);
-    }
-    file.close();
-
-    std::ofstream outFile(filename);
-    for (const auto &l : lines) {
-        outFile << l << "\n";
-    }
-}
-
-void updateSentAuth(const std::string &filename, std::string &flight_id) {
-    std::ifstream file(filename);
-    std::string line;
-    std::vector<std::string> lines;
-
-    if (!file.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo para atualizar bookings." << std::endl;
-        return;
-    }
-
-    while (std::getline(file, line)) {
-        if (line.find(flight_id) != std::string::npos) {
-            size_t pos = line.find("sent_auth:0"); 
-            if (pos != std::string::npos) {
-                line.replace(pos, 12, "sent_auth:1"); 
-            }
-        }
-        lines.push_back(line); 
-    }
-    file.close();
-
-    std::ofstream outFile(filename);
-    for (const auto &l : lines) {
-        outFile << l << "\n";
-    }
+    return oss.str();
 }

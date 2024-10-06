@@ -16,8 +16,6 @@ struct BookingData {
     std::string route_id;
     std::string tolpad_id;
     int status;
-    int sent_coord;
-    int sent_auth;
 };
 
 struct Route {
@@ -37,11 +35,8 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
 bool checkWeatherConditions(const std::string& weatherFile, const std::string& location, std::string &weatherID);
 bool checkRouteAvailability(const std::string& routeFile, const std::string& origin, const std::string& destination, std::string &routeID);
 std::vector<BookingData> readBookingsFromFile(const std::string &filename);
-bool canSendCoordination(const BookingData &booking);
-bool canSendAuthorization(const BookingData &booking);
 Route* findRouteById(std::vector<Route>& routes, const std::string& route_id);
 std::vector<Route> readRoutesFromFile(const std::string& filename);
-void updateSentCoord(const std::string &filename, std::string &booking_id);
-void updateSentAuth(const std::string &filename, std::string &flight_id);
+std::string getCurrentTime();
 
 #endif // FUNCTIONS_H
