@@ -10,7 +10,6 @@
 #include <model/Sync.h>
 #include "../utils/functions.h"
 
-
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
@@ -32,17 +31,17 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    OpenDDS::Model::WriterSync ws(writer);
-    {
 
       while (true)
       {
         std::string filename = "skyportManagerDP/data/skyports.txt";
         std::vector<Skyport> skyports = readSkyportsFromFile(filename);
 
+    OpenDDS::Model::WriterSync ws(writer);
+    {
         if (skyports.empty())
         {
-          std::cout << "Todos os Skyports foram enviados!" << std::endl;
+          // std::cout << "Todos os Skyports foram enviados!" << std::endl;
           break;
         }
 
@@ -54,7 +53,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         fa.resource_type = "skyport";
         fa.available = current_skyport.available;
         fa.skyport_id = CORBA::string_dup(current_skyport.resource_id.c_str());
-        fa.availability_time = "time";
+        fa.availability_time = CORBA::string_dup(getCurrentTime().c_str());
 
         DDS::ReturnCode_t error = writer_var->write(fa, DDS::HANDLE_NIL);
 
@@ -68,8 +67,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         updateSkyportInFile(filename, current_skyport.resource_id);
 
-        std::this_thread::sleep_for(std::chrono::seconds(15));
       }
+        std::this_thread::sleep_for(std::chrono::seconds(15));
     }
   }
   catch (const CORBA::Exception &e)
