@@ -56,3 +56,6 @@ weather_id:1,location:Skyport-1,temperature:20.8415,wind_speed:3.82328,weather_c
 weather_id:1,location:Skyport-2,temperature:25.7188,wind_speed:10.3729,weather_condition:Partly Cloudy,observation_time:21:57:57
 weather_id:1,location:Skyport-1,temperature:16.8675,wind_speed:0.132954,weather_condition:Clear Sky,observation_time:22:03:17
 weather_id:1,location:Skyport-2,temperature:21.6405,wind_speed:18.6706,weather_condition:Clear Sky,observation_time:22:05:27
+weather_id:1,location:Skyport-2,temperature:29.1874,wind_speed:5.81321,weather_condition:Stormy,observation_time:15:13:44
+weather_id:1,location:Skyport-1,temperature:26.7218,wind_speed:1.00119,weather_condition:Rainy,observation_time:15:17:07
+weather_id:1,location:Skyport-1,temperature:24.22,wind_speed:14.4822,weather_condition:Rainy,observation_time:15:19:38

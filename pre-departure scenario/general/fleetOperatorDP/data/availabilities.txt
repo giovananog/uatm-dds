@@ -1,0 +1,2 @@
+resource_id=Skyport-1,resource_type=skyport,available=1,skyport_id=Skyport-1,availability_time=15:19:38
+resource_id=Skyport-2,resource_type=skyport,available=1,skyport_id=Skyport-2,availability_time=15:19:53

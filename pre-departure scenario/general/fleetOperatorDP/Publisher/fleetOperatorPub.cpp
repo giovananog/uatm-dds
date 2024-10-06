@@ -111,8 +111,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         }
       }
 
-      std::this_thread::sleep_for(std::chrono::seconds(3));
-
       OpenDDS::Model::WriterSync ws2(writer_coord);
       {
         bool sent = false;
@@ -149,8 +147,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
           }
         }
       }
-
-      std::this_thread::sleep_for(std::chrono::seconds(3));
 
       OpenDDS::Model::WriterSync ws3(writer_request);
       {
@@ -190,8 +186,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
           }
         }
       }
-
-      std::this_thread::sleep_for(std::chrono::seconds(3));
     }
   }
   catch (const CORBA::Exception &e)
