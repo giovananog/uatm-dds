@@ -16,6 +16,7 @@ ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs
 void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+    static bool signal_sent = false;
 
     UATM::flightAssignDataReader_var reader_i =
         UATM::flightAssignDataReader::_narrow(reader);
@@ -46,11 +47,15 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",pilot_id:" << msg.pilot_id.in()
                           << ",evtol_id:" << msg.evtol_id.in() << std::endl;
 
-                updatePilotStatus(msg.pilot_id.in(), 0, 1);
+                updatePilotStatus(msg.pilot_id.in(), 0);
             }
             else
             {
-                rcs_.signal();
+                if (!signal_sent)
+                {
+                    rcs_.signal();
+                    signal_sent = true;
+                }
                 break;
             }
         }
