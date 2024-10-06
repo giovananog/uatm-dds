@@ -37,13 +37,6 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       if (info.valid_data)
       {
 
-        if (strcmp(CORBA::string_dup(msg.auth_request_id.in()), "0") == 0)
-        {
-          break;
-      }
-      else
-      {
-
         std::cout << "| flightAuthorizationRequest: "
                   << "auth_request_id:" << msg.auth_request_id.in()
                   << ",flight_id:" << msg.flight_id.in()
@@ -67,23 +60,21 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
         }
         request_file.close();
       }
+      else
+      {
+        rcs_.signal();
+        break;
+      }
     }
     else
     {
-      rcs_.signal();
+      if (error != DDS::RETCODE_NO_DATA)
+      {
+        ACE_ERROR((LM_ERROR,
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
+                       ACE_TEXT(" take_next_sample failed!\n")));
+      }
       break;
     }
   }
-  else
-  {
-    if (error != DDS::RETCODE_NO_DATA)
-    {
-      ACE_ERROR((LM_ERROR,
-                 ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                     ACE_TEXT(" take_next_sample failed!\n")));
-    }
-    break;
-  }
-}
-}
-;
+};

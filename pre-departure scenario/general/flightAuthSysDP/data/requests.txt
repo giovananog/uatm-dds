@@ -1,3 +1,0 @@
-auth_request_id:a,flight_id:Flight-1,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-1,departure_time:34343-24,pilot_id:Pilot-1,evtol_id:eVTOL-1,sent_req:1
-auth_request_id:a,flight_id:Flight-2,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-1,departure_time:34343-24,pilot_id:Pilot-2,evtol_id:eVTOL-2,sent_req:1
-auth_request_id:a,flight_id:Flight-3,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-1,departure_time:34343-24,pilot_id:Pilot-3,evtol_id:eVTOL-3,sent_req:1

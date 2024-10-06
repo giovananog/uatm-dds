@@ -70,19 +70,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             break;
           }
         }
-
-        if(!sent) {
-            fr.request_id = "0";
-            DDS::ReturnCode_t error = writer_request_var->write(fr, DDS::HANDLE_NIL);
-
-            if (error != DDS::RETCODE_OK)
-            {
-              ACE_ERROR((LM_ERROR,
-                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                             ACE_TEXT(" write returned %d!\n"),
-                         error));
-            }
-        }
       }
       std::this_thread::sleep_for(std::chrono::seconds(10));
     }
