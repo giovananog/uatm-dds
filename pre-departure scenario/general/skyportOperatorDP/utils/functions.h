@@ -13,5 +13,6 @@ extern std::vector<std::string> skyports;
 extern std::vector<std::string> traffic_density_levels;
 
 std::string getRandomValue(const std::vector<std::string> &values);
+std::string getCurrentTime();
 
 #endif // FUNCTIONS_H

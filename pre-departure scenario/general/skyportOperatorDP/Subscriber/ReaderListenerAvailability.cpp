@@ -33,28 +33,28 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
     {
       if (info.valid_data)
       {
-       std::cout << "| AvailabilityInfo: " 
-                          << "resource_id:" << msg.resource_id.in() 
-                          << ",resource_type:" << msg.resource_type.in() 
-                          << ",available:" << msg.available 
-                          << ",skyport_id:" << msg.skyport_id.in() 
-                          << ",availability_time:" << msg.availability_time.in() << std::endl;
-      }
-        else
-        {
-          rcs_.signal();
-          break;
-        }
+        std::cout << "| AvailabilityInfo: "
+                  << "resource_id:" << msg.resource_id.in()
+                  << ",resource_type:" << msg.resource_type.in()
+                  << ",available:" << msg.available
+                  << ",skyport_id:" << msg.skyport_id.in()
+                  << ",availability_time:" << msg.availability_time.in() << std::endl;
       }
       else
       {
-        if (error != DDS::RETCODE_NO_DATA)
-        {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                         ACE_TEXT(" take_next_sample failed!\n")));
-        }
+        rcs_.signal();
         break;
       }
     }
-  };
+    else
+    {
+      if (error != DDS::RETCODE_NO_DATA)
+      {
+        ACE_ERROR((LM_ERROR,
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
+                       ACE_TEXT(" take_next_sample failed!\n")));
+      }
+      break;
+    }
+  }
+};

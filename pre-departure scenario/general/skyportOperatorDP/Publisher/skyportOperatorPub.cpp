@@ -50,7 +50,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 tf.area = CORBA::string_dup(getRandomValue(areas).c_str());
                 tf.congestion_level = CORBA::string_dup(getRandomValue(congestion_levels).c_str());
                 tf.affected_routes = "1";
-                tf.timestamp = CORBA::string_dup("time");  
+                tf.timestamp = CORBA::string_dup(getCurrentTime().c_str()); 
 
                 DDS::ReturnCode_t error = writer_flows_var->write(tf, DDS::HANDLE_NIL);
                 if (error != DDS::RETCODE_OK) {
@@ -68,7 +68,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 ar.restriction_area = CORBA::string_dup(getRandomValue(restriction_areas).c_str());
                 // ar.restriction_type = CORBA::string_dup(getRandomValue(restriction_types).c_str());
                 ar.restriction_type = "type";
-                ar.restriction_time = "time";  
+                ar.restriction_time = CORBA::string_dup(getCurrentTime().c_str());
                 ar.restriction_authority = CORBA::string_dup(getRandomValue(authorities).c_str());
 
                 DDS::ReturnCode_t error = writer_rest_var->write(ar, DDS::HANDLE_NIL);

@@ -14,6 +14,7 @@ ReaderListenerCoordination::ReaderListenerCoordination(OpenDDS::Model::ReaderCon
 void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
 {
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+  static bool signal_sent = false;
 
   UATM::flightCoordinationDataReader_var reader_i =
       UATM::flightCoordinationDataReader::_narrow(reader);
@@ -36,49 +37,49 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
     {
       if (info.valid_data)
       {
-        if (strcmp(CORBA::string_dup(msg.coordination_id.in()), "0") == 0)
-        {
-          break;
-        }else {
-        std::cout << "| flightCoordination: " 
-                  << "coordination_id:" << msg.coordination_id.in() 
-                  << ",flight_id:" << msg.flight_id.in() 
-                  << ",skyport_id:" << msg.skyport_id.in() 
-                  << ",evtol_id:" << msg.evtol_id.in() 
-                  << ",pilot_id:" << msg.pilot_id.in() 
-                  << ",route_id:" << msg.route_id.in() 
+        std::cout << "| flightCoordination: "
+                  << "coordination_id:" << msg.coordination_id.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",skyport_id:" << msg.skyport_id.in()
+                  << ",evtol_id:" << msg.evtol_id.in()
+                  << ",pilot_id:" << msg.pilot_id.in()
+                  << ",route_id:" << msg.route_id.in()
                   << ",weather_id:" << msg.weather_id.in() << std::endl;
 
-
         std::ofstream outfile;
-                outfile.open("skyportOperatorDP/data/coordinations.txt", std::ios_base::app);
-                
-                outfile << "coordination_id:" << msg.coordination_id .in()<< ","
-                        << "flight_id:" << msg.flight_id.in() << ","
-                        << "skyport_id:" << msg.skyport_id.in() << ","
-                        << "evtol_id:" << msg.evtol_id.in() << ","
-                        << "pilot_id:" << msg.pilot_id.in() << ","
-                        << "route_id:" << msg.route_id.in() << ","
-                        << "weather_id:" << msg.weather_id.in() << std::endl;
-                
-                outfile.close();
-        }
-      }
-        else
-        {
-          rcs_.signal();
-          break;
-        }
+        outfile.open("skyportOperatorDP/data/coordinations.txt", std::ios_base::app);
+
+        outfile << "coordination_id:" << msg.coordination_id.in() << ","
+                << "flight_id:" << msg.flight_id.in() << ","
+                << "skyport_id:" << msg.skyport_id.in() << ","
+                << "evtol_id:" << msg.evtol_id.in() << ","
+                << "pilot_id:" << msg.pilot_id.in() << ","
+                << "route_id:" << msg.route_id.in() << ","
+                << "weather_id:" << msg.weather_id.in() << std::endl;
+
+        outfile.close();
+
+        break;
       }
       else
       {
-        if (error != DDS::RETCODE_NO_DATA)
+        if (!signal_sent)
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                         ACE_TEXT(" take_next_sample failed!\n")));
+          rcs_.signal();
+          signal_sent = true;
         }
         break;
       }
     }
-  };
+    else
+    {
+      if (error != DDS::RETCODE_NO_DATA)
+      {
+        ACE_ERROR((LM_ERROR,
+                   ACE_TEXT("ERROR: %N:%l: on_data_available() -")
+                       ACE_TEXT(" take_next_sample failed!\n")));
+      }
+      break;
+    }
+  }
+};
