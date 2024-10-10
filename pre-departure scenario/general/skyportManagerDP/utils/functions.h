@@ -13,7 +13,6 @@ struct Skyport
 };
 
 std::vector<Skyport> readSkyportsFromFile(const std::string &filename);
-void updateSkyportInFile(const std::string &filename, const std::string &resource_id);
 std::string getCurrentTime();
 
 #endif // FUNCTIONS_H

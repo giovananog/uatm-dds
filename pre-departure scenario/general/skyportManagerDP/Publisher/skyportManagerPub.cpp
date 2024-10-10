@@ -5,6 +5,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <unordered_set>
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
@@ -31,44 +32,51 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-
-      while (true)
-      {
-        std::string filename = "skyportManagerDP/data/skyports.txt";
-        std::vector<Skyport> skyports = readSkyportsFromFile(filename);
-
-    OpenDDS::Model::WriterSync ws(writer);
+    std::string filename = "skyportManagerDP/data/skyports.txt";
+    std::unordered_set<std::string> sent_skyports;
+    
+    while (true)
     {
-        if (skyports.empty())
+      std::vector<Skyport> skyports = readSkyportsFromFile(filename);
+
+      OpenDDS::Model::WriterSync ws(writer);
+      {
+        if (sent_skyports.size() == 2)
         {
           // std::cout << "Todos os Skyports foram enviados!" << std::endl;
           break;
         }
 
-        Skyport current_skyport = skyports.front();
-
-        UATM::availabilityInfo fa;
-
-        fa.resource_id = CORBA::string_dup(current_skyport.resource_id.c_str());
-        fa.resource_type = "skyport";
-        fa.available = current_skyport.available;
-        fa.skyport_id = CORBA::string_dup(current_skyport.resource_id.c_str());
-        fa.availability_time = CORBA::string_dup(getCurrentTime().c_str());
-
-        DDS::ReturnCode_t error = writer_var->write(fa, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
+        for (const auto &skyport : skyports)
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
+          if (sent_skyports.find(std::string(skyport.resource_id)) == sent_skyports.end())
+          {
+
+            UATM::availabilityInfo fa;
+
+            fa.resource_id = CORBA::string_dup(skyport.resource_id.c_str());
+            fa.resource_type = "skyport";
+            fa.available = skyport.available;
+            fa.skyport_id = CORBA::string_dup(skyport.resource_id.c_str());
+            fa.availability_time = CORBA::string_dup(getCurrentTime().c_str());
+
+            DDS::ReturnCode_t error = writer_var->write(fa, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+
+            sent_skyports.insert(std::string(skyport.resource_id));
+
+            break;
+          }
         }
-
-        updateSkyportInFile(filename, current_skyport.resource_id);
-
       }
-        std::this_thread::sleep_for(std::chrono::seconds(15));
+      std::this_thread::sleep_for(std::chrono::seconds(2));
     }
   }
   catch (const CORBA::Exception &e)

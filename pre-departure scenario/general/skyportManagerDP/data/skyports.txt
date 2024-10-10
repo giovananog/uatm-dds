@@ -1,2 +1,2 @@
-resource_id=Skyport-1,available=1,tolpads=2,sent=0
-resource_id=Skyport-2,available=1,tolpads=1,sent=0
+resource_id=Skyport-1,available=1,tolpads=2
+resource_id=Skyport-2,available=1,tolpads=1
