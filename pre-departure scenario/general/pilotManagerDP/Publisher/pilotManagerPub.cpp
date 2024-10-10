@@ -44,7 +44,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         if (pilots.empty())
         {
-          std::cout << "\n\nTodos os pilotos foram enviados!" << std::endl;
+          // std::cout << "\n\nTodos os pilotos foram enviados!" << std::endl;
           break;
         }
 
