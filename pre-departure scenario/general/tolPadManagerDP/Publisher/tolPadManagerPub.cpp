@@ -5,11 +5,11 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <unordered_set>
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include "../utils/functions.h"
 #include <model/Sync.h>
-
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -32,11 +32,13 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    std::string filename = "tolPadManagerDP/data/tolpads.txt";
+    std::unordered_set<std::string> sent_tolpads;
+
     OpenDDS::Model::WriterSync ws(writer);
     {
       while (true)
       {
-        std::string filename = "tolPadManagerDP/data/tolpads.txt";
         std::vector<TolPad> tolPads = readTolPadsFromFile(filename);
 
         if (tolPads.empty())
@@ -45,27 +47,33 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
           break;
         }
 
-        TolPad current_tolPad = tolPads.front();
-        
-        UATM::availabilityInfo bfr;
-
-        bfr.resource_id = CORBA::string_dup(current_tolPad.resource_id.c_str());
-        bfr.resource_type = "tolPad";
-        bfr.available = current_tolPad.available;
-        bfr.skyport_id = CORBA::string_dup(current_tolPad.skyport_id.c_str());
-        bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
-
-        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
+        for (const auto &tolpad : tolPads)
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
-        }
+          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end())
+          {
 
-        updateTolPadInFile(filename, current_tolPad.resource_id);
+            UATM::availabilityInfo bfr;
+
+            bfr.resource_id = CORBA::string_dup(tolpad.resource_id.c_str());
+            bfr.resource_type = "tolPad";
+            bfr.available = tolpad.available;
+            bfr.skyport_id = CORBA::string_dup(tolpad.skyport_id.c_str());
+            bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
+
+            DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+
+            sent_tolpads.insert(std::string(tolpad.resource_id));
+            break;
+          }
+        }
 
         std::this_thread::sleep_for(std::chrono::seconds(3));
       }
