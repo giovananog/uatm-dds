@@ -86,7 +86,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       {
         if (checkAvailability(resourceFile, evtolID, pilotID))
         {
-          if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID))
+          if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID, originSkID, destSkID))
           {
             UATM::flightAssign fa;
 
@@ -95,6 +95,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             fa.flight_id = CORBA::string_dup(flightID.c_str());
             fa.evtol_id = CORBA::string_dup(evtolID.c_str());
             fa.pilot_id = CORBA::string_dup(pilotID.c_str());
+            fa.origin_skyport_id = CORBA::string_dup(originSkID.c_str());
+            fa.destination_skyport_id = CORBA::string_dup(destSkID.c_str());
 
             removeAssignedResources(resourceFile, evtolID, pilotID);
 
@@ -113,8 +115,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       OpenDDS::Model::WriterSync ws2(writer_coord);
       {
-        bool sent = false;
-
         for (const auto &booking : bookings)
         {
           if (sent_coord.find(std::string(booking.flight_id)) == sent_coord.end() && !booking.evtol_id.empty() && !booking.pilot_id.empty() && !booking.route_id.empty() && !booking.weather_id.empty())
@@ -122,7 +122,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             UATM::flightCoordination fc;
             fc.coordination_id = CORBA::string_dup(booking.booking_id.c_str());
             fc.flight_id = CORBA::string_dup(booking.flight_id.c_str());
-            fc.skyport_id = CORBA::string_dup(booking.skyport_id.c_str());
+            fc.origin_skyport_id = CORBA::string_dup(booking.origin_skyport_id.c_str());
+            fc.destination_skyport_id = CORBA::string_dup(booking.destination_skyport_id.c_str());
             fc.evtol_id = CORBA::string_dup(booking.evtol_id.c_str());
             fc.pilot_id = CORBA::string_dup(booking.pilot_id.c_str());
             fc.route_id = CORBA::string_dup(booking.route_id.c_str());
@@ -138,9 +139,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
-            sent = true;
             i++;
-
             sent_coord.insert(std::string(booking.flight_id));
 
             break;
@@ -150,9 +149,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       OpenDDS::Model::WriterSync ws3(writer_request);
       {
-
-        bool sent = false;
-
         for (const auto &booking : bookings)
         {
           if (sent_coord.find(std::string(booking.flight_id)) != sent_coord.end() && sent_auth.find(std::string(booking.flight_id)) == sent_auth.end() && !booking.evtol_id.empty() && !booking.pilot_id.empty() && !booking.route_id.empty() && !booking.weather_id.empty())
@@ -180,7 +176,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
-            sent = true;
             sent_auth.insert(std::string(booking.flight_id));
             break;
           }

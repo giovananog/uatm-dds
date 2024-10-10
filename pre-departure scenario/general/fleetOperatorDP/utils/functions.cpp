@@ -239,7 +239,7 @@ bool checkRouteAvailability(const std::string& routeFile, const std::string& ori
     return false;  
 }
 
-bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID)
+bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &originSkID, std::string &destSkID)
 {
     std::ifstream infile(flightFile);
     if (!infile.is_open()) {
@@ -253,7 +253,7 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
 
     while (std::getline(infile, line)) {
         std::istringstream iss(line);
-        std::string booking_id, costumer_id, flight_id, skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status;
+        std::string booking_id, costumer_id, flight_id, origin_skyport_id, destination_skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status;
         std::string token;
 
         std::getline(iss, token, ',');
@@ -263,7 +263,9 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
         std::getline(iss, token, ',');
         flight_id = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
-        skyport_id = token.substr(token.find(':') + 1);
+        origin_skyport_id = token.substr(token.find(':') + 1);
+        std::getline(iss, token, ',');
+        destination_skyport_id = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
         pilot_id = token.substr(token.find(':') + 1);
         std::getline(iss, token, ',');
@@ -284,12 +286,14 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
             std::string weatherFile = "fleetOperatorDP/data/weather.txt";
             std::string routeFile = "fleetOperatorDP/data/routes.txt";
             std::string weatherID, routeID;
-            bool weatherOk = checkWeatherConditions(weatherFile, skyport_id, weatherID);
-            bool routeOk = checkRouteAvailability(routeFile, skyport_id, "Skyport-2", routeID);
+            bool weatherOk = checkWeatherConditions(weatherFile, origin_skyport_id, weatherID);
+            bool routeOk = checkRouteAvailability(routeFile, origin_skyport_id, destination_skyport_id, routeID);
             bool status_send = weatherOk && routeOk;
 
             pilot_id = pilotID;
             evtol_id = evtolID;
+            origin_skyport_id = originSkID;
+            destination_skyport_id = destSkID;
 
             if (weatherID != "") {
                 weather_id = weatherID;
@@ -312,10 +316,11 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
         } 
 
         newFileContent << "booking_id:" << booking_id << ",costumer_id:" << costumer_id
-                       << ",flight_id:" << flight_id << ",skyport_id:" << skyport_id
-                       << ",pilot_id:" << pilot_id << ",evtol_id:" << evtol_id
-                       << ",weather_id:" << weather_id << ",route_id:" << route_id
-                       << ",tolpad_id:" << tolpad_id << ",status:" << status << "\n";
+                       << ",flight_id:" << flight_id << ",origin_skyport_id:" << origin_skyport_id
+                       << ",destination_skyport_id:" << destination_skyport_id << ",pilot_id:" << pilot_id 
+                       << ",evtol_id:" << evtol_id << ",weather_id:" << weather_id 
+                       << ",route_id:" << route_id << ",tolpad_id:" << tolpad_id 
+                       << ",status:" << status << "\n";
     }
 
     infile.close();
@@ -355,7 +360,8 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
         booking.booking_id = keyValuePairs["booking_id"];
         booking.costumer_id = keyValuePairs["costumer_id"];
         booking.flight_id = keyValuePairs["flight_id"];
-        booking.skyport_id = keyValuePairs["skyport_id"];
+        booking.origin_skyport_id = keyValuePairs["origin_skyport_id"];
+        booking.destination_skyport_id = keyValuePairs["destination_skyport_id"];
         booking.pilot_id = keyValuePairs["pilot_id"];
         booking.evtol_id = keyValuePairs["evtol_id"];
         booking.weather_id = keyValuePairs["weather_id"];

@@ -38,7 +38,8 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                   << ",booking_id:" << msg.booking_id.in()
                   << ",costumer_id:" << msg.costumer_id.in()
                   << ",flight_id:" << msg.flight_id.in()
-                  << ",skyport_id:" << msg.skyport_id.in() << std::endl;
+                  << ",origin_skyport_id:" << msg.origin_skyport_id.in()
+                  << ",destination_skyport_id:" << msg.destination_skyport_id.in() << std::endl;
 
         std::ofstream outfile("fleetOperatorDP/data/requests.txt", std::ios_base::app);
         if (outfile.is_open())
@@ -46,7 +47,8 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
           outfile << "booking_id:" << msg.booking_id.in() << ","
                   << "costumer_id:" << msg.costumer_id.in() << ","
                   << "flight_id:" << msg.flight_id.in() << ","
-                  << "skyport_id:" << msg.skyport_id.in() << ","
+                  << "origin_skyport_id:" << msg.origin_skyport_id.in() << ","
+                  << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
                   << "pilot_id:" << "" << ","
                   << "evtol_id:" << "" << ","
                   << "weather_id:" << "" << ","

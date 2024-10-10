@@ -1,4 +1,0 @@
-authorization_id:a,flight_id:Flight-3,authorization_status:0,authorization_time:15:17:48,approved_departure_time:15:17:48,approved_arrival_time:15:17:48,tolpad_id:TolPad-3,pilot_id:Pilot-3,evtol_id:eVTOL-3
-authorization_id:a,flight_id:Flight-1,authorization_status:0,authorization_time:15:19:49,approved_departure_time:15:19:49,approved_arrival_time:15:19:49,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
-authorization_id:a,flight_id:Flight-2,authorization_status:0,authorization_time:15:19:59,approved_departure_time:15:19:59,approved_arrival_time:15:19:59,tolpad_id:TolPad-2,pilot_id:Pilot-2,evtol_id:eVTOL-2
-authorization_id:a,flight_id:Flight-3,authorization_status:0,authorization_time:15:20:09,approved_departure_time:15:20:09,approved_arrival_time:15:20:09,tolpad_id:TolPad-3,pilot_id:Pilot-3,evtol_id:eVTOL-3
