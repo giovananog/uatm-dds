@@ -6,7 +6,8 @@
 
 struct FlightRequest {
     std::string costumer_id;
-    std::string skyport_id;
+    std::string origin_skyport_id;
+    std::string destination_skyport_id;
     std::string booking_id;
     std::string flight_id;
 };

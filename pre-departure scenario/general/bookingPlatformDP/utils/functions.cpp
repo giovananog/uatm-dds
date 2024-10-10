@@ -28,8 +28,10 @@ std::vector<FlightRequest> readRequestsFromFile(const std::string &filename) {
 
                 if (key == "costumer_id") {
                     fr.costumer_id = value;
-                } else if (key == "skyport_id") {
-                    fr.skyport_id = value;
+                } else if (key == "origin_skyport_id") {
+                    fr.origin_skyport_id = value;
+                } else if (key == "destination_skyport_id") {
+                    fr.destination_skyport_id = value; 
                 } else if (key == "booking_id") {
                     fr.booking_id = value;
                 } else if (key == "flight_id") {

@@ -48,7 +48,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         bfr.booking_id = CORBA::string_dup(current_request.booking_id.c_str());
         bfr.flight_id = CORBA::string_dup(current_request.flight_id.c_str());
         bfr.costumer_id = CORBA::string_dup(current_request.costumer_id.c_str());
-        bfr.skyport_id = CORBA::string_dup(current_request.skyport_id.c_str());
+        bfr.origin_skyport_id = CORBA::string_dup(current_request.origin_skyport_id.c_str());
+        bfr.destination_skyport_id = CORBA::string_dup(current_request.destination_skyport_id.c_str());
 
         DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 
