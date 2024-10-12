@@ -43,33 +43,43 @@ std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)
   return evtols;
 }
 
-void updateEvtolStatus(const std::string &evtol_id, int new_available) {
+void updateEvtolStatus(const std::string &evtol_id, int new_available, const std::string &destination_skyport_id) {
     std::string filename = "evtolManagerDP/data/evtols.txt"; 
     std::ifstream file(filename);
     std::string line;
     std::vector<std::string> lines;
+    bool origin_updated = false;  
+    bool destination_added = false;  
 
     while (std::getline(file, line)) {
         if (!line.empty()) {
-            if (line.find("evtol_id=" + evtol_id) != std::string::npos) {
+            if (line.find("evtol_id=" + evtol_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) {
                 std::istringstream ss(line);
                 std::string token;
                 std::string updated_line;
 
                 while (std::getline(ss, token, ',')) {
                     if (token.find("available=") != std::string::npos) {
-                        token = "available=" + std::to_string(new_available);
+                        token = "available=0";  
+                        origin_updated = true;
                     }
                     updated_line += token + ",";
                 }
                 updated_line.pop_back();
                 lines.push_back(updated_line);
-            } else {
+            } 
+            else {
                 lines.push_back(line);
             }
         }
     }
     file.close();
+
+    if (origin_updated && !destination_added) {
+        std::string new_line = "evtol_id=" + evtol_id + ",skyport_id=" + destination_skyport_id + ",available=0";
+        lines.push_back(new_line);
+        destination_added = true;
+    }
 
     std::ofstream out_file(filename);
     for (const auto &l : lines) {

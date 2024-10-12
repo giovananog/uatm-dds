@@ -43,9 +43,11 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",assign_time:" << msg.assign_time.in()
                           << ",flight_id:" << msg.flight_id.in()
                           << ",pilot_id:" << msg.pilot_id.in()
-                          << ",evtol_id:" << msg.evtol_id.in() << std::endl;
+                          << ",evtol_id:" << msg.evtol_id.in() 
+                          << ",origin_skyport_id:" << msg.origin_skyport_id.in() 
+                          << ",destination_skyport_id:" << msg.destination_skyport_id.in() << std::endl;
 
-                updateEvtolStatus(msg.evtol_id.in(), 0);
+                updateEvtolStatus(msg.evtol_id.in(), 0, msg.destination_skyport_id.in());
             }
             else
             {

@@ -12,7 +12,7 @@ struct EVTOL
 };
 
 std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename);
-void updateEvtolStatus(const std::string &evtol_id, int new_available);
+void updateEvtolStatus(const std::string &evtol_id, int new_available, const std::string &destination_skyport_id);
 std::string getCurrentTime();
 
 #endif // FUNCTIONS_H
