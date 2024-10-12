@@ -40,7 +40,8 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
         std::cout << "| flightCoordination: "
                   << "coordination_id:" << msg.coordination_id.in()
                   << ",flight_id:" << msg.flight_id.in()
-                  << ",skyport_id:" << msg.skyport_id.in()
+                  << ",origin_skyport_id:" << msg.origin_skyport_id.in()
+                  << ",destination_skyport_id:" << msg.destination_skyport_id.in()
                   << ",evtol_id:" << msg.evtol_id.in()
                   << ",pilot_id:" << msg.pilot_id.in()
                   << ",route_id:" << msg.route_id.in()
@@ -51,7 +52,8 @@ void ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
 
         outfile << "coordination_id:" << msg.coordination_id.in() << ","
                 << "flight_id:" << msg.flight_id.in() << ","
-                << "skyport_id:" << msg.skyport_id.in() << ","
+                << "origin_skyport_id:" << msg.origin_skyport_id.in() << ","
+                << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
                 << "evtol_id:" << msg.evtol_id.in() << ","
                 << "pilot_id:" << msg.pilot_id.in() << ","
                 << "route_id:" << msg.route_id.in() << ","

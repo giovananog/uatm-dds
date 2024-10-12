@@ -58,7 +58,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(9));
+            std::this_thread::sleep_for(std::chrono::seconds(4));
 
             OpenDDS::Model::WriterSync ws2(writer_rest);
             {
@@ -96,7 +96,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(10));
+            std::this_thread::sleep_for(std::chrono::seconds(3));
         }
     }
     catch (const CORBA::Exception &e)
