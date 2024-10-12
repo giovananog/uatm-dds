@@ -64,7 +64,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                                error));
                 }
 
-                std::this_thread::sleep_for(std::chrono::seconds(19));
+                std::this_thread::sleep_for(std::chrono::seconds(10));
             }
         }
     }
