@@ -12,7 +12,7 @@ struct Pilot
 };
 
 std::vector<Pilot> readPilotsFromFile(const std::string &filename);
-void updatePilotStatus(const std::string &pilot_id, int new_available);
+void updatePilotStatus(const std::string &pilot_id, int new_available, const std::string &destination_skyport_id);
 std::string getCurrentTime();
 
 #endif // FUNCTIONS_H
