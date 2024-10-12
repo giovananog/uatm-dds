@@ -87,3 +87,12 @@ weather_id:1,location:Skyport-2,temperature:18.3128,wind_speed:18.618,weather_co
 weather_id:1,location:Skyport-1,temperature:18.2887,wind_speed:10.6113,weather_condition:Rainy,observation_time:09:58:45
 weather_id:1,location:Skyport-1,temperature:34.8264,wind_speed:17.5138,weather_condition:Rainy,observation_time:13:16:41
 weather_id:1,location:Skyport-2,temperature:21.8271,wind_speed:0.915967,weather_condition:Clear Sky,observation_time:14:20:19
+weather_id:1,location:Skyport-1,temperature:19.0811,wind_speed:18.6419,weather_condition:Stormy,observation_time:14:45:35
+weather_id:1,location:Skyport-1,temperature:34.5772,wind_speed:11.4646,weather_condition:Stormy,observation_time:14:58:54
+weather_id:1,location:Skyport-1,temperature:16.9372,wind_speed:15.8432,weather_condition:Partly Cloudy,observation_time:15:31:39
+weather_id:1,location:Skyport-1,temperature:23.5437,wind_speed:8.05303,weather_condition:Stormy,observation_time:15:33:18
+weather_id:1,location:Skyport-1,temperature:23.1773,wind_speed:6.62308,weather_condition:Rainy,observation_time:16:56:05
+weather_id:1,location:Skyport-2,temperature:23.2151,wind_speed:14.6208,weather_condition:Partly Cloudy,observation_time:17:02:16
+weather_id:1,location:Skyport-2,temperature:16.9231,wind_speed:9.67488,weather_condition:Clear Sky,observation_time:17:04:11
+weather_id:1,location:Skyport-1,temperature:22.4874,wind_speed:0.971967,weather_condition:Rainy,observation_time:17:15:03
+weather_id:1,location:Skyport-1,temperature:17.4048,wind_speed:9.60503,weather_condition:Rainy,observation_time:17:23:38

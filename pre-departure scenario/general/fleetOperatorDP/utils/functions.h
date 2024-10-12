@@ -9,12 +9,13 @@ struct BookingData {
     std::string booking_id;
     std::string costumer_id;
     std::string flight_id;
-    std::string skyport_id;
     std::string pilot_id;
     std::string evtol_id;
     std::string weather_id;
     std::string route_id;
     std::string tolpad_id;
+    std::string origin_skyport_id;
+    std::string destination_skyport_id;
     int status;
 };
 

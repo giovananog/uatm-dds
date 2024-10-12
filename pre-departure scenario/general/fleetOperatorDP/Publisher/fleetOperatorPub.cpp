@@ -72,9 +72,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       {
         break;
       }
-      std::string evtolID;
-      std::string pilotID;
-      std::string flightID;
+      std::string evtolID, pilotID, flightID, originSkID, destSkID;
       std::string resourceFile = "fleetOperatorDP/data/availabilities.txt";
       std::string weatherFile = "fleetOperatorDP/data/weather.txt";
       std::string routeFile = "fleetOperatorDP/data/routes.txt";
