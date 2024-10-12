@@ -31,24 +31,28 @@ void ReaderListenerRest::on_data_available(DDS::DataReader_ptr reader)
 
   while (true)
   {
-    std::cout << "\n\n"
-              << std::endl;
     DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
     if (error == DDS::RETCODE_OK)
     {
-      // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
       if (info.valid_data)
       {
-        std::cout << "\n---------------UASP-------------------" << std::endl
-                  << "        airspaceRestrictions:" << std::endl
-                  << "        -----------------" << std::endl
-                  << "Rest ID: " << msg.restriction_id << std::endl
-                  << "Area: " << msg.area.in() << std::endl
-                  << "Type: " << msg.restriction_type.in() << std::endl
-                  << "Start Time: " << msg.start_time.in() << std::endl
-                  << "End Time: " << msg.end_time.in() << std::endl
-                  << "Approved by: \n"
-                  << msg.authority.in() << std::endl;
+        std::cout << "| airspaceRestrictions: "
+                  << "restriction_id:" << msg.restriction_id
+                  << ",restriction_area:" << msg.restriction_area.in()
+                  << ",restriction_type:" << msg.restriction_type.in()
+                  << ",restriction_time:" << msg.restriction_time.in()
+                  << ",restriction_authority:" << msg.restriction_authority.in() << std::endl;
+
+        std::ofstream outfile;
+        outfile.open("uaspManagerDP/data/restrictions.txt", std::ios_base::app);
+
+        outfile << "restriction_id:" << msg.restriction_id << ","
+                << "restriction_area:" << msg.restriction_area.in() << ","
+                << "restriction_type:" << msg.restriction_type << ","
+                << "restriction_time:" << msg.restriction_time << ","
+                << "restriction_authority:" << msg.restriction_authority.in() << std::endl;
+
+        outfile.close();
       }
       else
       {
@@ -64,7 +68,6 @@ void ReaderListenerRest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                        ACE_TEXT(" take_next_sample failed!\n")));
       }
-      rcs_.signal();
       break;
     }
   }

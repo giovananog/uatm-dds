@@ -43,7 +43,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     DDS::DataReaderListener_var listener5(new ReaderListenerRequest(rcs5));
     reader_request->set_listener(listener5, OpenDDS::DCPS::DEFAULT_STATUS_MASK); 
 
-
     DDS::DataReader_var reader_flows = model3.reader(Elements::DataReaders::trafficFlowsDR_UASP);
     OpenDDS::Model::ReaderCondSync rcs(reader_flows, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerFlows(rcs));
@@ -53,7 +52,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     OpenDDS::Model::ReaderCondSync rcs3(reader_weather, condition);
     DDS::DataReaderListener_var listener3(new ReaderListenerWeather(rcs3));
     reader_weather->set_listener(listener3, OpenDDS::DCPS::DEFAULT_STATUS_MASK); 
-
+    
     DDS::DataReader_var reader_availability = model2.reader(Elements::DataReaders::tolPadAvailabilityDR_UASP);
     OpenDDS::Model::ReaderCondSync rcs4(reader_availability, condition);
     DDS::DataReaderListener_var listener4(new ReaderListenerAvailability(rcs4));

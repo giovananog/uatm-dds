@@ -38,11 +38,10 @@ ReaderListenerRest::on_data_available(DDS::DataReader_ptr reader)
                     << "        airspaceRestrictions:" << std::endl
                     << "        -----------------" << std::endl
                     << "Rest ID: " << msg.restriction_id << std::endl
-                    << "Area: " << msg.area.in() << std::endl
+                    << "Area: " << msg.restriction_area.in() << std::endl
                     << "Type: " << msg.restriction_type.in() << std::endl
-                    << "Start Time: " << msg.start_time.in() << std::endl
-                    << "End Time: " << msg.end_time.in() << std::endl
-                    << "Approved by: " << msg.authority.in() << std::endl;
+                    << "Start Time: " << msg.restriction_time.in() << std::endl
+                    << "Approved by: " << msg.restriction_authority.in() << std::endl;
         } else {
             rcs_.signal();
             break;
@@ -53,7 +52,6 @@ ReaderListenerRest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
         break;
       }
     }

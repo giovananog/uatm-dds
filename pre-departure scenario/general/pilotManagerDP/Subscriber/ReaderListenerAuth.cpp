@@ -31,23 +31,21 @@ void ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
 
   while (true)
   {
-    std::cout << "\n\n"
-              << std::endl;
     DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
     if (error == DDS::RETCODE_OK)
     {
-      // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
       if (info.valid_data)
       {
-        std::cout << "----------------------------------pilotManagerDP-----" << std::endl
-                  << "        flightAuthorization:" << std::endl
-                  << "        -----------------" << std::endl
-                  << "Auth ID: " << msg.authorization_id << std::endl
-                  << "Flight ID: " << msg.flight_id << std::endl
-                  << "Ap Route ID: " << msg.approved_route_id << std::endl
-                  << "Authority: " << msg.authority.in() << std::endl
-                  << "Auth Time: " << msg.authorization_time.in() << std::endl
-                  << "Valid Until: " << msg.valid_until.in() << std::endl;
+        std::cout << "| plm flightAuthorization: "
+                  << ",authorization_id" << msg.authorization_id.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",authorization_status:" << msg.authorization_status
+                  << ",authorization_time:" << msg.authorization_time.in()
+                  << ",approved_departure_time:" << msg.approved_departure_time.in()
+                  << ",approved_arrival_time:" << msg.approved_arrival_time.in()
+                  << ",tolpad_id:" << msg.tolpad_id.in()
+                  << ",pilot_id:" << msg.pilot_id.in()
+                  << ",evtol_id:" << msg.evtol_id.in() << std::endl;
       }
       else
       {
@@ -63,7 +61,6 @@ void ReaderListenerAuth::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available_request() -")
                        ACE_TEXT(" take_next_sample failed!\n")));
       }
-      rcs_.signal();
       break;
     }
   }

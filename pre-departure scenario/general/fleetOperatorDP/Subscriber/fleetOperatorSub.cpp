@@ -47,11 +47,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     DDS::DataReaderListener_var listener2(new ReaderListenerRoute(rcs2));
     reader_routes->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
 
-    DDS::DataReader_var reader_weather = model3.reader(Elements::DataReaders::weatherDR_FOP);
-    OpenDDS::Model::ReaderCondSync rcs3(reader_weather, condition);
-    DDS::DataReaderListener_var listener3(new ReaderListenerWeather(rcs3));
-    reader_weather->set_listener(listener3, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-
     DDS::DataReader_var reader_auth = model6.reader(Elements::DataReaders::flightAuthDR_FOP);
     OpenDDS::Model::ReaderCondSync rcs6(reader_auth, condition);
     DDS::DataReaderListener_var listener6(new ReaderListenerAuth(rcs6));
@@ -62,6 +57,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     DDS::DataReaderListener_var listener5(new ReaderListenerRec(rcs5));
     reader_rec->set_listener(listener5, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
     
+    DDS::DataReader_var reader_weather = model3.reader(Elements::DataReaders::weatherDR_FOP);
+    OpenDDS::Model::ReaderCondSync rcs3(reader_weather, condition);
+    DDS::DataReaderListener_var listener3(new ReaderListenerWeather(rcs3));
+    reader_weather->set_listener(listener3, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
 
 
   } catch (const CORBA::Exception& e) {

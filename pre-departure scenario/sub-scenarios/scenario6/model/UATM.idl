@@ -10,12 +10,16 @@ module UATM {
 #pragma DCPS_DATA_TYPE "UATM::flightAuthorization"
 #pragma DCPS_DATA_KEY  "UATM::flightAuthorization authorization_id"
   struct flightAuthorization {
-    long authorization_id;
-    long flight_id;
-    long approved_route_id;
-    string<20> authority;
+    string<20> authorization_id;
+    string<20> flight_id;
+    string<20> approved_route_id;
+    boolean authorization_status;
     string<20> authorization_time;
-    string<20> valid_until;
+    string<20> approved_departure_time;
+    string<20> approved_arrival_time;
+    string<20> tolpad_id;
+    string<20> pilot_id;
+    string<20> evtol_id;
   };
 };
 module UATM {

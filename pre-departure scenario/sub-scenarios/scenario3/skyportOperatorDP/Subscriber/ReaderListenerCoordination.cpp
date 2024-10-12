@@ -37,11 +37,13 @@ ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
           std::cout << "----------------------------------" << std::endl
                     << "        flightCoordination:" << std::endl
                     << "        -----------------" << std::endl
-                    << "Coord ID: " << msg.coordination_id << std::endl
-                    << "Flight ID: " << msg.flight_id << std::endl
-                    << "Involved parties: " << msg.involved_parties << std::endl
-                    << "Coord Details: " << msg.coordination_details << std::endl
-                    << "Rec time: " << msg.recommendation_time.in() << std::endl;
+                    << "Coord ID: " << msg.coordination_id.in() << std::endl
+                    << "flight_id: " << msg.flight_id.in() << std::endl
+                    << "skyport_id: " << msg.skyport_id.in() << std::endl
+                    << "evtol_id: " << msg.evtol_id.in() << std::endl
+                    << "pilot_id: " << msg.pilot_id.in() << std::endl
+                    << "route_id: " << msg.route_id.in() << std::endl
+                    << "weather_id: " << msg.weather_id.in() << std::endl;
         } else {
             rcs_.signal();
             break;
@@ -52,7 +54,7 @@ ReaderListenerCoordination::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
+        // rcs_.signal();
         break;
       }
     }

@@ -13,7 +13,9 @@ ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs
 
 void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
+
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+  static bool signal_sent = false;
 
   UATM::acceptableRouteDataReader_var reader_i =
       UATM::acceptableRouteDataReader::_narrow(reader);
@@ -31,27 +33,26 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 
   while (true)
   {
-    std::cout << "\n\n"
-              << std::endl;
     DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
     if (error == DDS::RETCODE_OK)
     {
-      // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
       if (info.valid_data)
       {
-        std::cout << "----------------------------------" << std::endl
-                  << "        acceptableRoute:" << std::endl
-                  << "        -----------------" << std::endl
-                  << "Route ID: " << msg.route_id << std::endl
-                  << "Origin: " << msg.origin.in() << std::endl
-                  << "Destination: " << msg.destination.in() << std::endl
-                  << "Estimated Time: " << msg.estimated_time.in() << std::endl
-                  // << "Timestmap: " << msg.timestamp.in() << std::endl
-                  << "Approved by: " << msg.approved_by.in() << std::endl;
+        std::cout << "| ansp acceptableRoute: "
+                  << "acceptable_route_id:" << msg.acceptable_route_id
+                  << ",approved_by:" << msg.approved_by.in()
+                  << ",estimated_time:" << msg.estimated_time.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",timestamp:" << msg.timestamp.in() << std::endl;
+        break;
       }
       else
       {
-        rcs_.signal();
+        if (!signal_sent)
+        {
+          rcs_.signal();
+          signal_sent = true;
+        }
         break;
       }
     }
@@ -63,7 +64,6 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                        ACE_TEXT(" take_next_sample failed!\n")));
       }
-      rcs_.signal();
       break;
     }
   }

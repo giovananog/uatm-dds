@@ -26,7 +26,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     OpenDDS::Model::ReaderCondSync rcs(reader_assign, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_assign->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-    // listener->on_data_available(reader_assign);                           
 
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");

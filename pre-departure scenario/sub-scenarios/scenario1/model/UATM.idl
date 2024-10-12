@@ -10,11 +10,11 @@ module UATM {
 #pragma DCPS_DATA_TYPE "UATM::availabilityInfo"
 #pragma DCPS_DATA_KEY  "UATM::availabilityInfo resource_id"
   struct availabilityInfo {
-    long resource_id;
-    string<20> resource_type;
-    boolean status;
-    string<20> location;
-    string<20> availability_time;
+    string<10> resource_id;
+    string<10> resource_type;
+    boolean available;
+    string<20> skyport_id;
+    string<10> availability_time;
   };
 };
 module UATM {
@@ -22,13 +22,10 @@ module UATM {
 #pragma DCPS_DATA_TYPE "UATM::bookingFlightRequest"
 #pragma DCPS_DATA_KEY  "UATM::bookingFlightRequest booking_id"
   struct bookingFlightRequest {
-    long booking_id;
-    string<20> customer_id;
-    long flight_id;
-    string<20> departure_time;
-    string<20> arrival_time;
-    long route_id;
-    boolean request_status;
+    string<20> booking_id;
+    string<20> costumer_id;
+    string<20> flight_id;
+    string<20> skyport_id;
   };
 };
 module UATM {

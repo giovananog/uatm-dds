@@ -33,11 +33,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       UATM::acceptableRoute ar;
 
        
-      ar.route_id = 23;
-      ar.origin = "origin";
-      ar.destination = "destination";
-      ar.estimated_time = "12254-53";
+      ar.acceptable_route_id = "23";
       ar.approved_by = "approved_by";
+      ar.estimated_time = "12254-53";
       ar.timestamp = "2112-74";
 
       DDS::ReturnCode_t error = writer_var->write(ar, DDS::HANDLE_NIL);

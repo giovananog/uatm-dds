@@ -37,6 +37,7 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../bookingPlatformDP/utils/functions.cpp
     ../bookingPlatformDP/Publisher/bookingPlatformPub.cpp
   }
 }
@@ -48,6 +49,7 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../evtolManagerDP/utils/functions.cpp
     ../evtolManagerDP/Publisher/evtolManPub.cpp
   }
 }
@@ -59,6 +61,7 @@ project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../pilotManagerDP/utils/functions.cpp
     ../pilotManagerDP/Publisher/pilotManagerPub.cpp
   }
 }
@@ -70,6 +73,7 @@ project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../fleetOperatorDP/utils/functions.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerAvailability.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerRequest.cpp
     ../fleetOperatorDP/Subscriber/fleetOperatorSub.cpp

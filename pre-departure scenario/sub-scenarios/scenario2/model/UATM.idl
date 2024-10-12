@@ -12,11 +12,11 @@ module UATM {
 #pragma DCPS_DATA_TYPE "UATM::availabilityInfo"
 #pragma DCPS_DATA_KEY  "UATM::availabilityInfo resource_id"
   struct availabilityInfo {
-    long resource_id;
-    string<20> resource_type;
-    boolean status;
-    string<20> location;
-    string<20> availability_time;
+    string<10> resource_id;
+    string<10> resource_type;
+    boolean available;
+    string<20> skyport_id;
+    string<10> availability_time;
   };
 };
 module UATM {
@@ -25,13 +25,14 @@ module UATM {
 module UATM {
 
 #pragma DCPS_DATA_TYPE "UATM::flightRoutesInfo"
-#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo flight_route_id"
+#pragma DCPS_DATA_KEY  "UATM::flightRoutesInfo route_id"
   struct flightRoutesInfo {
-    long flight_route_id;
-    ArrayString waypoints;
-    long flight_id;
-    string<20> estimated_time;
-    boolean status;
+    long route_id;
+    string<20> origin_skyport_id;
+    string<20> destination_skyport_id;
+    boolean available;
+    long available_capacity;
+    string<20> traffic_density;
   };
 };
 module UATM {
@@ -54,9 +55,9 @@ module UATM {
   struct flightAssign {
     long flight_assign_id;
     string<20> assign_time;
-    long operator_id;
-    boolean assign_status;
-    ArrayString resources_id;
+    string<20> flight_id;
+    string<20> pilot_id;
+    string<20> evtol_id;
   };
 };
 #endif 

@@ -1,0 +1,17 @@
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=14:45:56
+resource_id=TolPad-2,skyport_id=Skyport-1,available=1,availability_time=14:45:59
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=14:46:02
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=14:58:53
+resource_id=TolPad-2,skyport_id=Skyport-1,available=1,availability_time=14:58:56
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=14:58:59
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=15:31:39
+resource_id=TolPad-2,skyport_id=Skyport-1,available=1,availability_time=15:31:42
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=15:31:45
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=15:33:19
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=16:56:06
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=16:56:09
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=17:02:16
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=17:02:19
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=17:15:02
+resource_id=TolPad-1,skyport_id=Skyport-1,available=1,availability_time=17:23:40
+resource_id=TolPad-3,skyport_id=Skyport-2,available=1,availability_time=17:23:43

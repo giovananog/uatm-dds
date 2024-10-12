@@ -1,5 +1,3 @@
-// ReaderListenerRequest.h
-
 #ifndef READER_LISTENER_REQUEST_H
 #define READER_LISTENER_REQUEST_H
 
@@ -12,7 +10,6 @@ class ReaderListenerRequest : public OpenDDS::Model::NullReaderListener {
   public:
     ReaderListenerRequest(OpenDDS::Model::ReaderCondSync& rcs);
     virtual void on_data_available(DDS::DataReader_ptr reader);
-    
   private:
     OpenDDS::Model::ReaderCondSync& rcs_;
     ACE_Thread_Mutex mutex_;

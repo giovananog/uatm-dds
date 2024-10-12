@@ -4,7 +4,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
-
+#include <dds/DCPS/WaitSet.h>
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -25,13 +25,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          -1);
     }
 
+
     OpenDDS::Model::WriterSync ws(writer_request);
     {
       UATM::flightRequestInfo fri;
-
+       
       fri.request_id = 23;
       fri.flight_id = 22;
-      fri.requestor_id = 2;
+      fri.requestor_id = 22;
       fri.requested_route_id = 3;
       fri.request_status = true;
       fri.request_time = "34343-24";
@@ -43,7 +44,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                      ACE_TEXT(" write returned %d!\n"), error));
       }
-    }
+    } 
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");
     return -1;

@@ -31,24 +31,30 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 
   while (true)
   {
-    std::cout << "\n\n"
-              << std::endl;
     DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
     if (error == DDS::RETCODE_OK)
     {
-      // std::cout << "SampleInfo.sample_rank = " << info.sample_rank << std::endl;
       if (info.valid_data)
       {
-        std::cout << "\n-------------UASP---------------------" << std::endl
-                  << "        flightRequestInfo:" << std::endl
-                  << "        -----------------" << std::endl
-                  << "Req ID: " << msg.request_id << std::endl
-                  << "Flight Time: " << msg.flight_id << std::endl
-                  << "Requestor ID: " << msg.requestor_id << std::endl
-                  << "Route ID: " << msg.requested_route_id << std::endl
-                  << "Status: " << msg.request_status << std::endl
-                  << "Time: \n"
-                  << msg.request_time.in() << std::endl;
+        std::cout << "| flightRequestInfo: "
+                  << "request_id:" << msg.request_id.in()
+                  << ",flight_id:" << msg.flight_id.in()
+                  << ",departure_skyport_id:" << msg.departure_skyport_id.in()
+                  << ",destination_skyport_id:" << msg.destination_skyport_id.in()
+                  << ",departure_time:" << msg.departure_time.in()
+                  << ",pilot_id:" << msg.pilot_id.in()
+                  << ",evtol_id:" << msg.evtol_id.in() << std::endl;
+
+        std::ofstream request_file("uaspManagerDP/data/requests.txt", std::ios_base::app);
+        request_file << "request_id:" << msg.request_id.in() << ","
+                     << "flight_id:" << msg.flight_id.in() << ","
+                     << "departure_skyport_id:" << msg.departure_skyport_id.in() << ","
+                     << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
+                     << "departure_time:" << msg.departure_time.in() << ","
+                     << "tolpad_id:" << "" << ","
+                     << "pilot_id:" << msg.pilot_id.in() << ","
+                     << "evtol_id:" << msg.evtol_id.in() << "\n";
+        request_file.close();
       }
       else
       {
@@ -64,7 +70,6 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                        ACE_TEXT(" take_next_sample failed!\n")));
       }
-      rcs_.signal();
       break;
     }
   }

@@ -1,0 +1,6 @@
+weather_id=1,location="Location-X",temperature=25.3,wind_speed=10.2,weather_condition=Clear Sky
+weather_id=2,location="Location-X",temperature=22.1,wind_speed=5.8,weather_condition=Partly Cloudy
+weather_id=3,location="Location-X",temperature=18.7,wind_speed=12.3,weather_condition=Rain
+weather_id=4,location="Location-X",temperature=27.5,wind_speed=8.6,weather_condition=Sunny
+weather_id=5,location="Location-X",temperature=20.2,wind_speed=9.4,weather_condition=Overcast
+weather_id=6,location="Location-X",temperature=15.3,wind_speed=14.7,weather_condition=Storm

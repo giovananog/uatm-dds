@@ -22,8 +22,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
-    
     DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::routeDataDR_USS);
+
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerRequest(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);

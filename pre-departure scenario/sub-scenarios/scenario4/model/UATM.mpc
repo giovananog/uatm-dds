@@ -38,6 +38,7 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../tolPadManagerDP/utils/functions.cpp
     ../tolPadManagerDP/Publisher/tolPadManagerPub.cpp
   }
 }
@@ -49,6 +50,7 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../uaspManagerDP/utils/functions.cpp
     ../uaspManagerDP/Publisher/uaspManagerPub.cpp
   }
 }
@@ -60,6 +62,7 @@ project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../tolPadManagerDP/utils/functions.cpp
     ../tolPadManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../tolPadManagerDP/Subscriber/tolPadManagerSub.cpp
   }
@@ -72,6 +75,7 @@ project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../uaspManagerDP/utils/functions.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerAvailability.cpp
     ../uaspManagerDP/Subscriber/uaspManagerSub.cpp
   }

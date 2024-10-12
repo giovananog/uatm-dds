@@ -29,12 +29,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     OpenDDS::Model::ReaderCondSync rcs(reader_availability, condition);
     DDS::DataReaderListener_var listener(new ReaderListenerAvailability(rcs));
     reader_availability->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
-    // listener->on_data_available(reader_availability);
 
     DDS::DataReader_var reader_request = model2.reader(Elements::DataReaders::flightRequestDR_FOP);    
     OpenDDS::Model::ReaderCondSync rcs2(reader_request, condition);
     DDS::DataReaderListener_var listener2(new ReaderListenerRequest(rcs2));
     reader_request->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK);
+
     
   } catch (const CORBA::Exception& e) {
     e._tao_print_exception("Exception caught in main():");

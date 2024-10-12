@@ -38,12 +38,13 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
           std::cout << "----------------------------------" << std::endl
                     << "        flightRequestInfo:" << std::endl
                     << "        -----------------" << std::endl
-                    << "Req ID: " << msg.request_id << std::endl
-                    << "Flight Time: " << msg.flight_id << std::endl
-                    << "Requestor ID: " << msg.requestor_id << std::endl
-                    << "Route ID: " << msg.requested_route_id << std::endl
-                    << "Status: " << msg.request_status << std::endl
-                    << "Time: " << msg.request_time.in() << std::endl;
+                    << "request_id: " << msg.request_id.in() << std::endl
+                    << "flight_id: " << msg.flight_id.in() << std::endl
+                    << "departure_skyport_id: " << msg.departure_skyport_id.in() << std::endl
+                    << "destination_skyport_id: " << msg.destination_skyport_id.in() << std::endl
+                    << "departure_time: " << msg.departure_time.in() << std::endl
+                    << "pilot_id: " << msg.pilot_id.in() << std::endl
+                    << "evtol_id: " << msg.evtol_id.in() << std::endl;
         } else {
             rcs_.signal();
             break;
@@ -54,7 +55,6 @@ ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                    ACE_TEXT("ERROR: %N:%l: on_data_available() -")
                    ACE_TEXT(" take_next_sample failed!\n")));
         }
-        rcs_.signal();
         break;
       }
     }

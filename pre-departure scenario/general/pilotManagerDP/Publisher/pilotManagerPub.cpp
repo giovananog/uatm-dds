@@ -1,11 +1,15 @@
-#ifdef ACE_AS_STATIC_LIBS
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <thread>
+#include <chrono>
 #include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
-#include <dds/DCPS/WaitSet.h>
-
+#include "../utils/functions.h"
+#include <model/Sync.h>
+#include <unordered_set>
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -20,39 +24,71 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     UATM::availabilityInfoDataWriter_var writer_var = UATM::availabilityInfoDataWriter::_narrow(writer.in());
 
-    if (CORBA::is_nil(writer_var.in())) {
-        ACE_ERROR_RETURN((LM_ERROR,
-                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                          ACE_TEXT(" _narrow failed!\n")),
-                         -1);
-    }
-
-    OpenDDS::Model::WriterSync ws(writer);
+    if (CORBA::is_nil(writer_var.in()))
     {
-      UATM::availabilityInfo bfr;
-
-      bfr.resource_id = 3;
-      bfr.resource_type = "pilot";
-      bfr.status = true;
-      bfr.location = "location";
-      bfr.availability_time = "323123-323";
-
-      DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
-
-      if (error != DDS::RETCODE_OK) {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                     ACE_TEXT(" write returned %d!\n"), error));
-      }
+      ACE_ERROR_RETURN((LM_ERROR,
+                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                            ACE_TEXT(" _narrow failed!\n")),
+                       -1);
     }
-  } catch (const CORBA::Exception& e) {
+
+    std::string filename = "pilotManagerDP/data/pilots.txt";
+    std::unordered_set<std::string> sent_pilots;
+
+    while (true)
+    {
+      std::vector<Pilot> pilots = readPilotsFromFile(filename);
+
+      OpenDDS::Model::WriterSync ws(writer);
+      {
+
+        if (pilots.empty())
+        {
+          // std::cout << "\n\nTodos os pilotos foram enviados!" << std::endl;
+          break;
+        }
+
+        for (const auto &pilot : pilots)
+        {
+          if (sent_pilots.find(std::string(pilot.pilot_id)) == sent_pilots.end())
+          {
+            UATM::availabilityInfo bfr;
+
+            bfr.resource_id = CORBA::string_dup(pilot.pilot_id.c_str());
+            bfr.resource_type = "pilot";
+            bfr.available = pilot.available;
+            bfr.skyport_id = CORBA::string_dup(pilot.skyport_id.c_str());
+            bfr.availability_time = CORBA::string_dup(getCurrentTime().c_str());
+
+            DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+
+            sent_pilots.insert(std::string(pilot.pilot_id));
+
+            break;
+          }
+        }
+      }
+      std::this_thread::sleep_for(std::chrono::seconds(2));
+    }
+  }
+  catch (const CORBA::Exception &e)
+  {
     e._tao_print_exception("Exception caught in main():");
     return -1;
-
-  } catch( const std::exception& ex) {
+  }
+  catch (const std::exception &ex)
+  {
     ACE_ERROR_RETURN((LM_ERROR,
                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                      ACE_TEXT(" Exception caught: %C\n"),
+                          ACE_TEXT(" Exception caught: %C\n"),
                       ex.what()),
                      -1);
   }
