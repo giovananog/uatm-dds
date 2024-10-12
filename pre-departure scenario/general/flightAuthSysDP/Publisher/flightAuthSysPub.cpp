@@ -71,7 +71,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
           }
         }
       }
-      std::this_thread::sleep_for(std::chrono::seconds(10));
     }
   }
   catch (const CORBA::Exception &e)
