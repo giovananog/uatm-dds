@@ -122,7 +122,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         for (const auto &auth : requests)
         {
-          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end())
+          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end() && auth.tolpad_id != "")
           {
 
             UATM::acceptableRoute ar;
@@ -153,7 +153,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         for (const auto &auth : requests)
         {
-          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end())
+          if (sent_flight_ids.find(auth.flight_id) == sent_flight_ids.end() && auth.tolpad_id != "")
           {
 
             UATM::flightChangeRec fc;
