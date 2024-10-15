@@ -55,8 +55,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                        << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
                        << "departure_time:" << msg.departure_time.in() << ","
                        << "pilot_id:" << msg.pilot_id.in() << ","
-                       << "evtol_id:" << msg.evtol_id.in() << ","
-                       << "sent_req:" << 0 << "\n";
+                       << "evtol_id:" << msg.evtol_id.in() << "\n";
         }
         request_file.close();
       }

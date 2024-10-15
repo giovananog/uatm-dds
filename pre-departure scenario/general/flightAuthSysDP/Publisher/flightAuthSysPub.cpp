@@ -9,6 +9,7 @@
 #include <dds/DCPS/WaitSet.h>
 #include <string>
 #include <thread>
+#include <unordered_set>
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
@@ -31,20 +32,22 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     }
 
     int i = 0;
+    std::unordered_set<std::string> sent_requests;
+
 
     while (true)
     {
       if(i == 3) break;
+      std::vector<flightRequestInfo> requests = readRequestsFromFile("flightAuthSysDP/data/requests.txt");
 
       OpenDDS::Model::WriterSync ws(writer_request);
       {
         UATM::flightRequestInfo fr;
-        std::vector<flightRequestInfo> requests = readRequestsFromFile("flightAuthSysDP/data/requests.txt");
 
-        bool sent = false;
         for (auto &fri : requests)
         {
-          if (fri.sent_req == 0)
+          // if (fri.sent_req == 0)
+          if (sent_requests.find(std::string(fri.flight_id)) == sent_requests.end())
           {
             fr.request_id = CORBA::string_dup(fri.auth_request_id.c_str());
             fr.flight_id = CORBA::string_dup(fri.flight_id.c_str());
@@ -64,9 +67,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
             i++;
-            sent = true;
+
             std::string flight_id_str = CORBA::string_dup(fri.flight_id.c_str());
-            updateSentReq("flightAuthSysDP/data/requests.txt", flight_id_str);
+            sent_requests.insert(std::string(flight_id_str));
+            // updateSentReq("flightAuthSysDP/data/requests.txt", flight_id_str);
             break;
           }
         }
