@@ -33,6 +33,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     int bookingID = 0;
     auto startTime = std::chrono::steady_clock::now();
     double duration = 100.0;
+    double lambda = 2.0;
+
     while (true)
     {
       auto currentTime = std::chrono::steady_clock::now();
@@ -65,7 +67,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                      error));
         }
       }
-      std::this_thread::sleep_for(std::chrono::seconds(3));
+
+      double waitTime = generatePoisson(lambda);
+      std::this_thread::sleep_for(std::chrono::seconds(static_cast<int>(waitTime)));
     }
   }
   catch (const CORBA::Exception &e)
