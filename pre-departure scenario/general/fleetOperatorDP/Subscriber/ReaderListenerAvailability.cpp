@@ -16,6 +16,7 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
 {
 
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+    static bool signal_sent = false;
 
     UATM::availabilityInfoDataReader_var reader_i =
         UATM::availabilityInfoDataReader::_narrow(reader);
@@ -51,7 +52,11 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
             }
             else
             {
-                rcs_.signal();
+                if (!signal_sent)
+                {
+                    rcs_.signal();
+                    signal_sent = true;
+                }
                 break;
             }
         }

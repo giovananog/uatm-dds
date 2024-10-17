@@ -12,6 +12,7 @@ ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs
 void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+  static bool signal_sent = false;
 
   UATM::bookingFlightRequestDataReader_var reader_i =
       UATM::bookingFlightRequestDataReader::_narrow(reader);
@@ -40,6 +41,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                   << ",flight_id:" << msg.flight_id.in()
                   << ",origin_skyport_id:" << msg.origin_skyport_id.in()
                   << ",destination_skyport_id:" << msg.destination_skyport_id.in() << std::endl;
+        std::cout << msg.origin_skyport_id.in() << "\n\n";
 
         std::ofstream outfile("fleetOperatorDP/data/requests.txt", std::ios_base::app);
         if (outfile.is_open())
@@ -60,7 +62,11 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       }
       else
       {
-        rcs_.signal();
+        if (!signal_sent)
+        {
+          rcs_.signal();
+          signal_sent = true;
+        }
         break;
       }
     }

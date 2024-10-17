@@ -11,6 +11,8 @@ ReaderListenerRoute::ReaderListenerRoute(OpenDDS::Model::ReaderCondSync &rcs)
 void ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
 {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+    static bool signal_sent = false;
+
 
     UATM::flightRoutesInfoDataReader_var reader_i =
         UATM::flightRoutesInfoDataReader::_narrow(reader);
@@ -56,7 +58,11 @@ void ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
             }
             else
             {
-                rcs_.signal();
+                if (!signal_sent)
+                {
+                    rcs_.signal();
+                    signal_sent = true;
+                }
                 break;
             }
         }
