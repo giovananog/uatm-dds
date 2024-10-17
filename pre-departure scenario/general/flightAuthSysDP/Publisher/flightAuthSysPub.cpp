@@ -33,11 +33,20 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     int i = 0;
     std::unordered_set<std::string> sent_requests;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
 
 
     while (true)
     {
-      if(i == 3) break;
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        break;
+      }
+      
       std::vector<flightRequestInfo> requests = readRequestsFromFile("flightAuthSysDP/data/requests.txt");
 
       OpenDDS::Model::WriterSync ws(writer_request);

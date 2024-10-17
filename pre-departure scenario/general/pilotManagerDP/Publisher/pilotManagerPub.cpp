@@ -34,23 +34,27 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     std::string filename = "pilotManagerDP/data/pilots.txt";
     std::unordered_set<std::string> sent_pilots;
+    int i = 0;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
+    
 
     while (true)
     {
       std::vector<Pilot> pilots = readPilotsFromFile(filename);
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        break;
+      }
 
       OpenDDS::Model::WriterSync ws(writer);
       {
-
-        if (pilots.empty())
-        {
-          // std::cout << "\n\nTodos os pilotos foram enviados!" << std::endl;
-          break;
-        }
-
         for (const auto &pilot : pilots)
         {
-          if (sent_pilots.find(std::string(pilot.pilot_id)) == sent_pilots.end())
+          if (sent_pilots.find(std::string(pilot.pilot_id)) == sent_pilots.end() || pilot.available == 1)
           {
             UATM::availabilityInfo bfr;
 

@@ -34,19 +34,22 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     std::string filename = "skyportManagerDP/data/skyports.txt";
     std::unordered_set<std::string> sent_skyports;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
     
     while (true)
     {
       std::vector<Skyport> skyports = readSkyportsFromFile(filename);
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        break;
+      }
 
       OpenDDS::Model::WriterSync ws(writer);
       {
-        if (sent_skyports.size() == 2)
-        {
-          // std::cout << "Todos os Skyports foram enviados!" << std::endl;
-          break;
-        }
-
         for (const auto &skyport : skyports)
         {
           if (sent_skyports.find(std::string(skyport.resource_id)) == sent_skyports.end())

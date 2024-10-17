@@ -34,21 +34,25 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     std::string filename = "evtolManagerDP/data/evtols.txt";
     std::unordered_set<std::string> sent_evtols;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
 
     while (true)
     {
       std::vector<EVTOL> evtols = readEVTOLsFromFile(filename);
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        break;
+      }
       OpenDDS::Model::WriterSync ws(writer);
       {
-        if (evtols.empty())
-        {
-          // std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
-          break;
-        }
 
         for (const auto &evtol : evtols)
         {
-          if (sent_evtols.find(std::string(evtol.evtol_id)) == sent_evtols.end())
+          if (sent_evtols.find(std::string(evtol.evtol_id)) == sent_evtols.end() || evtol.available == 1)
           {
 
             UATM::availabilityInfo bfr;

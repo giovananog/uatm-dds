@@ -30,20 +30,21 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    int i = 0;
     int bookingID = 0;
-
-    OpenDDS::Model::WriterSync ws(writer);
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
+    while (true)
     {
-      while (true)
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+      bookingID++;
+
+      if (elapsedTime.count() >= duration)
       {
-        i++;
-        bookingID++;
-        if (i == 4)
-        {
-          // std::cout << "Todos os costumers foram processados!" << std::endl;
-          break;
-        }
+        break;
+      }
+      OpenDDS::Model::WriterSync ws(writer);
+      {
 
         UATM::bookingFlightRequest bfr;
 
@@ -63,9 +64,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          ACE_TEXT(" write returned %d!\n"),
                      error));
         }
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
       }
+      std::this_thread::sleep_for(std::chrono::seconds(3));
     }
   }
   catch (const CORBA::Exception &e)

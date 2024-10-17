@@ -66,12 +66,19 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     std::unordered_set<std::string> assigned_pilots;
     std::unordered_set<std::string> assigned_evtols;
 
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
+
     while (true)
     {
-      if (i == 3)
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
       {
         break;
       }
+      
       std::string evtolID, pilotID, flightID, originSkID, destSkID;
       std::string resourceFile = "fleetOperatorDP/data/availabilities.txt";
       std::string weatherFile = "fleetOperatorDP/data/weather.txt";
