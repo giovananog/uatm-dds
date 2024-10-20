@@ -47,6 +47,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       if (elapsedTime.count() >= duration)
       {
+        std::ofstream file(filename, std::ios::trunc);
+
+        std::string data =
+           "pilot_id=Pilot-1,skyport_id=Skyport-1,available=1\n"
+           "pilot_id=Pilot-2,skyport_id=Skyport-1,available=1\n"
+           "pilot_id=Pilot-3,skyport_id=Skyport-2,available=1\n";
+        file << data;
+        file.close();
         break;
       }
 

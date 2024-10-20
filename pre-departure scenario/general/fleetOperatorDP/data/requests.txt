@@ -1,0 +1,2 @@
+booking_id:Booking-36,costumer_id:Costumer-446,flight_id:Flight-36,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,pilot_id:,evtol_id:,weather_id:,route_id:,tolpad_id:,status:
+booking_id:Booking-37,costumer_id:Costumer-890,flight_id:Flight-37,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,pilot_id:,evtol_id:,weather_id:,route_id:,tolpad_id:,status:

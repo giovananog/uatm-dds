@@ -74,7 +74,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     int assign_id = 1;
     int acceptable_route_id = 1;
     int recommendation_id = 1;
-    int i = 0;
     std::unordered_set<std::string> sent_flight_ids;
     std::unordered_set<std::string> sent_tolpads;
     auto startTime = std::chrono::steady_clock::now();
@@ -87,6 +86,16 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       if (elapsedTime.count() >= duration)
       {
+        std::ofstream outfile("uaspManagerDP/data/flows.txt", std::ofstream::trunc);
+        outfile.close();
+        std::ofstream outfile2("uaspManagerDP/data/requests.txt", std::ofstream::trunc);
+        outfile2.close();
+        std::ofstream outfile3("uaspManagerDP/data/restrictions.txt", std::ofstream::trunc);
+        outfile3.close();
+        std::ofstream outfile4("uaspManagerDP/data/tolpads.txt", std::ofstream::trunc);
+        outfile4.close();
+        std::ofstream outfile5("uaspManagerDP/data/weather.txt", std::ofstream::trunc);
+        outfile5.close();
         break;
       }
       std::vector<requestInfo> requests = read_requests_from_file("uaspManagerDP/data/requests.txt");
@@ -228,18 +237,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
-            i++;
             sent = true;
             sent_flight_ids.insert(auth.flight_id);
             break;
           }
         }
       }
-
-      // if (i == 3)
-      // {
-      //   break;
-      // }
     }
   }
   catch (const CORBA::Exception &e)

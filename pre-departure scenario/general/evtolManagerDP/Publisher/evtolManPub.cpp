@@ -45,6 +45,15 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       if (elapsedTime.count() >= duration)
       {
+        std::ofstream file(filename, std::ios::trunc);
+
+        std::string data =
+            "evtol_id=eVTOL-1,skyport_id=Skyport-1,available=1\n"
+            "evtol_id=eVTOL-2,skyport_id=Skyport-1,available=1\n"
+            "evtol_id=eVTOL-3,skyport_id=Skyport-2,available=1\n";
+        file << data;
+        file.close();
+
         break;
       }
       OpenDDS::Model::WriterSync ws(writer);

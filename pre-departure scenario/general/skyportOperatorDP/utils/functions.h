@@ -14,5 +14,6 @@ extern std::vector<std::string> traffic_density_levels;
 
 std::string getRandomValue(const std::vector<std::string> &values);
 std::string getCurrentTime();
+std::string generateDestinationSkyportId(std::string originSkyportID);
 
 #endif // FUNCTIONS_H

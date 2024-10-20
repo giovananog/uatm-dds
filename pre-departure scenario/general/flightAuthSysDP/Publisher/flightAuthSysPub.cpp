@@ -44,6 +44,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
       if (elapsedTime.count() >= duration)
       {
+        std::ofstream outfile("flightAuthSysDP/data/requests.txt", std::ofstream::trunc);
+        outfile.close();
         break;
       }
       

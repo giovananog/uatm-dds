@@ -49,6 +49,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
             if (elapsedTime.count() >= duration)
             {
+                std::ofstream outfile("skyportOperatorDP/data/coordinations.txt", std::ofstream::trunc);
+                outfile.close();
                 break;
             }
             OpenDDS::Model::WriterSync ws(writer_flows);
@@ -56,7 +58,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
                 UATM::trafficFlowsInfo tf;
                 tf.flows_id = flows_id++;
-                tf.area = CORBA::string_dup(getRandomValue(areas).c_str());
+                tf.area = CORBA::string_dup(getRandomValue(restriction_areas).c_str());
                 tf.congestion_level = CORBA::string_dup(getRandomValue(congestion_levels).c_str());
                 tf.affected_routes = "1";
                 tf.timestamp = CORBA::string_dup(getCurrentTime().c_str());
@@ -68,7 +70,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(4));
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
             OpenDDS::Model::WriterSync ws2(writer_rest);
             {
@@ -88,7 +90,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(7));
+            std::this_thread::sleep_for(std::chrono::seconds(2));
 
             OpenDDS::Model::WriterSync ws3(writer_routes);
             {
@@ -96,7 +98,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 UATM::flightRoutesInfo fr;
                 fr.flight_route_id = routes_id++;
                 fr.origin_skyport_id = CORBA::string_dup(getRandomValue(skyports).c_str());
-                fr.destination_skyport_id = CORBA::string_dup(getRandomValue(skyports).c_str());
+                fr.destination_skyport_id = CORBA::string_dup(generateDestinationSkyportId(std::string(fr.origin_skyport_id)).c_str());
                 fr.available_capacity = std::rand() % 20;
                 fr.available = std::rand() % 2;
                 fr.traffic_density = CORBA::string_dup(getRandomValue(traffic_density_levels).c_str());
@@ -108,7 +110,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 }
             }
 
-            std::this_thread::sleep_for(std::chrono::seconds(3));
+            std::this_thread::sleep_for(std::chrono::seconds(2));
         }
     }
     catch (const CORBA::Exception &e)

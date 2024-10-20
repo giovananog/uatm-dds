@@ -13,9 +13,14 @@ std::string getRandomValue(const std::vector<std::string> &values)
   return values[randomIndex];
 }
 
+std::string generateDestinationSkyportId(std::string originSkyportID) {
+    return originSkyportID == "Skyport-1" ?
+       "Skyport-2" : "Skyport-1";
+}
+
 std::vector<std::string> areas = {"Downtown", "Midtown", "Uptown", "East Side", "West Side", "Suburbs", "Airport", "Highway", "City Center", "Industrial Area"};
 std::vector<std::string> congestion_levels = {"Low", "Medium", "High"};
-std::vector<std::string> restriction_areas = {"South Zone", "North Zone", "East Zone", "West Zone", "Central Zone"};
+std::vector<std::string> restriction_areas = {"Skyport-2", "Skyport-1"};
 std::vector<std::string> restriction_types = {"No-Fly Zone", "Altitude Restriction", "Temporary Flight Restriction", "Drone Ban", "Emergency"};
 std::vector<std::string> authorities = {"FAA", "ANAC", "CAA"};
 std::vector<std::string> skyports = {"Skyport-1", "Skyport-2"};

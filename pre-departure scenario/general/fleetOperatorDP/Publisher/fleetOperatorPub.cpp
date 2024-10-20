@@ -74,23 +74,34 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       auto currentTime = std::chrono::steady_clock::now();
       std::chrono::duration<double> elapsedTime = currentTime - startTime;
 
-      if (elapsedTime.count() >= duration)
-      {
-        break;
-      }
-      
       std::string evtolID, pilotID, flightID, originSkID, destSkID;
       std::string resourceFile = "fleetOperatorDP/data/availabilities.txt";
       std::string weatherFile = "fleetOperatorDP/data/weather.txt";
       std::string routeFile = "fleetOperatorDP/data/routes.txt";
       std::string filename = "fleetOperatorDP/data/requests.txt";
       std::string flightFile = "fleetOperatorDP/data/requests.txt";
+
+      if (elapsedTime.count() >= duration)
+      {
+        std::ofstream outfile(resourceFile, std::ofstream::trunc);
+        outfile.close();
+        std::ofstream outfile2(weatherFile, std::ofstream::trunc);
+        outfile2.close();
+        std::ofstream outfile3(routeFile, std::ofstream::trunc);
+        outfile3.close();
+        std::ofstream outfile4(flightFile, std::ofstream::trunc);
+        outfile4.close();
+        std::ofstream outfile5("fleetOperatorDP/data/authorizations.txt", std::ofstream::trunc);
+        outfile5.close();
+        break;
+      }
+
       std::vector<BookingData> bookings = readBookingsFromFile(filename);
 
       OpenDDS::Model::WriterSync ws(writer_assign);
       {
         if (checkAvailability(resourceFile, evtolID, pilotID))
-        {
+        {          
           if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID, originSkID, destSkID))
           {
             UATM::flightAssign fa;
@@ -114,7 +125,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                              ACE_TEXT(" write returned %d!\n"),
                          error));
             }
-          }
+          } 
         }
       }
 

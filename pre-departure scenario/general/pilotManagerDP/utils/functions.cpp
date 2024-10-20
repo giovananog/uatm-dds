@@ -51,7 +51,9 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, const std
 
     while (std::getline(file, line)) {
         if (!line.empty()) {
-            if (line.find("pilot_id=" + pilot_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) {
+            if (line.find("pilot_id=" + pilot_id) != std::string::npos) 
+            // if (line.find("pilot_id=" + pilot_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) 
+            {
                 std::istringstream ss(line);
                 std::string token;
                 std::string updated_line;
@@ -74,7 +76,8 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, const std
     file.close();
 
     if (origin_updated && !destination_added) {
-        std::string new_line = "pilot_id=" + pilot_id + ",skyport_id=" + destination_skyport_id + ",available=0";
+        std::cout << "\n\n" << destination_skyport_id << "\n\n";
+        std::string new_line = "pilot_id=" + pilot_id + ",skyport_id=" + destination_skyport_id + ",available=1";
         lines.push_back(new_line);
         destination_added = true;
     }

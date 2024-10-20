@@ -53,7 +53,9 @@ void updateEvtolStatus(const std::string &evtol_id, int new_available, const std
 
     while (std::getline(file, line)) {
         if (!line.empty()) {
-            if (line.find("evtol_id=" + evtol_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) {
+            if (line.find("evtol_id=" + evtol_id) != std::string::npos) 
+            // if (line.find("evtol_id=" + evtol_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) 
+            {
                 std::istringstream ss(line);
                 std::string token;
                 std::string updated_line;
@@ -76,7 +78,7 @@ void updateEvtolStatus(const std::string &evtol_id, int new_available, const std
     file.close();
 
     if (origin_updated && !destination_added) {
-        std::string new_line = "evtol_id=" + evtol_id + ",skyport_id=" + destination_skyport_id + ",available=0";
+        std::string new_line = "evtol_id=" + evtol_id + ",skyport_id=" + destination_skyport_id + ",available=1";
         lines.push_back(new_line);
         destination_added = true;
     }
