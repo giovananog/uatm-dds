@@ -33,43 +33,52 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     int bookingID = 0;
     auto startTime = std::chrono::steady_clock::now();
     double duration = 100.0;
-    double lambda = 2.0;
+    double lambda = 3.0;
 
     while (true)
     {
       auto currentTime = std::chrono::steady_clock::now();
       std::chrono::duration<double> elapsedTime = currentTime - startTime;
-      bookingID++;
 
       if (elapsedTime.count() >= duration)
       {
         break;
       }
-      OpenDDS::Model::WriterSync ws(writer);
+
+      double numEvents = generatePoisson(lambda);
+      double waitTime = (10.0 / numEvents);
+
+      for (int i = 0; i < numEvents; ++i)
       {
-
-        UATM::bookingFlightRequest bfr;
-
-        std::string bookingIDStr = std::to_string(bookingID);
-        bfr.booking_id = CORBA::string_dup(("Booking-" + bookingIDStr).c_str());
-        bfr.flight_id = CORBA::string_dup(("Flight-" + bookingIDStr).c_str());
-        bfr.costumer_id = CORBA::string_dup(("Costumer-" + std::to_string(rand() % 1000)).c_str());
-        bfr.origin_skyport_id = CORBA::string_dup(generateOriginSkyportId().c_str());
-        bfr.destination_skyport_id = CORBA::string_dup(generateDestinationCustomerId(std::string(bfr.origin_skyport_id)).c_str());
-
-        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
+        OpenDDS::Model::WriterSync ws(writer);
         {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
-        }
-      }
 
-      double waitTime = generatePoisson(lambda);
-      std::this_thread::sleep_for(std::chrono::seconds(static_cast<int>(waitTime)));
+          bookingID++;
+          UATM::bookingFlightRequest bfr;
+
+          std::string bookingIDStr = std::to_string(bookingID);
+          bfr.booking_id = CORBA::string_dup(("Booking-" + bookingIDStr).c_str());
+          bfr.flight_id = CORBA::string_dup(("Flight-" + bookingIDStr).c_str());
+          bfr.costumer_id = CORBA::string_dup(("Costumer-" + std::to_string(rand() % 1000)).c_str());
+          bfr.origin_skyport_id = CORBA::string_dup(generateOriginSkyportId().c_str());
+          bfr.destination_skyport_id = CORBA::string_dup(generateDestinationSkyportId(std::string(bfr.origin_skyport_id)).c_str());
+
+          if (bfr.booking_id.in() != "0" && bfr.costumer_id.in() != "0")
+          {
+            DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+            if (error != DDS::RETCODE_OK)
+            {
+              ACE_ERROR((LM_ERROR,
+                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                             ACE_TEXT(" write returned %d!\n"),
+                         error));
+            }
+          }
+        }
+
+        std::this_thread::sleep_for(std::chrono::seconds(static_cast<int>(waitTime)));
+      }
     }
   }
   catch (const CORBA::Exception &e)

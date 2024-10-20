@@ -13,6 +13,7 @@ struct FlightRequest {
 };
 
 std::string generateOriginSkyportId();
-std::string generateDestinationCustomerId(std::string originSkyportID);
+std::string generateDestinationSkyportId(std::string originSkyportID);
+double generatePoisson(double lambda);
 
 #endif // FUNCTIONS_H
