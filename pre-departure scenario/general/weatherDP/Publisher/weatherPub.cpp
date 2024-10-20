@@ -33,13 +33,21 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
         std::random_device rd;
         std::mt19937 gen(rd());
-
         int weather_id = 1;
 
-        OpenDDS::Model::WriterSync ws(writer);
-        {
+        auto startTime = std::chrono::steady_clock::now();
+        double duration = 100.0;
 
-            while (weather_id != 2)
+        while (true)
+        {
+            auto currentTime = std::chrono::steady_clock::now();
+            std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+            if (elapsedTime.count() >= duration)
+            {
+                break;
+            }
+            OpenDDS::Model::WriterSync ws(writer);
             {
                 std::string location = getRandomLocation(gen);
                 double temperature = getRandomTemperature(gen);
@@ -64,7 +72,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                                error));
                 }
 
-                std::this_thread::sleep_for(std::chrono::seconds(10));
+                std::this_thread::sleep_for(std::chrono::seconds(2));
             }
         }
     }

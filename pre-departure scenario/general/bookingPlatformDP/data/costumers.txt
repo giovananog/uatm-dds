@@ -1,3 +1,0 @@
-costumer_id=Costumer-1,origin_skyport_id=Skyport-1,destination_skyport_id=Skyport-1,booking_id=Booking-1,flight_id=Flight-1
-costumer_id=Costumer-2,origin_skyport_id=Skyport-1,destination_skyport_id=Skyport-1,booking_id=Booking-2,flight_id=Flight-2
-costumer_id=Costumer-3,origin_skyport_id=Skyport-2,destination_skyport_id=Skyport-1,booking_id=Booking-3,flight_id=Flight-3

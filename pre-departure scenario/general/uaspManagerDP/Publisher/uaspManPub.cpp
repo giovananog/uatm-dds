@@ -74,12 +74,30 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     int assign_id = 1;
     int acceptable_route_id = 1;
     int recommendation_id = 1;
-    int i = 0;
     std::unordered_set<std::string> sent_flight_ids;
     std::unordered_set<std::string> sent_tolpads;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
 
     while (true)
     {
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        std::ofstream outfile("uaspManagerDP/data/flows.txt", std::ofstream::trunc);
+        outfile.close();
+        std::ofstream outfile2("uaspManagerDP/data/requests.txt", std::ofstream::trunc);
+        outfile2.close();
+        std::ofstream outfile3("uaspManagerDP/data/restrictions.txt", std::ofstream::trunc);
+        outfile3.close();
+        std::ofstream outfile4("uaspManagerDP/data/tolpads.txt", std::ofstream::trunc);
+        outfile4.close();
+        std::ofstream outfile5("uaspManagerDP/data/weather.txt", std::ofstream::trunc);
+        outfile5.close();
+        break;
+      }
       std::vector<requestInfo> requests = read_requests_from_file("uaspManagerDP/data/requests.txt");
       std::vector<TolPad> tolpads = read_tolpads("uaspManagerDP/data/tolpads.txt");
 
@@ -88,7 +106,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         bool sent = false;
         for (const auto &tolpad : tolpads)
         {
-          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end())
+          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end() || tolpad.available == "1")
           {
             std::string flight_id = getAndUpdateFlightIDWithEmptyTolPad("uaspManagerDP/data/requests.txt", std::string(tolpad.resource_id));
             if (flight_id != "")
@@ -219,17 +237,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
-            i++;
             sent = true;
             sent_flight_ids.insert(auth.flight_id);
             break;
           }
         }
-      }
-
-      if (i == 3)
-      {
-        break;
       }
     }
   }

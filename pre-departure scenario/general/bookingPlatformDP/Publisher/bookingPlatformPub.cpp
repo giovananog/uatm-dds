@@ -6,6 +6,7 @@
 #include <vector>
 #include <thread>
 #include <chrono>
+#include <random>
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
@@ -21,49 +22,74 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     UATM::bookingFlightRequestDataWriter_var writer_var = UATM::bookingFlightRequestDataWriter::_narrow(writer.in());
 
+    if (CORBA::is_nil(writer_var.in()))
+    {
+      ACE_ERROR_RETURN((LM_ERROR,
+                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                            ACE_TEXT(" _narrow failed!\n")),
+                       -1);
+    }
 
-      if (CORBA::is_nil(writer_var.in()))
+    int bookingID = 0;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;   
+    double warmupTime = 10.0;  
+    double lambda = 3.0;
+
+    bool warmupCompleted = false;
+
+    while (true)
+    {
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= warmupTime && !warmupCompleted)
       {
-        ACE_ERROR_RETURN((LM_ERROR,
-                          ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                              ACE_TEXT(" _narrow failed!\n")),
-                         -1);
+        warmupCompleted = true;
       }
 
-    OpenDDS::Model::WriterSync ws(writer);
-    {
-      while (true)
+      if (elapsedTime.count() >= duration + warmupTime) 
       {
-        std::vector<FlightRequest> requests = readRequestsFromFile("bookingPlatformDP/data/costumers.txt");
-        if (requests.empty())
+        break;
+      }
+
+      double numEvents = generatePoisson(lambda);
+      double waitTime = (10.0 / numEvents);
+
+      for (int i = 0; i < numEvents; ++i)
+      {
+        if (warmupCompleted)  
         {
-          // std::cout << "Todos os costumers foram processados!" << std::endl;
-          break;
+          OpenDDS::Model::WriterSync ws(writer);
+          {
+
+            bookingID++;
+            UATM::bookingFlightRequest bfr;
+
+            std::string bookingIDStr = std::to_string(bookingID);
+            bfr.booking_id = CORBA::string_dup(("Booking-" + bookingIDStr).c_str());
+            bfr.flight_id = CORBA::string_dup(("Flight-" + bookingIDStr).c_str());
+            bfr.costumer_id = CORBA::string_dup(("Costumer-" + std::to_string(rand() % 1000)).c_str());
+            bfr.origin_skyport_id = CORBA::string_dup(generateOriginSkyportId().c_str());
+            bfr.destination_skyport_id = CORBA::string_dup(generateDestinationSkyportId(std::string(bfr.origin_skyport_id)).c_str());
+
+            if (bfr.booking_id.in() != "0" && bfr.costumer_id.in() != "0")
+            {
+              DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
+
+              if (error != DDS::RETCODE_OK)
+              {
+                ACE_ERROR((LM_ERROR,
+                           ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
+                               ACE_TEXT(" write returned %d!\n"),
+                           error));
+              }
+            }
+          }
         }
 
-        FlightRequest current_request = requests.front();
-
-        UATM::bookingFlightRequest bfr;
-
-        bfr.booking_id = CORBA::string_dup(current_request.booking_id.c_str());
-        bfr.flight_id = CORBA::string_dup(current_request.flight_id.c_str());
-        bfr.costumer_id = CORBA::string_dup(current_request.costumer_id.c_str());
-        bfr.origin_skyport_id = CORBA::string_dup(current_request.origin_skyport_id.c_str());
-        bfr.destination_skyport_id = CORBA::string_dup(current_request.destination_skyport_id.c_str());
-
-        DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
-
-        if (error != DDS::RETCODE_OK)
-        {
-          ACE_ERROR((LM_ERROR,
-                     ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                         ACE_TEXT(" write returned %d!\n"),
-                     error));
-        }
-
-        removeRequestFromFile("bookingPlatformDP/data/costumers.txt", current_request.costumer_id);
-
-        std::this_thread::sleep_for(std::chrono::seconds(3));
+        // Pausar entre os eventos
+        std::this_thread::sleep_for(std::chrono::seconds(static_cast<int>(waitTime)));
       }
     }
   }

@@ -13,11 +13,8 @@ struct flightRequestInfo {
     std::string departure_time;
     std::string pilot_id;
     std::string evtol_id;
-    int sent_req;
 };
 
 std::vector<flightRequestInfo> readRequestsFromFile(const std::string& filename);
-void updateSentReq(const std::string &filename, std::string &flight_id);
-
 
 #endif // FUNCTIONS_H

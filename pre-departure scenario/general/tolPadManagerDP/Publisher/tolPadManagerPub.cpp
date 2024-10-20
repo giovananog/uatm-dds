@@ -34,22 +34,25 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     std::string filename = "tolPadManagerDP/data/tolpads.txt";
     std::unordered_set<std::string> sent_tolpads;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
 
-    OpenDDS::Model::WriterSync ws(writer);
+    while (true)
     {
-      while (true)
+      std::vector<TolPad> tolPads = readTolPadsFromFile(filename);
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
       {
-        std::vector<TolPad> tolPads = readTolPadsFromFile(filename);
+        break;
+      }
 
-        if (tolPads.empty())
-        {
-          // std::cout << "Todos os TolPads foram enviados!" << std::endl;
-          break;
-        }
-
+      OpenDDS::Model::WriterSync ws(writer);
+      {
         for (const auto &tolpad : tolPads)
         {
-          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end())
+          if (sent_tolpads.find(std::string(tolpad.resource_id)) == sent_tolpads.end() || tolpad.available == 1)
           {
 
             UATM::availabilityInfo bfr;

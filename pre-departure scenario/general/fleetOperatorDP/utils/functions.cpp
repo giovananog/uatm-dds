@@ -9,46 +9,55 @@
 #include <chrono>
 #include <iomanip>
 
-void updateAvailabilityFile(const UATM::availabilityInfo& msg) {
-    std::string filename = "fleetOperatorDP/data/availabilities.txt"; 
+void updateAvailabilityFile(const UATM::availabilityInfo &msg)
+{
+    std::string filename = "fleetOperatorDP/data/availabilities.txt";
     std::ifstream file(filename);
     std::string line;
     std::vector<std::string> lines;
     bool found = false;
 
-    while (std::getline(file, line)) {
-        if (!line.empty()) {
-            if (line.find("resource_id=" + std::string(msg.resource_id.in())) != std::string::npos) {
-                if (msg.available == 0) {
+    while (std::getline(file, line))
+    {
+        if (!line.empty())
+        {
+            if (line.find("resource_id=" + std::string(msg.resource_id.in())) != std::string::npos)
+            {
+                if (msg.available == 0)
+                {
                     found = true;
-                    continue; 
+                    continue;
                 }
             }
-            lines.push_back(line); 
+            lines.push_back(line);
         }
     }
     file.close();
 
-    if (msg.available == 1) {
+    if (msg.available == 1)
+    {
         std::ostringstream new_line;
         new_line << "resource_id=" << msg.resource_id.in()
                  << ",resource_type=" << msg.resource_type.in()
-                  << ",available=" << msg.available
-                  << ",skyport_id=" << msg.skyport_id.in()
-                  << ",availability_time=" << msg.availability_time.in();
+                 << ",available=" << msg.available
+                 << ",skyport_id=" << msg.skyport_id.in()
+                 << ",availability_time=" << msg.availability_time.in();
         lines.push_back(new_line.str());
     }
 
     std::ofstream out_file(filename);
-    for (const auto &l : lines) {
+    for (const auto &l : lines)
+    {
         out_file << l << "\n";
     }
     out_file.close();
 }
 
-bool removeAssignedResources(const std::string &availabilityFile, const std::string &evtolID, const std::string &pilotID) {
+bool removeAssignedResources(const std::string &availabilityFile, const std::string &evtolID, const std::string &pilotID)
+{
     std::ifstream infile(availabilityFile);
-    if (!infile.is_open()) {
+    if (!infile.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo de disponibilidades: " << availabilityFile << std::endl;
         return false;
     }
@@ -58,7 +67,8 @@ bool removeAssignedResources(const std::string &availabilityFile, const std::str
     bool evtolRemoved = false;
     bool pilotRemoved = false;
 
-    while (std::getline(infile, line)) {
+    while (std::getline(infile, line))
+    {
         std::istringstream iss(line);
         std::string token;
         std::string resource_id, resource_type;
@@ -68,12 +78,15 @@ bool removeAssignedResources(const std::string &availabilityFile, const std::str
         std::getline(iss, token, ',');
         resource_type = token.substr(token.find('=') + 1);
 
-        if (resource_id == evtolID && resource_type == "evtol") {
+        if (resource_id == evtolID && resource_type == "evtol")
+        {
             evtolRemoved = true;
-            continue;  
-        } else if (resource_id == pilotID && resource_type == "pilot") {
+            continue;
+        }
+        else if (resource_id == pilotID && resource_type == "pilot")
+        {
             pilotRemoved = true;
-            continue;  
+            continue;
         }
 
         newFileContent << line << "\n";
@@ -81,16 +94,20 @@ bool removeAssignedResources(const std::string &availabilityFile, const std::str
 
     infile.close();
 
-    if (evtolRemoved && pilotRemoved) {
+    if (evtolRemoved && pilotRemoved)
+    {
         std::ofstream outfile(availabilityFile);
-        if (!outfile.is_open()) {
+        if (!outfile.is_open())
+        {
             std::cerr << "Erro ao abrir o arquivo para escrita: " << availabilityFile << std::endl;
             return false;
         }
         outfile << newFileContent.str();
         outfile.close();
         return true;
-    } else {
+    }
+    else
+    {
         std::cerr << "Erro: Um ou ambos os recursos não foram encontrados no arquivo de disponibilidades." << std::endl;
         return false;
     }
@@ -99,7 +116,8 @@ bool removeAssignedResources(const std::string &availabilityFile, const std::str
 bool checkAvailability(const std::string &resourceFile, std::string &evtolID, std::string &pilotID)
 {
     std::ifstream infile(resourceFile);
-    if (!infile.is_open()) {
+    if (!infile.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo: " << resourceFile << std::endl;
         return false;
     }
@@ -116,21 +134,32 @@ bool checkAvailability(const std::string &resourceFile, std::string &evtolID, st
 
         while (std::getline(iss, key, '=') && std::getline(iss, value, ','))
         {
-            if (key == "resource_id") {
+            if (key == "resource_id")
+            {
                 resource_id = value;
-            } else if (key == "available") {
+            }
+            else if (key == "available")
+            {
                 available = value;
-            } else if (key == "skyport_id") {
+            }
+            else if (key == "skyport_id")
+            {
                 skyport_id = value;
-            } else if (key == "resource_type") {
+            }
+            else if (key == "resource_type")
+            {
                 resource_type = value;
             }
         }
-        
-        if (available == "1") {
-            if (resource_type == "evtol") {
+
+        if (available == "1")
+        {
+            if (resource_type == "evtol")
+            {
                 evtols.insert(resource_id);
-            } else if (resource_type == "pilot") {
+            }
+            else if (resource_type == "pilot")
+            {
                 pilots.insert(resource_id);
             }
         }
@@ -138,26 +167,29 @@ bool checkAvailability(const std::string &resourceFile, std::string &evtolID, st
 
     if (!evtols.empty() && !pilots.empty())
     {
-        evtolID = *evtols.begin(); 
-        pilotID = *pilots.begin(); 
+        evtolID = *evtols.begin();
+        pilotID = *pilots.begin();
         return true;
     }
 
     return false;
 }
 
-bool checkWeatherConditions(const std::string& weatherFile, const std::string& location, std::string& weatherID) {
+bool checkWeatherConditions(const std::string &weatherFile, const std::string &location, std::string &weatherID)
+{
     std::ifstream infile(weatherFile);
-    if (!infile.is_open()) {
+    if (!infile.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo de clima: " << weatherFile << std::endl;
         return false;
     }
 
     std::string line;
     std::string latestWeatherID;
-    bool foundLocation = false;   
+    bool foundLocation = false;
 
-    while (std::getline(infile, line)) {
+    while (std::getline(infile, line))
+    {
         std::istringstream iss(line);
         std::string token;
         std::string weather_id, location_name, temperature, wind_speed, weather_condition, observation_time;
@@ -174,38 +206,43 @@ bool checkWeatherConditions(const std::string& weatherFile, const std::string& l
         weather_condition = token.substr(token.find(':') + 1);
         std::getline(iss, token);
         observation_time = token.substr(token.find(':') + 1);
-        
+
         std::string location_name_str = CORBA::string_dup(location_name.c_str());
         std::string weather_condition_str = CORBA::string_dup(weather_condition.c_str());
-        
-        if (CORBA::string_dup(location_name.c_str()) == location && (weather_condition_str== "Clear Sky" || weather_condition_str == "Partly Cloudy")) {
-            latestWeatherID = weather_id;  
-            foundLocation = true;  
+        latestWeatherID = weather_id;
+
+        if (CORBA::string_dup(location_name.c_str()) == location && (weather_condition_str == "Clear Sky" || weather_condition_str == "Partly Cloudy"))
+        {
+            foundLocation = true;
         }
     }
 
     infile.close();
 
-    if (foundLocation) {
-        weatherID = latestWeatherID;  
+    if (foundLocation)
+    {
+        weatherID = latestWeatherID;
         return true;
-    } 
-    
-    return false;  
+    }
+
+    return false;
 }
 
-bool checkRouteAvailability(const std::string& routeFile, const std::string& origin, const std::string& destination, std::string& routeID) {
+bool checkRouteAvailability(const std::string &routeFile, const std::string &origin, const std::string &destination, std::string &routeID)
+{
     std::ifstream infile(routeFile);
-    if (!infile.is_open()) {
+    if (!infile.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo de rotas: " << routeFile << std::endl;
         return false;
     }
 
     std::string line;
-    std::string latestRouteID;  
-    bool foundRoute = false;    
+    std::string latestRouteID;
+    bool foundRoute = false;
 
-    while (std::getline(infile, line)) {
+    while (std::getline(infile, line))
+    {
         std::istringstream iss(line);
         std::string token;
         std::string route_id, origin_skyport, destination_skyport, available_capacity, available, traffic_density;
@@ -223,26 +260,29 @@ bool checkRouteAvailability(const std::string& routeFile, const std::string& ori
         std::getline(iss, token);
         traffic_density = token.substr(token.find(':') + 1);
 
-        if (CORBA::string_dup(origin_skyport.c_str()) == origin && CORBA::string_dup(destination_skyport.c_str()) == destination && available == "1") {
-            latestRouteID = route_id;  
-            foundRoute = true;  
+        if (CORBA::string_dup(origin_skyport.c_str()) == origin && CORBA::string_dup(destination_skyport.c_str()) == destination && available == "1")
+        {
+            latestRouteID = route_id;
+            foundRoute = true;
         }
     }
 
     infile.close();
 
-    if (foundRoute) {
+    if (foundRoute)
+    {
         routeID = latestRouteID;
         return true;
     }
 
-    return false;  
+    return false;
 }
 
 bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &originSkID, std::string &destSkID)
 {
     std::ifstream infile(flightFile);
-    if (!infile.is_open()) {
+    if (!infile.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo: " << flightFile << std::endl;
         return false;
     }
@@ -251,7 +291,8 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
     std::stringstream newFileContent;
     bool assigned = false;
 
-    while (std::getline(infile, line)) {
+    while (std::getline(infile, line))
+    {
         std::istringstream iss(line);
         std::string booking_id, costumer_id, flight_id, origin_skyport_id, destination_skyport_id, pilot_id, evtol_id, weather_id, route_id, tolpad_id, status;
         std::string token;
@@ -279,10 +320,8 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
         std::getline(iss, token);
         status = token.substr(token.find(':') + 1);
 
-        std::string status_str = CORBA::string_dup(status.c_str());
-        
-        if (pilot_id.empty() && evtol_id.empty() && !assigned && status_str == "1") {
-            
+        if (pilot_id.empty() && evtol_id.empty() && !assigned)
+        {
             std::string weatherFile = "fleetOperatorDP/data/weather.txt";
             std::string routeFile = "fleetOperatorDP/data/routes.txt";
             std::string weatherID, routeID;
@@ -292,65 +331,62 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
 
             pilot_id = pilotID;
             evtol_id = evtolID;
-            origin_skyport_id = originSkID;
-            destination_skyport_id = destSkID;
+            originSkID = origin_skyport_id;
+            destSkID = destination_skyport_id;
+            weather_id = weatherID;
+            route_id = routeID;
 
-            if (weatherID != "") {
-                weather_id = weatherID;
-            } else {
-                weather_id = "1";
-            }
-            if (routeID != "") {
-                route_id = routeID;
-            } else {
-                route_id = "1";
-            }
+
             flightID = flight_id;
-            assigned = true;
-            
-            if (status_send) {
+
+            if (status_send)
+            {
+                assigned = true;
                 status = "1";
-            }else {
+            }
+            else
+            {
                 status = "0";
             }
-        } 
-
+        }
         newFileContent << "booking_id:" << booking_id << ",costumer_id:" << costumer_id
                        << ",flight_id:" << flight_id << ",origin_skyport_id:" << origin_skyport_id
-                       << ",destination_skyport_id:" << destination_skyport_id << ",pilot_id:" << pilot_id 
-                       << ",evtol_id:" << evtol_id << ",weather_id:" << weather_id 
-                       << ",route_id:" << route_id << ",tolpad_id:" << tolpad_id 
+                       << ",destination_skyport_id:" << destination_skyport_id << ",pilot_id:" << pilot_id
+                       << ",evtol_id:" << evtol_id << ",weather_id:" << weather_id
+                       << ",route_id:" << route_id << ",tolpad_id:" << tolpad_id
                        << ",status:" << status << "\n";
     }
 
     infile.close();
 
-    if (assigned) {
-        std::ofstream outfile(flightFile);
-        if (!outfile.is_open()) {
-            std::cerr << "Erro ao abrir o arquivo para escrita: " << flightFile << std::endl;
-            return false;
-        }
-
-        outfile << newFileContent.str();
-        outfile.close();
+    std::ofstream outfile(flightFile);
+    if (!outfile.is_open())
+    {
+        std::cerr << "Erro ao abrir o arquivo para escrita: " << flightFile << std::endl;
+        return false;
     }
+
+    outfile << newFileContent.str();
+    outfile.close();
 
     return assigned;
 }
 
-std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
+std::vector<BookingData> readBookingsFromFile(const std::string &filename)
+{
     std::ifstream file(filename);
     std::string line;
     std::vector<BookingData> bookings;
 
-    while (std::getline(file, line)) {
+    while (std::getline(file, line))
+    {
         std::istringstream ss(line);
         std::string token;
         BookingData booking;
 
         std::map<std::string, std::string> keyValuePairs;
-        while (std::getline(ss, token, ',')) {
+        while (std::getline(ss, token, ','))
+        {
             auto delimiter_pos = token.find(":");
             std::string key = token.substr(0, delimiter_pos);
             std::string value = token.substr(delimiter_pos + 1);
@@ -367,7 +403,11 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
         booking.weather_id = keyValuePairs["weather_id"];
         booking.route_id = keyValuePairs["route_id"];
         booking.tolpad_id = keyValuePairs["tolpad_id"];
-        booking.status = std::stoi(keyValuePairs["status"]);
+
+        if (!keyValuePairs["status"].empty())
+        {
+            booking.status = std::stoi(keyValuePairs["status"]);
+        }
 
         bookings.push_back(booking);
     }
@@ -375,46 +415,61 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename) {
     return bookings;
 }
 
-Route* findRouteById(std::vector<Route>& routes, const std::string& route_id) {
-    auto it = std::find_if(routes.begin(), routes.end(), [&](Route& r) {
-        return r.route_id == route_id;
-    });
+Route *findRouteById(std::vector<Route> &routes, const std::string &route_id)
+{
+    auto it = std::find_if(routes.begin(), routes.end(), [&](Route &r)
+                           { return r.route_id == route_id; });
     return (it != routes.end()) ? &(*it) : nullptr;
 }
 
-std::vector<Route> readRoutesFromFile(const std::string& filename) {
+std::vector<Route> readRoutesFromFile(const std::string &filename)
+{
     std::vector<Route> routes;
     std::ifstream file(filename);
 
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         std::cerr << "Erro ao abrir o arquivo: " << filename << std::endl;
         return routes;
     }
 
     std::string line;
-    while (std::getline(file, line)) {
+    while (std::getline(file, line))
+    {
         std::istringstream iss(line);
         Route route;
         std::string token;
 
-        while (std::getline(iss, token, ',')) {
+        while (std::getline(iss, token, ','))
+        {
             std::istringstream keyValueStream(token);
             std::string key, value;
 
             std::getline(keyValueStream, key, ':');
             std::getline(keyValueStream, value);
 
-            if (key == "route_id") {
+            if (key == "route_id")
+            {
                 route.route_id = value;
-            } else if (key == "origin_skyport_id") {
+            }
+            else if (key == "origin_skyport_id")
+            {
                 route.origin_skyport_id = value;
-            } else if (key == "destination_skyport_id") {
+            }
+            else if (key == "destination_skyport_id")
+            {
                 route.destination_skyport_id = value;
-            } else if (key == "available_capacity") {
+            }
+            else if (key == "available_capacity")
+            {
                 route.available_capacity = std::stoi(value);
-            } else if (key == "available") {
+            }
+            else if (key == "available")
+            {
                 route.available = (value == "1");
-            } else if (key == "traffic_density") {
+            }
+            else if (key == "traffic_density")
+            {
                 route.traffic_density = value;
             }
         }
@@ -426,11 +481,12 @@ std::vector<Route> readRoutesFromFile(const std::string& filename) {
     return routes;
 }
 
-std::string getCurrentTime() {
+std::string getCurrentTime()
+{
     std::time_t now = std::time(nullptr);
-    
-    std::tm* local_time = std::localtime(&now);
-    
+
+    std::tm *local_time = std::localtime(&now);
+
     std::ostringstream oss;
     oss << std::setw(2) << std::setfill('0') << local_time->tm_hour << ":"
         << std::setw(2) << std::setfill('0') << local_time->tm_min << ":"

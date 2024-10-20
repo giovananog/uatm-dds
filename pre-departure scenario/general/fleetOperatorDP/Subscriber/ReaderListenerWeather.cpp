@@ -11,6 +11,7 @@ ReaderListenerWeather::ReaderListenerWeather(OpenDDS::Model::ReaderCondSync &rcs
 void ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
 {
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
+  static bool signal_sent = false;
 
   UATM::weatherInfoDataReader_var reader_i =
       UATM::weatherInfoDataReader::_narrow(reader);
@@ -55,7 +56,11 @@ void ReaderListenerWeather::on_data_available(DDS::DataReader_ptr reader)
       }
       else
       {
-        rcs_.signal();
+        if (!signal_sent)
+        {
+          rcs_.signal();
+          signal_sent = true;
+        }
         break;
       }
     }

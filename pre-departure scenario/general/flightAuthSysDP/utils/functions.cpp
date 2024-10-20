@@ -28,8 +28,7 @@ std::vector<flightRequestInfo> readRequestsFromFile(const std::string& filename)
         std::getline(ss, destination_skyport_id, ',');
         std::getline(ss, departure_time, ',');
         std::getline(ss, pilot_id, ',');
-        std::getline(ss, evtol_id, ',');
-        std::getline(ss, sent_req);
+        std::getline(ss, evtol_id);
 
         request.auth_request_id = auth_request_id.substr(auth_request_id.find(':') + 1);
         request.flight_id = flight_id.substr(flight_id.find(':') + 1);
@@ -38,38 +37,10 @@ std::vector<flightRequestInfo> readRequestsFromFile(const std::string& filename)
         request.departure_time = departure_time.substr(departure_time.find(':') + 1);
         request.pilot_id = pilot_id.substr(pilot_id.find(':') + 1);
         request.evtol_id = evtol_id.substr(evtol_id.find(':') + 1);
-        request.sent_req = std::stoi(sent_req.substr(sent_req.find(':') + 1));
         
         requests.push_back(request);
     }
 
     request_file.close();  
     return requests;
-}
-
-void updateSentReq(const std::string &filename, std::string &flight_id) {
-    std::ifstream file(filename);
-    std::string line;
-    std::vector<std::string> lines;
-
-    if (!file.is_open()) {
-        std::cerr << "Erro ao abrir o arquivo para atualizar bookings." << std::endl;
-        return;
-    }
-
-    while (std::getline(file, line)) {
-        if (line.find(flight_id) != std::string::npos) {
-            size_t pos = line.find("sent_req:0"); 
-            if (pos != std::string::npos) {
-                line.replace(pos, 12, "sent_req:1"); 
-            }
-        }
-        lines.push_back(line); 
-    }
-    file.close();
-
-    std::ofstream outFile(filename);
-    for (const auto &l : lines) {
-        outFile << l << "\n";
-    }
 }

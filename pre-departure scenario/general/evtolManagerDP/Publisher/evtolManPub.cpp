@@ -34,21 +34,34 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     std::string filename = "evtolManagerDP/data/evtols.txt";
     std::unordered_set<std::string> sent_evtols;
+    auto startTime = std::chrono::steady_clock::now();
+    double duration = 100.0;
 
     while (true)
     {
       std::vector<EVTOL> evtols = readEVTOLsFromFile(filename);
+      auto currentTime = std::chrono::steady_clock::now();
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+
+      if (elapsedTime.count() >= duration)
+      {
+        std::ofstream file(filename, std::ios::trunc);
+
+        std::string data =
+            "evtol_id=eVTOL-1,skyport_id=Skyport-1,available=1\n"
+            "evtol_id=eVTOL-2,skyport_id=Skyport-1,available=1\n"
+            "evtol_id=eVTOL-3,skyport_id=Skyport-2,available=1\n";
+        file << data;
+        file.close();
+
+        break;
+      }
       OpenDDS::Model::WriterSync ws(writer);
       {
-        if (evtols.empty())
-        {
-          // std::cout << "Todos os eVTOLs foram enviados!" << std::endl;
-          break;
-        }
 
         for (const auto &evtol : evtols)
         {
-          if (sent_evtols.find(std::string(evtol.evtol_id)) == sent_evtols.end())
+          if (sent_evtols.find(std::string(evtol.evtol_id)) == sent_evtols.end() || evtol.available == 1)
           {
 
             UATM::availabilityInfo bfr;
