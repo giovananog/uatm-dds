@@ -47,7 +47,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                           << ",skyport_id:" << msg.skyport_id.in()
                           << ",assign_time:" << msg.assign_time.in() << std::endl;
                 
-                updateTolPadStatus(msg.tol_pad_id.in(), 0);
+                updateTolPadStatus(msg.tol_pad_id.in(), 1);
                 break;
             }
             else
