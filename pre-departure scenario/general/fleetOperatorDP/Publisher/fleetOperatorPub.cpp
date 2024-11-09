@@ -1,6 +1,9 @@
+// If using ACE as a static library, include the necessary Tcp header.
 #ifdef ACE_AS_STATIC_LIBS
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #endif
+
+// Standard libraries for input/output, file handling, and threading.
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -9,25 +12,32 @@
 #include <thread>
 #include <chrono>
 #include <unordered_set>
+
+// Headers for DDS synchronization, ACE logging, and model utilities.
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
 #include "../utils/functions.h"
 
+// Main function to initialize and run the DDS application.
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
+    // Initialize DDS application and UATM models.
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
     UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
     UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
+    // Access writer elements within the UATM model namespace.
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
+    // Set up DataWriter for flight assignments.
     DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::assignFlightDW_FOP);
     UATM::flightAssignDataWriter_var writer_assign_var = UATM::flightAssignDataWriter::_narrow(writer_assign.in());
 
+    // Check if narrowing succeeded; return error if failed.
     if (CORBA::is_nil(writer_assign_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
@@ -36,6 +46,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    // Set up DataWriter for flight coordination.
     DDS::DataWriter_var writer_coord = model3.writer(Elements::DataWriters::flightCoordDW_FOP);
     UATM::flightCoordinationDataWriter_var writer_coord_var = UATM::flightCoordinationDataWriter::_narrow(writer_coord.in());
 
@@ -47,6 +58,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    // Set up DataWriter for flight authorization requests.
     DDS::DataWriter_var writer_request = model2.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
     UATM::flightAuthorizationRequestDataWriter_var writer_request_var = UATM::flightAuthorizationRequestDataWriter::_narrow(writer_request.in());
 
@@ -58,29 +70,31 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
+    // Initialize variables for unique identifiers and tracking.
     int flight_assign_id = 1;
-    int i = 0;
-
     std::unordered_set<std::string> sent_coord;
     std::unordered_set<std::string> sent_auth;
     std::unordered_set<std::string> assigned_pilots;
     std::unordered_set<std::string> assigned_evtols;
 
+    // Set the simulation start time and duration.
     auto startTime = std::chrono::steady_clock::now();
     double duration = 100.0;
 
+    // Main simulation loop that continues until the duration is reached.
     while (true)
     {
       auto currentTime = std::chrono::steady_clock::now();
       std::chrono::duration<double> elapsedTime = currentTime - startTime;
 
-      std::string evtolID, pilotID, flightID, originSkID, destSkID;
+      // File paths for resource availability, weather, routes, and flight requests.
       std::string resourceFile = "fleetOperatorDP/data/availabilities.txt";
       std::string weatherFile = "fleetOperatorDP/data/weather.txt";
       std::string routeFile = "fleetOperatorDP/data/routes.txt";
       std::string filename = "fleetOperatorDP/data/requests.txt";
       std::string flightFile = "fleetOperatorDP/data/requests.txt";
 
+      // If elapsed time exceeds duration, truncate files and break the loop.
       if (elapsedTime.count() >= duration)
       {
         std::ofstream outfile(resourceFile, std::ofstream::trunc);
@@ -96,16 +110,19 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         break;
       }
 
+      // Load bookings from file and prepare to write flight assignment data.
       std::vector<BookingData> bookings = readBookingsFromFile(filename);
-
       OpenDDS::Model::WriterSync ws(writer_assign);
+
       {
+        // If resources are available, assign flights to evtols and pilots.
         if (checkAvailability(resourceFile, evtolID, pilotID))
         {          
           if (findAndAssignFlight(flightFile, evtolID, pilotID, flightID, originSkID, destSkID))
           {
             UATM::flightAssign fa;
 
+            // Set properties for the flight assignment data.
             fa.flight_assign_id = flight_assign_id++;
             fa.assign_time = CORBA::string_dup(getCurrentTime().c_str());
             fa.flight_id = CORBA::string_dup(flightID.c_str());
@@ -116,6 +133,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
             removeAssignedResources(resourceFile, evtolID, pilotID);
 
+            // Write the assignment to DDS.
             DDS::ReturnCode_t error = writer_assign_var->write(fa, DDS::HANDLE_NIL);
 
             if (error != DDS::RETCODE_OK)
@@ -129,6 +147,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         }
       }
 
+      // Synchronize and write flight coordination data.
       OpenDDS::Model::WriterSync ws2(writer_coord);
       {
         for (const auto &booking : bookings)
@@ -155,7 +174,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                          error));
             }
 
-            i++;
             sent_coord.insert(std::string(booking.flight_id));
 
             break;
@@ -163,6 +181,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         }
       }
 
+      // Synchronize and write flight authorization requests.
       OpenDDS::Model::WriterSync ws3(writer_request);
       {
         for (const auto &booking : bookings)
@@ -193,24 +212,22 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             }
 
             sent_auth.insert(std::string(booking.flight_id));
+
             break;
           }
         }
       }
+
+      // Pause to avoid overwhelming the system.
+      std::this_thread::sleep_for(std::chrono::seconds(3));
     }
   }
   catch (const CORBA::Exception &e)
   {
-    e._tao_print_exception("Exception caught in main():");
-    return -1;
+    // Print exception details in case of a CORBA error.
+    e._tao_print_exception("CORBA Exception caught in main():");
+    return 1;
   }
-  catch (const std::exception &ex)
-  {
-    ACE_ERROR_RETURN((LM_ERROR,
-                      ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                          ACE_TEXT(" Exception caught: %C\n"),
-                      ex.what()),
-                     -1);
-  }
+
   return 0;
 }

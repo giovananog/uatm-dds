@@ -7,6 +7,7 @@
 #include <chrono>
 #include <iomanip>
 
+// Reads a list of pilots from a file and returns a vector of Pilot objects.
 std::vector<Pilot> readPilotsFromFile(const std::string &filename)
 {
   std::ifstream file(filename);
@@ -41,6 +42,7 @@ std::vector<Pilot> readPilotsFromFile(const std::string &filename)
   return pilots;
 }
 
+// Updates the pilot's availability status and modifies their skyport assignment.
 void updatePilotStatus(const std::string &pilot_id, int new_available, const std::string &destination_skyport_id) {
     std::string filename = "pilotManagerDP/data/pilots.txt"; 
     std::ifstream file(filename);
@@ -52,7 +54,6 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, const std
     while (std::getline(file, line)) {
         if (!line.empty()) {
             if (line.find("pilot_id=" + pilot_id) != std::string::npos) 
-            // if (line.find("pilot_id=" + pilot_id) != std::string::npos && line.find("skyport_id=" + destination_skyport_id) != std::string::npos) 
             {
                 std::istringstream ss(line);
                 std::string token;
@@ -76,7 +77,6 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, const std
     file.close();
 
     if (origin_updated && !destination_added) {
-        std::cout << "\n\n" << destination_skyport_id << "\n\n";
         std::string new_line = "pilot_id=" + pilot_id + ",skyport_id=" + destination_skyport_id + ",available=1";
         lines.push_back(new_line);
         destination_added = true;
@@ -89,7 +89,7 @@ void updatePilotStatus(const std::string &pilot_id, int new_available, const std
     out_file.close();
 }
 
-
+// Returns the current time as a string in HH:MM:SS format.
 std::string getCurrentTime() {
     std::time_t now = std::time(nullptr);
     

@@ -6,6 +6,7 @@
 #include "../../model/UATMTraits.h"
 #include <unordered_set>
 
+// Checks availability of tolPads from the given resource file.
 bool checkAvailability(const std::string &resourceFile, std::string &tolPadID)
 {
     std::ifstream infile(resourceFile);
@@ -60,6 +61,7 @@ bool checkAvailability(const std::string &resourceFile, std::string &tolPadID)
 return false;
 }
 
+// Reads and returns a list of tolPads from the specified resource file.
 std::vector<TolPad> read_tolpads(const std::string &resourceFile)
 {
     std::ifstream file(resourceFile);
@@ -103,6 +105,7 @@ std::vector<TolPad> read_tolpads(const std::string &resourceFile)
     return tolPads;
 }
 
+// Reads and returns request information from a specified file.
 std::vector<requestInfo> read_requests_from_file(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -155,6 +158,7 @@ std::vector<requestInfo> read_requests_from_file(const std::string &filename)
     return requests;
 }
 
+// Retrieves and updates flight ID with an empty tolPad ID in the requests file.
 std::string getAndUpdateFlightIDWithEmptyTolPad(const std::string &filename, const std::string &tolPadID)
 {
     std::ifstream request_file(filename);
@@ -229,6 +233,7 @@ std::string getAndUpdateFlightIDWithEmptyTolPad(const std::string &filename, con
     return flight_id;
 }
 
+// Checks weather conditions for a specific location and returns a weather ID if conditions are met.
 bool checkWeatherConditions(const std::string &weatherFile, const std::string &location, std::string &weatherID)
 {
     std::ifstream infile(weatherFile);
@@ -282,6 +287,7 @@ bool checkWeatherConditions(const std::string &weatherFile, const std::string &l
     return false;
 }
 
+// Checks flow conditions for a given area and returns a flow ID if conditions are met.
 bool checkFlowConditions(const std::string &flowsFile, const std::string &area, std::string &flowsID)
 {
     std::ifstream infile(flowsFile);
@@ -328,6 +334,7 @@ bool checkFlowConditions(const std::string &flowsFile, const std::string &area, 
     return false;
 }
 
+// Checks restriction conditions for a given area and returns a restriction ID if conditions are met.
 bool checkRestrictionConditions(const std::string &restrictionsFile, const std::string &area, std::string &restrictionID)
 {
     std::ifstream infile(restrictionsFile);
@@ -374,6 +381,7 @@ bool checkRestrictionConditions(const std::string &restrictionsFile, const std::
     return false;
 }
 
+// Removes the assigned tolPad from the given file based on tolPad ID.
 bool removeAssignedTolPads(const std::string &tolPadsFile, const std::string &tolpadID) {
     std::ifstream infile(tolPadsFile);
     if (!infile.is_open()) {
@@ -418,6 +426,7 @@ bool removeAssignedTolPads(const std::string &tolPadsFile, const std::string &to
     }
 }
 
+// Returns the current time as a string in the format HH:MM:SS.
 std::string getCurrentTime() {
     std::time_t now = std::time(nullptr);
     

@@ -7,7 +7,7 @@
 #include <chrono>
 #include <iomanip>
 
-
+// Reads a list of skyports from a file and returns a vector of Skyport objects.
 std::vector<Skyport> readSkyportsFromFile(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -49,6 +49,7 @@ std::vector<Skyport> readSkyportsFromFile(const std::string &filename)
     return skyports;
 }
 
+// Returns the current time as a string in HH:MM:SS format.
 std::string getCurrentTime() {
     std::time_t now = std::time(nullptr);
     

@@ -9,6 +9,7 @@
 #include <chrono>
 #include <iomanip>
 
+// This function updates the availability file for a given resource, adding or removing entries based on the availability status
 void updateAvailabilityFile(const UATM::availabilityInfo &msg)
 {
     std::string filename = "fleetOperatorDP/data/availabilities.txt";
@@ -53,6 +54,7 @@ void updateAvailabilityFile(const UATM::availabilityInfo &msg)
     out_file.close();
 }
 
+// This function removes the assigned resources (evtol and pilot) from the availability file based on their IDs
 bool removeAssignedResources(const std::string &availabilityFile, const std::string &evtolID, const std::string &pilotID)
 {
     std::ifstream infile(availabilityFile);
@@ -113,6 +115,7 @@ bool removeAssignedResources(const std::string &availabilityFile, const std::str
     }
 }
 
+// This function checks the availability of resources (evtol and pilot) from the resource file and updates the given IDs
 bool checkAvailability(const std::string &resourceFile, std::string &evtolID, std::string &pilotID)
 {
     std::ifstream infile(resourceFile);
@@ -175,6 +178,7 @@ bool checkAvailability(const std::string &resourceFile, std::string &evtolID, st
     return false;
 }
 
+//This function checks the weather conditions for a specific location from the weather file and retrieves the weather ID
 bool checkWeatherConditions(const std::string &weatherFile, const std::string &location, std::string &weatherID)
 {
     std::ifstream infile(weatherFile);
@@ -228,6 +232,7 @@ bool checkWeatherConditions(const std::string &weatherFile, const std::string &l
     return false;
 }
 
+// This function checks the availability of a specific route between two skyports from the routes file and retrieves the route ID
 bool checkRouteAvailability(const std::string &routeFile, const std::string &origin, const std::string &destination, std::string &routeID)
 {
     std::ifstream infile(routeFile);
@@ -278,6 +283,7 @@ bool checkRouteAvailability(const std::string &routeFile, const std::string &ori
     return false;
 }
 
+// This function assigns a flight to a pilot and evtol by checking conditions such as weather, route, and availability, and updates the flight details.
 bool findAndAssignFlight(const std::string &flightFile, const std::string &evtolID, const std::string &pilotID, std::string &flightID, std::string &originSkID, std::string &destSkID)
 {
     std::ifstream infile(flightFile);
@@ -372,6 +378,7 @@ bool findAndAssignFlight(const std::string &flightFile, const std::string &evtol
     return assigned;
 }
 
+// This function reads the bookings from the specified file and stores them in a vector of BookingData structures
 std::vector<BookingData> readBookingsFromFile(const std::string &filename)
 {
     std::ifstream file(filename);
@@ -415,6 +422,7 @@ std::vector<BookingData> readBookingsFromFile(const std::string &filename)
     return bookings;
 }
 
+// Finds and returns a pointer to a Route object with the given route_id from the vector of Routes, or nullptr if not found
 Route *findRouteById(std::vector<Route> &routes, const std::string &route_id)
 {
     auto it = std::find_if(routes.begin(), routes.end(), [&](Route &r)
@@ -422,6 +430,7 @@ Route *findRouteById(std::vector<Route> &routes, const std::string &route_id)
     return (it != routes.end()) ? &(*it) : nullptr;
 }
 
+// Reads a file and parses its contents into a vector of Route objects based on a specific format
 std::vector<Route> readRoutesFromFile(const std::string &filename)
 {
     std::vector<Route> routes;
@@ -481,6 +490,7 @@ std::vector<Route> readRoutesFromFile(const std::string &filename)
     return routes;
 }
 
+// Returns the current local time formatted as a string (HH:MM)
 std::string getCurrentTime()
 {
     std::time_t now = std::time(nullptr);
