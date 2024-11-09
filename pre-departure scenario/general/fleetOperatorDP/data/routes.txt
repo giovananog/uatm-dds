@@ -1,0 +1,1 @@
+route_id:17,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:5,available:1,traffic_density:Medium

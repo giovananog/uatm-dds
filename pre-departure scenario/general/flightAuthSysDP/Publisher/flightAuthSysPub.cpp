@@ -1,28 +1,32 @@
+// Checks if we are using the ACE static libraries.
 #ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>
+#include <dds/DCPS/transport/tcp/Tcp.h>  // Includes the OpenDDS TCP transport library.
 #endif
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
-#include "../../model/UATMTraits.h"
-#include "../utils/functions.h"
-#include <vector>
-#include <dds/DCPS/WaitSet.h>
-#include <string>
-#include <thread>
-#include <unordered_set>
+#include <model/Sync.h>  // Includes model synchronization definitions.
+#include <ace/Log_Msg.h>  // Includes log message functions.
+#include "../../model/UATMTraits.h"  // Includes UATM traits file.
+#include "../utils/functions.h"  // Includes utility functions.
+#include <vector>  // For vector usage.
+#include <dds/DCPS/WaitSet.h>  // For using WaitSet in OpenDDS.
+#include <string>  // For string manipulation.
+#include <thread>  // For using thread functionalities.
+#include <unordered_set>  // For using an unordered set (hash set).
 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
+    // Initializes the application with command-line arguments.
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
+    // Creates the writer for the flightRequestInfo type.
     DDS::DataWriter_var writer_request = model.writer(Elements::DataWriters::flightRequestInfoDW_FAS);
     UATM::flightRequestInfoDataWriter_var writer_request_var = UATM::flightRequestInfoDataWriter::_narrow(writer_request.in());
 
+    // Checks if the narrowing of the writer was successful.
     if (CORBA::is_nil(writer_request_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
@@ -31,35 +35,39 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    int i = 0;
-    std::unordered_set<std::string> sent_requests;
-    auto startTime = std::chrono::steady_clock::now();
-    double duration = 100.0;
+    int i = 0;  // Initializes the counter.
+    std::unordered_set<std::string> sent_requests;  // Set to store sent request IDs.
+    auto startTime = std::chrono::steady_clock::now();  // Captures the start time.
+    double duration = 100.0;  // Defines the main loop duration.
 
-
+    // Main loop that will continue until the duration is met.
     while (true)
     {
-      auto currentTime = std::chrono::steady_clock::now();
-      std::chrono::duration<double> elapsedTime = currentTime - startTime;
+      auto currentTime = std::chrono::steady_clock::now();  // Gets the current time.
+      std::chrono::duration<double> elapsedTime = currentTime - startTime;  // Calculates the elapsed time.
 
+      // If the duration is reached, breaks out of the loop.
       if (elapsedTime.count() >= duration)
       {
         std::ofstream outfile("flightAuthSysDP/data/requests.txt", std::ofstream::trunc);
-        outfile.close();
-        break;
+        outfile.close();  // Closes the requests file.
+        break;  // Exits the loop.
       }
-      
+
+      // Reads requests from a file.
       std::vector<flightRequestInfo> requests = readRequestsFromFile("flightAuthSysDP/data/requests.txt");
 
-      OpenDDS::Model::WriterSync ws(writer_request);
+      OpenDDS::Model::WriterSync ws(writer_request);  // Creates an object to synchronize the writer.
       {
-        UATM::flightRequestInfo fr;
+        UATM::flightRequestInfo fr;  // Creates an instance of flightRequestInfo.
 
+        // Iterates over the requests read from the file.
         for (auto &fri : requests)
         {
-          // if (fri.sent_req == 0)
+          // Checks if the request has already been sent.
           if (sent_requests.find(std::string(fri.flight_id)) == sent_requests.end())
           {
+            // Fills the fields of the fr object with the request data.
             fr.request_id = CORBA::string_dup(fri.auth_request_id.c_str());
             fr.flight_id = CORBA::string_dup(fri.flight_id.c_str());
             fr.departure_skyport_id = CORBA::string_dup(fri.departure_skyport_id.c_str());
@@ -68,8 +76,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             fr.pilot_id = CORBA::string_dup(fri.pilot_id.c_str());
             fr.evtol_id = CORBA::string_dup(fri.evtol_id.c_str());
 
+            // Sends the message through the writer.
             DDS::ReturnCode_t error = writer_request_var->write(fr, DDS::HANDLE_NIL);
 
+            // Checks if there was an error sending the message.
             if (error != DDS::RETCODE_OK)
             {
               ACE_ERROR((LM_ERROR,
@@ -77,23 +87,24 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                              ACE_TEXT(" write returned %d!\n"),
                          error));
             }
-            i++;
+            i++;  // Increments the counter.
 
+            // Marks the request as sent by adding its ID to the set.
             std::string flight_id_str = CORBA::string_dup(fri.flight_id.c_str());
             sent_requests.insert(std::string(flight_id_str));
-            // updateSentReq("flightAuthSysDP/data/requests.txt", flight_id_str);
-            break;
+
+            break;  // Exits the loop after sending the first request.
           }
         }
       }
     }
   }
-  catch (const CORBA::Exception &e)
+  catch (const CORBA::Exception &e)  // Catches CORBA exceptions.
   {
     e._tao_print_exception("Exception caught in main():");
     return -1;
   }
-  catch (const std::exception &ex)
+  catch (const std::exception &ex)  // Catches standard exceptions.
   {
     ACE_ERROR_RETURN((LM_ERROR,
                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")

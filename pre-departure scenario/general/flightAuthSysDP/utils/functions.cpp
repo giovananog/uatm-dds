@@ -5,6 +5,7 @@
 #include "../../model/UATMTraits.h"
 #include <sstream>
 
+// Reads flight request information from a file and returns a vector of flightRequestInfo objects.
 std::vector<flightRequestInfo> readRequestsFromFile(const std::string& filename) {
     std::vector<flightRequestInfo> requests;
     std::ifstream request_file(filename);
