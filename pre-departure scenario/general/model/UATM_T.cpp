@@ -608,7 +608,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -622,7 +622,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -636,7 +636,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 10;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -650,7 +650,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -664,7 +664,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -674,7 +674,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS;
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //BEST_EFFORT_RELIABILITY_QOS
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
@@ -692,7 +692,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -706,7 +706,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 10;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -720,7 +720,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 1;
   topicQos.history.kind = KEEP_ALL_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -734,7 +734,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -748,7 +748,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -758,7 +758,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
-  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS; 
+  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;//BEST_EFFORT_RELIABILITY_QOS 
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
@@ -776,7 +776,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -790,7 +790,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 50000000;
+  topicQos.deadline.period.nanosec = 500000000000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;

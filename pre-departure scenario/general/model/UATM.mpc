@@ -38,6 +38,7 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../bookingPlatformDP/utils/functions.cpp
     ../bookingPlatformDP/Publisher/bookingPlatformPub.cpp
   }
 }
@@ -49,6 +50,7 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../evtolManagerDP/utils/functions.cpp
     ../evtolManagerDP/Publisher/evtolManPub.cpp
   }
 }
@@ -60,6 +62,7 @@ project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../fleetOperatorDP/utils/functions.cpp
     ../fleetOperatorDP/Publisher/fleetOperatorPub.cpp
   }
 }
@@ -71,6 +74,7 @@ project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../flightAuthSysDP/utils/functions.cpp
     ../flightAuthSysDP/Publisher/flightAuthSysPub.cpp
   }
 }
@@ -82,6 +86,7 @@ project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../pilotManagerDP/utils/functions.cpp
     ../pilotManagerDP/Publisher/pilotManagerPub.cpp
   }
 }
@@ -93,6 +98,7 @@ project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../skyportManagerDP/utils/functions.cpp
     ../skyportManagerDP/Publisher/skyportManagerPub.cpp
   }
 }
@@ -104,6 +110,7 @@ project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../skyportOperatorDP/utils/functions.cpp
     ../skyportOperatorDP/Publisher/skyportOperatorPub.cpp
   }
 }
@@ -115,6 +122,7 @@ project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../tolPadManagerDP/utils/functions.cpp
     ../tolPadManagerDP/Publisher/tolPadManagerPub.cpp
   }
 }
@@ -126,6 +134,7 @@ project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../uaspManagerDP/utils/functions.cpp
     ../uaspManagerDP/Publisher/uaspManPub.cpp
   }
 }
@@ -137,6 +146,7 @@ project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../weatherDP/utils/functions.cpp
     ../weatherDP/Publisher/weatherPub.cpp
   }
 }
@@ -160,6 +170,7 @@ project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../evtolManagerDP/utils/functions.cpp
     ../evtolManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../evtolManagerDP/Subscriber/evtolManagerSub.cpp
   }
@@ -172,6 +183,7 @@ project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../fleetOperatorDP/utils/functions.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerAuth.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerAvailability.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerRec.cpp
@@ -201,6 +213,7 @@ project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../pilotManagerDP/utils/functions.cpp
     ../pilotManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../pilotManagerDP/Subscriber/ReaderListenerRec.cpp
     ../pilotManagerDP/Subscriber/ReaderListenerAuth.cpp
@@ -215,6 +228,7 @@ project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../skyportOperatorDP/utils/functions.cpp
     ../skyportOperatorDP/Subscriber/ReaderListenerCoordination.cpp
     ../skyportOperatorDP/Subscriber/ReaderListenerAvailability.cpp
     ../skyportOperatorDP/Subscriber/skyportOperatorSub.cpp
@@ -228,6 +242,7 @@ project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../tolPadManagerDP/utils/functions.cpp
     ../tolPadManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../tolPadManagerDP/Subscriber/tolPadManagerSub.cpp
   }
@@ -240,6 +255,7 @@ project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model {
   libpaths += model
 
   Source_Files {
+    ../uaspManagerDP/utils/functions.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerAvailability.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerFlows.cpp
