@@ -1,0 +1,175 @@
+version: '2'
+
+services:
+  # Subscribers 1 a 9
+  subscriber1:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber1", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber1"
+
+  subscriber2:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber2", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber2"
+
+  subscriber3:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber3", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber3"
+
+  subscriber4:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber4", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber4"
+
+  subscriber5:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber5", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber5"
+
+  subscriber6:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber6", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber6"
+
+  subscriber7:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber7", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber7"
+
+  subscriber8:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber8", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber8"
+
+  subscriber9:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/subscriber9", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "subscriber9"
+
+  # Publishers 1 a 10
+  publisher1:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher1", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher1"
+
+  publisher2:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher2", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher2"
+
+  publisher3:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher3", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher3"
+
+  publisher4:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher4", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher4"
+
+  publisher5:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher5", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher5"
+
+  publisher6:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher6", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher6"
+
+  publisher7:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher7", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher7"
+
+  publisher8:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher8", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher8"
+
+  publisher9:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher9", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher9"
+
+  publisher10:
+    image: ghcr.io/opendds/opendds:latest
+    command: ["./model/publisher10", "-DCPSConfigFile", "/opt/workspace/model/rtps.ini"]
+    volumes:
+      - .:/opt/workspace
+    environment:
+      - LD_LIBRARY_PATH=/opt/workspace/model
+    hostname: "publisher10"
