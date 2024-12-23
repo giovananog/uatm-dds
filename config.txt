@@ -33,3 +33,6 @@ openssl req -config identity_ca_openssl.cnf -new -key bookingPlatformDP_private_
 
 ## Verificação da assinatura de governança
 openssl smime -verify -in governance/governance_signed.p7s -content governance/governance.xml -CAfile certificates/identity2/identity_ca_cert.pem
+
+## assinar permissions exemplo
+openssl smime -sign -in "permissions_test_participant_bookingPlatform.xml" -text -out "permissions_test_participant_bookingPlatform.p7s" -signer "..\certs\permissions\permissions_ca_cert.pem" -inkey  "..\certs\permissions\permissions_ca_private_key.pem"
