@@ -7,6 +7,8 @@ project(UATM) : dcps, UATM_paths {
   dynamicflags   = UATM_BUILD_DLL
   dcps_ts_flags += -Wb,export_macro=UATM_Export
   prebuild      += perl $(DDS_ROOT)/tools/scripts/expfile.pl UATM
+  libpaths += $(DDS_ROOT)/lib
+ 
 
 
   TypeSupport_Files {
@@ -31,10 +33,11 @@ project(UATM) : dcps, UATM_paths {
   }
 }
 
-project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher1
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -43,10 +46,11 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher2
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -55,10 +59,11 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher3
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -67,10 +72,11 @@ project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher4
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -79,10 +85,11 @@ project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher5
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -91,10 +98,11 @@ project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher6
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -103,10 +111,11 @@ project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher7
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -115,10 +124,11 @@ project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher8
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -127,10 +137,11 @@ project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher9
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -139,10 +150,11 @@ project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = publisher10
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -151,10 +163,11 @@ project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber1
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -163,10 +176,11 @@ project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber2
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -176,10 +190,11 @@ project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber3
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -194,10 +209,11 @@ project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber4) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber4) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber4
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -206,10 +222,11 @@ project(*xmlSubscriber4) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber5
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -221,10 +238,11 @@ project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber6
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -235,10 +253,11 @@ project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber7
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -248,10 +267,11 @@ project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber8
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
@@ -265,10 +285,11 @@ project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model {
   }
 }
 
-project(*xmlSubscriber9) : dcpsexe, all_dcps_transports, dds_model {
+project(*xmlSubscriber9) : dcpsexe, all_dcps_transports, dds_model, opendds_security {
   exename   = subscriber9
   after    += UATM
   libs     += UATM
+  libs += OpenDDS_Security
   libpaths += model
 
   Source_Files {
