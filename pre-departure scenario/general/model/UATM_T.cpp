@@ -9,6 +9,12 @@
 #include "dds/DCPS/transport/udp/UdpInst.h"
 #include "dds/DCPS/transport/multicast/MulticastInst.h"
 
+// For security
+#include <dds/DCPS/security/framework/Properties.h>
+#include <dds/DCPS/security/BuiltInPlugins.h>
+// #include <dds/DCPS/security/framework/SecurityRegistry.h>
+
+
 #include "dds/DCPS/Service_Participant.h"
 #include "model/Utilities.h"
 
@@ -542,53 +548,309 @@ Elements::Data::buildParticipantsQos()
 {
   DomainParticipantQos participantQos;
   Participants::Values participant;
-    
-  participant = Participants::fleetOperatorDP;
-  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::skyportOperatorDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsSO = participantQos.property.value;
+  CORBA::ULong lengthSO = propsSO.length();
+  propsSO.length(lengthSO + 6);
+  propsSO[lengthSO].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsSO[lengthSO].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsSO[lengthSO].propagate = false;
+  propsSO[lengthSO + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsSO[lengthSO + 1].value = (("file:security/certs/identity/participants/skyportOperator_signed.pem"));
+  propsSO[lengthSO + 1].propagate = false;
+  propsSO[lengthSO + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsSO[lengthSO + 2].value = (("file:security/certs/identity/participants/skyportOperator_private_key.pem"));
+  propsSO[lengthSO + 2].propagate = false;
+  propsSO[lengthSO + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsSO[lengthSO + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsSO[lengthSO + 3].propagate = false;
+  propsSO[lengthSO + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsSO[lengthSO + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsSO[lengthSO + 4].propagate = false;
+  propsSO[lengthSO + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsSO[lengthSO + 5].value = ("file:security/permissions/permissions_test_participant_skyportOperator.p7s");
+  propsSO[lengthSO + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::flightAuthSysDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsFA = participantQos.property.value;
+  CORBA::ULong lengthFA = propsFA.length();
+  propsFA.length(lengthFA + 6);
+  propsFA[lengthFA].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsFA[lengthFA].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsFA[lengthFA].propagate = false;
+  propsFA[lengthFA + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsFA[lengthFA + 1].value = (("file:security/certs/identity/participants/flightAuth_signed.pem"));
+  propsFA[lengthFA + 1].propagate = false;
+  propsFA[lengthFA + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsFA[lengthFA + 2].value = (("file:security/certs/identity/participants/flightAuth_private_key.pem"));
+  propsFA[lengthFA + 2].propagate = false;
+  propsFA[lengthFA + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsFA[lengthFA + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsFA[lengthFA + 3].propagate = false;
+  propsFA[lengthFA + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsFA[lengthFA + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsFA[lengthFA + 4].propagate = false;
+  propsFA[lengthFA + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsFA[lengthFA + 5].value = ("file:security/permissions/permissions_test_participant_flightAuthSys.p7s");
+  propsFA[lengthFA + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::uaspManagerDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsUM = participantQos.property.value;
+  CORBA::ULong lengthUM = propsUM.length();
+  propsUM.length(lengthUM + 6);
+  propsUM[lengthUM].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsUM[lengthUM].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsUM[lengthUM].propagate = false;
+  propsUM[lengthUM + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsUM[lengthUM + 1].value = (("file:security/certs/identity/participants/uaspManager_signed.pem"));
+  propsUM[lengthUM + 1].propagate = false;
+  propsUM[lengthUM + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsUM[lengthUM + 2].value = (("file:security/certs/identity/participants/uaspManager_private_key.pem"));
+  propsUM[lengthUM + 2].propagate = false;
+  propsUM[lengthUM + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsUM[lengthUM + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsUM[lengthUM + 3].propagate = false;
+  propsUM[lengthUM + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsUM[lengthUM + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsUM[lengthUM + 4].propagate = false;
+  propsUM[lengthUM + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsUM[lengthUM + 5].value = ("file:security/permissions/permissions_test_participant_uaspManager.p7s");
+  propsUM[lengthUM + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::anspDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsA = participantQos.property.value;
+  CORBA::ULong lengthA = propsA.length();
+  propsA.length(lengthA + 6);
+  propsA[lengthA].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsA[lengthA].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsA[lengthA].propagate = false;
+  propsA[lengthA + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsA[lengthA + 1].value = (("file:security/certs/identity/participants/ansp_signed.pem"));
+  propsA[lengthA + 1].propagate = false;
+  propsA[lengthA + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsA[lengthA + 2].value = (("file:security/certs/identity/participants/ansp_private_key.pem"));
+  propsA[lengthA + 2].propagate = false;
+  propsA[lengthA + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsA[lengthA + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsA[lengthA + 3].propagate = false;
+  propsA[lengthA + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsA[lengthA + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsA[lengthA + 4].propagate = false;
+  propsA[lengthA + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsA[lengthA + 5].value = ("file:security/permissions/permissions_test_participant_ansp.p7s");
+  propsA[lengthA + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::ussDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsU = participantQos.property.value;
+  CORBA::ULong lengthU = propsU.length();
+  propsU.length(lengthU + 6);
+  propsU[lengthU].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsU[lengthU].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsU[lengthU].propagate = false;
+  propsU[lengthU + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsU[lengthU + 1].value = (("file:security/certs/identity/participants/uss_signed.pem"));
+  propsU[lengthU + 1].propagate = false;
+  propsU[lengthU + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsU[lengthU + 2].value = (("file:security/certs/identity/participants/ussDP_private_key.pem"));
+  propsU[lengthU + 2].propagate = false;
+  propsU[lengthU + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsU[lengthU + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsU[lengthU + 3].propagate = false;
+  propsU[lengthU + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsU[lengthU + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsU[lengthU + 4].propagate = false;
+  propsU[lengthU + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsU[lengthU + 5].value = ("file:security/permissions/permissions_test_participant_uss.p7s");
+  propsU[lengthU + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::weatherDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsW = participantQos.property.value;
+  CORBA::ULong lengthW = propsW.length();
+  propsW.length(lengthW + 6);
+  propsW[lengthW].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsW[lengthW].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsW[lengthW].propagate = false;
+  propsW[lengthW + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsW[lengthW + 1].value = (("file:security/certs/identity/participants/weather_signed.pem"));
+  propsW[lengthW + 1].propagate = false;
+  propsW[lengthW + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsW[lengthW + 2].value = (("file:security/certs/identity/participants/weather_private_key.pem"));
+  propsW[lengthW + 2].propagate = false;
+  propsW[lengthW + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsW[lengthW + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsW[lengthW + 3].propagate = false;
+  propsW[lengthW + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsW[lengthW + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsW[lengthW + 4].propagate = false;
+  propsW[lengthW + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsW[lengthW + 5].value = ("file:security/permissions/permissions_test_participant_weather.p7s");
+  propsW[lengthW + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::bookingPlatformDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
-  this->participantsQos_[ participant] = participantQos;
+  DDS::PropertySeq& propsBP = participantQos.property.value;
+  CORBA::ULong lengthBP = propsBP.length();
+  propsBP.length(lengthBP + 6);
+  propsBP[lengthBP].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsBP[lengthBP].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsBP[lengthBP].propagate = false;
+  propsBP[lengthBP + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsBP[lengthBP + 1].value = (("file:security/certs/identity/participants/bookingPlatform_cert.pem"));
+  propsBP[lengthBP + 1].propagate = false;
+  propsBP[lengthBP + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsBP[lengthBP + 2].value = (("file:security/certs/identity/participants/bookingPlatform_private_key.pem"));
+  propsBP[lengthBP + 2].propagate = false;
+  propsBP[lengthBP + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsBP[lengthBP + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsBP[lengthBP + 3].propagate = false;
+  propsBP[lengthBP + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsBP[lengthBP + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsBP[lengthBP + 4].propagate = false;
+  propsBP[lengthBP + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsBP[lengthBP + 5].value = ("file:security/permissions/permissions_test_participant_bookingPlatform.p7s");
+  propsBP[lengthBP + 5].propagate = false;
+  this->participantsQos_[participant] = participantQos;
+
+
+  participant = Participants::fleetOperatorDP;
+  participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsFO = participantQos.property.value;
+  CORBA::ULong lengthFO = propsFO.length();
+  propsFO.length(lengthFO + 6);
+  propsFO[lengthFO].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsFO[lengthFO].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsFO[lengthFO].propagate = false;
+  propsFO[lengthFO + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsFO[lengthFO + 1].value = (("file:security/certs/identity/participants/fleetOperator_signed.pem"));
+  propsFO[lengthFO + 1].propagate = false;
+  propsFO[lengthFO + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsFO[lengthFO + 2].value = (("file:security/certs/identity/participants/fleetOperator_private_key.pem"));
+  propsFO[lengthFO + 2].propagate = false;
+  propsFO[lengthFO + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsFO[lengthFO + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsFO[lengthFO + 3].propagate = false;
+  propsFO[lengthFO + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsFO[lengthFO + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsFO[lengthFO + 4].propagate = false;
+  propsFO[lengthFO + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsFO[lengthFO + 5].value = ("file:security/permissions/permissions_test_participant_fleetOperator.p7s");
+  propsFO[lengthFO + 5].propagate = false;
+  this->participantsQos_[participant] = participantQos;
+
+
 
   participant = Participants::evtolManagerDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsEM = participantQos.property.value;
+  CORBA::ULong lengthEM = propsEM.length();
+  propsEM.length(lengthEM + 6);
+  propsEM[lengthEM].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsEM[lengthEM].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsEM[lengthEM].propagate = false;
+  propsEM[lengthEM + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsEM[lengthEM + 1].value = (("file:security/certs/identity/participants/evtolManager_signed.pem"));
+  propsEM[lengthEM + 1].propagate = false;
+  propsEM[lengthEM + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsEM[lengthEM + 2].value = (("file:security/certs/identity/participants/evtolManager_private_key.pem"));
+  propsEM[lengthEM + 2].propagate = false;
+  propsEM[lengthEM + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsEM[lengthEM + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsEM[lengthEM + 3].propagate = false;
+  propsEM[lengthEM + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsEM[lengthEM + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsEM[lengthEM + 4].propagate = false;
+  propsEM[lengthEM + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsEM[lengthEM + 5].value = ("file:security/permissions/permissions_test_participant_evtolManager.p7s");
+  propsEM[lengthEM + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
+  
   participant = Participants::pilotManagerDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsPM = participantQos.property.value;
+  CORBA::ULong lengthPM = propsPM.length();
+  propsPM.length(lengthPM + 6);
+  propsPM[lengthPM].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsPM[lengthPM].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsPM[lengthPM].propagate = false;
+  propsPM[lengthPM + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsPM[lengthPM + 1].value = (("file:security/certs/identity/participants/pilotManager_signed.pem"));
+  propsPM[lengthPM + 1].propagate = false;
+  propsPM[lengthPM + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsPM[lengthPM + 2].value = (("file:security/certs/identity/participants/pilotManager_private_key.pem"));
+  propsPM[lengthPM + 2].propagate = false;
+  propsPM[lengthPM + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsPM[lengthPM + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsPM[lengthPM + 3].propagate = false;
+  propsPM[lengthPM + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsPM[lengthPM + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsPM[lengthPM + 4].propagate = false;
+  propsPM[lengthPM + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsPM[lengthPM + 5].value = ("file:security/permissions/permissions_test_participant_pilotManager.p7s");
+  propsPM[lengthPM + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::skyportManDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsSM = participantQos.property.value;
+  CORBA::ULong lengthSM = propsSM.length();
+  propsSM.length(lengthSM + 6);
+  propsSM[lengthSM].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsSM[lengthSM].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsSM[lengthSM].propagate = false;
+  propsSM[lengthSM + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsSM[lengthSM + 1].value = (("file:security/certs/identity/participants/skyportManager_signed.pem"));
+  propsSM[lengthSM + 1].propagate = false;
+  propsSM[lengthSM + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsSM[lengthSM + 2].value = (("file:security/certs/identity/participants/skyportManager_private_key.pem"));
+  propsSM[lengthSM + 2].propagate = false;
+  propsSM[lengthSM + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsSM[lengthSM + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsSM[lengthSM + 3].propagate = false;
+  propsSM[lengthSM + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsSM[lengthSM + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsSM[lengthSM + 4].propagate = false;
+  propsSM[lengthSM + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsSM[lengthSM + 5].value = ("file:security/permissions/permissions_test_participant_skyportManager.p7s");
+  propsSM[lengthSM + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 
   participant = Participants::tolPadManagerDP;
   participantQos = TheServiceParticipant->initial_DomainParticipantQos();
+  DDS::PropertySeq& propsTP = participantQos.property.value;
+  CORBA::ULong lengthTP = propsTP.length();
+  propsTP.length(lengthTP + 6);
+  propsTP[lengthTP].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCA);
+  propsTP[lengthTP].value = (("file:security/certs/identity/identity_ca_cert.pem"));
+  propsTP[lengthTP].propagate = false;
+  propsTP[lengthTP + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
+  propsTP[lengthTP + 1].value = (("file:security/certs/identity/participants/tolPadManager_signed.pem"));
+  propsTP[lengthTP + 1].propagate = false;
+  propsTP[lengthTP + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
+  propsTP[lengthTP + 2].value = (("file:security/certs/identity/participants/tolPadManager_private_key.pem"));
+  propsTP[lengthTP + 2].propagate = false;
+  propsTP[lengthTP + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
+  propsTP[lengthTP + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
+  propsTP[lengthTP + 3].propagate = false;
+  propsTP[lengthTP + 4].name = CORBA::string_dup(DDS::Security::Properties::AccessGovernance);
+  propsTP[lengthTP + 4].value = (("file:security/governance/governance_signed.p7s"));
+  propsTP[lengthTP + 4].propagate = false;
+  propsTP[lengthTP + 5].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissions);
+  propsTP[lengthTP + 5].value = ("file:security/permissions/permissions_test_participant_tolPadManager.p7s");
+  propsTP[lengthTP + 5].propagate = false;
   this->participantsQos_[ participant] = participantQos;
 }
 
@@ -608,7 +870,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -622,7 +884,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -636,7 +898,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 10;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -650,7 +912,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -664,7 +926,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -674,7 +936,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = EXCLUSIVE_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS; //BEST_EFFORT_RELIABILITY_QOS
+  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS;
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
@@ -692,7 +954,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -706,7 +968,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 10;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -720,7 +982,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 1;
   topicQos.history.kind = KEEP_ALL_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -734,7 +996,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -748,7 +1010,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -758,7 +1020,7 @@ Elements::Data::buildTopicsQos()
     
   topicQos.durability.kind = TRANSIENT_LOCAL_DURABILITY_QOS;
   topicQos.ownership.kind = SHARED_OWNERSHIP_QOS;
-  topicQos.reliability.kind = RELIABLE_RELIABILITY_QOS;//BEST_EFFORT_RELIABILITY_QOS 
+  topicQos.reliability.kind = BEST_EFFORT_RELIABILITY_QOS; 
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
@@ -776,7 +1038,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
@@ -790,7 +1052,7 @@ Elements::Data::buildTopicsQos()
   topicQos.reliability.max_blocking_time.sec = 2147483647;
   topicQos.reliability.max_blocking_time.nanosec = 2147483647;
   topicQos.deadline.period.sec = 0;
-  topicQos.deadline.period.nanosec = 500000000000000;
+  topicQos.deadline.period.nanosec = 50000000;
   topicQos.history.depth = 5;
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
