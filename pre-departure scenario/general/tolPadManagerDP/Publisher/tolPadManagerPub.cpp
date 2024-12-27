@@ -11,10 +11,31 @@
 #include "../utils/functions.h"
 #include <model/Sync.h>
 
+#if OPENDDS_CONFIG_SECURITY
+#  include <dds/DCPS/security/framework/Properties.h>
+#endif
+#include <dds/DCPS/StaticIncludes.h>
+#if OPENDDS_DO_MANUAL_STATIC_INCLUDES
+#  ifndef OPENDDS_SAFETY_PROFILE
+#    include <dds/DCPS/transport/udp/Udp.h>
+#    include <dds/DCPS/transport/multicast/Multicast.h>
+#    include <dds/DCPS/RTPS/RtpsDiscovery.h>
+#    include <dds/DCPS/transport/shmem/Shmem.h>
+#    if OPENDDS_CONFIG_SECURITY
+#      include <dds/DCPS/security/BuiltInPlugins.h>
+#    endif
+#  endif
+#  include <dds/DCPS/transport/rtps_udp/RtpsUdp.h>
+#endif
+#include <ace/Log_Msg.h>
+
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
+    // Set security for participant
+    TheServiceParticipant->set_security(true); ///
+
     // Create the OpenDDS application model
     OpenDDS::Model::Application application(argc, argv);
 
@@ -23,6 +44,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     // Define a writer using the traffic availability writer
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
+    
     DDS::DataWriter_var writer = model.writer(Elements::DataWriters::tolPadAvailabilityDW_TP);
 
     // Narrow the writer to a specific data writer for availability info

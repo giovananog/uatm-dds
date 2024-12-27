@@ -7,17 +7,43 @@
 #include <thread>
 #include <chrono>
 #include <random>
-#include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 
-// Main entry point for the application
+#if OPENDDS_CONFIG_SECURITY
+#  include <dds/DCPS/security/framework/Properties.h>
+#endif
+#include <dds/DCPS/StaticIncludes.h>
+#if OPENDDS_DO_MANUAL_STATIC_INCLUDES
+#  ifndef OPENDDS_SAFETY_PROFILE
+#    include <dds/DCPS/transport/udp/Udp.h>
+#    include <dds/DCPS/transport/multicast/Multicast.h>
+#    include <dds/DCPS/RTPS/RtpsDiscovery.h>
+#    include <dds/DCPS/transport/shmem/Shmem.h>
+#    if OPENDDS_CONFIG_SECURITY
+#      include <dds/DCPS/security/BuiltInPlugins.h>
+#    endif
+#  endif
+#  include <dds/DCPS/transport/rtps_udp/RtpsUdp.h>
+#endif
+#include <ace/Log_Msg.h>
+
+
+// Main entry point for the application 
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
-    // Initialize OpenDDS Model and create a data writer for booking requests
+    // Set security
+    TheServiceParticipant->set_security(true); ///
+
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
+
+    OpenDDS::DCPS::security_debug.access_warn = true;
+    OpenDDS::DCPS::security_debug.set_debug_level(100); 
+    OpenDDS::DCPS::security_debug.parse_flags(ACE_TEXT("all"));
+
+    // Initialize OpenDDS Model and create a data writer for booking requests
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
     DDS::DataWriter_var writer = model.writer(Elements::DataWriters::bookingFlightRequestDW_BP);
@@ -34,11 +60,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    int bookingID = 0; // Initialize booking ID counter
+    int bookingID = 0;                                 // Initialize booking ID counter
     auto startTime = std::chrono::steady_clock::now(); // Start time of the application
-    double duration = 100.0;   // Total duration of the execution (seconds)
-    double warmupTime = 10.0;  // Warmup period (seconds)
-    double lambda = 3.0;       // Rate parameter for Poisson distribution
+    double duration = 100.0;                           // Total duration of the execution (seconds)
+    double warmupTime = 10.0;                          // Warmup period (seconds)
+    double lambda = 3.0;                               // Rate parameter for Poisson distribution
 
     bool warmupCompleted = false; // Flag to check if warmup period is over
 
@@ -55,7 +81,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       }
 
       // End execution after specified duration
-      if (elapsedTime.count() >= duration) 
+      if (elapsedTime.count() >= duration)
       {
         break;
       }
@@ -67,7 +93,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
       // Loop through each event to create booking requests
       for (int i = 0; i < numEvents; i++)
       {
-        if (warmupCompleted)  // Only process events after warmup period
+        if (warmupCompleted) // Only process events after warmup period
         {
           OpenDDS::Model::WriterSync ws(writer); // Synchronize writer access
           {
