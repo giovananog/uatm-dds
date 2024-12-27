@@ -359,9 +359,9 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__airspaceRestrictions] = "airspaceRestrictions";
   this->cfTopics_[Topics::UATM__uatmDCPS__airspaceRestrictions] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__airspaceRestrictions] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__accceptableRoute] = "accceptableRoute";
-  this->cfTopics_[Topics::UATM__uatmDCPS__accceptableRoute] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__accceptableRoute] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__acceptableRoute] = "acceptableRoute";
+  this->cfTopics_[Topics::UATM__uatmDCPS__acceptableRoute] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__acceptableRoute] = MultiTopics::LAST_INDEX;
   this->topicNames_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = "availabilityInfo_FOP";
   this->cfTopics_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_FOP;
   this->multiTopics_[Topics::UATM__uatmDCPS__availabilityInfo_FOP] = MultiTopics::LAST_INDEX;
@@ -455,7 +455,7 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__bookingFlightRequest] = Types::bookingFlightRequest;
   this->types_[ Topics::UATM__uatmDCPS__availabilityInfo] = Types::availabilityInfo;
   this->types_[ Topics::UATM__uatmDCPS__airspaceRestrictions] = Types::airspaceRestrictions;
-  this->types_[ Topics::UATM__uatmDCPS__accceptableRoute] = Types::acceptableRoute;
+  this->types_[ Topics::UATM__uatmDCPS__acceptableRoute] = Types::acceptableRoute;
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_FOP] = Topics::UATM__uatmDCPS__availabilityInfo;
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_UASP] = Topics::UATM__uatmDCPS__availabilityInfo;
   this->relatedTopics_[ContentFilteredTopics::UATM__uatmDCPS__availabilityInfo_SKO] = Topics::UATM__uatmDCPS__availabilityInfo;
@@ -467,7 +467,7 @@ Elements::Data::loadMaps()
   this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__airspaceRestrictions;
   this->writerTopics_[ DataWriters::flightRequestInfoDW_FAS] = Topics::UATM__uatmDCPS__flightRequestInfo;
-  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::UATM__uatmDCPS__accceptableRoute;
+  this->writerTopics_[ DataWriters::routeDataDW_UASP] = Topics::UATM__uatmDCPS__acceptableRoute;
   this->writerTopics_[ DataWriters::flightAuthDW_UASP] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->writerTopics_[ DataWriters::changeRecDW_UASP] = Topics::UATM__uatmDCPS__flightChangeRec;
   this->writerTopics_[ DataWriters::tolPadReqDW_UASP] = Topics::UATM__uatmDCPS__tolPadRequest;
@@ -492,8 +492,8 @@ Elements::Data::loadMaps()
   this->readerTopics_[ DataReaders::trafficFlowsDR_UASP] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->readerTopics_[ DataReaders::weatherInfoDR_UASP] = Topics::UATM__uatmDCPS__weatherInfo;
   this->readerTopics_[ DataReaders::airspaceRestDR_UASP] = Topics::UATM__uatmDCPS__airspaceRestrictions;
-  this->readerTopics_[ DataReaders::routeDataDR_ANSP] = Topics::UATM__uatmDCPS__accceptableRoute;
-  this->readerTopics_[ DataReaders::routeDataDR_USS] = Topics::UATM__uatmDCPS__accceptableRoute;
+  this->readerTopics_[ DataReaders::routeDataDR_ANSP] = Topics::UATM__uatmDCPS__acceptableRoute;
+  this->readerTopics_[ DataReaders::routeDataDR_USS] = Topics::UATM__uatmDCPS__acceptableRoute;
   this->readerTopics_[ DataReaders::flightAssignDR_EV] = Topics::UATM__uatmDCPS__flightAssign;
   this->readerTopics_[ DataReaders::flightAuthDR_PLM] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->readerTopics_[ DataReaders::changeRecDR_PLM] = Topics::UATM__uatmDCPS__flightChangeRec;
@@ -1043,7 +1043,7 @@ Elements::Data::buildTopicsQos()
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__accceptableRoute;
+  topic    = Topics::UATM__uatmDCPS__acceptableRoute;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
