@@ -78,7 +78,7 @@ namespace uatmDCPS {
           UATM__uatmDCPS__bookingFlightRequest,
           UATM__uatmDCPS__availabilityInfo,
           UATM__uatmDCPS__airspaceRestrictions,
-          UATM__uatmDCPS__accceptableRoute,
+          UATM__uatmDCPS__acceptableRoute,
           UATM__uatmDCPS__availabilityInfo_FOP,
           UATM__uatmDCPS__availabilityInfo_UASP,
           UATM__uatmDCPS__availabilityInfo_SKO,

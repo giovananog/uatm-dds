@@ -1,0 +1,92 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----30139935CFC5372E38188B9489621801"
+
+This is an S/MIME signed message
+
+------30139935CFC5372E38188B9489621801
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Don't edit and sign these by hand, edit and run generate_generic_permissions.pl! -->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_permissions.xsd">
+  <permissions>
+    <grant name="TheGrant">
+      <subject_name>C = zz, ST = zzz, L = zz, O = zz, OU = zzz, CN = zz, emailAddress = zzz</subject_name>
+      <validity>
+        <not_before>2024-01-01T00:00:00Z</not_before>
+        <not_after>2025-12-31T23:59:59Z</not_after>
+      </validity>
+      <allow_rule>
+        <domains>
+          <id>0</id>
+        </domains>
+        <publish>
+          <topics>
+            <topic>flightAssign</topic>
+            <topic>flightCoordination</topic>
+            <topic>flightAuthorizationRequest</topic>
+          </topics>
+        </publish>
+        <subscribe>
+          <topics>
+            <topic>flightAuthorization</topic>
+            <topic>availabilityInfo</topic>
+            <topic>flightChangeRec</topic>
+            <topic>bookingFlightRequest</topic>
+            <topic>flightRouteInfo</topic>
+            <topic>weatherInfo</topic>
+          </topics>
+        </subscribe>
+      </allow_rule>
+      <default>DENY</default>
+    </grant>
+  </permissions>
+</dds>
+
+------30139935CFC5372E38188B9489621801
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIHJgYJKoZIhvcNAQcCoIIHFzCCBxMCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggQDMIID/zCCAucCFH3BBAzg5zoyOqoIpMnZdoFupogOMA0GCSqG
+SIb3DQEBCwUAMIG7MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcM
+C1NhaW50IExvdWlzMS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBl
+cm1pc3Npb25zIENBKTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQ
+ZXJtaXNzaW9ucyBDQSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0
+aW5nLmNvbTAeFw0yNDEyMDYxMjI5MDRaFw0zNDEyMDQxMjI5MDRaMIG7MQswCQYD
+VQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcMC1NhaW50IExvdWlzMS8wLQYD
+VQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENBKTEvMC0G
+A1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBDQSkxJzAl
+BgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbTCCASIwDQYJKoZI
+hvcNAQEBBQADggEPADCCAQoCggEBANYPXUG3pfcvU4QhJBszRXih4vMqNRfOjvnF
+2Jmx4rYSUrm2RxnUtKaQn9kTJnc8c1PtJ47BUO2ca1BS1DOwkfbDNxgZoSVqVeHe
+0Mbr9lgpRXlIuL5TFHe/4DTMq1LcyohYqJ43oIK53XtY0eNxOYNR5CIVpe6p5Gd4
+c65pPDXE/ZMzahzpgDp1DUx3La3V7Ekve2fhGJPedb4mM7ak0NzOh1xn2ZAN/e78
+HGS0LZJrI4MlB2Zf1AG8IruETonWa7QWWKyXDkxPDBE5R7Bxp/YYRvlCpDXq7XB/
+eQ5itEfh98mhZ5ozh5wLvNuSJyY0xxNJfjCF5pIh1TJ3pFt7EckCAwEAATANBgkq
+hkiG9w0BAQsFAAOCAQEAw8GdF7kb4hDpiLxgFjwYO9gSofNrJ+o2e6I5iqRYn8bD
+NXRBR7z822JPjmLF+eYpeOzehJKrDsk5ofFodx4sZ6nneeZJbIEA8IPYNvn8KSPr
+njp3jenN3tjVD4xuT3wcDVEJXrMxNDso0f8jKcapIOYkfNLeOZlVSOWOgin0u32Z
+SOCGUJ9Ul5dM6CntvfBYcE5p+rzdH8R4mfw9F6EhiK6tHE/nRo2WjUyaW5BqQzYj
+vLoZUVvr8vqEMSxlVyCtSzFNfzo1vmQuZGwlDNaClMHf8g42T+lC9VirsUgzL/ao
+0YdS7MfnbFa2K3M8nHB0oNuKFT0SXO2Q4mFZSe97XzGCAucwggLjAgEBMIHUMIG7
+MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcMC1NhaW50IExvdWlz
+MS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENB
+KTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBD
+QSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbQIUfcEE
+DODnOjI6qgikydl2gW6miA4wDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkD
+MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQxMjI3MTg1NDMzWjAvBgkq
+hkiG9w0BCQQxIgQgO/fE0R6+LsNvBXXnFQjhCVGu4e9jQMpoLUzApHZiIJwweQYJ
+KoZIhvcNAQkPMWwwajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFl
+AwQBAjAKBggqhkiG9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAw
+BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAFjKOfoC8
+pf2cXgBqTzh649LQq4ac+ULBBZOJ3FiXRqiQvb6oZVGaFCnB6fi+3KKm2bjFWa8T
+BKEJq6SroFF9S7uWNG9WodUlqdGSTN66XfL4g1nXSpMBMXv4r9WXZslJ7fsMwjOG
+fWPPIwStmta1JwUIO7WQhwPa4UhOrAANFFe9gBUumKsOcE6HlEPSre+7ZczLL0Wv
+fWR+EahyYVGNoMARg3FzovlFAXSgaT4hQirNRntl+N/t+dwa3iEO3CX1u7U4h/fl
+bQiWgwIAtk7HeXF4OGIDWpBo58LQTUIzPMh86R3KtIdwoiZ0FuXcaojqj+eK04p4
+DMSgViPK888kKw==
+
+------30139935CFC5372E38188B9489621801--
+

@@ -11,10 +11,31 @@
 #include <dds/DCPS/WaitSet.h>  // Include DDS WaitSet to handle events
 #include "ReaderListenerRequest.h"  // Include the header for the ReaderListenerRequest class
 
+#if OPENDDS_CONFIG_SECURITY
+#  include <dds/DCPS/security/framework/Properties.h>
+#endif
+#include <dds/DCPS/StaticIncludes.h>
+#if OPENDDS_DO_MANUAL_STATIC_INCLUDES
+#  ifndef OPENDDS_SAFETY_PROFILE
+#    include <dds/DCPS/transport/udp/Udp.h>
+#    include <dds/DCPS/transport/multicast/Multicast.h>
+#    include <dds/DCPS/RTPS/RtpsDiscovery.h>
+#    include <dds/DCPS/transport/shmem/Shmem.h>
+#    if OPENDDS_CONFIG_SECURITY
+#      include <dds/DCPS/security/BuiltInPlugins.h>
+#    endif
+#  endif
+#  include <dds/DCPS/transport/rtps_udp/RtpsUdp.h>
+#endif
+#include <ace/Log_Msg.h>
+
 // The main entry point of the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
+    // Set security for participant
+    TheServiceParticipant->set_security(true); ///
+    
     // Initialize OpenDDS application with command-line arguments
     OpenDDS::Model::Application application(argc, argv);
 

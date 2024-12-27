@@ -1,0 +1,87 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----D955F4D1343AE7AD4F17E5612FFE8815"
+
+This is an S/MIME signed message
+
+------D955F4D1343AE7AD4F17E5612FFE8815
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Don't edit and sign these by hand, edit and run generate_generic_permissions.pl! -->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.omg.org/spec/DDS-SECURITY/20170901/omg_shared_ca_permissions.xsd">
+  <permissions>
+    <grant name="TheGrant">
+      <subject_name>C = ff, ST = ff, L = ff, O = ff, OU = ff, CN = ff, emailAddress = ff@f</subject_name>
+      <validity>
+        <not_before>2024-01-01T00:00:00Z</not_before>
+        <not_after>2025-12-31T23:59:59Z</not_after>
+      </validity>
+      <allow_rule>
+        <domains>
+          <id>0</id>
+        </domains>
+        <publish>
+          <topics>
+            <topic>flightRequestInfo</topic>
+          </topics>
+        </publish>
+        <subscribe>
+          <topics>
+            <topic>flightAuthorizationRequest</topic>
+            <topic>flightChangeRec</topic>
+            <topic>flightAssign</topic>
+          </topics>
+        </subscribe>
+      </allow_rule>
+      <default>DENY</default>
+    </grant>
+  </permissions>
+</dds>
+
+------D955F4D1343AE7AD4F17E5612FFE8815
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIHJgYJKoZIhvcNAQcCoIIHFzCCBxMCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggQDMIID/zCCAucCFH3BBAzg5zoyOqoIpMnZdoFupogOMA0GCSqG
+SIb3DQEBCwUAMIG7MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcM
+C1NhaW50IExvdWlzMS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBl
+cm1pc3Npb25zIENBKTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQ
+ZXJtaXNzaW9ucyBDQSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0
+aW5nLmNvbTAeFw0yNDEyMDYxMjI5MDRaFw0zNDEyMDQxMjI5MDRaMIG7MQswCQYD
+VQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcMC1NhaW50IExvdWlzMS8wLQYD
+VQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENBKTEvMC0G
+A1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBDQSkxJzAl
+BgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbTCCASIwDQYJKoZI
+hvcNAQEBBQADggEPADCCAQoCggEBANYPXUG3pfcvU4QhJBszRXih4vMqNRfOjvnF
+2Jmx4rYSUrm2RxnUtKaQn9kTJnc8c1PtJ47BUO2ca1BS1DOwkfbDNxgZoSVqVeHe
+0Mbr9lgpRXlIuL5TFHe/4DTMq1LcyohYqJ43oIK53XtY0eNxOYNR5CIVpe6p5Gd4
+c65pPDXE/ZMzahzpgDp1DUx3La3V7Ekve2fhGJPedb4mM7ak0NzOh1xn2ZAN/e78
+HGS0LZJrI4MlB2Zf1AG8IruETonWa7QWWKyXDkxPDBE5R7Bxp/YYRvlCpDXq7XB/
+eQ5itEfh98mhZ5ozh5wLvNuSJyY0xxNJfjCF5pIh1TJ3pFt7EckCAwEAATANBgkq
+hkiG9w0BAQsFAAOCAQEAw8GdF7kb4hDpiLxgFjwYO9gSofNrJ+o2e6I5iqRYn8bD
+NXRBR7z822JPjmLF+eYpeOzehJKrDsk5ofFodx4sZ6nneeZJbIEA8IPYNvn8KSPr
+njp3jenN3tjVD4xuT3wcDVEJXrMxNDso0f8jKcapIOYkfNLeOZlVSOWOgin0u32Z
+SOCGUJ9Ul5dM6CntvfBYcE5p+rzdH8R4mfw9F6EhiK6tHE/nRo2WjUyaW5BqQzYj
+vLoZUVvr8vqEMSxlVyCtSzFNfzo1vmQuZGwlDNaClMHf8g42T+lC9VirsUgzL/ao
+0YdS7MfnbFa2K3M8nHB0oNuKFT0SXO2Q4mFZSe97XzGCAucwggLjAgEBMIHUMIG7
+MQswCQYDVQQGEwJVUzELMAkGA1UECAwCTU8xFDASBgNVBAcMC1NhaW50IExvdWlz
+MS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENB
+KTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBD
+QSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbQIUfcEE
+DODnOjI6qgikydl2gW6miA4wDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkD
+MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQxMjIzMDIwMzIwWjAvBgkq
+hkiG9w0BCQQxIgQgPhY799apXFJdDQkQZCuMv7dTh6XHT22k6XJsjL0e4zoweQYJ
+KoZIhvcNAQkPMWwwajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFl
+AwQBAjAKBggqhkiG9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAw
+BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAS5OjZgoo
+kmFa4R1B9r7YICLWf7wrYCI1uSpuMWLb303i0jymyTxhw8Npm+Og4+gD+j3WHeGG
+BuDHnXj1Dks8x4qTNmU3ZozTQEYhJVJ7zei2k8UmJSPVpqRX20CIOenDlrhNB4RZ
+1hKjrUSCR1adl35xThPoB53C8e/hoZvae5JNbaz3u7ZNBypVtREZ3kZ+yoDw2MyY
+jFLtDay2iYBZc6XfULPB7Wwx/3pABO6agXfbj4Bo1SeVGot1X5S/yzk0OT89XYMH
+Z7ua7kFsNpWH38gjfs2+DpFWUTe6wCC1Uy3BB1/lHKea7wbx0T5cc91NhbBx9JoG
+KqfK6tXC7IZ2LQ==
+
+------D955F4D1343AE7AD4F17E5612FFE8815--
+

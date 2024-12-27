@@ -2,6 +2,16 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>  // Include TCP transport header for DDS if ACE is built with static libraries
 #endif
   
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <vector>
+#include <thread>
+#include <chrono>
+#include <unordered_set>
+#include "../utils/functions.h"
+
 #include "../../model/UATMTraits.h"  // Include UATM traits for the Urban Air Traffic Management model
 #include <tools/modeling/codegen/model/NullReaderListener.h>  // Header for a null reader listener
 
@@ -10,10 +20,14 @@
 #include <dds/DCPS/WaitSet.h>  // DDS WaitSet for synchronization of read events
 #include "./ReaderListenerRequest.h"  // Header for the custom reader listener
 
+
 // Main entry point for the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
+    // Set security for participant
+    TheServiceParticipant->set_security(true); ///
+    
     // Create an application instance with arguments
     OpenDDS::Model::Application application(argc, argv);
 
@@ -22,6 +36,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     // Define elements to be used from the UATM model
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
+
+    // add property qos policy on domain participant
+    DDS::DomainParticipant_var participant = model.participant(Elements::Participants::evtolManagerDP);
 
     // Create a synchronization mutex and condition variable
     ACE_SYNCH_MUTEX lock;
