@@ -1,9 +1,9 @@
 MIME-Version: 1.0
-Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----722A736E63B1C1B6E4791C96889DB42D"
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----4E4AF8D04845713385EDAF4207E76D50"
 
 This is an S/MIME signed message
 
-------722A736E63B1C1B6E4791C96889DB42D
+------4E4AF8D04845713385EDAF4207E76D50
 Content-Type: text/plain
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -14,27 +14,228 @@ Content-Type: text/plain
       <domains>
         <id>0</id>
       </domains>
-      <allow_unauthenticated_participants>true</allow_unauthenticated_participants>
-      <enable_join_access_control>false</enable_join_access_control>
+      <allow_unauthenticated_participants>false</allow_unauthenticated_participants>
+      <enable_join_access_control>true</enable_join_access_control>
       <discovery_protection_kind>NONE</discovery_protection_kind>
       <liveliness_protection_kind>NONE</liveliness_protection_kind>
       <rtps_protection_kind>NONE</rtps_protection_kind>
 
       <topic_access_rules>
+        <!--
+          flightCoordination:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
         <topic_rule>
-          <topic_expression>*</topic_expression>
+          <topic_expression>flightCoordination</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
           <enable_discovery_protection>false</enable_discovery_protection>
           <enable_liveliness_protection>false</enable_liveliness_protection>
-          <enable_read_access_control>false</enable_read_access_control>
-          <enable_write_access_control>false</enable_write_access_control>
           <metadata_protection_kind>NONE</metadata_protection_kind>
           <data_protection_kind>NONE</data_protection_kind>
         </topic_rule>
+
+        <!--
+          flightAuthorizationRequest:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightAuthorizationRequest</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          flightRequestInfo:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightRequestInfo</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          tolPadRequest:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>tolPadRequest</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          flightRouteInfo:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightRouteInfo</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          weatherInfo:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>weatherInfo</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          trafficFlowsInfo:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>trafficFlowsInfo</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          flightChangeRec:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightChangeRec</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          flightAuthorization:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightAuthorization</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          flightAssign:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>flightAssign</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          bookingFlightRequest:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>bookingFlightRequest</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          availabilityInfo:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>availabilityInfo</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          airspaceRestrictions:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>airspaceRestrictions</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>true</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+
+        <!--
+          acceptableRoute:
+          - Protected for read and write access.
+          - Use regular unsecured discovery
+        -->
+        <topic_rule>
+          <topic_expression>acceptableRoute</topic_expression>
+          <enable_read_access_control>true</enable_read_access_control>
+          <enable_write_access_control>false</enable_write_access_control>
+          <enable_discovery_protection>false</enable_discovery_protection>
+          <enable_liveliness_protection>false</enable_liveliness_protection>
+          <metadata_protection_kind>NONE</metadata_protection_kind>
+          <data_protection_kind>NONE</data_protection_kind>
+        </topic_rule>
+        
       </topic_access_rules>
     </domain_rule>
   </domain_access_rules>
 </dds>
-------722A736E63B1C1B6E4791C96889DB42D
+------4E4AF8D04845713385EDAF4207E76D50
 Content-Type: application/x-pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -67,17 +268,17 @@ MS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENB
 KTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBD
 QSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbQIUfcEE
 DODnOjI6qgikydl2gW6miA4wDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkD
-MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQxMjIzMDAzODQwWjAvBgkq
-hkiG9w0BCQQxIgQgijIn4VpPvNqG6WacAd4/9mok89x1RGZ5g2e5AlsLgP4weQYJ
+MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQxMjI3MTg0OTQwWjAvBgkq
+hkiG9w0BCQQxIgQgIeyIw3v2Zeb5enYOO9ASxkSbMJhngiWNtTDcTWNQIpgweQYJ
 KoZIhvcNAQkPMWwwajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFl
 AwQBAjAKBggqhkiG9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAw
-BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAioa4F9Hj
-oFRj7NGI4s0Hkcb1wOboAUfsZMKORjsvBjwYCWJs1xQ7r9kJQVS1Oi+o4GcDroYu
-w3gHfEyCgeuQzBD3GvpuHlcpfeMhQAeAEb0OScUBrW235wqXu61sllpa0nWvCLKm
-wn945hb/EjIqZ8p92HYf0k1zlegnPEIbAcLzpTNy8U91seT2I+fsBJoY+IO3Qlvj
-Ph1ZtXUv94KG2rz7m0AOhXxmMQ115jP2dcuyZ1zFeDVAwE33pX142nhl+vbfrbu7
-/D+HzS3pmHCSNXELgk8cbnYtCuNW47LGAWNcU9BWx/q2u1BNKaSY6bcF/zgaY0hX
-ZJQeOu/1rVvxIA==
+BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAnEB/2U48
+icVO9YGG6WFfOmHf46DlIn6gPTn6Qs9FL0CaKpck2y7POXrNJ8fcKKTWQAmzwUCd
+aKcUYveSa+6wzDwrLAf5YLZMAmr9uv+jBI8KO745DCUBs+jL6uAdmUEjvMGhwGRP
+PbJYtXfrG4rODcrQsO1J1OQzWomx3EXG+NOS6BqLIicyfmzXBsPCXz5XZaGC9TU4
+QbRZoQKsbCikXmWACKPRbSnSP5KMkSmvey6aCzCyHVC+cSE5HToWRcvxz0KJHVCj
+oBGHVRa+XwC4978ZX/LFGVWi8o2SaBg9ZBK8h7oGY34pKMsqJCXQ5FxrqeOSujLt
+JNQEj63fIqS+9A==
 
-------722A736E63B1C1B6E4791C96889DB42D--
+------4E4AF8D04845713385EDAF4207E76D50--
 
