@@ -1,4 +1,0 @@
-project {
-  libs += UATM
-  after += UATM
-}
