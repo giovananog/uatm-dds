@@ -14,12 +14,12 @@
         </domains>
         <publish>
           <topics>
-            <topic>flightRequestInfo</topic>
+            <topic>availabilityInfo</topic>
           </topics>
         </publish>
         <subscribe>
           <topics>
-            <topic>flightAuthorizationRequest</topic>
+            <topic>flightAuthorization</topic>
             <topic>flightChangeRec</topic>
             <topic>flightAssign</topic>
           </topics>

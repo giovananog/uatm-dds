@@ -1,9 +1,9 @@
 MIME-Version: 1.0
-Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----30139935CFC5372E38188B9489621801"
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----40389F95B5BB8A63E4AB2B9325FF7EEB"
 
 This is an S/MIME signed message
 
-------30139935CFC5372E38188B9489621801
+------40389F95B5BB8A63E4AB2B9325FF7EEB
 Content-Type: text/plain
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +33,7 @@ Content-Type: text/plain
             <topic>availabilityInfo</topic>
             <topic>flightChangeRec</topic>
             <topic>bookingFlightRequest</topic>
-            <topic>flightRouteInfo</topic>
+            <topic>flightRoutesInfo</topic>
             <topic>weatherInfo</topic>
           </topics>
         </subscribe>
@@ -43,7 +43,7 @@ Content-Type: text/plain
   </permissions>
 </dds>
 
-------30139935CFC5372E38188B9489621801
+------40389F95B5BB8A63E4AB2B9325FF7EEB
 Content-Type: application/x-pkcs7-signature; name="smime.p7s"
 Content-Transfer-Encoding: base64
 Content-Disposition: attachment; filename="smime.p7s"
@@ -76,17 +76,17 @@ MS8wLQYDVQQKDCZPYmplY3QgQ29tcHV0aW5nIChUZXN0IFBlcm1pc3Npb25zIENB
 KTEvMC0GA1UEAwwmT2JqZWN0IENvbXB1dGluZyAoVGVzdCBQZXJtaXNzaW9ucyBD
 QSkxJzAlBgkqhkiG9w0BCQEWGGluZm9Ab2JqZWN0Y29tcHV0aW5nLmNvbQIUfcEE
 DODnOjI6qgikydl2gW6miA4wDQYJYIZIAWUDBAIBBQCggeQwGAYJKoZIhvcNAQkD
-MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjQxMjI3MTg1NDMzWjAvBgkq
-hkiG9w0BCQQxIgQgO/fE0R6+LsNvBXXnFQjhCVGu4e9jQMpoLUzApHZiIJwweQYJ
+MQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMjUwMTA5MjIwMzE2WjAvBgkq
+hkiG9w0BCQQxIgQgXRP+VQvXFhLND7Tx0qppwRg4AcODLiv7aAaoDb8A41oweQYJ
 KoZIhvcNAQkPMWwwajALBglghkgBZQMEASowCwYJYIZIAWUDBAEWMAsGCWCGSAFl
 AwQBAjAKBggqhkiG9w0DBzAOBggqhkiG9w0DAgICAIAwDQYIKoZIhvcNAwICAUAw
-BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAFjKOfoC8
-pf2cXgBqTzh649LQq4ac+ULBBZOJ3FiXRqiQvb6oZVGaFCnB6fi+3KKm2bjFWa8T
-BKEJq6SroFF9S7uWNG9WodUlqdGSTN66XfL4g1nXSpMBMXv4r9WXZslJ7fsMwjOG
-fWPPIwStmta1JwUIO7WQhwPa4UhOrAANFFe9gBUumKsOcE6HlEPSre+7ZczLL0Wv
-fWR+EahyYVGNoMARg3FzovlFAXSgaT4hQirNRntl+N/t+dwa3iEO3CX1u7U4h/fl
-bQiWgwIAtk7HeXF4OGIDWpBo58LQTUIzPMh86R3KtIdwoiZ0FuXcaojqj+eK04p4
-DMSgViPK888kKw==
+BwYFKw4DAgcwDQYIKoZIhvcNAwICASgwDQYJKoZIhvcNAQEBBQAEggEAFBJXtZE0
+KGZ//NOfNEPKKgbrJqqosn8jCsrv2n2Lv4tyWxzmq9DxXds5GMMH5N8k1JPTRpMX
+TKcyLhdI7S41574/O5WvBenoivoW/JNNc9QEas1q/mZ7aQ8GOTuDb4WDIotY2NJz
+ncO297BbThJPV32La9J1hQMYSA/b5WqNlsYiJ/vbJ6mwkk0P75/GwRP1yW66iqhy
+mHX/Pw22BQhldZrVTOFIFLIJo7uyHydhCtvONfrM5s5z7MDZwnaZTK34APjM+z5T
+S0NZqs8Fih9f0irsujwTF1W7MTiBlgy2VfewuL4D5kFFspejZSxFngGXXne4oD5V
+1UqAeX3+pdjj5g==
 
-------30139935CFC5372E38188B9489621801--
+------40389F95B5BB8A63E4AB2B9325FF7EEB--
 

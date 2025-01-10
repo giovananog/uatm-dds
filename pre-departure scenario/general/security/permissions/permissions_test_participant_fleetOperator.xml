@@ -25,7 +25,7 @@
             <topic>availabilityInfo</topic>
             <topic>flightChangeRec</topic>
             <topic>bookingFlightRequest</topic>
-            <topic>flightRouteInfo</topic>
+            <topic>flightRoutesInfo</topic>
             <topic>weatherInfo</topic>
           </topics>
         </subscribe>
