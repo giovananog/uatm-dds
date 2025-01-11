@@ -69,7 +69,7 @@ namespace uatmDCPS {
           UATM__uatmDCPS__flightAuthorizationRequest,
           UATM__uatmDCPS__flightRequestInfo,
           UATM__uatmDCPS__tolPadRequest,
-          UATM__uatmDCPS__flightRouteInfo,
+          UATM__uatmDCPS__flightRoutesInfo,
           UATM__uatmDCPS__weatherInfo,
           UATM__uatmDCPS__trafficFlowsInfo,
           UATM__uatmDCPS__flightChangeRec,

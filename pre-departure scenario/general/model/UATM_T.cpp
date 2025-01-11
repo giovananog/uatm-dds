@@ -11,7 +11,7 @@
 
 // For security
 #include <dds/DCPS/security/framework/Properties.h>
-#include <dds/DCPS/security/BuiltInPlugins.h>
+// #include <dds/DCPS/security/BuiltInPlugins.h>
 // #include <dds/DCPS/security/framework/SecurityRegistry.h>
 
 
@@ -332,9 +332,9 @@ Elements::Data::loadTopics()
   this->topicNames_[Topics::UATM__uatmDCPS__tolPadRequest] = "tolPadRequest";
   this->cfTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__tolPadRequest] = MultiTopics::LAST_INDEX;
-  this->topicNames_[Topics::UATM__uatmDCPS__flightRouteInfo] = "flightRouteInfo";
-  this->cfTopics_[Topics::UATM__uatmDCPS__flightRouteInfo] = ContentFilteredTopics::LAST_INDEX;
-  this->multiTopics_[Topics::UATM__uatmDCPS__flightRouteInfo] = MultiTopics::LAST_INDEX;
+  this->topicNames_[Topics::UATM__uatmDCPS__flightRoutesInfo] = "flightRoutesInfo";
+  this->cfTopics_[Topics::UATM__uatmDCPS__flightRoutesInfo] = ContentFilteredTopics::LAST_INDEX;
+  this->multiTopics_[Topics::UATM__uatmDCPS__flightRoutesInfo] = MultiTopics::LAST_INDEX;
   this->topicNames_[Topics::UATM__uatmDCPS__weatherInfo] = "weatherInfo";
   this->cfTopics_[Topics::UATM__uatmDCPS__weatherInfo] = ContentFilteredTopics::LAST_INDEX;
   this->multiTopics_[Topics::UATM__uatmDCPS__weatherInfo] = MultiTopics::LAST_INDEX;
@@ -446,7 +446,7 @@ Elements::Data::loadMaps()
   this->types_[ Topics::UATM__uatmDCPS__flightAuthorizationRequest] = Types::flightAuthorizationRequest;
   this->types_[ Topics::UATM__uatmDCPS__flightRequestInfo] = Types::flightRequestInfo;
   this->types_[ Topics::UATM__uatmDCPS__tolPadRequest] = Types::tolPadRequest;
-  this->types_[ Topics::UATM__uatmDCPS__flightRouteInfo] = Types::flightRoutesInfo;
+  this->types_[ Topics::UATM__uatmDCPS__flightRoutesInfo] = Types::flightRoutesInfo;
   this->types_[ Topics::UATM__uatmDCPS__weatherInfo] = Types::weatherInfo;
   this->types_[ Topics::UATM__uatmDCPS__trafficFlowsInfo] = Types::trafficFlowsInfo;
   this->types_[ Topics::UATM__uatmDCPS__flightChangeRec] = Types::flightChangeRec;
@@ -463,7 +463,7 @@ Elements::Data::loadMaps()
   this->writerTopics_[ DataWriters::uaspFlightRequestDW_FOP] = Topics::UATM__uatmDCPS__flightAuthorizationRequest;
   this->writerTopics_[ DataWriters::assignFlightDW_FOP] = Topics::UATM__uatmDCPS__flightAssign;
   this->writerTopics_[ DataWriters::flightCoordDW_FOP] = Topics::UATM__uatmDCPS__flightCoordination;
-  this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::UATM__uatmDCPS__flightRouteInfo;
+  this->writerTopics_[ DataWriters::flightRoutesDW_SKO] = Topics::UATM__uatmDCPS__flightRoutesInfo;
   this->writerTopics_[ DataWriters::trafficFlowsDW_SKO] = Topics::UATM__uatmDCPS__trafficFlowsInfo;
   this->writerTopics_[ DataWriters::airspaceRestDW_SKO] = Topics::UATM__uatmDCPS__airspaceRestrictions;
   this->writerTopics_[ DataWriters::flightRequestInfoDW_FAS] = Topics::UATM__uatmDCPS__flightRequestInfo;
@@ -480,7 +480,7 @@ Elements::Data::loadMaps()
 
   this->readerTopics_[ DataReaders::flightRequestDR_FOP] = Topics::UATM__uatmDCPS__bookingFlightRequest;
   this->readerTopics_[ DataReaders::availabilityDR_FOP] = Topics::UATM__uatmDCPS__availabilityInfo_FOP;
-  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::UATM__uatmDCPS__flightRouteInfo;
+  this->readerTopics_[ DataReaders::FlightRoutesDR_FOP] = Topics::UATM__uatmDCPS__flightRoutesInfo;
   this->readerTopics_[ DataReaders::weatherDR_FOP] = Topics::UATM__uatmDCPS__weatherInfo;
   this->readerTopics_[ DataReaders::flightAuthDR_FOP] = Topics::UATM__uatmDCPS__flightAuthorization;
   this->readerTopics_[ DataReaders::recommendationDR_FOP] = Topics::UATM__uatmDCPS__flightChangeRec;
@@ -633,10 +633,10 @@ Elements::Data::buildParticipantsQos()
   propsA[lengthA].value = (("file:security/certs/identity/identity_ca_cert.pem"));
   propsA[lengthA].propagate = false;
   propsA[lengthA + 1].name = CORBA::string_dup(DDS::Security::Properties::AuthIdentityCertificate);
-  propsA[lengthA + 1].value = (("file:security/certs/identity/participants/ansp_signed.pem"));
+  propsA[lengthA + 1].value = (("file:security/certs/identity/_cert.pem"));
   propsA[lengthA + 1].propagate = false;
   propsA[lengthA + 2].name = CORBA::string_dup(DDS::Security::Properties::AuthPrivateKey);
-  propsA[lengthA + 2].value = (("file:security/certs/identity/participants/ansp_private_key.pem"));
+  propsA[lengthA + 2].value = (("file:security/certs/identity/_private_key.pem"));
   propsA[lengthA + 2].propagate = false;
   propsA[lengthA + 3].name = CORBA::string_dup(DDS::Security::Properties::AccessPermissionsCA);
   propsA[lengthA + 3].value = (("file:security/certs/permissions/permissions_ca_cert.pem"));
@@ -917,7 +917,7 @@ Elements::Data::buildTopicsQos()
   topicQos.history.kind = KEEP_LAST_HISTORY_QOS;
   this->topicsQos_[ topic] = topicQos;
 
-  topic    = Topics::UATM__uatmDCPS__flightRouteInfo;
+  topic    = Topics::UATM__uatmDCPS__flightRoutesInfo;
   topicQos = TheServiceParticipant->initial_TopicQos();
     
   topicQos.durability.kind = TRANSIENT_DURABILITY_QOS;
