@@ -74,12 +74,12 @@
         </topic_rule>
 
         <!--
-          flightRouteInfo:
+          flightRoutesInfo:
           - Protected for read and write access.
           - Use regular unsecured discovery
         -->
         <topic_rule>
-          <topic_expression>flightRouteInfo</topic_expression>
+          <topic_expression>flightRoutesInfo</topic_expression>
           <enable_read_access_control>true</enable_read_access_control>
           <enable_write_access_control>true</enable_write_access_control>
           <enable_discovery_protection>false</enable_discovery_protection>
