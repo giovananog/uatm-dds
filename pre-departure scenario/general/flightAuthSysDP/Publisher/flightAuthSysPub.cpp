@@ -1,18 +1,14 @@
-// Checks if we are using the ACE static libraries.
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>  // Includes the OpenDDS TCP transport library.
-#endif
+#include <model/Sync.h>  
+#include <ace/Log_Msg.h>  
+#include "../../model/UATMTraits.h"  
+#include "../utils/functions.h"  
+#include <vector>  
+#include <dds/DCPS/WaitSet.h>  
+#include <string>  
+#include <thread>  
+#include <unordered_set>  
 
-#include <model/Sync.h>  // Includes model synchronization definitions.
-#include <ace/Log_Msg.h>  // Includes log message functions.
-#include "../../model/UATMTraits.h"  // Includes UATM traits file.
-#include "../utils/functions.h"  // Includes utility functions.
-#include <vector>  // For vector usage.
-#include <dds/DCPS/WaitSet.h>  // For using WaitSet in OpenDDS.
-#include <string>  // For string manipulation.
-#include <thread>  // For using thread functionalities.
-#include <unordered_set>  // For using an unordered set (hash set).
-
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -36,7 +32,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   try
   {
     // Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
 
     // Initializes the application with command-line arguments.
     OpenDDS::Model::Application application(argc, argv);
@@ -57,7 +53,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                        -1);
     }
 
-    int i = 0;  // Initializes the counter.
     std::unordered_set<std::string> sent_requests;  // Set to store sent request IDs.
     auto startTime = std::chrono::steady_clock::now();  // Captures the start time.
     double duration = 100.0;  // Defines the main loop duration.
@@ -109,7 +104,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                              ACE_TEXT(" write returned %d!\n"),
                          error));
             }
-            i++;  // Increments the counter.
 
             // Marks the request as sent by adding its ID to the set.
             std::string flight_id_str = CORBA::string_dup(fri.flight_id.c_str());

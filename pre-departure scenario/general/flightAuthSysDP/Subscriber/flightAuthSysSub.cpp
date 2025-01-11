@@ -1,14 +1,11 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h> // Include TCP transport header for static linking
-#endif
+#include "../../model/UATMTraits.h" 
+#include <tools/modeling/codegen/model/NullReaderListener.h> 
+#include <model/Sync.h> 
+#include <ace/Log_Msg.h> 
+#include <dds/DCPS/WaitSet.h> 
+#include "ReaderListenerRequest.h" 
 
-#include "../../model/UATMTraits.h" // Custom UATM model traits header
-#include <tools/modeling/codegen/model/NullReaderListener.h> // Null listener for code generation
-#include <model/Sync.h> // Synchronization utilities
-#include <ace/Log_Msg.h> // ACE logging utilities
-#include <dds/DCPS/WaitSet.h> // DDS WaitSet for managing events
-#include "ReaderListenerRequest.h" // Reader listener for flight request data
-
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -27,7 +24,6 @@
 #endif
 #include <ace/Log_Msg.h>
 
-// Main entry point for the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {

@@ -1,15 +1,12 @@
-#include <iostream>
-#include <fstream>
 #include <string>
-#include <sstream>
 #include "../utils/functions.h"
-#include <vector>
 #include <thread>
 #include <chrono>
 #include <random>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 
+// Security congigurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -35,13 +32,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   try
   {
     // Set security
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
-
-    OpenDDS::DCPS::security_debug.access_warn = true;
-    OpenDDS::DCPS::security_debug.set_debug_level(100); 
-    OpenDDS::DCPS::security_debug.parse_flags(ACE_TEXT("all"));
 
     // Initialize OpenDDS Model and create a data writer for booking requests
     OpenDDS::Model::Application application(argc, argv);
@@ -62,7 +55,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 
     int bookingID = 0;                                 // Initialize booking ID counter
     auto startTime = std::chrono::steady_clock::now(); // Start time of the application
-    double duration = 100.0;                           // Total duration of the execution (seconds)
+    double duration = 90.0;                           // Total duration of the execution (seconds)
     double warmupTime = 10.0;                          // Warmup period (seconds)
     double lambda = 3.0;                               // Rate parameter for Poisson distribution
 
@@ -145,5 +138,5 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                       ex.what()),
                      -1);
   }
-  return 0; // Return 0 on successful execution
+  return 0; 
 }

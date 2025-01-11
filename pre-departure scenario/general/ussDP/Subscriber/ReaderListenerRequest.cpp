@@ -1,11 +1,9 @@
-#include "../../model/UATMTraits.h"
-#include <tools/modeling/codegen/model/NullReaderListener.h>
-
-#include <model/Sync.h>
-#include <ace/Log_Msg.h>
-
-#include <dds/DCPS/WaitSet.h>
-#include "ReaderListenerRequest.h"
+#include "../../model/UATMTraits.h"  
+#include <tools/modeling/codegen/model/NullReaderListener.h>  
+#include <model/Sync.h>  
+#include <ace/Log_Msg.h>  
+#include <dds/DCPS/WaitSet.h>  
+#include "ReaderListenerRequest.h"  
 
 // Constructor for the ReaderListenerRequest class
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs)
@@ -16,8 +14,6 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
   // Lock the mutex to ensure thread safety
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
-  
-  // Static variable to ensure signal is sent only once
   static bool signal_sent = false;
 
   // Narrow the generic DataReader to a specific type for acceptableRouteData
@@ -48,7 +44,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
       // If valid data is found, print the message details
       if (info.valid_data)
       {
-        std::cout << "| ansp acceptableRoute: "
+        std::cout << "| uss acceptableRoute: "
                   << "acceptable_route_id:" << msg.acceptable_route_id
                   << ",approved_by:" << msg.approved_by.in()
                   << ",estimated_time:" << msg.estimated_time.in()

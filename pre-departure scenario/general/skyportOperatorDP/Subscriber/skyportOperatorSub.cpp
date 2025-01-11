@@ -1,15 +1,12 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h> // Includes the TCP transport layer for static linking
-#endif
-
-#include "../../model/UATMTraits.h" // Custom UATM model traits
-#include <tools/modeling/codegen/model/NullReaderListener.h> // NullReaderListener (possibly for code generation purposes)
-#include <model/Sync.h> // Synchronization utilities for thread safety
-#include <ace/Log_Msg.h> // ACE logging utilities
-#include <dds/DCPS/WaitSet.h> // DDS WaitSet for event handling
+#include "../../model/UATMTraits.h" 
+#include <tools/modeling/codegen/model/NullReaderListener.h> 
+#include <model/Sync.h> 
+#include <ace/Log_Msg.h> 
+#include <dds/DCPS/WaitSet.h> 
 #include "ReaderListenerCoordination.h" // Listener for flight coordination data
 #include "ReaderListenerAvailability.h" // Listener for availability data
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -41,13 +38,12 @@ int ACE_TMAIN(int argc, ACE_TCHAR *argv[])
 
     // Create two default UATM models (for coordination and availability)
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
 
     using OpenDDS::Model::UATM::uatmDCPS::Elements; // Reference to model elements
 
     // Create synchronization objects for thread-safe operations
-    ACE_SYNCH_MUTEX lock; // Mutex to lock access
-    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock); // Condition variable tied to the mutex
+    ACE_SYNCH_MUTEX lock; 
+    ACE_Condition<ACE_SYNCH_MUTEX> condition(lock); 
 
     // Create a data reader for the flight coordination topic
     DDS::DataReader_var reader_coordination = model.reader(Elements::DataReaders::flightCoordDR_SKO);
@@ -56,7 +52,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR *argv[])
     reader_coordination->set_listener(listener, OpenDDS::DCPS::DEFAULT_STATUS_MASK); // Set listener for coordination data
 
     // Create a data reader for the availability topic
-    DDS::DataReader_var reader_availability = model2.reader(Elements::DataReaders::availabilityDR_SKO);
+    DDS::DataReader_var reader_availability = model.reader(Elements::DataReaders::availabilityDR_SKO);
     OpenDDS::Model::ReaderCondSync rcs2(reader_availability, condition); // Synchronization object for availability
     DDS::DataReaderListener_var listener2(new ReaderListenerAvailability(rcs2)); // Create a listener for availability data
     reader_availability->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK); // Set listener for availability data

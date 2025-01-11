@@ -1,22 +1,15 @@
-// Including necessary headers for the application and transport layer
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h> // For TCP transport
-#endif
-
-#include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <thread>
 #include <chrono>
-#include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 #include <unordered_set>
 #include "../utils/functions.h"
-#include <dds/DCPS/WaitSet.h>           // For managing wait sets in DDS
+#include <dds/DCPS/WaitSet.h>
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -41,7 +34,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   try
   {
     // Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
 
     // Initialize OpenDDS application
     OpenDDS::Model::Application application(argc, argv);

@@ -12,10 +12,9 @@ ReaderListenerFlows::ReaderListenerFlows(OpenDDS::Model::ReaderCondSync &rcs)
 // The callback function that handles data availability for the DataReader
 void ReaderListenerFlows::on_data_available(DDS::DataReader_ptr reader)
 {
+
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);  // Lock the mutex to ensure thread-safety
     static bool signal_sent = false;  // Static flag to track if the signal has been sent
-
-    std::cout << "entrou no subscriber do trafficFlowsInfo" << std::endl;
 
     // Narrow the DataReader to a specific type of DataReader (UATM::trafficFlowsInfoDataReader)
     UATM::trafficFlowsInfoDataReader_var reader_i =

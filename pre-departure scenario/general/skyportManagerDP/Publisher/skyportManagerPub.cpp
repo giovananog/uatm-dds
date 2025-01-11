@@ -1,7 +1,4 @@
-#include <iostream>
-#include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <thread>
 #include <chrono>
@@ -11,6 +8,7 @@
 #include <model/Sync.h>
 #include "../utils/functions.h"
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -29,7 +27,6 @@
 #endif
 #include <ace/Log_Msg.h>
 
-// Main entry point of the application
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try

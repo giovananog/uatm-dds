@@ -1,7 +1,4 @@
-#include <iostream>
-#include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <thread>
 #include <chrono>
@@ -11,6 +8,7 @@
 #include "../utils/functions.h"
 #include <model/Sync.h>
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif

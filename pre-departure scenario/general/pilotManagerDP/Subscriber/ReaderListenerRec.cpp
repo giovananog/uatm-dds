@@ -45,7 +45,7 @@ void ReaderListenerRec::on_data_available(DDS::DataReader_ptr reader)
       if (info.valid_data) // Check if the sample contains valid data
       {
         // Output the flight change record data to the console
-        std::cout << "\n\n\n| plm flightChangeRec: "
+        std::cout << "| plm flightChangeRec: "
                   << "recommendation_id:" << msg.recommendation_id
                   << ",flight_id:" << msg.flight_id
                   << ",change_type:" << msg.change_type.in()

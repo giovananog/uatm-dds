@@ -18,9 +18,6 @@ void ReaderListenerRest::on_data_available(DDS::DataReader_ptr reader)
   ACE_Guard<ACE_Thread_Mutex> g(mutex_);
   static bool signal_sent = false;
 
-    std::cout << "entrou no subscriber do airspaceRestrictions" << std::endl;
-
-
   // Narrow the reader to a specific type (airspaceRestrictionsDataReader)
   UATM::airspaceRestrictionsDataReader_var reader_i =
       UATM::airspaceRestrictionsDataReader::_narrow(reader);

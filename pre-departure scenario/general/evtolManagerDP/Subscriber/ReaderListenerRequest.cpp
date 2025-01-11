@@ -1,21 +1,18 @@
-#include "../../model/UATMTraits.h"  // Include traits for the Urban Air Traffic Management (UATM) model
-#include "ReaderListenerRequest.h"  // Include the custom reader listener class
-#include <model/Sync.h>  // Include synchronization utilities for DDS
-#include <ace/Log_Msg.h>  // Include logging utilities from ACE (Adaptive Communicative Environment)
-#include <dds/DCPS/WaitSet.h>  // Include DDS WaitSet class for synchronization of multiple events
-#include <fstream>  // Include file stream classes for file operations
-#include <sstream>  // Include string stream classes for handling strings in streams
-#include <string>  // Include string manipulation classes
-#include <vector>  // Include vector container for dynamic arrays
-#include "../utils/functions.h"  // Include utility functions (assumed to be in the 'utils' directory)
+#include "../../model/UATMTraits.h"  
+#include "ReaderListenerRequest.h"  
+#include <model/Sync.h>  
+#include <ace/Log_Msg.h>  
+#include <dds/DCPS/WaitSet.h>  
+#include "../utils/functions.h"  
 
+// Constructor initializes ReaderCondSync object
 ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs)
-    : rcs_(rcs) {}  // Constructor initializes ReaderCondSync object
+    : rcs_(rcs) {}  
 
 void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
-    ACE_Guard<ACE_Thread_Mutex> g(mutex_);  // Guard the mutex to ensure thread-safety when accessing shared resources
-    static bool signal_sent = false;  // Flag to ensure that the signal is sent only once
+    ACE_Guard<ACE_Thread_Mutex> g(mutex_);  
+    static bool signal_sent = false;  
 
     // Narrow the reader to the specific data type for flight assignment (flightAssignDataReader)
     UATM::flightAssignDataReader_var reader_i =
@@ -38,9 +35,9 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
     {
         // Take the next sample from the reader
         DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
-        if (error == DDS::RETCODE_OK)  // If data was successfully read
+        if (error == DDS::RETCODE_OK)  
         {
-            if (info.valid_data)  // If the data is valid
+            if (info.valid_data)  
             {
                 // Print the details of the flight assignment to the console
                 std::cout << "| flightAssign: "
@@ -56,25 +53,25 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
                 // Update the EVTOL (Electric Vertical Take-Off and Landing) status
                 updateEvtolStatus(msg.evtol_id.in(), 0, msg.destination_skyport_id.in());
             }
-            else  // If the data is invalid, send a signal if not already done
+            else  
             {
                 if (!signal_sent)
                 {
-                    rcs_.signal();  // Signal that data has been processed
-                    signal_sent = true;  // Set the flag to avoid signaling more than once
+                    rcs_.signal();  
+                    signal_sent = true;  
                 }
-                break;  // Exit the loop after processing the sample
+                break;  
             }
         }
-        else  // If there was an error while reading the sample
+        else  
         {
-            if (error != DDS::RETCODE_NO_DATA)  // If the error isn't "no data"
+            if (error != DDS::RETCODE_NO_DATA)  
             {
                 ACE_ERROR((LM_ERROR,
                            ACE_TEXT("ERROR: %N:%l: on_data_available() -")
-                               ACE_TEXT(" take_next_sample failed!\n")));  // Log the error
+                               ACE_TEXT(" take_next_sample failed!\n")));  
             }
-            break;  // Exit the loop after an error
+            break;  
         }
     }
 };

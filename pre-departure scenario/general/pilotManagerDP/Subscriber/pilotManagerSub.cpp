@@ -1,16 +1,13 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h> // Include TCP transport if using static libraries for ACE
-#endif
-  
-#include "../../model/UATMTraits.h" // Custom UATM model traits header
-#include <tools/modeling/codegen/model/NullReaderListener.h> // Null listener for code generation
-#include <model/Sync.h> // Synchronization utilities
-#include <ace/Log_Msg.h> // ACE logging utilities
-#include <dds/DCPS/WaitSet.h> // DDS WaitSet for event management
+#include "../../model/UATMTraits.h" 
+#include <tools/modeling/codegen/model/NullReaderListener.h> 
+#include <model/Sync.h> 
+#include <ace/Log_Msg.h> 
+#include <dds/DCPS/WaitSet.h> 
 #include "ReaderListenerRequest.h" // Listener for flight request data
 #include "ReaderListenerRec.h" // Listener for record change data
 #include "ReaderListenerAuth.h" // Listener for flight authorization data
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -29,7 +26,6 @@
 #endif
 #include <ace/Log_Msg.h>
 
-// Main entry point of the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
@@ -41,8 +37,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 
     // Create instances of the UATM data model
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
     // Aliasing the model elements for ease of use
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
@@ -52,13 +46,13 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock); // Condition variable based on the mutex
 
     // Setup and configure DataReader for flight authorization (model3)
-    DDS::DataReader_var reader_auth = model3.reader(Elements::DataReaders::flightAuthDR_PLM);
+    DDS::DataReader_var reader_auth = model.reader(Elements::DataReaders::flightAuthDR_PLM);
     OpenDDS::Model::ReaderCondSync rcs2(reader_auth, condition); // Synchronization for reader
     DDS::DataReaderListener_var listener2(new ReaderListenerAuth(rcs2)); // Create listener for flight authorization
     reader_auth->set_listener(listener2, OpenDDS::DCPS::DEFAULT_STATUS_MASK); // Set the listener on the reader
 
     // Setup and configure DataReader for record changes (model2)
-    DDS::DataReader_var reader_rec = model2.reader(Elements::DataReaders::changeRecDR_PLM);
+    DDS::DataReader_var reader_rec = model.reader(Elements::DataReaders::changeRecDR_PLM);
     OpenDDS::Model::ReaderCondSync rcs3(reader_rec, condition); // Synchronization for reader
     DDS::DataReaderListener_var listener3(new ReaderListenerRec(rcs3)); // Create listener for record changes
     reader_rec->set_listener(listener3, OpenDDS::DCPS::DEFAULT_STATUS_MASK); // Set the listener on the reader

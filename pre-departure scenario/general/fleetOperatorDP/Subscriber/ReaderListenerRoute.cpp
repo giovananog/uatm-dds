@@ -30,22 +30,17 @@ void ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
         ACE_OS::exit(-1);
     }
 
-    std::cout << "entrou no subscriber do flightRoutesInfo" << std::endl;
-
     // Create message and sample info objects
     UATM::flightRoutesInfo msg;
     DDS::SampleInfo info;
 
     while (true)
     {
-        std::cout << "entrou no loop do subscriber do flightRoutesInfo" << std::endl;
-
         // Attempt to take the next sample from the reader
         DDS::ReturnCode_t error = reader_i->take_next_sample(msg, info);
 
         if (error == DDS::RETCODE_OK) // If the sample was successfully retrieved
         {
-            std::cout << "entrou no recebimento do subscriber do flightRoutesInfo" << std::endl;
             if (info.valid_data) // If the sample contains valid data
             {
                 // Output the flight route information to the console
@@ -92,7 +87,5 @@ void ReaderListenerRoute::on_data_available(DDS::DataReader_ptr reader)
             }
             break; // Exit the loop if an error occurred
         }
-    std::cout << "saindo do loop no subscriber do flightRoutesInfo" << std::endl;
-
     }
 }

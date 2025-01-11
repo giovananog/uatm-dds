@@ -1,7 +1,3 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-
 #include <iostream>
 #include <random>
 #include <string>
@@ -12,6 +8,7 @@
 #include "../../model/UATMTraits.h"
 #include "../utils/functions.h"
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif

@@ -1,32 +1,35 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>  // Include TCP transport header for DDS if ACE is built with static libraries
-#endif
-  
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <thread>
-#include <chrono>
-#include <unordered_set>
 #include "../utils/functions.h"
+#include "../../model/UATMTraits.h"  
+#include <tools/modeling/codegen/model/NullReaderListener.h>  
+#include <model/Sync.h>  
+#include <dds/DCPS/WaitSet.h>  
+#include "./ReaderListenerRequest.h"  
 
-#include "../../model/UATMTraits.h"  // Include UATM traits for the Urban Air Traffic Management model
-#include <tools/modeling/codegen/model/NullReaderListener.h>  // Header for a null reader listener
+// Security configurations
+#if OPENDDS_CONFIG_SECURITY
+#  include <dds/DCPS/security/framework/Properties.h>
+#endif
+#include <dds/DCPS/StaticIncludes.h>
+#if OPENDDS_DO_MANUAL_STATIC_INCLUDES
+#  ifndef OPENDDS_SAFETY_PROFILE
+#    include <dds/DCPS/transport/udp/Udp.h>
+#    include <dds/DCPS/transport/multicast/Multicast.h>
+#    include <dds/DCPS/RTPS/RtpsDiscovery.h>
+#    include <dds/DCPS/transport/shmem/Shmem.h>
+#    if OPENDDS_CONFIG_SECURITY
+#      include <dds/DCPS/security/BuiltInPlugins.h>
+#    endif
+#  endif
+#  include <dds/DCPS/transport/rtps_udp/RtpsUdp.h>
+#endif
+#include <ace/Log_Msg.h>
 
-#include <model/Sync.h>  // Synchronization model for DDS
-#include <ace/Log_Msg.h>  // ACE logging functionality
-#include <dds/DCPS/WaitSet.h>  // DDS WaitSet for synchronization of read events
-#include "./ReaderListenerRequest.h"  // Header for the custom reader listener
 
-
-// Main entry point for the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
     // Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
     
     // Create an application instance with arguments
     OpenDDS::Model::Application application(argc, argv);
@@ -37,14 +40,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
     // Define elements to be used from the UATM model
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
-    // add property qos policy on domain participant
-    DDS::DomainParticipant_var participant = model.participant(Elements::Participants::evtolManagerDP);
-
     // Create a synchronization mutex and condition variable
     ACE_SYNCH_MUTEX lock;
     ACE_Condition<ACE_SYNCH_MUTEX> condition(lock);
 
-    // Create a data reader for the flight assignment data (flightAssignDR_EV)
+    // Create a data reader for the flight assignment data 
     DDS::DataReader_var reader_assign = model.reader(Elements::DataReaders::flightAssignDR_EV);
 
     // Create a ReaderCondSync object to synchronize reading operations
@@ -59,7 +59,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
   } catch (const CORBA::Exception& e) {
     // Catch any CORBA exceptions and print the error message
     e._tao_print_exception("Exception caught in main():");
-    return -1;  // Return -1 indicating an error occurred
+    return -1;  
 
   } catch (const std::exception& ex) {
     // Catch any standard exceptions and print the error message
@@ -67,8 +67,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
                       ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                       ACE_TEXT(" Exception caught: %C\n"),
                       ex.what()),
-                     -1);  // Return -1 indicating an error occurred
+                     -1);  
   }
 
-  return 0;  // Return 0 indicating successful execution
+  return 0;  
 }

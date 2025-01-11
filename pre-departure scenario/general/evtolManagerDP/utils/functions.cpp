@@ -1,5 +1,4 @@
 #include "functions.h"
-#include <iostream>
 #include <fstream>
 #include <vector>
 #include <sstream>
@@ -7,7 +6,6 @@
 #include <chrono>
 #include <iomanip>
 #include <string>
-#include <string.h>
 
 // Function to read EVTOL data from a file and return a list of EVTOLs
 std::vector<EVTOL> readEVTOLsFromFile(const std::string &filename)

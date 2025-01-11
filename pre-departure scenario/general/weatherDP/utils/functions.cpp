@@ -17,9 +17,9 @@ std::string getRandomLocation(std::mt19937& gen) {
     return "Skyport-" + std::to_string(dis(gen));
 }
 
-// Returns a random temperature between 15.0 and 35.0 degrees Celsius using a random generator
+// Returns a random temperature between 90.0 and 35.0 degrees Celsius using a random generator
 double getRandomTemperature(std::mt19937& gen) {
-    std::uniform_real_distribution<> dis(15.0, 35.0); 
+    std::uniform_real_distribution<> dis(20.0, 35.0); 
     return dis(gen);
 }
 

@@ -1,16 +1,11 @@
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-  
 #include "../../model/UATMTraits.h"
 #include <tools/modeling/codegen/model/NullReaderListener.h>
-
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
-
 #include <dds/DCPS/WaitSet.h>
 #include "ReaderListenerRequest.h"
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -29,12 +24,11 @@
 #endif
 #include <ace/Log_Msg.h>
 
-// Main entry point of the application
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
     /// Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
 
     // Initialize the application with the command-line arguments
     OpenDDS::Model::Application application(argc, argv);

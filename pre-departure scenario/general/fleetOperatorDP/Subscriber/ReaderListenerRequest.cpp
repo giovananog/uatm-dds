@@ -46,7 +46,7 @@ void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
             {
                 // Output the booking flight request to the console
                 std::cout << "| bookingFlightRequest: "
-                          << ",booking_id:" << msg.booking_id.in()
+                          << "booking_id:" << msg.booking_id.in()
                           << ",costumer_id:" << msg.costumer_id.in()
                           << ",flight_id:" << msg.flight_id.in()
                           << ",origin_skyport_id:" << msg.origin_skyport_id.in()

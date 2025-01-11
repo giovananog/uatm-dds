@@ -1,14 +1,13 @@
-#include <iostream>                 // Includes the standard input-output stream library for console output.
-#include <vector>                   // Includes the vector container class from the C++ Standard Library.
-#include <string>                   // Includes the string class to handle text-based data.
-#include <cstdlib>                  // Includes C standard library functions like random number generation.
-#include <ctime>                    // Includes time-related functions, for instance, to generate random values.
-#include <thread>                   // Includes functionality to work with threads, such as creating delays.
-#include <chrono>                   // Includes time-related utilities, such as calculating elapsed time.
-#include "../../model/UATMTraits.h" // Includes a model-specific header (likely for types used in your application).
-#include "../utils/functions.h"     // Includes utility functions used in the application.
-#include <model/Sync.h>             // Includes synchronization-related functionality.
+#include <vector>                   
+#include <string>                   
+#include <ctime>                    
+#include <thread>                   
+#include <chrono>                   
+#include "../../model/UATMTraits.h" 
+#include "../utils/functions.h"     
+#include <model/Sync.h>             
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -32,13 +31,11 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     try
     {
         // Set security for participant
-        TheServiceParticipant->set_security(true); ///
+        TheServiceParticipant->set_security(true); 
         
-        // Initializes three UATM models with application parameters (likely OpenDDS models).
+        // Initializes UATM model with application parameters.
         OpenDDS::Model::Application application(argc, argv);
         UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
-        UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
-        UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
         using OpenDDS::Model::UATM::uatmDCPS::Elements;
 
@@ -46,10 +43,10 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         DDS::DataWriter_var writer_flows = model.writer(Elements::DataWriters::trafficFlowsDW_SKO);
         UATM::trafficFlowsInfoDataWriter_var writer_flows_var = UATM::trafficFlowsInfoDataWriter::_narrow(writer_flows.in());
 
-        DDS::DataWriter_var writer_rest = model2.writer(Elements::DataWriters::airspaceRestDW_SKO);
+        DDS::DataWriter_var writer_rest = model.writer(Elements::DataWriters::airspaceRestDW_SKO);
         UATM::airspaceRestrictionsDataWriter_var writer_rest_var = UATM::airspaceRestrictionsDataWriter::_narrow(writer_rest.in());
 
-        DDS::DataWriter_var writer_routes = model3.writer(Elements::DataWriters::flightRoutesDW_SKO);
+        DDS::DataWriter_var writer_routes = model.writer(Elements::DataWriters::flightRoutesDW_SKO);
         UATM::flightRoutesInfoDataWriter_var writer_routes_var = UATM::flightRoutesInfoDataWriter::_narrow(writer_routes.in());
 
         // Checks if any of the writers are nil (failed narrowing).
@@ -58,7 +55,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             ACE_ERROR_RETURN((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: Failed to narrow writer.\n")), -1);
         }
 
-        std::srand(std::time(nullptr)); // Seeds the random number generator with the current time.
+        // std::srand(std::time(nullptr)); // Seeds the random number generator with the current time.
 
         // Initializes identifiers and start time for the data generation loop.
         int flows_id = 1;
@@ -81,8 +78,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 break;
             }
 
-            // OpenDDS::Model::WriterSync ws(writer_flows); // Synchronizes the writer.
-            // {
+            OpenDDS::Model::WriterSync ws(writer_flows); // Synchronizes the writer.
+            {
                 // Creates a traffic flow message and sends it to the DDS writer.
                 UATM::trafficFlowsInfo tf;
                 tf.flows_id = flows_id++;
@@ -95,16 +92,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 if (error != DDS::RETCODE_OK)
                 {
                     ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for trafficFlows returned %d!\n"), error));
-                }else {
-                    ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for trafficFlows returned (deu certo) %d!\n"), error));
                 }
-            // }
+            }
             
 
             std::this_thread::sleep_for(std::chrono::seconds(2)); // Pauses the thread for 2 seconds.
 
-            // OpenDDS::Model::WriterSync ws2(writer_rest); // Synchronizes the airspace restrictions writer.
-            // {
+            OpenDDS::Model::WriterSync ws2(writer_rest); // Synchronizes the airspace restrictions writer.
+            {
                 // Creates an airspace restriction message and sends it to the DDS writer.
                 UATM::airspaceRestrictions ar;
                 ar.restriction_id = rest_id++;
@@ -117,16 +112,14 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 if (error2 != DDS::RETCODE_OK)
                 {
                     ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for restrictions returned %d!\n"), error2));
-                }else {
-                    ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for restrictions returned (deu certo) %d!\n"), error2));
                 }
-            // }
+            }
             
 
             std::this_thread::sleep_for(std::chrono::seconds(2)); // Pauses the thread for 2 seconds.
 
-            // OpenDDS::Model::WriterSync ws3(writer_routes); // Synchronizes the flight routes writer.
-            // {
+            OpenDDS::Model::WriterSync ws3(writer_routes); // Synchronizes the flight routes writer.
+            {
                 // Creates a flight route message and sends it to the DDS writer.
                 UATM::flightRoutesInfo fr;
                 fr.flight_route_id = routes_id++;
@@ -140,10 +133,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                 if (error3 != DDS::RETCODE_OK)
                 {
                     ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for flightRoutes returned %d!\n"), error3));
-                } else {
-                    ACE_ERROR((LM_ERROR, ACE_TEXT("(%P|%t) ERROR: write for flightRoutes returned (deu certo) %d!\n"), error3));
-                }
-            // }
+                } 
+            }
             
 
             std::this_thread::sleep_for(std::chrono::seconds(2)); // Pauses the thread for 2 seconds.

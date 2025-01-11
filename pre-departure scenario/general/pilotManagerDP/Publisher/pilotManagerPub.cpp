@@ -1,7 +1,5 @@
-#include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <thread>
 #include <chrono>
@@ -11,6 +9,7 @@
 #include <model/Sync.h>               // Include synchronization utilities
 #include <unordered_set>              // For using unordered sets to track sent pilots
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -35,7 +34,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
   try
   {
     // Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
 
     // Initialize the OpenDDS application and model
     OpenDDS::Model::Application application(argc, argv);
@@ -61,7 +60,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     std::string filename = "pilotManagerDP/data/pilots.txt";
     // Set to track which pilots have already been sent
     std::unordered_set<std::string> sent_pilots;
-    int i = 0;
     // Start time for the simulation
     auto startTime = std::chrono::steady_clock::now();
     // Duration after which to stop the loop (in seconds)
@@ -85,9 +83,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
            "pilot_id=Pilot-1,skyport_id=Skyport-1,available=1\n"
            "pilot_id=Pilot-2,skyport_id=Skyport-1,available=1\n"
            "pilot_id=Pilot-3,skyport_id=Skyport-2,available=1\n";
-        file << data; // Write the data to the file
-        file.close(); // Close the file
-        break; // Break the loop after updating the file
+        file << data; 
+        file.close(); 
+        break; 
       }
 
       // Synchronize the writer before sending any data

@@ -1,24 +1,15 @@
-// If using ACE as a static library, include the necessary Tcp header.
-#ifdef ACE_AS_STATIC_LIBS
-#include <dds/DCPS/transport/tcp/Tcp.h>
-#endif
-
-// Standard libraries for input/output, file handling, and threading.
-#include <iostream>
 #include <fstream>
 #include <string>
-#include <sstream>
 #include <vector>
 #include <thread>
 #include <chrono>
 #include <unordered_set>
-
-// Headers for DDS synchronization, ACE logging, and model utilities.
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
 #include "../utils/functions.h"
 
+// Security configurations
 #if OPENDDS_CONFIG_SECURITY
 #  include <dds/DCPS/security/framework/Properties.h>
 #endif
@@ -37,19 +28,17 @@
 #endif
 #include <ace/Log_Msg.h>
 
-// Main function to initialize and run the DDS application.
+
 int ACE_TMAIN(int argc, ACE_TCHAR **argv)
 {
   try
   {
     // Set security for participant
-    TheServiceParticipant->set_security(true); ///
+    TheServiceParticipant->set_security(true); 
     
     // Initialize DDS application and UATM models.
     OpenDDS::Model::Application application(argc, argv);
     UATM::uatmDCPS::DefaultUATMType model(application, argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model2(application, argc, argv);
-    UATM::uatmDCPS::DefaultUATMType model3(application, argc, argv);
 
     // Access writer elements within the UATM model namespace.
     using OpenDDS::Model::UATM::uatmDCPS::Elements;
@@ -58,38 +47,22 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     DDS::DataWriter_var writer_assign = model.writer(Elements::DataWriters::assignFlightDW_FOP);
     UATM::flightAssignDataWriter_var writer_assign_var = UATM::flightAssignDataWriter::_narrow(writer_assign.in());
 
-    // Check if narrowing succeeded; return error if failed.
-    if (CORBA::is_nil(writer_assign_var.in()))
-    {
-      ACE_ERROR_RETURN((LM_ERROR,
-                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                            ACE_TEXT(" _narrow failed!\n")),
-                       -1);
-    }
-
     // Set up DataWriter for flight coordination.
-    DDS::DataWriter_var writer_coord = model3.writer(Elements::DataWriters::flightCoordDW_FOP);
+    DDS::DataWriter_var writer_coord = model.writer(Elements::DataWriters::flightCoordDW_FOP);
     UATM::flightCoordinationDataWriter_var writer_coord_var = UATM::flightCoordinationDataWriter::_narrow(writer_coord.in());
 
-    if (CORBA::is_nil(writer_coord_var.in()))
-    {
-      ACE_ERROR_RETURN((LM_ERROR,
-                        ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
-                            ACE_TEXT(" _narrow failed!\n")),
-                       -1);
-    }
-
     // Set up DataWriter for flight authorization requests.
-    DDS::DataWriter_var writer_request = model2.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
+    DDS::DataWriter_var writer_request = model.writer(Elements::DataWriters::uaspFlightRequestDW_FOP);
     UATM::flightAuthorizationRequestDataWriter_var writer_request_var = UATM::flightAuthorizationRequestDataWriter::_narrow(writer_request.in());
 
-    if (CORBA::is_nil(writer_request_var.in()))
+    if (CORBA::is_nil(writer_request_var.in()) || CORBA::is_nil(writer_assign_var.in()) || CORBA::is_nil(writer_coord_var.in()))
     {
       ACE_ERROR_RETURN((LM_ERROR,
                         ACE_TEXT("(%P|%t) ERROR: %N:%l: main() -")
                             ACE_TEXT(" _narrow failed!\n")),
                        -1);
     }
+
 
     // Initialize variables for unique identifiers and tracking.
     int flight_assign_id = 1;
