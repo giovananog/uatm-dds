@@ -41,7 +41,7 @@ project(*xmlPublisher1) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../bookingPlatformDP/utils/functions.cpp
+    ../bookingPlatformDP/Utils/functionsBP.cpp
     ../bookingPlatformDP/Publisher/bookingPlatformPub.cpp
   }
 }
@@ -54,7 +54,7 @@ project(*xmlPublisher2) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../evtolManagerDP/utils/functions.cpp
+    ../evtolManagerDP/Utils/functionsEM.cpp
     ../evtolManagerDP/Publisher/evtolManPub.cpp
   }
 }
@@ -67,7 +67,7 @@ project(*xmlPublisher3) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../fleetOperatorDP/utils/functions.cpp
+    ../fleetOperatorDP/Utils/functionsFO.cpp
     ../fleetOperatorDP/Publisher/fleetOperatorPub.cpp
   }
 }
@@ -80,7 +80,7 @@ project(*xmlPublisher4) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../flightAuthSysDP/utils/functions.cpp
+    ../flightAuthSysDP/Utils/functionsFAS.cpp
     ../flightAuthSysDP/Publisher/flightAuthSysPub.cpp
   }
 }
@@ -93,7 +93,7 @@ project(*xmlPublisher5) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../pilotManagerDP/utils/functions.cpp
+    ../pilotManagerDP/Utils/functionsPM.cpp
     ../pilotManagerDP/Publisher/pilotManagerPub.cpp
   }
 }
@@ -106,7 +106,7 @@ project(*xmlPublisher6) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../skyportManagerDP/utils/functions.cpp
+    ../skyportManagerDP/Utils/functionsSKM.cpp
     ../skyportManagerDP/Publisher/skyportManagerPub.cpp
   }
 }
@@ -119,7 +119,7 @@ project(*xmlPublisher7) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../skyportOperatorDP/utils/functions.cpp
+    ../skyportOperatorDP/Utils/functionsSKO.cpp
     ../skyportOperatorDP/Publisher/skyportOperatorPub.cpp
   }
 }
@@ -132,7 +132,7 @@ project(*xmlPublisher8) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../tolPadManagerDP/utils/functions.cpp
+    ../tolPadManagerDP/Utils/functionsTPM.cpp
     ../tolPadManagerDP/Publisher/tolPadManagerPub.cpp
   }
 }
@@ -145,7 +145,7 @@ project(*xmlPublisher9) : dcpsexe, all_dcps_transports, dds_model, opendds_secur
   libpaths += model
 
   Source_Files {
-    ../uaspManagerDP/utils/functions.cpp
+    ../uaspManagerDP/Utils/functionsUM.cpp
     ../uaspManagerDP/Publisher/uaspManPub.cpp
   }
 }
@@ -158,7 +158,7 @@ project(*xmlPublisher10) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../weatherDP/utils/functions.cpp
+    ../weatherDP/Utils/functionsWS.cpp
     ../weatherDP/Publisher/weatherPub.cpp
   }
 }
@@ -171,7 +171,7 @@ project(*xmlSubscriber1) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../anspDP/Subscriber/ReaderListenerRequest.cpp
+    ../anspDP/Subscriber/ReaderListenerRequestANSP.cpp
     ../anspDP/Subscriber/anspSub.cpp
   }
 }
@@ -184,8 +184,8 @@ project(*xmlSubscriber2) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../evtolManagerDP/utils/functions.cpp
-    ../evtolManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../evtolManagerDP/Utils/functionsEM.cpp
+    ../evtolManagerDP/Subscriber/ReaderListenerRequestEM.cpp
     ../evtolManagerDP/Subscriber/evtolManagerSub.cpp
   }
 }
@@ -198,13 +198,13 @@ project(*xmlSubscriber3) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../fleetOperatorDP/utils/functions.cpp
-    ../fleetOperatorDP/Subscriber/ReaderListenerAuth.cpp
-    ../fleetOperatorDP/Subscriber/ReaderListenerAvailability.cpp
-    ../fleetOperatorDP/Subscriber/ReaderListenerRec.cpp
-    ../fleetOperatorDP/Subscriber/ReaderListenerRequest.cpp
+    ../fleetOperatorDP/Utils/functionsFO.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerAuthFO.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerAvailabilityFO.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRecFO.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerRequestFO.cpp
     ../fleetOperatorDP/Subscriber/ReaderListenerRoute.cpp
-    ../fleetOperatorDP/Subscriber/ReaderListenerWeather.cpp
+    ../fleetOperatorDP/Subscriber/ReaderListenerWeatherFO.cpp
     ../fleetOperatorDP/Subscriber/fleetOperatorSub.cpp
   }
 }
@@ -217,7 +217,7 @@ project(*xmlSubscriber4) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../flightAuthSysDP/Subscriber/ReaderListenerRequest.cpp
+    ../flightAuthSysDP/Subscriber/ReaderListenerRequestFAS.cpp
     ../flightAuthSysDP/Subscriber/flightAuthSysSub.cpp
   }
 }
@@ -230,8 +230,8 @@ project(*xmlSubscriber5) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../pilotManagerDP/utils/functions.cpp
-    ../pilotManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../pilotManagerDP/Utils/functionsPM.cpp
+    ../pilotManagerDP/Subscriber/ReaderListenerRequestPM.cpp
     ../pilotManagerDP/Subscriber/ReaderListenerRec.cpp
     ../pilotManagerDP/Subscriber/ReaderListenerAuth.cpp
     ../pilotManagerDP/Subscriber/pilotManagerSub.cpp
@@ -246,9 +246,9 @@ project(*xmlSubscriber6) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../skyportOperatorDP/utils/functions.cpp
+    ../skyportOperatorDP/Utils/functionsSKO.cpp
     ../skyportOperatorDP/Subscriber/ReaderListenerCoordination.cpp
-    ../skyportOperatorDP/Subscriber/ReaderListenerAvailability.cpp
+    ../skyportOperatorDP/Subscriber/ReaderListenerAvailabilitySKO.cpp
     ../skyportOperatorDP/Subscriber/skyportOperatorSub.cpp
   }
 }
@@ -261,7 +261,7 @@ project(*xmlSubscriber7) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../tolPadManagerDP/utils/functions.cpp
+    ../tolPadManagerDP/Utils/functionsTPM.cpp
     ../tolPadManagerDP/Subscriber/ReaderListenerRequest.cpp
     ../tolPadManagerDP/Subscriber/tolPadManagerSub.cpp
   }
@@ -275,8 +275,8 @@ project(*xmlSubscriber8) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../uaspManagerDP/utils/functions.cpp
-    ../uaspManagerDP/Subscriber/ReaderListenerRequest.cpp
+    ../uaspManagerDP/Utils/functionsUM.cpp
+    ../uaspManagerDP/Subscriber/ReaderListenerRequestUASP.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerAvailability.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerFlows.cpp
     ../uaspManagerDP/Subscriber/ReaderListenerRest.cpp
@@ -293,7 +293,7 @@ project(*xmlSubscriber9) : dcpsexe, all_dcps_transports, dds_model, opendds_secu
   libpaths += model
 
   Source_Files {
-    ../ussDP/Subscriber/ReaderListenerRequest.cpp
+    ../ussDP/Subscriber/ReaderListenerRequestUSS.cpp
     ../ussDP/Subscriber/ussSub.cpp
   }
 }
