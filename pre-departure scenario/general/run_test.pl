@@ -46,7 +46,7 @@ if ($rtps) {
 
 my $test = new PerlDDS::TestFramework();
 
-$test->{dcps_debug_level} = 5;
+$test->{dcps_debug_level} = 1;
 $test->{dcps_transport_debug_level} = 1;
 $test->{add_transport_config} = 0;
 
@@ -76,24 +76,24 @@ $test->process("subscriber7", "model/subscriber7", $sub_opts);
 $test->process("subscriber8", "model/subscriber8", $sub_opts);
 $test->process("subscriber9", "model/subscriber9", $sub_opts);
 
-# $test->start_process("subscriber3");
-# $test->start_process("subscriber4");
-# $test->start_process("subscriber9");
-# $test->start_process("subscriber2");
-# $test->start_process("subscriber1");
-# $test->start_process("subscriber5");
-# $test->start_process("subscriber6");
-# $test->start_process("subscriber7");
+$test->start_process("subscriber3");
+$test->start_process("subscriber4");
+$test->start_process("subscriber1");
+$test->start_process("subscriber9");
+$test->start_process("subscriber2");
+$test->start_process("subscriber5");
+$test->start_process("subscriber6");
+$test->start_process("subscriber7");
 $test->start_process("subscriber8");
-# $test->start_process("publisher1");
-# $test->start_process("publisher2");
-# $test->start_process("publisher5");
-# $test->start_process("publisher6");
+$test->start_process("publisher1");
+$test->start_process("publisher2");
+$test->start_process("publisher5");
+$test->start_process("publisher6");
 $test->start_process("publisher7"); 
-# $test->start_process("publisher8"); 
-# $test->start_process("publisher3"); 
-# $test->start_process("publisher4"); 
-# $test->start_process("publisher9");
-# $test->start_process("publisher10");
+$test->start_process("publisher8"); 
+$test->start_process("publisher9");
+$test->start_process("publisher3"); 
+$test->start_process("publisher4"); 
+$test->start_process("publisher10");
 
-exit $test->finish(1200);
+exit $test->finish(1000);

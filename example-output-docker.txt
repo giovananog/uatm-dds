@@ -1,0 +1,556 @@
+failed to get console mode for stdout: The handle is invalid.
+[1A[1B[0G[?25l[+] Running 19/0
+ [32m✔[0m Container general-subscriber2-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher10-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher9-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber6-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber3-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher4-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber4-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher8-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber8-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher2-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber1-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber5-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber7-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher6-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher5-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-subscriber9-1  [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher3-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher1-1   [32mCreated[0m[34m0.0s [0m
+ [32m✔[0m Container general-publisher7-1   [32mCreated[0m[34m0.0s [0m
+[?25hAttaching to general-publisher1-1, general-publisher10-1, general-publisher2-1, general-publisher3-1, general-publisher4-1, general-publisher5-1, general-publisher6-1, general-publisher7-1, general-publisher8-1, general-publisher9-1, general-subscriber1-1, general-subscriber2-1, general-subscriber3-1, general-subscriber4-1, general-subscriber5-1, general-subscriber6-1, general-subscriber7-1, general-subscriber8-1, general-subscriber9-1
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:09:50
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:09:52
+general-subscriber8-1  | | weatherInfo: weather_id:1,location:Skyport-1,temperature:29.0367,wind_speed:6.52069,weather_condition:Stormy,observation_time:12:09:52
+general-subscriber3-1  | | weatherInfo: weather_id:1,location:Skyport-1,temperature:29.0367,wind_speed:6.52069,weather_condition:Stormy,observation_time:12:09:52
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:09:53
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-22,authorization_status:1,authorization_time:12:08:15,approved_departure_time:12:08:15,approved_arrival_time:12:08:15,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-3
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-22,authorization_status:1,authorization_time:12:08:15,approved_departure_time:12:08:15,approved_arrival_time:12:08:15,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-3
+general-subscriber6-1  | | AvailabilityInfo: resource_id:Skyport-1,resource_type:skyport,available:1,skyport_id:Skyport-1,availability_time:12:09:53
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Skyport-1,resource_type:skyport,available:1,skyport_id:Skyport-1,availability_time:12:09:53
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:1,area:Skyport-1,congestion_level:Medium,affected_routes:1,timestamp:12:09:54
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:09:54
+general-subscriber8-1  | | weatherInfo: weather_id:2,location:Skyport-1,temperature:33.8454,wind_speed:3.39746,weather_condition:Partly Cloudy,observation_time:12:09:54
+general-subscriber3-1  | | weatherInfo: weather_id:2,location:Skyport-1,temperature:33.8454,wind_speed:3.39746,weather_condition:Partly Cloudy,observation_time:12:09:54
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Skyport-2,resource_type:skyport,available:1,skyport_id:Skyport-2,availability_time:12:09:55
+general-subscriber6-1  | | AvailabilityInfo: resource_id:Skyport-2,resource_type:skyport,available:1,skyport_id:Skyport-2,availability_time:12:09:55
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:1,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:09:56,restriction_authority:ANAC
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:09:56
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:09:56
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:09:56
+general-subscriber3-1  | | weatherInfo: weather_id:3,location:Skyport-1,temperature:32.4969,wind_speed:18.1108,weather_condition:Clear Sky,observation_time:12:09:56
+general-subscriber8-1  | | weatherInfo: weather_id:3,location:Skyport-1,temperature:32.4969,wind_speed:18.1108,weather_condition:Clear Sky,observation_time:12:09:56
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:1,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:15,available:0,traffic_density:Low
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:09:58
+general-subscriber3-1  | | weatherInfo: weather_id:4,location:Skyport-1,temperature:22.4125,wind_speed:2.31561,weather_condition:Partly Cloudy,observation_time:12:09:58
+general-subscriber8-1  | | weatherInfo: weather_id:4,location:Skyport-1,temperature:22.4125,wind_speed:2.31561,weather_condition:Partly Cloudy,observation_time:12:09:58
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:09:59
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:09:59
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:00
+general-subscriber3-1  | | weatherInfo: weather_id:5,location:Skyport-1,temperature:32.1393,wind_speed:10.6141,weather_condition:Partly Cloudy,observation_time:12:10:00
+general-subscriber8-1  | | weatherInfo: weather_id:5,location:Skyport-1,temperature:32.1393,wind_speed:10.6141,weather_condition:Partly Cloudy,observation_time:12:10:00
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:2,area:Skyport-1,congestion_level:Medium,affected_routes:1,timestamp:12:10:00
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:02
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:02
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:02
+general-subscriber8-1  | | weatherInfo: weather_id:6,location:Skyport-1,temperature:22.2154,wind_speed:5.03123,weather_condition:Clear Sky,observation_time:12:10:02
+general-subscriber3-1  | | weatherInfo: weather_id:6,location:Skyport-1,temperature:22.2154,wind_speed:5.03123,weather_condition:Clear Sky,observation_time:12:10:02
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:2,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:02,restriction_authority:ANAC
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:04
+general-subscriber3-1  | | weatherInfo: weather_id:7,location:Skyport-2,temperature:20.1272,wind_speed:13.1548,weather_condition:Rainy,observation_time:12:10:04
+general-subscriber8-1  | | weatherInfo: weather_id:7,location:Skyport-2,temperature:20.1272,wind_speed:13.1548,weather_condition:Rainy,observation_time:12:10:04
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:05
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:05
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:2,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:19,available:1,traffic_density:Medium
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:06
+general-subscriber3-1  | | weatherInfo: weather_id:8,location:Skyport-2,temperature:21.3749,wind_speed:8.31592,weather_condition:Partly Cloudy,observation_time:12:10:06
+general-subscriber8-1  | | weatherInfo: weather_id:8,location:Skyport-2,temperature:21.3749,wind_speed:8.31592,weather_condition:Partly Cloudy,observation_time:12:10:06
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:3,area:Skyport-2,congestion_level:Low,affected_routes:1,timestamp:12:10:06
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:08
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:08
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:08
+general-subscriber3-1  | | weatherInfo: weather_id:9,location:Skyport-2,temperature:27.895,wind_speed:2.34693,weather_condition:Partly Cloudy,observation_time:12:10:08
+general-subscriber8-1  | | weatherInfo: weather_id:9,location:Skyport-2,temperature:27.895,wind_speed:2.34693,weather_condition:Partly Cloudy,observation_time:12:10:08
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-1,costumer_id:Costumer-383,flight_id:Flight-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:3,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:08,restriction_authority:ANAC
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:10
+general-subscriber3-1  | | weatherInfo: weather_id:10,location:Skyport-2,temperature:26.7756,wind_speed:5.12348,weather_condition:Partly Cloudy,observation_time:12:10:10
+general-subscriber8-1  | | weatherInfo: weather_id:10,location:Skyport-2,temperature:26.7756,wind_speed:5.12348,weather_condition:Partly Cloudy,observation_time:12:10:10
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:11
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:11
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:8,available:1,traffic_density:Low
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:12
+general-subscriber3-1  | | weatherInfo: weather_id:11,location:Skyport-2,temperature:28.882,wind_speed:7.80002,weather_condition:Partly Cloudy,observation_time:12:10:12
+general-subscriber8-1  | | weatherInfo: weather_id:11,location:Skyport-2,temperature:28.882,wind_speed:7.80002,weather_condition:Partly Cloudy,observation_time:12:10:12
+general-subscriber2-1  | | flightAssign: flight_assign_id:1,assign_time:12:10:11,flight_id:Flight-1,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber5-1  | | flightAssign: flight_assign_id:1,assign_time:12:10:11,flight_id:Flight-1,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:4,area:Skyport-2,congestion_level:High,affected_routes:1,timestamp:12:10:12
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:14
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:14
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:14
+general-subscriber8-1  | | weatherInfo: weather_id:12,location:Skyport-2,temperature:29.844,wind_speed:7.66075,weather_condition:Clear Sky,observation_time:12:10:14
+general-subscriber3-1  | | weatherInfo: weather_id:12,location:Skyport-2,temperature:29.844,wind_speed:7.66075,weather_condition:Clear Sky,observation_time:12:10:14
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:4,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:14,restriction_authority:ANAC
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-1,flight_id:Flight-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-1,pilot_id:Pilot-1,route_id:2,weather_id:10
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-1,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:10:14,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:16
+general-subscriber3-1  | | weatherInfo: weather_id:13,location:Skyport-2,temperature:30.2305,wind_speed:14.6477,weather_condition:Partly Cloudy,observation_time:12:10:16
+general-subscriber8-1  | | weatherInfo: weather_id:13,location:Skyport-2,temperature:30.2305,wind_speed:14.6477,weather_condition:Partly Cloudy,observation_time:12:10:16
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-1,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:10:14,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:17
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:17
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:4,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:15,available:1,traffic_density:Low
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:18
+general-subscriber7-1  | | tolPadRequest: ,assign_id:1,flight_id:Flight-1,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:17
+general-subscriber8-1  | | weatherInfo: weather_id:14,location:Skyport-2,temperature:30.4209,wind_speed:0.500826,weather_condition:Clear Sky,observation_time:12:10:18
+general-subscriber3-1  | | weatherInfo: weather_id:14,location:Skyport-2,temperature:30.4209,wind_speed:0.500826,weather_condition:Clear Sky,observation_time:12:10:18
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:5,area:Skyport-2,congestion_level:Low,affected_routes:1,timestamp:12:10:18
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:1,approved_by:UASP,estimated_time:12,flight_id:Flight-1,timestamp:12:10:18
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:1,approved_by:UASP,estimated_time:12,flight_id:Flight-1,timestamp:12:10:18
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-1,authorization_status:1,authorization_time:12:10:18,approved_departure_time:12:10:18,approved_arrival_time:12:10:18,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-1,authorization_status:1,authorization_time:12:10:18,approved_departure_time:12:10:18,approved_arrival_time:12:10:18,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:1,flight_id:2,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:18
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:1,flight_id:2,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:18
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:20
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:20
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:20
+general-subscriber3-1  | | weatherInfo: weather_id:15,location:Skyport-2,temperature:30.5436,wind_speed:15.7967,weather_condition:Rainy,observation_time:12:10:20
+general-subscriber8-1  | | weatherInfo: weather_id:15,location:Skyport-2,temperature:30.5436,wind_speed:15.7967,weather_condition:Rainy,observation_time:12:10:20
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:2,flight_id:3,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:20
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:2,flight_id:3,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:20
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-2,costumer_id:Costumer-777,flight_id:Flight-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:5,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:10:20,restriction_authority:FAA
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:3,flight_id:4,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:21
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:3,flight_id:4,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:21
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:22
+general-subscriber3-1  | | weatherInfo: weather_id:16,location:Skyport-2,temperature:20.7212,wind_speed:5.88403,weather_condition:Stormy,observation_time:12:10:22
+general-subscriber8-1  | | weatherInfo: weather_id:16,location:Skyport-2,temperature:20.7212,wind_speed:5.88403,weather_condition:Stormy,observation_time:12:10:22
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:4,flight_id:5,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:22
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:4,flight_id:5,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:22
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:23
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:23
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:5,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:16,available:1,traffic_density:Medium
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:5,flight_id:6,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:23
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:5,flight_id:6,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:23
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:24
+general-subscriber8-1  | | weatherInfo: weather_id:17,location:Skyport-1,temperature:28.0147,wind_speed:18.2066,weather_condition:Clear Sky,observation_time:12:10:24
+general-subscriber3-1  | | weatherInfo: weather_id:17,location:Skyport-1,temperature:28.0147,wind_speed:18.2066,weather_condition:Clear Sky,observation_time:12:10:24
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:6,flight_id:7,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:24
+general-subscriber2-1  | | flightAssign: flight_assign_id:2,assign_time:12:10:23,flight_id:Flight-2,pilot_id:Pilot-2,evtol_id:eVTOL-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:6,flight_id:7,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:24
+general-subscriber5-1  | | flightAssign: flight_assign_id:2,assign_time:12:10:23,flight_id:Flight-2,pilot_id:Pilot-2,evtol_id:eVTOL-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:6,area:Skyport-1,congestion_level:Low,affected_routes:1,timestamp:12:10:24
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:7,flight_id:8,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:25
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:7,flight_id:8,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:25
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:26
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:26
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:26
+general-subscriber8-1  | | weatherInfo: weather_id:18,location:Skyport-2,temperature:27.9603,wind_speed:13.9026,weather_condition:Clear Sky,observation_time:12:10:26
+general-subscriber3-1  | | weatherInfo: weather_id:18,location:Skyport-2,temperature:27.9603,wind_speed:13.9026,weather_condition:Clear Sky,observation_time:12:10:26
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:8,flight_id:9,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:26
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:8,flight_id:9,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:26
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:6,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:10:26,restriction_authority:CAA
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-3,costumer_id:Costumer-793,flight_id:Flight-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:9,flight_id:10,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:27
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:9,flight_id:10,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:27
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-2,flight_id:Flight-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,evtol_id:eVTOL-2,pilot_id:Pilot-2,route_id:5,weather_id:16
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-2,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:26,pilot_id:Pilot-2,evtol_id:eVTOL-2
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:28
+general-subscriber3-1  | | weatherInfo: weather_id:19,location:Skyport-2,temperature:27.2905,wind_speed:2.9625,weather_condition:Clear Sky,observation_time:12:10:28
+general-subscriber8-1  | | weatherInfo: weather_id:19,location:Skyport-2,temperature:27.2905,wind_speed:2.9625,weather_condition:Clear Sky,observation_time:12:10:28
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:10,flight_id:11,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:28
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:10,flight_id:11,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:28
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:29
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-2,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:26,pilot_id:Pilot-2,evtol_id:eVTOL-2
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:6,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:17,available:0,traffic_density:High
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:29
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:11,flight_id:12,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:29
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:11,flight_id:12,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:29
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:30
+general-subscriber7-1  | | tolPadRequest: ,assign_id:2,flight_id:Flight-2,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:29
+general-subscriber8-1  | | weatherInfo: weather_id:20,location:Skyport-2,temperature:24.0352,wind_speed:6.38693,weather_condition:Rainy,observation_time:12:10:30
+general-subscriber3-1  | | weatherInfo: weather_id:20,location:Skyport-2,temperature:24.0352,wind_speed:6.38693,weather_condition:Rainy,observation_time:12:10:30
+general-subscriber2-1  | | flightAssign: flight_assign_id:3,assign_time:12:10:29,flight_id:Flight-3,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber5-1  | | flightAssign: flight_assign_id:3,assign_time:12:10:29,flight_id:Flight-3,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:7,area:Skyport-1,congestion_level:Low,affected_routes:1,timestamp:12:10:30
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:2,approved_by:UASP,estimated_time:12,flight_id:Flight-2,timestamp:12:10:30
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:2,approved_by:UASP,estimated_time:12,flight_id:Flight-2,timestamp:12:10:30
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-2,authorization_status:1,authorization_time:12:10:30,approved_departure_time:12:10:30,approved_arrival_time:12:10:30,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-2,authorization_status:1,authorization_time:12:10:30,approved_departure_time:12:10:30,approved_arrival_time:12:10:30,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:12,flight_id:13,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:30
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:12,flight_id:13,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:30
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:32
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:32
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:32
+general-subscriber3-1  | | weatherInfo: weather_id:21,location:Skyport-2,temperature:24.3944,wind_speed:11.6308,weather_condition:Partly Cloudy,observation_time:12:10:32
+general-subscriber8-1  | | weatherInfo: weather_id:21,location:Skyport-2,temperature:24.3944,wind_speed:11.6308,weather_condition:Partly Cloudy,observation_time:12:10:32
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:13,flight_id:14,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:32
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:13,flight_id:14,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:32
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:7,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:10:32,restriction_authority:ANAC
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-4,costumer_id:Costumer-386,flight_id:Flight-4,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-3,flight_id:Flight-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,evtol_id:eVTOL-3,pilot_id:Pilot-2,route_id:5,weather_id:19
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-3,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:32,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:14,flight_id:15,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:33
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:14,flight_id:15,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:33
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:34
+general-subscriber8-1  | | weatherInfo: weather_id:22,location:Skyport-1,temperature:20.8049,wind_speed:16.3817,weather_condition:Partly Cloudy,observation_time:12:10:34
+general-subscriber3-1  | | weatherInfo: weather_id:22,location:Skyport-1,temperature:20.8049,wind_speed:16.3817,weather_condition:Partly Cloudy,observation_time:12:10:34
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:15,flight_id:16,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:34
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:15,flight_id:16,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:34
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:35
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:7,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:0,available:0,traffic_density:Low
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-3,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:32,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:35
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:16,flight_id:17,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:35
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:16,flight_id:17,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:35
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:36
+general-subscriber7-1  | | tolPadRequest: ,assign_id:3,flight_id:Flight-3,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:35
+general-subscriber8-1  | | weatherInfo: weather_id:23,location:Skyport-1,temperature:27.5695,wind_speed:9.24234,weather_condition:Stormy,observation_time:12:10:36
+general-subscriber3-1  | | weatherInfo: weather_id:23,location:Skyport-1,temperature:27.5695,wind_speed:9.24234,weather_condition:Stormy,observation_time:12:10:36
+general-subscriber5-1  | | flightAssign: flight_assign_id:4,assign_time:12:10:35,flight_id:Flight-4,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber2-1  | | flightAssign: flight_assign_id:4,assign_time:12:10:35,flight_id:Flight-4,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:8,area:Skyport-2,congestion_level:High,affected_routes:1,timestamp:12:10:36
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:3,approved_by:UASP,estimated_time:12,flight_id:Flight-3,timestamp:12:10:36
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:3,approved_by:UASP,estimated_time:12,flight_id:Flight-3,timestamp:12:10:36
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-3,authorization_status:1,authorization_time:12:10:36,approved_departure_time:12:10:36,approved_arrival_time:12:10:36,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:17,flight_id:18,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:36
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-3,authorization_status:1,authorization_time:12:10:36,approved_departure_time:12:10:36,approved_arrival_time:12:10:36,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:17,flight_id:18,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:36
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:38
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:38
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:38
+general-subscriber3-1  | | weatherInfo: weather_id:24,location:Skyport-1,temperature:20.7815,wind_speed:17.5299,weather_condition:Partly Cloudy,observation_time:12:10:38
+general-subscriber8-1  | | weatherInfo: weather_id:24,location:Skyport-1,temperature:20.7815,wind_speed:17.5299,weather_condition:Partly Cloudy,observation_time:12:10:38
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:18,flight_id:19,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:38
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:18,flight_id:19,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:38
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:8,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:38,restriction_authority:ANAC
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-4,flight_id:Flight-4,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-1,pilot_id:Pilot-1,route_id:2,weather_id:22
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-4,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:10:38,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:19,flight_id:20,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:39
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:19,flight_id:20,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:39
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:40
+general-subscriber3-1  | | weatherInfo: weather_id:25,location:Skyport-2,temperature:29.8958,wind_speed:8.02987,weather_condition:Partly Cloudy,observation_time:12:10:40
+general-subscriber8-1  | | weatherInfo: weather_id:25,location:Skyport-2,temperature:29.8958,wind_speed:8.02987,weather_condition:Partly Cloudy,observation_time:12:10:40
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:20,flight_id:21,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:40
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:20,flight_id:21,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:40
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:41
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:8,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:5,available:0,traffic_density:Low
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:41
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-4,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:10:38,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:21,flight_id:22,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:41
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:21,flight_id:22,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:41
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:42
+general-subscriber7-1  | | tolPadRequest: ,assign_id:4,flight_id:Flight-4,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:41
+general-subscriber8-1  | | weatherInfo: weather_id:26,location:Skyport-2,temperature:31.8568,wind_speed:14.0936,weather_condition:Partly Cloudy,observation_time:12:10:42
+general-subscriber3-1  | | weatherInfo: weather_id:26,location:Skyport-2,temperature:31.8568,wind_speed:14.0936,weather_condition:Partly Cloudy,observation_time:12:10:42
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:9,area:Skyport-2,congestion_level:High,affected_routes:1,timestamp:12:10:42
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:44
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:4,approved_by:UASP,estimated_time:12,flight_id:Flight-4,timestamp:12:10:43
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:4,approved_by:UASP,estimated_time:12,flight_id:Flight-4,timestamp:12:10:43
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-4,authorization_status:1,authorization_time:12:10:43,approved_departure_time:12:10:43,approved_arrival_time:12:10:43,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-4,authorization_status:1,authorization_time:12:10:43,approved_departure_time:12:10:43,approved_arrival_time:12:10:43,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:22,flight_id:23,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:43
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:22,flight_id:23,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:43
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:44
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:44
+general-subscriber8-1  | | weatherInfo: weather_id:27,location:Skyport-1,temperature:21.6502,wind_speed:0.745528,weather_condition:Rainy,observation_time:12:10:44
+general-subscriber3-1  | | weatherInfo: weather_id:27,location:Skyport-1,temperature:21.6502,wind_speed:0.745528,weather_condition:Rainy,observation_time:12:10:44
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:9,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:44,restriction_authority:FAA
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:23,flight_id:24,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:44
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:23,flight_id:24,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:44
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-5,costumer_id:Costumer-649,flight_id:Flight-5,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:24,flight_id:25,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:45
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:24,flight_id:25,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:45
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:46
+general-subscriber3-1  | | weatherInfo: weather_id:28,location:Skyport-1,temperature:25.5509,wind_speed:12.1006,weather_condition:Clear Sky,observation_time:12:10:46
+general-subscriber8-1  | | weatherInfo: weather_id:28,location:Skyport-1,temperature:25.5509,wind_speed:12.1006,weather_condition:Clear Sky,observation_time:12:10:46
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:47
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:9,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:17,available:0,traffic_density:Low
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:25,flight_id:26,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:46
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:25,flight_id:26,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:46
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:47
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:26,flight_id:27,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:47
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:26,flight_id:27,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:47
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:48
+general-subscriber8-1  | | weatherInfo: weather_id:29,location:Skyport-2,temperature:20.2239,wind_speed:4.54837,weather_condition:Partly Cloudy,observation_time:12:10:48
+general-subscriber3-1  | | weatherInfo: weather_id:29,location:Skyport-2,temperature:20.2239,wind_speed:4.54837,weather_condition:Partly Cloudy,observation_time:12:10:48
+general-subscriber2-1  | | flightAssign: flight_assign_id:5,assign_time:12:10:47,flight_id:Flight-5,pilot_id:Pilot-3,evtol_id:eVTOL-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber5-1  | | flightAssign: flight_assign_id:5,assign_time:12:10:47,flight_id:Flight-5,pilot_id:Pilot-3,evtol_id:eVTOL-2,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:10,area:Skyport-2,congestion_level:Low,affected_routes:1,timestamp:12:10:48
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:27,flight_id:28,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:48
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:27,flight_id:28,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:48
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:50
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:28,flight_id:29,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:49
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:28,flight_id:29,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:49
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:50
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:50
+general-subscriber8-1  | | weatherInfo: weather_id:30,location:Skyport-1,temperature:23.2146,wind_speed:5.82289,weather_condition:Rainy,observation_time:12:10:50
+general-subscriber3-1  | | weatherInfo: weather_id:30,location:Skyport-1,temperature:23.2146,wind_speed:5.82289,weather_condition:Rainy,observation_time:12:10:50
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:10,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:50,restriction_authority:FAA
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:29,flight_id:30,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:50
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:29,flight_id:30,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:50
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-6,costumer_id:Costumer-362,flight_id:Flight-6,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-5,flight_id:Flight-5,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,evtol_id:eVTOL-2,pilot_id:Pilot-3,route_id:5,weather_id:28
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-5,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:51,pilot_id:Pilot-3,evtol_id:eVTOL-2
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:30,flight_id:31,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:51
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:30,flight_id:31,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:51
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:52
+general-subscriber8-1  | | weatherInfo: weather_id:31,location:Skyport-2,temperature:27.1811,wind_speed:7.11405,weather_condition:Clear Sky,observation_time:12:10:52
+general-subscriber3-1  | | weatherInfo: weather_id:31,location:Skyport-2,temperature:27.1811,wind_speed:7.11405,weather_condition:Clear Sky,observation_time:12:10:52
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:10:53
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:10,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:4,available:1,traffic_density:High
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:31,flight_id:32,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:52
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:31,flight_id:32,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:52
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:53
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-5,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:51,pilot_id:Pilot-3,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:32,flight_id:33,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:53
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:32,flight_id:33,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:53
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:10:54
+general-subscriber7-1  | | tolPadRequest: ,assign_id:5,flight_id:Flight-5,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:53
+general-subscriber3-1  | | weatherInfo: weather_id:32,location:Skyport-1,temperature:34.7046,wind_speed:9.96374,weather_condition:Partly Cloudy,observation_time:12:10:54
+general-subscriber8-1  | | weatherInfo: weather_id:32,location:Skyport-1,temperature:34.7046,wind_speed:9.96374,weather_condition:Partly Cloudy,observation_time:12:10:54
+general-subscriber5-1  | | flightAssign: flight_assign_id:6,assign_time:12:10:54,flight_id:Flight-6,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber2-1  | | flightAssign: flight_assign_id:6,assign_time:12:10:54,flight_id:Flight-6,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:11,area:Skyport-1,congestion_level:Low,affected_routes:1,timestamp:12:10:54
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:56
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-5,authorization_status:1,authorization_time:12:10:55,approved_departure_time:12:10:55,approved_arrival_time:12:10:55,tolpad_id:TolPad-1,pilot_id:Pilot-3,evtol_id:eVTOL-2
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-5,authorization_status:1,authorization_time:12:10:55,approved_departure_time:12:10:55,approved_arrival_time:12:10:55,tolpad_id:TolPad-1,pilot_id:Pilot-3,evtol_id:eVTOL-2
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:5,approved_by:UASP,estimated_time:12,flight_id:Flight-5,timestamp:12:10:55
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:5,approved_by:UASP,estimated_time:12,flight_id:Flight-5,timestamp:12:10:55
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:33,flight_id:34,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:55
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:33,flight_id:34,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:55
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:56
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:56
+general-subscriber3-1  | | weatherInfo: weather_id:33,location:Skyport-1,temperature:25.7828,wind_speed:12.9886,weather_condition:Partly Cloudy,observation_time:12:10:56
+general-subscriber8-1  | | weatherInfo: weather_id:33,location:Skyport-1,temperature:25.7828,wind_speed:12.9886,weather_condition:Partly Cloudy,observation_time:12:10:56
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:11,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:10:56,restriction_authority:CAA
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:34,flight_id:35,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:56
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:34,flight_id:35,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:56
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-6,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:57,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-6,flight_id:Flight-6,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,evtol_id:eVTOL-3,pilot_id:Pilot-2,route_id:5,weather_id:31
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:35,flight_id:36,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:57
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:35,flight_id:36,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:57
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-7,costumer_id:Costumer-690,flight_id:Flight-7,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:10:58
+general-subscriber3-1  | | weatherInfo: weather_id:34,location:Skyport-2,temperature:31.7052,wind_speed:10.8168,weather_condition:Stormy,observation_time:12:10:58
+general-subscriber8-1  | | weatherInfo: weather_id:34,location:Skyport-2,temperature:31.7052,wind_speed:10.8168,weather_condition:Stormy,observation_time:12:10:58
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:10:59
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:11,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:4,available:1,traffic_density:High
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:36,flight_id:37,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:58
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:36,flight_id:37,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:58
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:10:59
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-6,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:10:57,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:37,flight_id:38,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:59
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:37,flight_id:38,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:10:59
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:00
+general-subscriber8-1  | | weatherInfo: weather_id:35,location:Skyport-1,temperature:25.7275,wind_speed:19.0197,weather_condition:Rainy,observation_time:12:11:00
+general-subscriber3-1  | | weatherInfo: weather_id:35,location:Skyport-1,temperature:25.7275,wind_speed:19.0197,weather_condition:Rainy,observation_time:12:11:00
+general-subscriber7-1  | | tolPadRequest: ,assign_id:6,flight_id:Flight-6,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:10:59
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:12,area:Skyport-2,congestion_level:Medium,affected_routes:1,timestamp:12:11:00
+general-subscriber5-1  | | flightAssign: flight_assign_id:7,assign_time:12:11:00,flight_id:Flight-7,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber2-1  | | flightAssign: flight_assign_id:7,assign_time:12:11:00,flight_id:Flight-7,pilot_id:Pilot-1,evtol_id:eVTOL-1,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:11:02
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:02
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:6,approved_by:UASP,estimated_time:12,flight_id:Flight-6,timestamp:12:11:01
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:6,approved_by:UASP,estimated_time:12,flight_id:Flight-6,timestamp:12:11:01
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-6,authorization_status:1,authorization_time:12:11:01,approved_departure_time:12:11:01,approved_arrival_time:12:11:01,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:38,flight_id:39,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:01
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-6,authorization_status:1,authorization_time:12:11:01,approved_departure_time:12:11:01,approved_arrival_time:12:11:01,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:38,flight_id:39,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:01
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:02
+general-subscriber8-1  | | weatherInfo: weather_id:36,location:Skyport-1,temperature:34.5212,wind_speed:4.36112,weather_condition:Stormy,observation_time:12:11:02
+general-subscriber3-1  | | weatherInfo: weather_id:36,location:Skyport-1,temperature:34.5212,wind_speed:4.36112,weather_condition:Stormy,observation_time:12:11:02
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-8,costumer_id:Costumer-763,flight_id:Flight-8,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:12,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:11:02,restriction_authority:FAA
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:39,flight_id:40,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:02
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:39,flight_id:40,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:02
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-7,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:11:03,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | flightAssign: flight_assign_id:8,assign_time:12:11:03,flight_id:Flight-8,pilot_id:Pilot-1,evtol_id:eVTOL-2,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-7,flight_id:Flight-7,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,evtol_id:eVTOL-1,pilot_id:Pilot-1,route_id:5,weather_id:34
+general-subscriber2-1  | | flightAssign: flight_assign_id:8,assign_time:12:11:03,flight_id:Flight-8,pilot_id:Pilot-1,evtol_id:eVTOL-2,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:40,flight_id:41,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:04
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:40,flight_id:41,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:04
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:04
+general-subscriber8-1  | | weatherInfo: weather_id:37,location:Skyport-2,temperature:22.9476,wind_speed:14.7425,weather_condition:Partly Cloudy,observation_time:12:11:04
+general-subscriber3-1  | | weatherInfo: weather_id:37,location:Skyport-2,temperature:22.9476,wind_speed:14.7425,weather_condition:Partly Cloudy,observation_time:12:11:04
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:11:05
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:12,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,available_capacity:8,available:1,traffic_density:Medium
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:05
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:41,flight_id:42,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:04
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:41,flight_id:42,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:04
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-7,departure_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,departure_time:12:11:03,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:42,flight_id:43,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:05
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:42,flight_id:43,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:05
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:06
+general-subscriber3-1  | | weatherInfo: weather_id:38,location:Skyport-1,temperature:24.1762,wind_speed:11.3346,weather_condition:Rainy,observation_time:12:11:06
+general-subscriber8-1  | | weatherInfo: weather_id:38,location:Skyport-1,temperature:24.1762,wind_speed:11.3346,weather_condition:Rainy,observation_time:12:11:06
+general-subscriber7-1  | | tolPadRequest: ,assign_id:7,flight_id:Flight-7,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:11:05
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:13,area:Skyport-2,congestion_level:Low,affected_routes:1,timestamp:12:11:06
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-9,costumer_id:Costumer-540,flight_id:Flight-9,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-8,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:06,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-8,flight_id:Flight-8,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-2,pilot_id:Pilot-1,route_id:11,weather_id:36
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:11:08
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:08
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:08
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-8,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:06,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:7,approved_by:UASP,estimated_time:12,flight_id:Flight-7,timestamp:12:11:07
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:7,approved_by:UASP,estimated_time:12,flight_id:Flight-7,timestamp:12:11:07
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-7,authorization_status:1,authorization_time:12:11:07,approved_departure_time:12:11:07,approved_arrival_time:12:11:07,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-7,authorization_status:1,authorization_time:12:11:07,approved_departure_time:12:11:07,approved_arrival_time:12:11:07,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:43,flight_id:44,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:07
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:43,flight_id:44,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:07
+general-subscriber8-1  | | weatherInfo: weather_id:39,location:Skyport-1,temperature:31.5586,wind_speed:2.25087,weather_condition:Partly Cloudy,observation_time:12:11:08
+general-subscriber3-1  | | weatherInfo: weather_id:39,location:Skyport-1,temperature:31.5586,wind_speed:2.25087,weather_condition:Partly Cloudy,observation_time:12:11:08
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:13,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:11:08,restriction_authority:CAA
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:44,flight_id:45,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:09
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:44,flight_id:45,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:09
+general-subscriber7-1  | | tolPadRequest: ,assign_id:8,flight_id:Flight-8,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:11:09
+general-subscriber5-1  | | flightAssign: flight_assign_id:9,assign_time:12:11:09,flight_id:Flight-9,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber2-1  | | flightAssign: flight_assign_id:9,assign_time:12:11:09,flight_id:Flight-9,pilot_id:Pilot-2,evtol_id:eVTOL-3,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:10
+general-subscriber8-1  | | weatherInfo: weather_id:40,location:Skyport-2,temperature:30.9459,wind_speed:5.6201,weather_condition:Stormy,observation_time:12:11:10
+general-subscriber3-1  | | weatherInfo: weather_id:40,location:Skyport-2,temperature:30.9459,wind_speed:5.6201,weather_condition:Stormy,observation_time:12:11:10
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:13,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:10,available:0,traffic_density:Medium
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-1,resource_type:evtol,available:1,skyport_id:Skyport-1,availability_time:12:11:11
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:11
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:8,approved_by:UASP,estimated_time:12,flight_id:Flight-8,timestamp:12:11:10
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:8,approved_by:UASP,estimated_time:12,flight_id:Flight-8,timestamp:12:11:10
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-8,authorization_status:1,authorization_time:12:11:10,approved_departure_time:12:11:10,approved_arrival_time:12:11:10,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-8,authorization_status:1,authorization_time:12:11:10,approved_departure_time:12:11:10,approved_arrival_time:12:11:10,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:45,flight_id:46,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:10
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:45,flight_id:46,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:10
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-10,costumer_id:Costumer-172,flight_id:Flight-10,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-3,resource_type:pilot,available:1,skyport_id:Skyport-1,availability_time:12:11:12
+general-subscriber8-1  | | weatherInfo: weather_id:41,location:Skyport-1,temperature:22.1807,wind_speed:10.0552,weather_condition:Rainy,observation_time:12:11:12
+general-subscriber3-1  | | weatherInfo: weather_id:41,location:Skyport-1,temperature:22.1807,wind_speed:10.0552,weather_condition:Rainy,observation_time:12:11:12
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:46,flight_id:47,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:12
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:46,flight_id:47,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:12
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:14,area:Skyport-1,congestion_level:Low,affected_routes:1,timestamp:12:11:12
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-9,flight_id:Flight-9,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-3,pilot_id:Pilot-2,route_id:12,weather_id:39
+general-subscriber2-1  | | flightAssign: flight_assign_id:10,assign_time:12:11:12,flight_id:Flight-10,pilot_id:Pilot-3,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber5-1  | | flightAssign: flight_assign_id:10,assign_time:12:11:12,flight_id:Flight-10,pilot_id:Pilot-3,evtol_id:eVTOL-1,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-9,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:12,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:47,flight_id:48,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:13
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:47,flight_id:48,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:13
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:14
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:14
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:14
+general-subscriber8-1  | | weatherInfo: weather_id:42,location:Skyport-2,temperature:24.6109,wind_speed:14.9919,weather_condition:Rainy,observation_time:12:11:14
+general-subscriber3-1  | | weatherInfo: weather_id:42,location:Skyport-2,temperature:24.6109,wind_speed:14.9919,weather_condition:Rainy,observation_time:12:11:14
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-9,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:12,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:48,flight_id:49,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:14
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:48,flight_id:49,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:14
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:14,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:11:14,restriction_authority:CAA
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:49,flight_id:50,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:15
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:49,flight_id:50,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:15
+general-subscriber7-1  | | tolPadRequest: ,assign_id:9,flight_id:Flight-9,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:11:15
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:16
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-10,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:15,pilot_id:Pilot-3,evtol_id:eVTOL-1
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-10,flight_id:Flight-10,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-1,pilot_id:Pilot-3,route_id:12,weather_id:40
+general-subscriber3-1  | | weatherInfo: weather_id:43,location:Skyport-1,temperature:20.7015,wind_speed:14.3215,weather_condition:Partly Cloudy,observation_time:12:11:16
+general-subscriber8-1  | | weatherInfo: weather_id:43,location:Skyport-1,temperature:20.7015,wind_speed:14.3215,weather_condition:Partly Cloudy,observation_time:12:11:16
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:14,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:12,available:0,traffic_density:High
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-2,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:17
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:17
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-10,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:15,pilot_id:Pilot-3,evtol_id:eVTOL-1
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:9,approved_by:UASP,estimated_time:12,flight_id:Flight-9,timestamp:12:11:17
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:9,approved_by:UASP,estimated_time:12,flight_id:Flight-9,timestamp:12:11:17
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-9,authorization_status:1,authorization_time:12:11:17,approved_departure_time:12:11:17,approved_arrival_time:12:11:17,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-9,authorization_status:1,authorization_time:12:11:17,approved_departure_time:12:11:17,approved_arrival_time:12:11:17,tolpad_id:TolPad-1,pilot_id:Pilot-2,evtol_id:eVTOL-3
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:50,flight_id:51,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:17
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:50,flight_id:51,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:17
+general-subscriber3-1  | | bookingFlightRequest: booking_id:Booking-11,costumer_id:Costumer-211,flight_id:Flight-11,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-1,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:18
+general-subscriber8-1  | | weatherInfo: weather_id:44,location:Skyport-1,temperature:22.1179,wind_speed:7.996,weather_condition:Clear Sky,observation_time:12:11:18
+general-subscriber3-1  | | weatherInfo: weather_id:44,location:Skyport-1,temperature:22.1179,wind_speed:7.996,weather_condition:Clear Sky,observation_time:12:11:18
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:51,flight_id:52,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:18
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:51,flight_id:52,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:18
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:15,area:Skyport-1,congestion_level:High,affected_routes:1,timestamp:12:11:18
+general-subscriber7-1  | | tolPadRequest: ,assign_id:10,flight_id:Flight-10,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:11:18
+general-subscriber5-1  | | flightAssign: flight_assign_id:11,assign_time:12:11:18,flight_id:Flight-11,pilot_id:Pilot-1,evtol_id:eVTOL-2,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber2-1  | | flightAssign: flight_assign_id:11,assign_time:12:11:18,flight_id:Flight-11,pilot_id:Pilot-1,evtol_id:eVTOL-2,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:20
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:20
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:20
+general-subscriber3-1  | | weatherInfo: weather_id:45,location:Skyport-1,temperature:27.4285,wind_speed:19.1023,weather_condition:Stormy,observation_time:12:11:20
+general-subscriber8-1  | | weatherInfo: weather_id:45,location:Skyport-1,temperature:27.4285,wind_speed:19.1023,weather_condition:Stormy,observation_time:12:11:20
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:15,restriction_area:Skyport-2,restriction_type:type,restriction_time:12:11:20,restriction_authority:ANAC
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:10,approved_by:UASP,estimated_time:12,flight_id:Flight-10,timestamp:12:11:20
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:10,approved_by:UASP,estimated_time:12,flight_id:Flight-10,timestamp:12:11:20
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-10,authorization_status:1,authorization_time:12:11:20,approved_departure_time:12:11:20,approved_arrival_time:12:11:20,tolpad_id:TolPad-1,pilot_id:Pilot-3,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-10,authorization_status:1,authorization_time:12:11:20,approved_departure_time:12:11:20,approved_arrival_time:12:11:20,tolpad_id:TolPad-1,pilot_id:Pilot-3,evtol_id:eVTOL-1
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:52,flight_id:53,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:20
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:52,flight_id:53,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:20
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:53,flight_id:54,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:22
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:53,flight_id:54,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:22
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:22
+general-subscriber3-1  | | weatherInfo: weather_id:46,location:Skyport-2,temperature:27.496,wind_speed:5.67707,weather_condition:Stormy,observation_time:12:11:22
+general-subscriber8-1  | | weatherInfo: weather_id:46,location:Skyport-2,temperature:27.496,wind_speed:5.67707,weather_condition:Stormy,observation_time:12:11:22
+general-subscriber4-1  | | flightAuthorizationRequest: auth_request_id:a,flight_id:Flight-11,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:21,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber6-1  | | flightCoordination: coordination_id:Booking-11,flight_id:Flight-11,origin_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,evtol_id:eVTOL-2,pilot_id:Pilot-1,route_id:12,weather_id:43
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:15,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:9,available:0,traffic_density:High
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:54,flight_id:55,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:23
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:54,flight_id:55,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:23
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:23
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:23
+general-subscriber8-1  | | flightRequestInfo: request_id:a,flight_id:Flight-11,departure_skyport_id:Skyport-1,destination_skyport_id:Skyport-2,departure_time:12:11:21,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:55,flight_id:56,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:23
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:55,flight_id:56,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:23
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:24
+general-subscriber3-1  | | weatherInfo: weather_id:47,location:Skyport-2,temperature:21.6651,wind_speed:17.9037,weather_condition:Rainy,observation_time:12:11:24
+general-subscriber8-1  | | weatherInfo: weather_id:47,location:Skyport-2,temperature:21.6651,wind_speed:17.9037,weather_condition:Rainy,observation_time:12:11:24
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:16,area:Skyport-2,congestion_level:Low,affected_routes:1,timestamp:12:11:24
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:56,flight_id:57,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:24
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:56,flight_id:57,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:24
+general-subscriber7-1  | | tolPadRequest: ,assign_id:11,flight_id:Flight-11,tol_pad_id:TolPad-1,skyport_id:,assign_time:12:11:24
+general-publisher1-1 exited with code 0
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:26
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:26
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:26
+general-subscriber8-1  | | weatherInfo: weather_id:48,location:Skyport-1,temperature:27.5807,wind_speed:12.3644,weather_condition:Stormy,observation_time:12:11:26
+general-subscriber3-1  | | weatherInfo: weather_id:48,location:Skyport-1,temperature:27.5807,wind_speed:12.3644,weather_condition:Stormy,observation_time:12:11:26
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:16,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:11:26,restriction_authority:ANAC
+general-subscriber1-1  | | ansp acceptableRoute: acceptable_route_id:11,approved_by:UASP,estimated_time:12,flight_id:Flight-11,timestamp:12:11:26
+general-subscriber9-1  | | uss acceptableRoute: acceptable_route_id:11,approved_by:UASP,estimated_time:12,flight_id:Flight-11,timestamp:12:11:26
+general-subscriber3-1  | | fop flightAuthorization: ,authorization_ida,flight_id:Flight-11,authorization_status:1,authorization_time:12:11:26,approved_departure_time:12:11:26,approved_arrival_time:12:11:26,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightAuthorization: ,authorization_ida,flight_id:Flight-11,authorization_status:1,authorization_time:12:11:26,approved_departure_time:12:11:26,approved_arrival_time:12:11:26,tolpad_id:TolPad-1,pilot_id:Pilot-1,evtol_id:eVTOL-2
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:57,flight_id:58,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:26
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:57,flight_id:58,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:26
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:58,flight_id:59,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:28
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:58,flight_id:59,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:28
+general-subscriber3-1  | | AvailabilityInfo: resource_id:Pilot-2,resource_type:pilot,available:1,skyport_id:Skyport-2,availability_time:12:11:28
+general-subscriber8-1  | | weatherInfo: weather_id:49,location:Skyport-2,temperature:25.1277,wind_speed:12.544,weather_condition:Partly Cloudy,observation_time:12:11:28
+general-subscriber3-1  | | weatherInfo: weather_id:49,location:Skyport-2,temperature:25.1277,wind_speed:12.544,weather_condition:Partly Cloudy,observation_time:12:11:28
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:16,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:11,available:1,traffic_density:High
+general-subscriber3-1  | | AvailabilityInfo: resource_id:eVTOL-3,resource_type:evtol,available:1,skyport_id:Skyport-2,availability_time:12:11:29
+general-subscriber8-1  | | AvailabilityInfo: resource_id:TolPad-1,resource_type:tolPad,available:1,skyport_id:Skyport-1,availability_time:12:11:29
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:59,flight_id:60,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:29
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:59,flight_id:60,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:29
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:60,flight_id:61,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:30
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:60,flight_id:61,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:30
+general-subscriber8-1  | | weatherInfo: weather_id:50,location:Skyport-2,temperature:23.4579,wind_speed:8.61241,weather_condition:Clear Sky,observation_time:12:11:30
+general-subscriber3-1  | | weatherInfo: weather_id:50,location:Skyport-2,temperature:23.4579,wind_speed:8.61241,weather_condition:Clear Sky,observation_time:12:11:30
+general-subscriber8-1  | | trafficFlowsInfo: flows_id:17,area:Skyport-1,congestion_level:Medium,affected_routes:1,timestamp:12:11:30
+general-publisher5-1 exited with code 0
+general-subscriber5-1  | | plm flightChangeRec: recommendation_id:61,flight_id:62,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:31
+general-subscriber3-1  | | plm flightChangeRec: recommendation_id:61,flight_id:62,change_type:change_type,reason:reason,recommended_by:recommended_by,recommendation_time:12:11:31
+general-publisher4-1 exited with code 0
+general-subscriber8-1  | | airspaceRestrictions: restriction_id:17,restriction_area:Skyport-1,restriction_type:type,restriction_time:12:11:32,restriction_authority:ANAC
+general-publisher2-1 exited with code 0
+general-publisher8-1 exited with code 0
+general-publisher10-1 exited with code 0
+general-subscriber9-1 exited with code 0
+general-subscriber7-1 exited with code 0
+general-subscriber1-1 exited with code 0
+general-publisher9-1 exited with code 0
+general-subscriber3-1  | | flightRoutesInfo: flight_route_id:17,origin_skyport_id:Skyport-2,destination_skyport_id:Skyport-1,available_capacity:13,available:0,traffic_density:High
+general-publisher6-1 exited with code 0
+general-subscriber5-1 exited with code 0
+general-subscriber6-1 exited with code 0
+general-publisher3-1 exited with code 0
+general-subscriber2-1 exited with code 0
+general-subscriber4-1 exited with code 0
+general-subscriber8-1 exited with code 0
+general-publisher7-1 exited with code 0
+general-subscriber3-1 exited with code 0
