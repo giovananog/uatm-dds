@@ -1,25 +1,25 @@
 #include "../../model/UATMTraits.h"  // Include UATM traits from a custom model
-#include "../Utils/functionsUM.h"  // Include utility functions, possibly for shared operations
 #include <tools/modeling/codegen/model/NullReaderListener.h>  // Include a NullReaderListener for code generation purposes
+
 #include <model/Sync.h>  // Include synchronization utilities for thread safety
 #include <ace/Log_Msg.h>  // Include ACE logging utilities for error messages and logging
-#include <dds/DCPS/WaitSet.h>  // Include DDS WaitSet to handle events
-#include "ReaderListenerAvailability.h"  // Include the header for the ReaderListenerAvailability class
-#include <fstream>  // Include the file stream library to write data to files
 
-// Constructor for the ReaderListenerAvailability class, which initializes the ReaderCondSync object
-ReaderListenerAvailability::ReaderListenerAvailability(OpenDDS::Model::ReaderCondSync &rcs)
+#include <dds/DCPS/WaitSet.h>  // Include DDS WaitSet to handle events
+#include "ReaderListenerRequestUASP.h"  // Include the header for the ReaderListenerRequest class
+
+// Constructor for the ReaderListenerRequest class, which initializes the ReaderCondSync object
+ReaderListenerRequest::ReaderListenerRequest(OpenDDS::Model::ReaderCondSync &rcs)
     : rcs_(rcs) {}
 
 // The callback function that handles data availability for the DataReader
-void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
+void ReaderListenerRequest::on_data_available(DDS::DataReader_ptr reader)
 {
     ACE_Guard<ACE_Thread_Mutex> g(mutex_);  // Lock the mutex to ensure thread-safety
     static bool signal_sent = false;  // Static flag to track if the signal has been sent
 
-    // Narrow the DataReader to a specific type of DataReader (UATM::availabilityInfoDataReader)
-    UATM::availabilityInfoDataReader_var reader_i =
-        UATM::availabilityInfoDataReader::_narrow(reader);
+    // Narrow the DataReader to a specific type of DataReader (UATM::flightRequestInfoDataReader)
+    UATM::flightRequestInfoDataReader_var reader_i =
+        UATM::flightRequestInfoDataReader::_narrow(reader);
 
     // Check if the _narrow operation was successful
     if (CORBA::is_nil(reader_i.in()))
@@ -30,7 +30,7 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
         ACE_OS::exit(-1);  // Exit with an error code if narrowing fails
     }
 
-    UATM::availabilityInfo msg;  // Message to hold the data from the sample
+    UATM::flightRequestInfo msg;  // Message to hold the data from the sample
     DDS::SampleInfo info;  // Information about the sample, such as validity and metadata
 
     // Process the data samples in a loop until no more valid data is available
@@ -41,20 +41,26 @@ void ReaderListenerAvailability::on_data_available(DDS::DataReader_ptr reader)
         {
             if (info.valid_data)  // Check if the data is valid
             {
-                // Print the availability information to the console
-                std::cout << "| AvailabilityInfo: "
-                          << "resource_id:" << msg.resource_id.in()
-                          << ",resource_type:" << msg.resource_type.in()
-                          << ",available:" << msg.available
-                          << ",skyport_id:" << msg.skyport_id.in()
-                          << ",availability_time:" << msg.availability_time.in() << std::endl;
+                // Print the flight request information to the console
+                std::cout << "| flightRequestInfo: "
+                          << "request_id:" << msg.request_id.in()
+                          << ",flight_id:" << msg.flight_id.in()
+                          << ",departure_skyport_id:" << msg.departure_skyport_id.in()
+                          << ",destination_skyport_id:" << msg.destination_skyport_id.in()
+                          << ",departure_time:" << msg.departure_time.in()
+                          << ",pilot_id:" << msg.pilot_id.in()
+                          << ",evtol_id:" << msg.evtol_id.in() << std::endl;
 
-                // Open the file in append mode and write the availability data
-                std::ofstream request_file("uaspManagerDP/data/tolpads.txt", std::ios_base::app);
-                request_file << "resource_id=" << msg.resource_id.in() << ","
-                             << "skyport_id=" << msg.skyport_id.in() << ","
-                             << "available=" << msg.available << ","
-                             << "availability_time=" << msg.availability_time.in() << "\n";
+                // Open the file in append mode and write the flight request data
+                std::ofstream request_file("uaspManagerDP/data/requests.txt", std::ios_base::app);
+                request_file << "request_id:" << msg.request_id.in() << ","
+                             << "flight_id:" << msg.flight_id.in() << ","
+                             << "departure_skyport_id:" << msg.departure_skyport_id.in() << ","
+                             << "destination_skyport_id:" << msg.destination_skyport_id.in() << ","
+                             << "departure_time:" << msg.departure_time.in() << ","
+                             << "tolpad_id:" << "" << ","
+                             << "pilot_id:" << msg.pilot_id.in() << ","
+                             << "evtol_id:" << msg.evtol_id.in() << "\n";
                 request_file.close();  // Close the file after writing
             }
             else

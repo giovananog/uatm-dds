@@ -1,9 +1,9 @@
 #include <string>
-#include "../utils/functions.h"
+#include "../../model/UATMTraits.h"
+#include "../Utils/functionsBP.h"
 #include <thread>
 #include <chrono>
 #include <random>
-#include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 
 // Security congigurations
@@ -103,8 +103,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             bfr.destination_skyport_id = CORBA::string_dup(generateDestinationSkyportId(std::string(bfr.origin_skyport_id)).c_str());
 
             // Write the booking request if IDs are valid
-            if (bfr.booking_id.in() != "0" && bfr.costumer_id.in() != "0")
-            {
+            // if (bfr.booking_id.in() != "0" && bfr.costumer_id.in() != "0")
+            // {
               DDS::ReturnCode_t error = writer_var->write(bfr, DDS::HANDLE_NIL);
 
               // Log an error if the write operation fails
@@ -115,7 +115,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
                                ACE_TEXT(" write returned %d!\n"),
                            error));
               }
-            }
+            // }
           }
         }
 

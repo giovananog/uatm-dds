@@ -3,7 +3,7 @@
 #include <model/Sync.h> 
 #include <ace/Log_Msg.h> 
 #include <dds/DCPS/WaitSet.h> 
-#include "ReaderListenerRequest.h" 
+#include "ReaderListenerRequestFAS.h" 
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY

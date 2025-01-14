@@ -3,7 +3,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include <dds/DCPS/WaitSet.h>
-#include "ReaderListenerRequest.h"
+#include "ReaderListenerRequestUSS.h"
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY
@@ -27,7 +27,7 @@
 int ACE_TMAIN(int argc, ACE_TCHAR* argv[])
 {
   try {
-    /// Set security for participant
+    // Set security for participant
     TheServiceParticipant->set_security(true); 
 
     // Initialize the application with the command-line arguments

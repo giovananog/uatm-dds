@@ -6,7 +6,7 @@
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
 #include <unordered_set>
-#include "../utils/functions.h"
+#include "../Utils/functionsEM.h"
 #include <dds/DCPS/WaitSet.h>
 
 // Security configurations

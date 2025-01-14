@@ -1,7 +1,7 @@
 #include <model/Sync.h>  
 #include <ace/Log_Msg.h>  
 #include "../../model/UATMTraits.h"  
-#include "../utils/functions.h"  
+#include "../Utils/functionsFAS.h"  
 #include <vector>  
 #include <dds/DCPS/WaitSet.h>  
 #include <string>  

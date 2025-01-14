@@ -1,1 +1,0 @@
-weather_id:50,location:Skyport-1,temperature:25.3955,wind_speed:17.4865,weather_condition:Partly Cloudy,observation_time:14:41:15

@@ -6,7 +6,7 @@
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
 #include <model/Sync.h>
-#include "../utils/functions.h"
+#include "../Utils/functionsSKM.h"
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY

@@ -1,16 +1,13 @@
-
-#include <iostream>                 // Standard input/output stream
-#include <fstream>                  // File stream operations
-#include <string>                   // String manipulation
-#include <sstream>                  // String stream
-#include <vector>                   // Dynamic array
-#include <thread>                   // Threading functionality
-#include <chrono>                   // Time duration and timestamps
-#include <unordered_set>            // For storing unique elements efficiently
-#include <model/Sync.h>             // Custom synchronization model
-#include <ace/Log_Msg.h>            // ACE logging utility
-#include "../../model/UATMTraits.h" // Includes specific traits for UATM (Urban Air Traffic Management)
-#include "../utils/functions.h"     // Utility functions
+#include <fstream>                  
+#include <string>                   
+#include <vector>
+#include <thread>
+#include <chrono>                   
+#include <unordered_set>            
+#include <model/Sync.h>             
+#include <ace/Log_Msg.h>            
+#include "../../model/UATMTraits.h" 
+#include "../Utils/functionsUM.h"     
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY
@@ -83,7 +80,6 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     // Record the start time for the operation
     auto startTime = std::chrono::steady_clock::now();
     double duration = 100.0; // Set a duration to monitor the process
-    int i = 0;
 
     // Main processing loop (runs indefinitely until duration is met)
     while (true)
@@ -154,14 +150,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         // Loop through requests to check for unprocessed ones
         for (const auto &auth : requests)
         {
-          // if (sent_flight_ids.find(std::string(auth.flight_id)) == sent_flight_ids.end() && auth.tolpad_id != "")
-          // if (sent_flight_ids.find(std::string(auth.flight_id)) == sent_flight_ids.end())
-          // {
-          if (i < 2)
+          if (sent_flight_ids.find(std::string(auth.flight_id)) == sent_flight_ids.end() && auth.tolpad_id != "")
           {
-            i++;
-
-            std::cout << "\n\n enviou . \n\n";
             // Create a route assignment for the request
             UATM::acceptableRoute ar;
             ar.acceptable_route_id = acceptable_route_id++;
@@ -198,10 +188,9 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
             bool restrictionOk = checkRestrictionConditions("uaspManagerDP/data/restrictions.txt", auth.departure_skyport_id, restrictionID);
             bool weatherOk = checkWeatherConditions("uaspManagerDP/data/weather.txt", auth.departure_skyport_id, weatherID);
             UATM::flightAuthorization fa;
-            if (flowOk && restrictionOk && weatherOk)
-              fa.authorization_status = 1;
-            else
-              fa.authorization_status = 0;
+
+            if (flowOk && restrictionOk && weatherOk) fa.authorization_status = 1;
+            else fa.authorization_status = 0;
 
             fa.authorization_id = auth.request_id.c_str();
             fa.flight_id = auth.flight_id.c_str();
@@ -234,10 +223,8 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
         // Loop through requests to send flight change records
         for (const auto &auth : requests)
         {
-          // if (sent_flight_recs.find(auth.flight_id) == sent_flight_recs.end())
-          if (i < 2)
+          if (sent_flight_recs.find(auth.flight_id) == sent_flight_recs.end())
           {
-            i++;
             UATM::flightChangeRec fc;
 
             fc.recommendation_id = recommendation_id++;

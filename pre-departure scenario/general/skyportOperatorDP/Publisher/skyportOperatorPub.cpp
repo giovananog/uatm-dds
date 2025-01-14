@@ -4,7 +4,7 @@
 #include <thread>                   
 #include <chrono>                   
 #include "../../model/UATMTraits.h" 
-#include "../utils/functions.h"     
+#include "../Utils/functionsSKO.h"     
 #include <model/Sync.h>             
 
 // Security configurations

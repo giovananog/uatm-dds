@@ -6,7 +6,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
-#include "../utils/functions.h"
+#include "../Utils/functionsWS.h"
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY
@@ -33,7 +33,7 @@ int ACE_TMAIN(int argc, ACE_TCHAR **argv)
     try
     {
         // Set security for participant
-        TheServiceParticipant->set_security(true); ///
+        TheServiceParticipant->set_security(true); 
 
         // Initialize the application and model
         OpenDDS::Model::Application application(argc, argv);             // Application initialization

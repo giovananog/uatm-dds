@@ -7,7 +7,7 @@
 #include <model/Sync.h>
 #include <ace/Log_Msg.h>
 #include "../../model/UATMTraits.h"
-#include "../utils/functions.h"
+#include "../Utils/functionsFO.h"
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY

@@ -5,7 +5,7 @@
 #include <unordered_set>
 #include <dds/DCPS/transport/tcp/Tcp.h>
 #include "../../model/UATMTraits.h"
-#include "../utils/functions.h"
+#include "../Utils/functionsTPM.h"
 #include <model/Sync.h>
 
 // Security configurations

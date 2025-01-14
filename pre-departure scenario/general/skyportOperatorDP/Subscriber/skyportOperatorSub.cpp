@@ -4,7 +4,7 @@
 #include <ace/Log_Msg.h> 
 #include <dds/DCPS/WaitSet.h> 
 #include "ReaderListenerCoordination.h" // Listener for flight coordination data
-#include "ReaderListenerAvailability.h" // Listener for availability data
+#include "ReaderListenerAvailabilitySKO.h" // Listener for availability data
 
 // Security configurations
 #if OPENDDS_CONFIG_SECURITY
