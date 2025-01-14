@@ -17,7 +17,7 @@ docker-compose --version
 docker pull ghcr.io/opendds/opendds:latest
 ```
 
-3. Clone this repository and navigate to the project directory.
+3. Clone this repository and navigate to the `general` directory within the project.
 
 ```bash
 git clone https://github.com/giovananog/uatm-dds
@@ -33,7 +33,7 @@ cd uatm-dds/pre-departure-scenario/general
 1. Enter a container
 
 ```bash
-docker run --rm -ti -v "$PWD:/opt/workspace" ghcr.io/opendds/opendds:latest
+docker run --rm -ti -v "$(PWD):/opt/workspace" ghcr.io/opendds/opendds:latest
 ```
 
 2. Configure and build the example
