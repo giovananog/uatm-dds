@@ -28,7 +28,13 @@ The system is comprised of 12 distinct **Domain Participants (DPs)**, each repre
 
 ### Key Architectural Model
 
-![Diagram: UATM DDS Security Architecture Model - Showing Participants, Topics, and Security Assets](uatm-dds-diagram.png)
+<p align="center">
+  <img src="uatm-dds-diagram.png" 
+       alt="Diagram: UATM DDS Security Architecture Model - Showing Participants, Topics, and Security Assets" 
+       width="700"> 
+  <br>
+  <em>Figure 1: UATM DDS Security Architecture Model.</em>
+</p>
 
 ### DDS Entities
 
@@ -48,6 +54,7 @@ The project is structured with one Domain Participant (DP) per critical entity:
 
 ## ⚙️ Repository Structure
 
+```tree
 uatm-dds/
 └── pre-departure-scenario/
 └── general/
@@ -57,6 +64,7 @@ uatm-dds/
 ├── docker-compose.yml# Defines and orchestrates the entire multi-process DDS system
 ├── rtps.ini # OpenDDS RTPS (Real-Time Publish-Subscribe) transport config
 └── mwc.pl # OpenDDS configuration script
+```
 
 <br> 
 
