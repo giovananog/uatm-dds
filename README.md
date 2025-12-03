@@ -42,13 +42,18 @@ The project is structured with one Domain Participant (DP) per critical entity:
 
 | Entity Folder | Description | Role in UATM Scenario |
 | :--- | :--- | :--- |
-| `uaspManagerDP` | Urban Airspace Service Provider | Manages airspace, grants `FlightAuthorization`. |
-| `fleetOperatorDP` | Fleet Operator | Coordinates flights, publishes `FlightCoordination`. |
-| `skyportOperatorDP` | Skyport Operator | Manages physical Skyport resources and air traffic. |
-| `pilotManagerDP` | Pilot Manager | Manages pilot and flight crew availability. |
-| `evtolManagerDP` | eVTOL Manager | Manages eVTOL vehicle availability. |
-| `weatherDP` | Weather System | Publishes `WeatherInfo` for flight planning. |
-| ... | (Other DPs: ANSP, USS, Booking Platform, etc.) | ... |
+| `uaspManagerDP` | Urban Airspace Service Provider | Oversees traffic flows, manages airspace efficiency, optimizes routes, and issues `FlightAuthorization`. |
+| `fleetOperatorDP` | Fleet Operator | Coordinates logistics, assigns pilots/eVTOLs, and publishes `FlightCoordination` details. |
+| `skyportOperatorDP` | Skyport Operator | Manages skyport services, traffic flows (`trafficFlowsDW`), and airspace restrictions. |
+| `pilotManagerDP` | Pilot Manager | Oversees pilot availability (`pilotAvailabilityDW`) and handles pilot assignments. |
+| `evtolManagerDP` | eVTOL Manager | Manages availability of eVTOL vehicles and assigns them to flights. |
+| `weatherDP` | Weather System | Supplies critical weather data (`weatherInfoDW`) for flight operations. |
+| `bookingPlatformDP` | Booking Platform | Manages flight reservations and publishes `bookingFlightRequest`. |
+| `anspDP` | Air Navigation Service Provider | Coordinates with UASP/USS to evaluate and approve urban flight routes. |
+| `ussDP` | UAS Service Supplier | Coordinates with ANSP/UASP to identify acceptable routes for unmanned aircraft. |
+| `flightAuthSysDP` | Flight Authorization System | Processes flight requests, evaluates compliance, and provides authorizations. |
+| `skyportsManDP` | Skyports Manager | Oversees the general availability status and allocation of skyports. |
+| `tolPadManagerDP` | TOL Pad Manager | Manages the specific allocation and status of Take-Off/Landing (TOL) pads. |
 
 <br> 
 
@@ -65,6 +70,15 @@ uatm-dds/
 ├── rtps.ini # OpenDDS RTPS (Real-Time Publish-Subscribe) transport config
 └── mwc.pl # OpenDDS configuration script
 ```
+
+<br> 
+
+### 📄 Example Output Logs
+
+For a complete reference of the expected execution logs and system behavior, please check the following files included in this repository:
+
+*   [**`example-output-docker.txt`**](example-output-docker.txt): Contains the full log output when running the simulation via **Docker Compose**.
+*   [**`example-output-perl.txt`**](example-output-perl.txt): Contains the log output when running via the native Perl scripts.
 
 <br> 
 
